@@ -1,0 +1,303 @@
+-- Create table
+create table XC_ZC_REPORT1
+(
+  proj_code        VARCHAR2(60),
+  proj_name        VARCHAR2(100),
+  pack_code        VARCHAR2(30),
+  pack_name        VARCHAR2(200),
+  pack_content     VARCHAR2(500),
+  pack_budget      NUMBER(15,2),
+  pur_name         VARCHAR2(10),
+  co_code          VARCHAR2(60),
+  co_name          VARCHAR2(160),
+  win_bid_sum      NUMBER(15,2),
+  invalid_reason   VARCHAR2(200),
+  proj_status      VARCHAR2(60),
+  proj_status_name VARCHAR2(60),
+  pack_status      VARCHAR2(60),
+  pack_status_name VARCHAR2(60),
+  data_status      VARCHAR2(10),
+  data_status_name VARCHAR2(60),
+  ht_status        VARCHAR2(10),
+  ht_status_name   VARCHAR2(60),
+  ht_bal_sum       NUMBER(15,2),
+  ht_bal_sum_p     NUMBER(15,2),
+  proj_10          VARCHAR2(1000),
+  ht_bal_sum_p_c   VARCHAR2(10),
+  proj_50          VARCHAR2(1000),
+  pack_name_remark VARCHAR2(500),
+  win_bid_percent  VARCHAR2(100),
+  kb_20            VARCHAR2(1000)
+)
+tablespace UFGOV
+  pctfree 10
+  initrans 1
+  maxtrans 255
+  storage
+  (
+    initial 128
+    minextents 1
+    maxextents unlimited
+  );
+-- Add comments to the columns 
+comment on column XC_ZC_REPORT1.proj_code
+  is '项目编码';
+comment on column XC_ZC_REPORT1.proj_name
+  is '项目名称';
+comment on column XC_ZC_REPORT1.pack_code
+  is '分包编码';
+comment on column XC_ZC_REPORT1.pack_name
+  is '分包名称';
+comment on column XC_ZC_REPORT1.pack_content
+  is '分包内容';
+comment on column XC_ZC_REPORT1.pack_budget
+  is '分包预算';
+comment on column XC_ZC_REPORT1.pur_name
+  is '采购方式名称';
+comment on column XC_ZC_REPORT1.co_code
+  is '单位编码';
+comment on column XC_ZC_REPORT1.co_name
+  is '单位名称';
+comment on column XC_ZC_REPORT1.win_bid_sum
+  is '中标金额';
+comment on column XC_ZC_REPORT1.invalid_reason
+  is '废标原因';
+comment on column XC_ZC_REPORT1.proj_status
+  is '项目数据状态编码';
+comment on column XC_ZC_REPORT1.proj_status_name
+  is '项目数据状态名称';
+comment on column XC_ZC_REPORT1.pack_status
+  is '分包数据状态编码';
+comment on column XC_ZC_REPORT1.pack_status_name
+  is '分包数据状态名称';
+comment on column XC_ZC_REPORT1.data_status
+  is '数据状态，10 经办人立项，15 立项主任审核，19 立项完成';
+comment on column XC_ZC_REPORT1.data_status_name
+  is '数据状态，10 经办人立项，15 立项主任审核，19 立项完成';
+comment on column XC_ZC_REPORT1.ht_status
+  is '采购合同数据状态编码';
+comment on column XC_ZC_REPORT1.ht_status_name
+  is '采购合同数据状态名称';
+comment on column XC_ZC_REPORT1.ht_bal_sum
+  is '合同已成功支付金额';
+comment on column XC_ZC_REPORT1.ht_bal_sum_p
+  is '合同已成功支付金额百分比';
+comment on column XC_ZC_REPORT1.proj_10
+  is '经办人立项备注';
+comment on column XC_ZC_REPORT1.ht_bal_sum_p_c
+  is '合同已成功支付金额百分比，中文，用于显示百分比文字';
+comment on column XC_ZC_REPORT1.proj_50
+  is '采购立项主任审核备注';
+comment on column XC_ZC_REPORT1.pack_name_remark
+  is '分包名称备注';
+comment on column XC_ZC_REPORT1.win_bid_percent
+  is '采购节约率';
+comment on column XC_ZC_REPORT1.kb_20
+  is '开标备注';
+
+
+
+
+create or replace procedure pro_xc_zc_report1 is
+begin
+  --清空中间表
+  execute immediate 'truncate table xc_zc_report1';
+
+  --------------生成项目数据----------------
+  --先通过分包建立数据
+  insert into xc_zc_report1 (proj_code,pack_code,pack_name,pack_content,pack_budget,co_code,co_name,pack_status,pack_status_name,pack_name_remark)
+      select pa.proj_code,pa.pack_code,pa.pack_name,pa.pur_content,pa.pack_budget,pa.co_code,pa.co_name,0,'等待开标',co_code||' '||co_name
+      from vw_zc_eb_pack pa;
+  --填充项目信息
+  update xc_zc_report1 rep set (proj_name,pur_name,proj_10,proj_status,proj_status_name)=
+      (select proj_name,pur_name,'立项时间：'||to_char(p.zdrq,'yyyy-mm-dd')|| CHR(10)||'经办人：'||p.inputor,status,status_name from vw_zc_eb_proj p where p.proj_code = rep.proj_code);
+  --填充询价的开标信息
+  update xc_zc_report1 rep set (pack_status,pack_status_name,WIN_BID_SUM,INVALID_REASON)=
+      (select erp.open_bid_status,decode(erp.open_bid_status,'0','等待开标','1','开标成功','5','废标',erp.open_bid_status),WIN_BID_SUM,REASON
+          from ZC_EB_RFQ_PACK erp where rep.proj_code = erp.proj_code and rep.pack_code = erp.pack_code)
+      where rep.pack_code in (select pack_code from ZC_EB_RFQ_PACK);
+  --非询价开标信息
+  update xc_zc_report1 rep set (pack_status,pack_status_name,WIN_BID_SUM)=
+      (select '1','开标成功',provider_total_price from ZC_EB_PACK_EVAL_RESULT e where e.eval_result='4' and e.proj_code = rep.proj_code and e.pack_code = rep.pack_code)
+      where rep.pack_code in (select pack_code from ZC_EB_PACK_EVAL_RESULT where eval_result='4');
+  --填充合同信息
+  update xc_zc_report1 rep set (ht_status,ht_status_name,ht_bal_sum,ht_bal_sum_p,ht_bal_sum_p_c)=
+      (select ht.zc_ht_status,decode(ht.zc_ht_status,'0','合同编制','1','采购单位经办人审核','2','采购单位负责人审核','6','资产科审核','exec','合同审核通过',ht.zc_ht_status),ht.zc_bal_sum,ht.zc_bal_sum/ht.ZC_HT_NUM*100,decode(ht.zc_bal_sum/ht.ZC_HT_NUM,null,'',ht.zc_bal_sum/ht.ZC_HT_NUM*100||'%')
+          from vw_zc_xmcg_ht ht where rep.pack_code = ht.zc_bid_code)
+      where rep.pack_code in (select pack_code from vw_zc_xmcg_ht);
+
+  --采购节约率
+  update xc_zc_report1 rep set (WIN_BID_PERCENT)=round((pack_budget-WIN_BID_SUM)/pack_budget,4)*100;
+  update xc_zc_report1 rep set (WIN_BID_PERCENT)=null where WIN_BID_PERCENT='0';
+  update xc_zc_report1 rep set (WIN_BID_PERCENT)=WIN_BID_PERCENT||'%' where WIN_BID_PERCENT is not null;
+  update xc_zc_report1 rep set (WIN_BID_PERCENT)='0'||WIN_BID_PERCENT where substr(WIN_BID_PERCENT,0,1)='.';
+  --
+
+
+
+
+  --------------生成数据状态，依业务顺序刷新数据状态，只保留最终状态--------------
+  --根据立项分包，刷新数据状态
+  update xc_zc_report1 rep set (data_status,data_status_name)=
+      (select decode(p.status,'0','10','50','15','exec','19',p.status),decode(p.status,'0','经办人立项','50','主任审核','exec','立项完成',p.status) from vw_zc_eb_proj p
+          where p.proj_code = rep.proj_code)
+      where rep.pack_code in (select pack_code from vw_zc_eb_proj);
+
+  --根据开标情况，刷新数据状态
+  update xc_zc_report1 rep set (data_status,data_status_name)=
+      (select decode(p.status,'0','20','1','21','5','25',p.status),decode(p.status,'0','等待开标','1','开标成功','5','废标',p.status) from ZC_EB_RFQ_PACK p
+          where p.proj_code = rep.proj_code and p.pack_code = rep.pack_code)
+      where rep.pack_code in (select pack_code from ZC_EB_RFQ_PACK);
+commit;
+  --根据评审报告，刷新数据状态
+  update xc_zc_report1 rep set (data_status,data_status_name)=
+      (select decode(p.status,'0','30','3','31','exec','39',p.status),decode(p.status,'0','经办人编制','3','主任审核','exec','评标报告通过',p.status) from ZC_EB_EVAL_REPORT p
+          where p.proj_code = rep.proj_code and p.pack_code = rep.pack_code)
+      where rep.pack_code in (select pack_code from ZC_EB_EVAL_REPORT);
+
+  --根据合同，刷新数据状态
+  update xc_zc_report1 rep set (data_status,data_status_name)=
+      (select decode(p.zc_ht_status,'0','40','1','41','2','42','6','46','exec','49',p.zc_ht_status),decode(p.zc_ht_status,'0','合同编制','1','采购单位经办人审核','2','采购单位负责人审核','6','资产科审核','exec','合同审核通过',p.zc_ht_status) from ZC_XMCG_HT p
+          where p.proj_code = rep.proj_code and p.zc_bid_code = rep.pack_code)
+      where rep.pack_code in (select zc_bid_code from ZC_XMCG_HT);
+
+
+  --------------生成不同数据状态的数据备注--------------
+  --填充项目信息
+  update xc_zc_report1 rep set (proj_10) =
+      (select (select '立项时间：'||to_char(p.zdrq,'yyyy-mm-dd')|| CHR(10)||'经办人：'||p.inputor from vw_zc_eb_proj p where p.proj_code = rep.proj_code)||chr(10)||chr(10)||f_work_flow((select p.process_inst_id from vw_zc_eb_proj p where p.proj_code = rep.proj_code),2123143,'采购立项') from dual);
+  update xc_zc_report1 rep set (proj_50) =
+      (select f_work_flow((select p.process_inst_id from vw_zc_eb_proj p where p.proj_code = rep.proj_code),30781,'采购立项主任审核') from dual);
+
+  --报名、报价
+  update xc_zc_report1 rep set rep.kb_20 =
+    (select '共'||count(1)||'家供应商参与' from zc_eb_xunjia_baojia bj,zc_eb_xunjia_baojia_pack bp
+       where bp.status = 2 and bp.bj_code = bj.bj_code and rep.proj_code = bj.proj_code and rep.pack_code = bp.pack_code group by bj.proj_code,bp.pack_code)
+    where rep.pack_code in (select pack_code from zc_eb_xunjia_baojia_pack bp2 where bp2.status=2);
+
+  commit;
+end pro_xc_zc_report1;
+/
+
+
+create or replace view vw_zc_xmcg_ht as
+select ht."ZC_HT_CODE",ht."ZC_DIYU_DAIMA",ht."ZC_HT_NAME",ht."ZC_HT_TYPE",ht."ZC_REQ_CODE",ht."ZC_MAKE_CODE",ht."ZC_BID_CODE",ht."CO_CODE",ht."ND",ht."ZC_SGN_DATE",ht."ZC_SU_NAME",ht."ZC_JCKDL_MC",ht."ZC_HT_NUM",ht."ZC_CZ_LEVEL",ht."ZC_FUKUAN_TYPE",ht."ZC_FUKUAN_YUED",ht."ZC_CHECK_TYPE",ht."ZC_CON_TEXT",ht."ZC_CON_TEXT_BLOBID",ht."ZC_HT_STATUS",ht."ZC_AGEY_CODE",ht."ZC_ZG_CS_CODE",ht."ZC_SM_PJ1",ht."ZC_SM_PJ2",ht."ZC_SM_PJ3",ht."ZC_SM_PJ4",ht."EXECUTOR",ht."EXECUTE_DATE",ht."PROCESS_INST_ID",ht."ZC_PARHT_CODE",ht."ZC_SU_CODE",ht."ZC_SU_ACC_CODE",ht."ZC_SU_BANK_CODE",ht."ZC_SU_BANK_NAME",ht."ZC_SU_TEL",ht."ZC_SU_LINKMAN",ht."ZC_IS_ZXQY_ZB",ht."ZC_GNW",ht."ZC_SNW",ht."ZC_ARRIVE_ADDR",ht."ZC_ARRIVE_DATE",ht."ZC_HANGYE_CTG",ht."ZC_SK_REN",ht."ZC_ZB_NAME",ht."ZC_ZB_CODE",ht."ZC_BI_NZJZ_SUM",ht."ZC_ISREWRITE",ht."ZC_CG_LEIXING",ht."ZC_ZG_CS_NAME",ht."ZC_BGSP_BH",ht."ZC_DELIVERY_EVL",ht."ZC_PRICE_EVL",ht."ZC_QUANTITY_EVL",ht."ZC_SERVICE_EVL",ht."ZC_MEMO",ht."ZC_BID_CONTENT",ht."ZC_DELIVERY_DATE",ht."ZC_DELIVERY_ADDR",ht."ZC_DELIVERY_TYPE",ht."AGENCY",ht."ORG_CODE",ht."ZC_PRO_LIMIT_START_DATE",ht."ZC_PRO_LIMIT_END_DATE",ht."ZC_IMP_FILE",ht."ZC_IMP_FILE_BLOBID",ht."SCALE",ht."REG_CODE",ht."PROJ_CODE",ht."PROJ_NAME",ht."IS_ZI_CHAN",(select sum(b.zc_bal_sum) from ZC_P_PRO_BAL b where b.zc_bal_status='exec' and b.zc_ht_code = ht.zc_ht_code group by b.zc_ht_code) zc_bal_sum from ZC_XMCG_HT ht;
+
+
+
+create or replace view vw_zc_win_bid_sum as
+select entrust_code,pack_code,win_bid_sum win_bid_sum from (
+select ep.entrust_code,ep.pack_code,erp.win_bid_sum win_bid_sum from ZC_EB_RFQ_PACK erp,zc_eb_pack ep where erp.pack_code = ep.pack_code and erp.nd = ep.nd and erp.open_bid_status=1
+union all
+select p.entrust_code,t.pack_code,t.provider_total_price win_bid_sum from ZC_EB_PACK_EVAL_RESULT t,zc_eb_pack p where t.pack_code = p.pack_code and t.eval_result=4
+);
+
+
+
+create or replace view vw_zc_win_bid_provider as
+select erp.pack_code,erp.win_bid_provider_name from ZC_EB_RFQ_PACK erp where erp.open_bid_status=1
+union all
+select t.pack_code,t.provider_name from ZC_EB_PACK_EVAL_RESULT t where t.eval_result=4;
+
+
+
+create or replace view vw_zc_eb_proj as
+select p.proj_code,p.proj_name,p.status,(select val from as_val v where v.valset_id='ZC_VS_PROJ_STATUS' and v.val_id = p.status) status_name ,
+       p.pur_type,decode(p.pur_type,1,'公开招标',2,'邀请招标',3,'竞争性谈判',4,'单一来源',5,'询价',p.pur_type) pur_name,p.proj_sum,p.proj_date lxsj,
+       p.attn_name xmfzr,p.phone,p.email,p.fax,p.is_pub_pur_bulletin,p.is_pub_pur_result,p.remark,p.inputor,p.execute_date zdrq,
+       (select ep.bid_end_time from ZC_EB_PLAN ep where ep.proj_code= p.proj_code) tbjzsj,
+       (select ep.bid_end_time from ZC_EB_PLAN ep where ep.proj_code= p.proj_code) kbsj,
+       p.process_inst_id
+from zc_eb_proj p;
+
+
+create or replace view vw_zc_eb_pack as
+select pa.proj_code,pa.pack_code,pa.pack_name,pa.pur_content,pa.entrust_code,pa.co_code,(select co.CO_NAME from as_company co where co.nd = pa.nd and co.CO_CODE = pa.co_code) co_name,
+ pa.pur_type,decode(pa.pur_type,1,'公开招标',2,'邀请招标',3,'竞争性谈判',4,'单一来源',5,'询价',pa.pur_type) pur_name,pa.pack_budget,pa.bid_deposit,pa.is_check_qualification
+ from zc_eb_pack pa;
+
+
+create or replace view vw_open_bid_date as
+select pa.co_code,
+               pa.entrust_code,
+               pa.proj_code,
+               pa.pack_code,
+               pa.pack_name,
+               pa.pur_content,
+               pa.pack_desc,
+               pa.pack_budget,
+               pa.pur_type,
+               to_char(nvl((select tt.open_bid_date
+                     from ZC_EB_RFQ_PACK tt
+                    where tt.pack_code = pa.pack_code),
+                   pl.open_bid_time),'yyyy-mm-dd hh24:mi:ss') open_bid_date,
+               to_char(nvl((select tt.open_bid_date
+                     from ZC_EB_RFQ_PACK tt
+                    where tt.pack_code = pa.pack_code),
+                   pl.open_bid_time),'yyyy') open_bid_year,
+               decode(to_char(nvl((select tt.open_bid_date
+                     from ZC_EB_RFQ_PACK tt
+                    where tt.pack_code = pa.pack_code),
+                   pl.open_bid_time),'mm'),'01','1','02','1','03','1','04','2','05','2','06','2','07','3','08','3','09','3','10','4','11','4','12','4') open_bid_quarter,
+               to_char(nvl((select tt.open_bid_date
+                     from ZC_EB_RFQ_PACK tt
+                    where tt.pack_code = pa.pack_code),
+                   pl.open_bid_time),'mm') open_bid_month,
+               to_char(nvl((select tt.open_bid_date
+                     from ZC_EB_RFQ_PACK tt
+                    where tt.pack_code = pa.pack_code),
+                   pl.open_bid_time),'dd') open_bid_day
+          from zc_eb_pack pa, zc_eb_plan pl
+         where pl.proj_code = pa.proj_code
+           and exists (select 1
+                  from vw_zc_win_bid_provider rfq
+                 where rfq.pack_code = pa.pack_code);
+
+
+create or replace function f_work_flow(v_wf_id in number,v_node_id in number,v_wf_name in varchar2) return varchar2 as
+    Result varchar2(1000);
+    v_enter_loop number:=0;
+    cursor
+    c_wf(p_wf_id number,p_node_id number)
+    is
+         select rownum,name,action_name,execute_time,description,emp_name from ( select n.name,
+          decode(t.action_name,
+                 'restart_instance',
+                 '流程重启',
+                 'redo_instance',
+                 '流程重做',
+                 'interrupt_instance',
+                 '流程终止',
+                 'untread_flow',
+                 '退回',
+                 'callback_flow',
+                 '收回',
+                 '审核通过') action_name,
+          to_date(t.execute_time,'yyyy-mm-dd hh24:mi:ss') execute_time,
+          t.description,
+          e.emp_name
+     from wf_action_history t
+     left outer join wf_node n
+       on t.node_id = n.node_id
+    inner join as_emp e
+       on t.executor = e.user_id
+    where t.instance_id =p_wf_id and n.node_id=p_node_id
+    order by t.execute_time);
+    r_wf c_wf%rowtype;
+begin
+
+    Result:='【'||v_wf_name||'】审核流程：'||chr(10);
+    for r_wf in c_wf(v_wf_id,v_node_id) loop
+      v_enter_loop:=1;
+      Result:=Result||CHR(9)||'【'||r_wf.emp_name||'】'||'于【'||to_char(r_wf.execute_time,'yyyy-mm-dd hh24:mi:ss')||'】【'||r_wf.action_name||'】';
+      if r_wf.description is not null then
+         Result:=Result||'，审理意见为【'||r_wf.description||'】';
+      end if;
+      Result:=Result||chr(10);
+    end loop;
+    if v_enter_loop=0 then
+       Result:=Result||CHR(9)||'该节点尚未审核通过';
+    end if;
+
+    return(Result);
+end f_work_flow;
