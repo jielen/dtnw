@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CpVoucherSplit">
+<typeAlias alias="cpVoucherSplit" type="com.ufgov.zc.common.cp.model.CpVoucherSplit" />
+	<resultMap id="cpVoucherSplitMap" class="com.ufgov.zc.common.cp.model.CpVoucherSplit">
+		<result property="cpVoucherId" column="cp_voucher_id" />
+        <result property="outlayCode" column="outlay_code" />
+		<result property="money" column="money" />
+		<result property="cpVouNo" column="vou_no" />
+		<result property="oid" column="oid" />
+	</resultMap>
+
+
+	<select id="getCpVoucherSplitByCpVoucherId"
+	            resultMap="cpVoucherSplitMap" parameterClass="string">
+		select * from cp_voucher_split where cp_voucher_id=#cpVoucherId:VARCHAR#
+	</select>
+
+	<insert id="insertCpVoucherSplit" parameterClass="cpVoucherSplit">
+		insert into cp_voucher_split (cp_voucher_id, vou_no, outlay_code, money,oid)
+		values (#cpVoucherId:VARCHAR#, #cpVouNo:VARCHAR#, #outlayCode:VARCHAR#,
+		#money:DECIMAL#, #oid:VARCHAR#)
+  </insert>
+	<update id="updateCpVoucherSplit" parameterClass="cpVoucherSplit">
+		update cp_voucher_split set
+		cp_voucher_id = #cpVoucherId:VARCHAR#,
+		vou_no = #cpVouNo:VARCHAR#,
+		outlay_code = #outlayCode:VARCHAR#,
+		money = #money:DECIMAL#
+		where oid = #oid:VARCHAR#
+  </update>
+
+  <delete id="deleteCpVoucherSplit" parameterClass="Map">
+		delete from cp_voucher_split
+		where cp_voucher_id = #id:VARCHAR#
+  </delete>
+   <update id="updateCpVoucherForIsSplit" parameterClass="Map">
+        update cp_voucher set
+        is_split = 'Y'
+        where cp_voucher_id = #id:VARCHAR#
+
+   </update>
+
+</sqlMap>

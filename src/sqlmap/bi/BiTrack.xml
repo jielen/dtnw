@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiTrack">
+
+	<typeAlias alias="biTrack"
+		type="com.ufgov.zc.common.bi.model.BiTrack" />
+	<typeAlias alias="conditionDto"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="biTrackResult" class="biTrack">
+		<result column="bi_track_id" property="biTrackId"
+			jdbcType="VARCHAR" />
+		<result column="input_group_id" property="inputGroupId"
+			jdbcType="VARCHAR" />
+		<result column="bi_bill_id" property="biBillId"
+			jdbcType="VARCHAR" />
+		<result column="origin_track_id" property="originTrackId"
+			jdbcType="VARCHAR" />
+		<result column="origin_balance_id" property="originBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="target_balance_id" property="targetBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="bi_level" property="biLevel" jdbcType="CHAR" />
+		<result column="bi_adjust_code" property="biAdjustCode"
+			jdbcType="VARCHAR" />
+		<result column="bi_target_code" property="biTargetCode"
+			jdbcType="VARCHAR" />
+		<result column="create_type" property="createType"
+			jdbcType="CHAR" />
+		<result column="nd" property="nd" jdbcType="DECIMAL" />
+		<result column="proc_date" property="procDate" jdbcType="DATE" />
+		<result column="is_control" property="isControl"
+			jdbcType="CHAR" />
+		<result column="is_carrydown" property="isCarrydown"
+			jdbcType="CHAR" />
+		<result column="inputor_id" property="inputorId"
+			jdbcType="VARCHAR" />
+		<result column="inputor_name" property="inputorName"
+			jdbcType="VARCHAR" />
+		<result column="cdate" property="cdate" jdbcType="DATE" />
+		<result column="parlor_code" property="parlorCode"
+			jdbcType="VARCHAR" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="co_code" property="coCode" jdbcType="VARCHAR" />
+		<result column="b_acc_id" property="baccId" jdbcType="VARCHAR" />
+		<result column="b_acc_code" property="baccCode"
+			jdbcType="VARCHAR" />
+		<result column="outlay_code" property="outlayCode"
+			jdbcType="VARCHAR" />
+		<result column="project_type_code" property="projectTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="project_code" property="projectCode"
+			jdbcType="VARCHAR" />
+		<result column="fund_code" property="fundCode"
+			jdbcType="VARCHAR" />
+		<result column="origin_code" property="originCode"
+			jdbcType="VARCHAR" />
+		<result column="paytype_code" property="paytypeCode"
+			jdbcType="VARCHAR" />
+		<result column="payout_code" property="payoutCode"
+			jdbcType="VARCHAR" />
+		<result column="manage_code" property="manageCode"
+			jdbcType="VARCHAR" />
+		<result column="inceptdoc_code" property="inceptDocCode"
+			jdbcType="VARCHAR" />
+		<result column="senddoc_type_code" property="sendDocTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="senddoc_code" property="sendDocCode"
+			jdbcType="VARCHAR" />
+		<result column="process_inst_id" property="processInstId"
+			jdbcType="DECIMAL" />
+		<result column="auditor_id" property="auditorId"
+			jdbcType="VARCHAR" />
+		<result column="auditor_name" property="auditorName"
+			jdbcType="VARCHAR" />
+		<result column="a_date" property="adate" jdbcType="DATE" />
+		<result column="a_opinion" property="aopinion"
+			jdbcType="VARCHAR" />
+		<result column="a_status_code" property="astatusCode"
+			jdbcType="VARCHAR" />
+		<result column="an_status" property="anStatus"
+			jdbcType="VARCHAR" />
+		<result column="wf_content_brief" property="wfContentBrief"
+			jdbcType="VARCHAR" />
+		<result column="is_valid" property="isValid" jdbcType="CHAR" />
+		<result column="canceler_id" property="cancelerId"
+			jdbcType="VARCHAR" />
+		<result column="cancel_date" property="cancelDate"
+			jdbcType="DATE" />
+		<result column="cancel_opinion" property="cancelOpinion"
+			jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="org_money" property="orgMoney"
+			jdbcType="DECIMAL" />
+		<result column="cur_money" property="curMoney"
+			jdbcType="DECIMAL" />
+		<result column="filename" property="fileName"
+			jdbcType="VARCHAR" />
+		<result column="filename_blobid" property="filenameBlobid"
+			jdbcType="VARCHAR" />
+		<result column="d_attr1" property="dattr1" jdbcType="VARCHAR" />
+		<result column="d_attr2" property="dattr2" jdbcType="VARCHAR" />
+		<result column="d_attr3" property="dattr3" jdbcType="VARCHAR" />
+		<result column="d_attr4" property="dattr4" jdbcType="VARCHAR" />
+		<result column="d_attr5" property="dattr5" jdbcType="VARCHAR" />
+		<result column="stamp" property="stamp" jdbcType="DECIMAL" />
+		<result column="is_countersign" property="isCountersign"
+			jdbcType="CHAR" />
+		<result column="countersigner" property="countersigner"
+			jdbcType="VARCHAR" />
+		<result column="is_stock" property="isStock" jdbcType="CHAR" />
+		<result column="stock_type" property="stockType"
+			jdbcType="VARCHAR" />
+		<result column="stock_no" property="stockNo" jdbcType="VARCHAR" />
+		<result column="stock_date" property="stockDate"
+			jdbcType="DATE" />
+		<result column="stock_plan_no" property="stockPlanNo"
+			jdbcType="VARCHAR" />
+		<result column="stock_plan_date" property="stockPlanDate"
+			jdbcType="DATE" />
+		<result column="stock_price" property="stockPrice"
+			jdbcType="DECIMAL" />
+		<result column="stock_number" property="stockNumber"
+			jdbcType="DECIMAL" />
+		<result column="stock_detail" property="stockDetail"
+			jdbcType="VARCHAR" />
+		<result column="stock_typical" property="stockTypical"
+			jdbcType="VARCHAR" />
+		<result column="audit_user_id" property="auditUserId"
+			jdbcType="VARCHAR" />
+		<result column="stock_list_code" property="stockListCode"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getAllBiTrack" resultMap="biTrackResult" parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master where master.nd =#nd# and is_valid='1' and a_status_code='3'
+		<include refid="ElementCondition.PROJECT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.BI_LEVEL" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+
+		<isNotNull prepend="AND" property="adjustCode">
+			bi_adjust_code = #adjustCode:String#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate:DATE#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate:DATE#
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getBiTrackForDbiTbiEdit" resultMap="biTrackResult"
+		parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master where master.nd =#nd#
+		<include refid="ElementCondition.PROJECT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.BI_LEVEL" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<isNotNull prepend="AND" property="adjustCode">
+			bi_adjust_code = #adjustCode:String#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate:DATE#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate:DATE#
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAbiTrackList" resultMap="biTrackResult"
+		parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master where master.nd =#nd# and
+		bi_level='01' AND bi_adjust_code='101' and is_valid = '1' and bi_adjust_code!='202'
+		<include refid="ElementCondition.PROJECT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.BI_LEVEL" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate:DATE#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate:DATE#
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getBiTrackListByTargetBalanceId" resultMap="biTrackResult"
+		parameterClass="string">
+		SELECT master.* FROM bi_track master where master.origin_balance_id =#targetBalanceId# and is_valid = '1' and bi_adjust_code != 202 order by input_group_id,bi_adjust_code desc
+	</select>
+
+	<select id="getBiTrackById" resultMap="biTrackResult"
+		parameterClass="string">
+		SELECT master.* FROM bi_track master where
+		bi_track_id=#value:VARCHAR#
+	</select>
+
+	<select id="getBitrackForAm" resultMap="biTrackResult"
+		parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			<include refid="ElementCondition.CO_CODE" />
+			<include refid="ElementCondition.FUND_CODE_LIKE" />
+		</dynamic>
+	</select>
+
+	<select id="getBitrackForBc" resultMap="biTrackResult"
+		parameterClass="conditionDto">
+		SELECT bi_track_id, input_group_id, bi_bill_id, origin_track_id,
+		origin_balance_id, target_balance_id, bi_level, bi_adjust_code,
+		bi_target_code, create_type, nd, proc_date, is_control,
+		is_carrydown, inputor_id, inputor_name, cdate, parlor_code,
+		org_code, co_code, b_acc_id, b_acc_code, outlay_code,
+		project_type_code, project_code, fund_code, origin_code,
+		paytype_code, payout_code, manage_code, inceptdoc_code,
+		inceptdoc_name, senddoc_type_code, senddoc_code, senddoc_name,
+		process_inst_id, auditor_id, auditor_name, a_date, a_opinion,
+		a_status_code, an_status, wf_content_brief, is_valid,
+		canceler_id, cancel_date, cancel_opinion, remark, org_money,
+		cur_money, filename, filename_blobid, d_attr1, d_attr2, d_attr3,
+		d_attr4, d_attr5, stamp, is_countersign, countersigner,
+		is_stock, stock_type, stock_no, stock_date, stock_plan_no,
+		stock_plan_date, stock_price, stock_number, stock_detail,
+		stock_typical, audit_user_id, stock_list_code FROM bi_track
+		master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="biLevel">
+				master.bi_level =#biLevel#
+			</isNotNull>
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			<isEqual prepend="AND" property="status"
+				compareValue="todo">
+				a_status_code='2' and is_valid='1'
+			</isEqual>
+			<include refid="WfCommonEdit.wfCommonEdit" />
+		</dynamic>
+	</select>
+
+	<select id="selectBitrackByPrimaryKey" resultMap="biTrackResult"
+		parameterClass="biTrack">
+		SELECT bi_track_id, input_group_id, bi_bill_id, origin_track_id,
+		origin_balance_id, target_balance_id, bi_level, bi_adjust_code,
+		bi_target_code, create_type, nd, proc_date, is_control,
+		is_carrydown, inputor_id, inputor_name, cdate, parlor_code,
+		org_code, co_code, b_acc_id, b_acc_code, outlay_code,
+		project_type_code, project_code, fund_code, origin_code,
+		paytype_code, payout_code, manage_code, inceptdoc_code,
+		inceptdoc_name, senddoc_type_code, senddoc_code, senddoc_name,
+		process_inst_id, auditor_id, auditor_name, a_date, a_opinion,
+		a_status_code, an_status, wf_content_brief, is_valid,
+		canceler_id, cancel_date, cancel_opinion, remark, org_money,
+		cur_money, filename, filename_blobid, d_attr1, d_attr2, d_attr3,
+		d_attr4, d_attr5, stamp, is_countersign, countersigner,
+		is_stock, stock_type, stock_no, stock_date, stock_plan_no,
+		stock_plan_date, stock_price, stock_number, stock_detail,
+		stock_typical, audit_user_id, stock_list_code FROM bi_track
+		master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="biTrackId">
+				master.bi_track_id =#biTrackId#
+			</isNotNull>
+			<isNotNull prepend="AND" property="targetBalanceId">
+				master.target_balance_id =#targetBalanceId#
+			</isNotNull>
+			<isNotNull prepend="AND" property="coCode">
+				master.co_code =#coCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			<isNotNull prepend="AND" property="biLevel">
+				master.bi_level =#biLevel#
+			</isNotNull>
+			<isNotNull prepend="AND" property="inputGroupId">
+				master.input_group_id =#inputGroupId#
+			</isNotNull>
+			<isNotNull prepend="AND" property="biAdjustCode">
+				master.bi_adjust_code =#biAdjustCode#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+
+	<insert id="insertBiTrack" parameterClass="biTrack">
+		insert into bi_track( BI_TRACK_ID ,INPUT_GROUP_ID, BI_BILL_ID,
+		ORIGIN_BALANCE_ID, TARGET_BALANCE_ID, BI_ADJUST_CODE, BI_LEVEL,
+		CREATE_TYPE, BI_TARGET_CODE, CO_CODE , B_ACC_CODE , ORG_CODE ,
+		FUND_CODE , OUTLAY_CODE , PROJECT_CODE , ORIGIN_CODE ,
+		PAYOUT_CODE , MANAGE_CODE , PROC_DATE, INPUTOR_ID, INPUTOR_NAME,
+		CDATE, PARLOR_CODE, PROJECT_TYPE_CODE, PAYTYPE_CODE,
+		INCEPTDOC_CODE, SENDDOC_TYPE_CODE, SENDDOC_CODE, AUDITOR_ID,
+		AUDITOR_NAME,A_DATE,A_OPINION,AN_STATUS,WF_CONTENT_BRIEF,IS_VALID,
+		CANCELER_ID,CANCEL_DATE,CANCEL_OPINION,ORG_MONEY,CUR_MONEY,FILENAME,
+		FILENAME_BLOBID,D_ATTR1,D_ATTR2,D_ATTR3,D_ATTR4,D_ATTR5,
+		A_STATUS_CODE , REMARK , ND,PROCESS_INST_ID,is_control) values
+		(#biTrackId:VARCHAR#,#inputGroupId:VARCHAR#,#biBillId:VARCHAR#,
+		#originBalanceId:VARCHAR#,#targetBalanceId:VARCHAR#,#biAdjustCode:VARCHAR#,
+		#biLevel:VARCHAR#,#createType:VARCHAR#,#biTargetCode:VARCHAR#,
+		#coCode:VARCHAR#, #baccCode:VARCHAR#, #orgCode:VARCHAR#,
+		#fundCode:VARCHAR#, #outlayCode:VARCHAR#, #projectCode:VARCHAR#,
+		#originCode:VARCHAR#, #payoutCode:VARCHAR#,
+		#manageCode:VARCHAR#,#procDate:DATE#,#inputorId:VARCHAR#,#inputorName:VARCHAR#,
+		#cdate:DATE#, #parlorCode:VARCHAR#,#projectTypeCode:VARCHAR#,
+		#paytypeCode:VARCHAR#,#inceptDocCode:VARCHAR#,#sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#,#auditorId:VARCHAR#,#auditorName:VARCHAR#,#adate:DATE#,
+		#aopinion:VARCHAR#,#anStatus:VARCHAR#,#wfContentBrief:VARCHAR#,#isValid:VARCHAR#,
+		#cancelerId:VARCHAR#,#cancelDate:DATE#,#cancelOpinion:VARCHAR#,#orgMoney:DECIMAL#,
+		#curMoney:DECIMAL#,#fileName:VARCHAR#,#filenameBlobid:VARCHAR#,
+		#dattr1:VARCHAR#,#dattr2:VARCHAR#,#dattr3:VARCHAR#,#dattr4:VARCHAR#,#dattr5:VARCHAR#,
+		#astatusCode:CHAR#, #remark:VARCHAR#,
+		#nd:INTEGER#,#processInstId:DECIMAL#,#isControl:VARCHAR#)
+	</insert>
+
+	<select id="getBiTrackForDbiTbiCtrlAudit" resultMap="biTrackResult"
+		parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master where master.nd =#nd#
+		<include refid="ElementCondition.PROJECT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.BI_LEVEL" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="WfCommonAudited.WfCommonAudited" />
+		<isNotNull prepend="AND" property="adjustCode">
+			bi_adjust_code = #adjustCode:String#
+		</isNotNull>
+		<isNotEqual property="status" compareValue="todo">
+			<isNotNull prepend="AND" property="startDate">
+				PROC_DATE &gt;= #startDate:DATE#
+			</isNotNull>
+			<isNotNull prepend="AND" property="endDate">
+				PROC_DATE &lt;= #endDate:DATE#
+			</isNotNull>
+		</isNotEqual>
+
+		<include refid="BusiNumLim.BusiNumLimStr" />
+
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="updateBiTrackForAudit" parameterClass="biTrack">
+		UPDATE bi_track SET auditor_id=#auditorId:VARCHAR#,
+		auditor_name=#auditorName:VARCHAR#, a_date=#adate:DATE# WHERE
+		bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="updateSelfBiTrackForValid" parameterClass="Map">
+		UPDATE bi_track SET is_valid=#strValue#,a_status_code='9' WHERE
+		bi_track_id=#biTrackId:VARCHAR# and is_valid='1'
+	</update>
+
+	<update id="updateBiTrackAstatusCode" parameterClass="Map">
+		UPDATE bi_track SET a_status_code=#astatusCode# WHERE
+		bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="updateBiTrackPrintTimes" parameterClass="Map">
+		UPDATE bi_track SET print_times=print_times+1 WHERE
+		bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="rewriteBiBalanceIdToBiTrack" parameterClass="Map">
+		UPDATE bi_track SET target_balance_id=#biBalanceId:VARCHAR#
+		WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="deleteBiTrack" parameterClass="biTrack">
+		delete from bi_track WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="updateBiTrackForBiBalanceIdToNull"
+		parameterClass="biTrack">
+		update bi_track set
+		target_balance_id=null,canceler_id=#cancelerId#,cancel_date=#cancelDate#
+		WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="updateBiTrack" parameterClass="biTrack">
+		UPDATE bi_track SET BI_BILL_ID=#biBillId:VARCHAR#,
+		ORIGIN_BALANCE_ID=#originBalanceId:VARCHAR#,
+		TARGET_BALANCE_ID=#targetBalanceId:VARCHAR#,
+		BI_ADJUST_CODE=#biAdjustCode:VARCHAR#,
+		BI_LEVEL=#biLevel:VARCHAR#, CREATE_TYPE=#createType:VARCHAR#,
+		BI_TARGET_CODE=#biTargetCode:VARCHAR#, CO_CODE
+		=#coCode:VARCHAR#, B_ACC_CODE = #baccCode:VARCHAR#, ORG_CODE
+		=#orgCode:VARCHAR#, FUND_CODE = #fundCode:VARCHAR#, OUTLAY_CODE
+		=#outlayCode:VARCHAR#, PROJECT_CODE = #projectCode:VARCHAR#,
+		ORIGIN_CODE= #originCode:VARCHAR#, PAYOUT_CODE =
+		#payoutCode:VARCHAR#, MANAGE_CODE = #manageCode:VARCHAR#,
+		PROC_DATE= #procDate:DATE#, INPUTOR_ID= #inputorId:VARCHAR#,
+		INPUTOR_NAME= #inputorName:VARCHAR#, PARLOR_CODE=
+		#parlorCode:VARCHAR#,
+		PROJECT_TYPE_CODE=#projectTypeCode:VARCHAR#, PAYTYPE_CODE=
+		#paytypeCode:VARCHAR#, INCEPTDOC_CODE= #inceptDocCode:VARCHAR#,
+		SENDDOC_TYPE_CODE= #sendDocTypeCode:VARCHAR#, SENDDOC_CODE=
+		#sendDocCode:VARCHAR#, AUDITOR_ID= #auditorId:VARCHAR#,
+		AUDITOR_NAME=#auditorName:VARCHAR#, A_DATE= #adate:DATE#,
+		A_OPINION=#aopinion:VARCHAR#, AN_STATUS= #anStatus:VARCHAR#,
+		WF_CONTENT_BRIEF= #wfContentBrief:VARCHAR#,
+		IS_VALID=#isValid:VARCHAR#, CANCELER_ID= #cancelerId:VARCHAR#,
+		CANCEL_DATE= #cancelDate:DATE#, CANCEL_OPINION=
+		#cancelOpinion:VARCHAR#, ORG_MONEY= #orgMoney:DECIMAL#,
+		CUR_MONEY= #curMoney:DECIMAL#, FILENAME= #fileName:VARCHAR#,
+		FILENAME_BLOBID= #filenameBlobid:VARCHAR#,
+		D_ATTR1=#dattr1:VARCHAR#, D_ATTR2= #dattr2:VARCHAR#, D_ATTR3=
+		#dattr3:VARCHAR#, D_ATTR4= #dattr4:VARCHAR#, D_ATTR5=
+		#dattr5:VARCHAR#, A_STATUS_CODE = #astatusCode:CHAR#, REMARK =
+		#remark:VARCHAR#, ND= #nd:INTEGER#, PROCESS_INST_ID
+		=#processInstId:DECIMAL# WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<delete id="deleteByInputGroupId" parameterClass="string">
+		delete from bi_track t where t.input_group_id=#value#
+	</delete>
+
+	<update id="updateBiTrackForAdjAsc" parameterClass="biTrack">
+		update bi_track t
+		   set t.cur_money      = #curMoney#,
+		       t.org_money      = #curMoney#,
+		       t.co_code        = #coCode#,
+		       t.b_acc_code     = #baccCode#,
+		       t.fund_code      = #fundCode#,
+		       t.manage_code    = #manageCode#,
+		       t.org_code       = #orgCode#,
+		       t.origin_code    = #originCode#,
+		       t.outlay_code    = #outlayCode#,
+		       t.payout_code    = #payoutCode#,
+		       t.paytype_code   = #paytypeCode#,
+		       t.project_code   = #projectCode#,
+		       t.inceptdoc_code = #inceptDocCode#,
+		       t.senddoc_code   = #sendDocCode#
+		where t.bi_track_id=#biTrackId#
+	</update>
+	<update id="updateBiTrackForAdjDec" parameterClass="biTrack">
+		update bi_track t
+		   set t.cur_money      = #curMoney#,
+		       t.org_money      = #curMoney#
+		where t.input_group_id=#inputGroupId#
+		  and t.bi_adjust_code='302'
+	</update>
+	<select id="getBiTrackForAdjAsc" parameterClass="string" resultMap="biTrackResult">
+		select *
+		  from bi_track t
+		 where t.input_group_id = #value#
+		   and t.bi_adjust_code = '301'
+	</select>
+
+	<select id="getBiTrackForXbiAdjAudit" resultMap="biTrackResult"	parameterClass="conditionDto">
+		SELECT master.* FROM bi_track master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			<include refid="ElementCondition.BI_LEVEL" />
+			<include refid="ElementCondition.BI_ADJUST_CODE" />
+			<include refid="ElementCondition.INPUT_GROUP_ID" />
+		</dynamic>
+	</select>
+	<select id="getBiTrackByTargetBalanceId" resultMap="biTrackResult" parameterClass="string">
+		Select * From Bi_Track Where Target_Balance_Id =#value# And (substr(bi_adjust_code,3,1)='1' Or substr(bi_adjust_code,1,1)='5') And substr(bi_adjust_code,1,1)!='4' And Rownum=1 Order By Bi_Adjust_Code
+	</select>
+	
+	<select id="getHasAdjuseMoney" resultClass="decimal" parameterClass="string">
+		select sum(t.cur_money) from bi_track t where t.origin_balance_id = #value# and t.a_status_code != '3' and t.is_valid = '1' and t.bi_adjust_code='302'
+	</select>
+</sqlMap>

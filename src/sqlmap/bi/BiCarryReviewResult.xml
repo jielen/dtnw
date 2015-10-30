@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BiCarryReviewResult">
+    <resultMap id="biCarryReviewResult" class="com.ufgov.zc.common.bi.model.BiCarryReviewResult">
+		<result property="coName" column="co_name" />
+		<result property="reviewTimes" column="review_times" />
+		<result property="reviewDate" column="review_date" />
+		<result property="reviewPerson" column="review_person" />
+	</resultMap>
+
+	<select id="getBiCarryReviewResult" resultMap="biCarryReviewResult" parameterClass="map">
+		SELECT co_name,review_times,review_date,review_person
+		FROM BI_CARRY_REVIEW_RESULT WHERE review_nd = #nd#
+	  	<isNotNull prepend="AND" property="coCodeFilter">
+			$coCodeFilter$
+		</isNotNull>
+	</select>
+
+	<select id="getBiCarryReviewResultBycoCode" resultMap="biCarryReviewResult" parameterClass="map">
+		SELECT co_name,review_times,review_date,review_person
+		FROM BI_CARRY_REVIEW_RESULT WHERE review_nd = #nd#
+	  	AND co_code =#coCode:VARCHAR#
+	</select>
+
+	<insert id="insertBiCarryReviewResult" parameterClass="com.ufgov.zc.common.bi.model.BiCarryReviewResult">
+		INSERT
+		INTO
+		bi_carry_review_result(co_code,
+		review_nd,
+		co_name,
+		review_times,
+		review_date,
+		review_person)
+		VALUES(
+		#coCode:VARCHAR#,
+		#nd:INTEGER#,
+		#coName:VARCHAR#,
+		#reviewTimes:INTEGER#,
+		#reviewDate:DATE#,
+		#reviewPerson:VARCHAR#)
+	</insert>
+
+    <update id="updateReviewTimes" parameterClass="map">
+		UPDATE bi_carry_review_result
+		SET review_times=review_times+1
+		WHERE  CO_CODE=#coCode# AND REVIEW_ND=#nd#
+	</update>
+</sqlMap>

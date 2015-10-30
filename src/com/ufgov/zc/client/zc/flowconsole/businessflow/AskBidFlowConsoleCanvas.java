@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.flowconsole.businessflow;import com.ufgov.zc.client.zc.flowconsole.MoudelFlowConsoleCanvas;public class AskBidFlowConsoleCanvas extends MoudelFlowConsoleCanvas {  /**   * 询价   */  private static final long serialVersionUID = -208835548739784133L;  public AskBidFlowConsoleCanvas() {    super("ask_flow_config.xml");  }}

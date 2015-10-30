@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpDmvePayTransferVou">
+
+	<typeAlias alias="cpPayTransferVou" type="com.ufgov.zc.common.cp.model.CpPayTransferVou"/>
+
+	<typeAlias alias="elementCondition" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<typeAlias alias="cpPayTransferList" type="com.ufgov.zc.common.cp.model.CpPayTransferList"/>
+
+	<typeAlias alias="cpPayTransferRelation" type="com.ufgov.zc.common.cp.model.CpPayTransferRelation" />
+
+	<resultMap id="cpPayTransferVouResult" class="CpPayTransferVou">
+		<result column="PAY_TRANSFER_VOU_ID"		property="payTransferVouId" 	jdbcType="VARCHAR"/>
+		<result column="ND" 						property="nd" 					jdbcType="DECIMAL"/>
+		<result column="VOU_NO" 					property="vouNo" 				jdbcType="VARCHAR"/>
+		<result column="PROC_DATE" 					property="procDate" 			jdbcType="DATE"/>
+		<result column="INPUTOR_ID" 				property="inputorId" 			jdbcType="VARCHAR"/>
+		<result column="CDATE" 						property="cdate" 				jdbcType="DATE"/>
+		<result column="OPERATION_TYPE_CODE" 		property="operationTypeCode"	jdbcType="VARCHAR"/>
+		<result column="OPERATION_TYPE_NAME" 		property="operationTypeName"	jdbcType="VARCHAR"/>
+		<result column="PRINT_TIMES" 				property="printTimes" 			jdbcType="DECIMAL"/>
+		<result column="CP_ADJUST_CODE" 			property="cpAdjustCode" 		jdbcType="VARCHAR"/>
+		<result column="AGENT_BANK_CODE" 			property="agentBankCode" 		jdbcType="VARCHAR"/>
+		<result column="AGENT_BANK_NAME" 			property="agentBankName" 		jdbcType="VARCHAR"/>
+		<result column="PAY_CODE" 					property="payCode" 				jdbcType="VARCHAR"/>
+		<result column="PAY_NAME" 					property="payName" 				jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_CODE" 				property="payBankCode" 			jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NO" 				property="payBankNo" 			jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NAME" 				property="payBankName" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_CODE" 				property="payAccCode" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NAME" 				property="payAccName" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NO" 				property="payAccNo" 			jdbcType="VARCHAR"/>
+		<result column="RECE_CODE" 					property="receCode" 			jdbcType="VARCHAR"/>
+		<result column="RECE_NAME" 					property="receName" 			jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_CODE" 			property="receBankCode" 		jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_NAME" 			property="receBankName" 		jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_NO" 				property="receBankNo" 			jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_CODE" 				property="receAccCode" 			jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_NAME" 				property="receAccName" 			jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_NO" 				property="receAccNo" 			jdbcType="VARCHAR"/>
+		<result column="FUND_CODE" 					property="fundCode" 			jdbcType="VARCHAR"/>
+		<result column="FUND_NAME" 					property="fundName" 			jdbcType="VARCHAR"/>
+		<result column="ORIGIN_CODE" 					property="originCode" 			jdbcType="VARCHAR"/>
+		<result column="ORIGIN_NAME" 					property="originName" 			jdbcType="VARCHAR"/>
+		<result column="PAYTYPE_CODE" 				property="paytypeCode" 			jdbcType="VARCHAR"/>
+		<result column="PAYTYPE_NAME" 				property="paytypeName" 			jdbcType="VARCHAR"/>
+		<result column="MANAGE_CODE" 				property="manageCode" 			jdbcType="VARCHAR"/>
+		<result column="MANAGE_NAME" 				property="manageName" 			jdbcType="VARCHAR"/>
+		<result column="PROCESS_INST_ID" 			property="processInstId" 		jdbcType="DECIMAL"/>
+		<result column="AUDITOR_ID" 				property="auditorId" 			jdbcType="VARCHAR"/>
+		<result column="A_DATE" 					property="adate" 				jdbcType="DATE"/>
+		<result column="A_OPINION" 					property="aopinion" 			jdbcType="VARCHAR"/>
+		<result column="A_STATUS_CODE" 				property="astatusCode" 			jdbcType="VARCHAR"/>
+		<result column="A_STATUS_NAME" 				property="astatusName" 			jdbcType="VARCHAR"/>
+		<result column="AN_STATUS" 					property="anStatus" 			jdbcType="VARCHAR"/>
+		<result column="IS_VALID" 					property="isValid" 				jdbcType="CHAR"/>
+		<result column="CANCELER_ID" 				property="cancelerId" 			jdbcType="VARCHAR"/>
+		<result column="CANCEL_DATE" 				property="cancelDate" 			jdbcType="DATE"/>
+		<result column="CANCEL_OPINION" 			property="cancelOpinion" 		jdbcType="VARCHAR"/>
+		<result column="REMARK" 					property="remark" 				jdbcType="VARCHAR"/>
+		<result column="SUM_MONEY" 					property="sumMoney" 			jdbcType="DECIMAL"/>
+		<result column="D_ATTR1" 					property="dattr1" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR2" 					property="dattr2" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR3" 					property="dattr3" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR4" 					property="dattr4" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR5" 					property="dattr5" 				jdbcType="VARCHAR"/>
+		<result column="STAMP" 						property="stamp" 				jdbcType="DECIMAL"/>
+	</resultMap>
+
+	<resultMap id="cpPayTransferListResult" class="cpPayTransferList">
+		<result column="PAY_TRANSFER_LIST_ID"  	property="payTransferListId" jdbcType="VARCHAR"/>
+		<result column="PAY_TRANSFER_VOU_ID"  	property="payTransferVouId"	 jdbcType="VARCHAR"/>
+		<result column="SEQU"             	property="sequ" 				jdbcType="DECIMAL"/>
+		<result column="ORG_CODE"         	property="orgCode" 				jdbcType="VARCHAR"/>
+		<result column="ORG_NAME"         	property="orgName" 				jdbcType="VARCHAR"/>
+		<result column="CO_CODE"          	property="coCode" 				jdbcType="VARCHAR"/>
+		<result column="CO_NAME"          	property="coName" 				jdbcType="VARCHAR"/>
+		<result column="B_ACC_CODE"       	property="baccCode" 			jdbcType="VARCHAR"/>
+		<result column="B_ACC_NAME"       	property="baccName" 			jdbcType="VARCHAR"/>
+		<result column="OUTLAY_CODE"      	property="outlayCode" 			jdbcType="VARCHAR"/>
+		<result column="OUTLAY_NAME"      	property="outlayName" 			jdbcType="VARCHAR"/>
+		<result column="PROJECT_TYPE_CODE"	property="projectTypeCode" 		jdbcType="VARCHAR"/>
+		<result column="PROJECT_TYPE_NAME"	property="projectTypeName" 		jdbcType="VARCHAR"/>
+		<result column="PROJECT_CODE"     	property="projectCode" 			jdbcType="VARCHAR"/>
+		<result column="PROJECT_NAME"     	property="projectName" 			jdbcType="VARCHAR"/>
+		<result column="FUND_CODE"        	property="fundCode" 			jdbcType="VARCHAR"/>
+		<result column="FUND_NAME"        	property="fundName" 			jdbcType="VARCHAR"/>
+		<result column="ORIGIN_CODE"      	property="originCode" 			jdbcType="VARCHAR"/>
+		<result column="ORIGIN_NAME"      	property="originName" 			jdbcType="VARCHAR"/>
+		<result column="PAYOUT_CODE"      	property="payoutCode" 			jdbcType="VARCHAR"/>
+		<result column="PAYOUT_NAME"      	property="payoutName" 			jdbcType="VARCHAR"/>
+		<result column="MANAGE_CODE"      	property="manageCode" 			jdbcType="VARCHAR"/>
+		<result column="MANAGE_NAME"      	property="manageName" 			jdbcType="VARCHAR"/>
+		<result column="PAY_NAME"         	property="payName" 				jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_CODE"    	property="payBankCode" 			jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NO"      	property="payBankNo" 			jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NAME"    	property="payBankName" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_CODE"     	property="payAccCode" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NAME"     	property="payAccName" 			jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NO"       	property="payAccNo" 			jdbcType="VARCHAR"/>
+		<result column="PAY_VOU_NO"       	property="payVouNo" 			jdbcType="VARCHAR"/>
+		<result column="REMARK"           	property="remark" 				jdbcType="VARCHAR"/>
+		<result column="MONEY"            	property="money" 				jdbcType="DECIMAL"/>
+		<result column="MONEY1"           	property="money1" 				jdbcType="DECIMAL"/>
+		<result column="MONEY2"           	property="money2" 				jdbcType="DECIMAL"/>
+		<result column="MONEY3"          	property="money3" 				jdbcType="DECIMAL"/>
+		<result column="D_ATTR1"          	property="dattr1" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR2"          	property="dattr2" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR3"          	property="dattr3" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR4"          	property="dattr4" 				jdbcType="VARCHAR"/>
+		<result column="D_ATTR5"          	property="dattr5" 				jdbcType="VARCHAR"/>
+		<result column="STAMP"            	property="stamp" 				jdbcType="DECIMAL"/>
+		<result column="D_ATTR1_NAME"     	property="dattr1Name" 			jdbcType="VARCHAR"/>
+		<result column="D_ATTR2_NAME"    	property="dattr1Name" 			jdbcType="VARCHAR"/>
+		<result column="D_ATTR3_NAME"   	property="dattr1Name" 			jdbcType="VARCHAR"/>
+		<result column="D_ATTR4_NAME"  		property="dattr1Name" 			jdbcType="VARCHAR"/>
+		<result column="D_ATTR5_NAME" 		property="dattr1Name" 			jdbcType="VARCHAR"/>
+		<result column="ND"               	property="nd" 					jdbcType="DECIMAL"/>
+		<result column="INCEPTDOC_CODE" property="inceptDocCode" jdbcType="VARCHAR"/>
+		<result column="INCEPTDOC_NAME" property="inceptDocName" jdbcType="VARCHAR"/>
+		<result column="SENDDOC_CODE" jdbcType="VARCHAR" property="sendDocCode" />
+		<result column="SENDDOC_NAME" jdbcType="VARCHAR" property="sendDocName" />
+		<result column="SENDDOC_TYPE_CODE" jdbcType="VARCHAR" property="sendDocTypeCode" />
+		<result column="VOU_NO_1" 	property="vouNo1" 	jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<resultMap id="cpPayTransferRelationResult" class="cpPayTransferRelation">
+		<result column="PAY_TRANSFER_RELATION_ID"	property="payTransferRelationId" 	jdbcType="VARCHAR"/>
+		<result column="CP_VOUCHER_ID"     			property="cpVoucherId" 					jdbcType="VARCHAR"/>
+		<result column="PAY_TRANSFER_VOU_ID"      	property="payTransferVouId" 		jdbcType="VARCHAR"/>
+	</resultMap>
+
+
+	<sql id="CpPayTransferVouCondition">
+	   where paytype_code='0201'
+		 <dynamic prepend="and">
+			<isNotNull prepend="AND" property="nd">
+				MASTER.ND = #nd#
+			</isNotNull>
+			<isNotNull prepend="AND" property="startDate">
+				<![CDATA[
+				MASTER.PROC_DATE >= #startDate#
+				]]>
+			</isNotNull>
+			<isNotNull prepend="AND" property="endDate">
+				<![CDATA[
+				MASTER.PROC_DATE <= #endDate#
+				]]>
+			</isNotNull>
+			<isNotNull prepend="AND" property="fundCode">
+				MASTER.FUND_CODE = #fundCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="astatusCode">
+				<isNotEqual property="astatusCode" compareValue="6">
+					MASTER.A_STATUS_CODE = #astatusCode#
+				</isNotEqual>
+			</isNotNull>
+			<isNotNull prepend="AND" property="printTimes">
+				<isEqual property="printTimes" compareValue="0">
+					MASTER.PRINT_TIMES = 0
+				</isEqual>
+				<isEqual property="printTimes" compareValue="1">
+					MASTER.PRINT_TIMES > 0
+				</isEqual>
+			</isNotNull>
+		 <isNotNull prepend="AND" property="exportTimes">
+				<isEqual property="exportTimes" compareValue="0">
+					MASTER.EXP_TIMES = 0
+				</isEqual>
+				<isEqual property="exportTimes" compareValue="1">
+					MASTER.EXP_TIMES > 0
+				</isEqual>
+			</isNotNull>
+		 </dynamic>
+		  <include refid="BusiNumLim.BusiNumLimStr" />
+	</sql>
+
+	<select id="getCpPayTransferVou" resultMap="cpPayTransferVouResult" parameterClass="elementCondition">
+		SELECT PAY_TRANSFER_VOU_ID,
+		       ND,
+		       VOU_NO,
+		       PROC_DATE,
+		       INPUTOR_ID,
+		       CDATE,
+		       OPERATION_TYPE_CODE,
+		       <include refid="ElementName.OPERATION_TYPE_NAME"/>,
+			   PRINT_TIMES,
+			   CP_ADJUST_CODE,
+		       AGENT_BANK_CODE,
+		       <include refid="ElementName.AGENT_BANK_NAME"/>,
+		       PAY_CODE,
+		       PAY_NAME,
+		       PAY_BANK_CODE,
+		       PAY_BANK_NO,
+		       PAY_BANK_NAME,
+		       PAY_ACC_CODE,
+		       PAY_ACC_NAME,
+		       PAY_ACC_NO,
+		       RECE_CODE,
+		       RECE_NAME,
+		       RECE_BANK_CODE,
+		       RECE_BANK_NAME,
+		       RECE_BANK_NO,
+		       RECE_ACC_CODE,
+		       RECE_ACC_NAME,
+		       RECE_ACC_NO,
+		       FUND_CODE,
+		       <include refid="ElementName.FUND_NAME"/>,
+		       ORIGIN_CODE,
+		       <include refid="ElementName.ORIGIN_NAME"/>,
+		       PAYTYPE_CODE,
+		       PAYTYPE_NAME,
+		       MANAGE_CODE,
+		       MANAGE_NAME,
+		       PROCESS_INST_ID,
+		       AUDITOR_ID,
+		       A_DATE,
+		       A_OPINION,
+		       A_STATUS_CODE,
+		       <include refid="ElementName.A_STATUS_NAME_TRANSFER_VOU"/>,
+		       AN_STATUS,
+		       IS_VALID,
+		       CANCELER_ID,
+		       CANCEL_DATE,
+		       CANCEL_OPINION,
+		       REMARK,
+		       SUM_MONEY,
+		       D_ATTR1,
+		       D_ATTR2,
+		       D_ATTR3,
+		       D_ATTR4,
+		       D_ATTR5,
+		       STAMP
+		  FROM CP_PAY_TRANSFER_VOU MASTER
+		 <include  refid="CpPayTransferVouCondition" />
+		 ORDER BY MASTER.VOU_NO DESC
+	</select>
+
+
+
+	<select id="getCpPayTransferListByTransferVouId" resultMap="cpPayTransferListResult" parameterClass="string">
+		SELECT	PAY_TRANSFER_LIST_ID,
+				PAY_TRANSFER_VOU_ID,
+				SEQU,
+				ORG_CODE,
+				ORG_NAME,
+				CO_CODE,
+				CO_NAME,
+				B_ACC_CODE,
+				B_ACC_NAME,
+				OUTLAY_CODE,
+				OUTLAY_NAME,
+				PROJECT_TYPE_CODE,
+				PROJECT_TYPE_NAME,
+				PROJECT_CODE,
+				PROJECT_NAME,
+				FUND_CODE,
+				FUND_NAME,
+				ORIGIN_CODE,
+				ORIGIN_NAME,
+				PAYOUT_CODE,
+				PAYOUT_NAME,
+				MANAGE_CODE,
+				MANAGE_NAME,
+				PAY_NAME,
+				PAY_BANK_CODE,
+				PAY_BANK_NO,
+				PAY_BANK_NAME,
+				PAY_ACC_CODE,
+				PAY_ACC_NAME,
+				PAY_ACC_NO,
+				PAY_VOU_NO,
+				REMARK,
+				MONEY,
+				MONEY1,
+				MONEY2,
+				MONEY3,
+				D_ATTR1,
+				D_ATTR2,
+				D_ATTR3,
+				D_ATTR4,
+				D_ATTR5,
+				STAMP,
+				D_ATTR1_NAME,
+				D_ATTR2_NAME,
+				D_ATTR3_NAME,
+				D_ATTR4_NAME,
+				D_ATTR5_NAME,
+				INCEPTDOC_CODE,
+				INCEPTDOC_NAME,
+				SENDDOC_CODE,
+				SENDDOC_NAME,
+				SENDDOC_TYPE_CODE,
+				VOU_NO_1,
+				ND
+			FROM
+				CP_PAY_TRANSFER_LIST MASTER
+			WHERE
+				MASTER.PAY_TRANSFER_VOU_ID = #value#
+	</select>
+
+	<select  id="getCpPayTransferList" resultMap="cpPayTransferListResult" parameterClass="elementCondition">
+	   select * from CP_PAY_TRANSFER_LIST where
+	   PAY_TRANSFER_VOU_ID in (
+	   select  PAY_TRANSFER_VOU_ID from CP_PAY_TRANSFER_VOU master
+	     <include  refid="CpPayTransferVouCondition" />
+	   )
+	</select>
+
+
+
+	<select id="getCpPayTransferRelation" resultMap="cpPayTransferRelationResult" parameterClass="elementCondition">
+		SELECT * FROM CP_PAY_TRANSFER_RELATION  WHERE PAY_TRANSFER_VOU_ID
+		   in (
+	       select  PAY_TRANSFER_VOU_ID from CP_PAY_TRANSFER_VOU master
+	     <include  refid="CpPayTransferVouCondition" />
+	   )
+	</select>
+
+	<select id="getCpPayTransferRelationByTransferVouId" resultMap="cpPayTransferRelationResult" parameterClass="string">
+		SELECT * FROM CP_PAY_TRANSFER_RELATION MASTER WHERE MASTER.PAY_TRANSFER_VOU_ID = #value#
+	</select>
+
+	<update id="updateCpvoucherByPayTransferVouId" parameterClass="map">
+		UPDATE CP_VOUCHER T SET T.PAY_TRANSFER_VOU_ID = #payTransferVouId# WHERE T.CP_VOUCHER_ID IN ($payVouNoList$)
+	</update>
+
+	<update id="updateCpvoucherByPayTransferVouIdForDelete" parameterClass="map">
+		UPDATE CP_VOUCHER SET PAY_TRANSFER_VOU_ID = null where  PAY_TRANSFER_VOU_ID=#payTransferVouId#
+	</update>
+
+	<insert id="insertCpPayTransferVou" parameterClass="cpPayTransferVou">
+		INSERT INTO CP_PAY_TRANSFER_VOU
+		  (PAY_TRANSFER_VOU_ID,
+		   ND,
+		   VOU_NO,
+		   PROC_DATE,
+		   INPUTOR_ID,
+		   CDATE,
+		   OPERATION_TYPE_CODE,
+		   PRINT_TIMES,
+		   CP_ADJUST_CODE,
+		   AGENT_BANK_CODE,
+		   AGENT_BANK_NAME,
+		   PAY_CODE,
+		   PAY_NAME,
+		   PAY_BANK_CODE,
+		   PAY_BANK_NO,
+		   PAY_BANK_NAME,
+		   PAY_ACC_CODE,
+		   PAY_ACC_NAME,
+		   PAY_ACC_NO,
+		   RECE_CODE,
+		   RECE_NAME,
+		   RECE_BANK_CODE,
+		   RECE_BANK_NAME,
+		   RECE_BANK_NO,
+		   RECE_ACC_CODE,
+		   RECE_ACC_NAME,
+		   RECE_ACC_NO,
+		   FUND_CODE,
+		   FUND_NAME,
+		   ORIGIN_CODE,
+		   ORIGIN_NAME,
+		   PAYTYPE_CODE,
+		   PAYTYPE_NAME,
+		   MANAGE_CODE,
+		   MANAGE_NAME,
+		   PROCESS_INST_ID,
+		   AUDITOR_ID,
+		   A_DATE,
+		   A_OPINION,
+		   A_STATUS_CODE,
+		   AN_STATUS,
+		   IS_VALID,
+		   CANCELER_ID,
+		   CANCEL_DATE,
+		   CANCEL_OPINION,
+		   REMARK,
+		   SUM_MONEY,
+		   D_ATTR1,
+		   D_ATTR2,
+		   D_ATTR3,
+		   D_ATTR4,
+		   D_ATTR5,
+		   STAMP
+		   )
+		VALUES
+		  (
+		  	#payTransferVouId:VARCHAR#,
+			#nd:DECIMAL#,
+			#vouNo:VARCHAR#,
+			#procDate:DATE#,
+			#inputorId:VARCHAR#,
+			#cdate:DATE#,
+			#operationTypeCode:VARCHAR#,
+			#printTimes:VARCHAR#,
+			#cpAdjustCode:VARCHAR#,
+			#agentBankCode:VARCHAR#,
+			#agentBankName:VARCHAR#,
+			#payCode:VARCHAR#,
+			#payName:VARCHAR#,
+			#payBankCode:VARCHAR#,
+			#payBankNo:VARCHAR#,
+			#payBankName:VARCHAR#,
+			#payAccCode:VARCHAR#,
+			#payAccName:VARCHAR#,
+			#payAccNo:VARCHAR#,
+			#receCode:VARCHAR#,
+			#receName:VARCHAR#,
+			#receBankCode:VARCHAR#,
+			#receBankName:VARCHAR#,
+			#receBankNo:VARCHAR#,
+			#receAccCode:VARCHAR#,
+			#receAccName:VARCHAR#,
+			#receAccNo:VARCHAR#,
+			#fundCode:VARCHAR#,
+			#fundName:VARCHAR#,
+			#originCode:VARCHAR#,
+			#originName:VARCHAR#,
+			#paytypeCode:VARCHAR#,
+			#paytypeName:VARCHAR#,
+			#manageCode:VARCHAR#,
+			#manageName:VARCHAR#,
+			#processInstId:DECIMAL#,
+			#auditorId:VARCHAR#,
+			#adate:DATE#,
+			#aopinion:VARCHAR#,
+			#astatusCode:VARCHAR#,
+			#anStatus:VARCHAR#,
+			#isValid:VARCHAR#,
+			#cancelerId:VARCHAR#,
+			#cancelDate:DATE#,
+			#cancelOpinion:VARCHAR#,
+			#remark:VARCHAR#,
+			#sumMoney:DECIMAL#,
+			#dattr1:VARCHAR#,
+			#dattr2:VARCHAR#,
+			#dattr3:VARCHAR#,
+			#dattr4:VARCHAR#,
+			#dattr5:VARCHAR#,
+			#stamp:DECIMAL#
+		  	)
+	</insert>
+
+	<insert id="insertCpPayTransferList" parameterClass="cpPayTransferList">
+		INSERT INTO CP_PAY_TRANSFER_LIST
+		  (PAY_TRANSFER_LIST_ID,
+		   PAY_TRANSFER_VOU_ID,
+		   SEQU,
+		   ORG_CODE,
+		   ORG_NAME,
+		   CO_CODE,
+		   CO_NAME,
+		   B_ACC_CODE,
+		   B_ACC_NAME,
+		   OUTLAY_CODE,
+		   OUTLAY_NAME,
+		   PROJECT_TYPE_CODE,
+		   PROJECT_TYPE_NAME,
+		   PROJECT_CODE,
+		   PROJECT_NAME,
+		   FUND_CODE,
+		   FUND_NAME,
+		   ORIGIN_CODE,
+		   ORIGIN_NAME,
+		   PAYOUT_CODE,
+		   PAYOUT_NAME,
+		   MANAGE_CODE,
+		   MANAGE_NAME,
+		   PAYTYPE_CODE,
+		   PAYTYPE_NAME,
+		   SENDDOC_CODE,
+		   SENDDOC_NAME,
+		   PAY_NAME,
+		   PAY_BANK_CODE,
+		   PAY_BANK_NO,
+		   PAY_BANK_NAME,
+		   PAY_ACC_CODE,
+		   PAY_ACC_NAME,
+		   PAY_ACC_NO,
+		   PAY_VOU_NO,
+		   VOU_NO,
+		   VOU_NO_1,
+		   REMARK,
+		   MONEY,
+		   MONEY1,
+		   MONEY2,
+		   MONEY3,
+		   D_ATTR1,
+		   D_ATTR2,
+		   D_ATTR3,
+		   D_ATTR4,
+		   D_ATTR5,
+		   STAMP,
+		   D_ATTR1_NAME,
+		   D_ATTR2_NAME,
+		   D_ATTR3_NAME,
+		   D_ATTR4_NAME,
+		   D_ATTR5_NAME,
+		   ND)
+		VALUES(
+		  #payTransferListId:VARCHAR#,
+		  #payTransferVouId:VARCHAR#,
+		  #sequ:DECIMAL#,
+		  #orgCode:VARCHAR#,
+		  (SELECT org_name FROM v_cp_org WHERE org_code=#orgCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #coCode:VARCHAR#,
+		  (SELECT CO_NAME FROM MA_COMPANY WHERE CO_CODE = #coCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #baccCode:VARCHAR#,
+		  (SELECT b_acc_name FROM ma_bacc WHERE b_acc_code=#baccCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #outlayCode:VARCHAR#,
+		  (SELECT outlay_name FROM ma_outlaytype WHERE outlay_code=#outlayCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #projectTypeCode:VARCHAR#,
+		  (SELECT project_type_name FROM ma_project_type WHERE project_type_code=#projectTypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #projectCode:VARCHAR#,
+		   (SELECT pd_project_name FROM v_cp_project WHERE pd_project_code=#projectCode:VARCHAR#),
+		  #fundCode:VARCHAR#,
+		  (SELECT fund_name FROM ma_cp_fund WHERE fund_code=#fundCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #originCode:VARCHAR#,
+		  (SELECT Origin_name FROM ma_cp_origin WHERE Origin_code=#originCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #payoutCode:VARCHAR#,
+		  (SELECT payout_name FROM ma_cp_payout WHERE payout_code=#payoutCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #manageCode:VARCHAR#,
+		  (SELECT manage_name FROM ma_cp_manage WHERE manage_code=#manageCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #paytypeCode:VARCHAR#,
+		  (SELECT PAYTYPE_NAME FROM MA_CP_PAYTYPE WHERE PAYTYPE_CODE = #paytypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		   #sendDocCode:VARCHAR#,
+		  (SELECT SENDDOC_NAME FROM MA_CP_SENDDOC WHERE SENDDOC_CODE = #sendDocCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #payName:VARCHAR#,
+		  #payBankCode:VARCHAR#,
+		  #payBankNo:VARCHAR#,
+		  #payBankName:VARCHAR#,
+		  #payAccCode:VARCHAR#,
+		  #payAccName:VARCHAR#,
+		  #payAccNo:VARCHAR#,
+		  #payVouNo:VARCHAR#,
+		  #vouNo:VARCHAR#,
+		  #vouNo1:VARCHAR#,
+		  #remark:VARCHAR#,
+		  #money:VARCHAR#,
+		  #money1:DECIMAL#,
+		  #money2:DECIMAL#,
+		  #money3:DECIMAL#,
+		  #dattr1:VARCHAR#,
+		  #dattr2:VARCHAR#,
+		  #dattr3:VARCHAR#,
+		  #dattr4:VARCHAR#,
+		  #dattr5:VARCHAR#,
+		  #stamp:DECIMAL#,
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr1:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='01'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr2:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='02'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr3:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='03'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr4:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='04'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr5:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='05'),
+		  #nd:DECIMAL#
+		    )
+	</insert>
+
+	<insert id="insertCpPayTransferRelation" parameterClass="cpPayTransferRelation">
+		INSERT INTO CP_PAY_TRANSFER_RELATION
+		  (PAY_TRANSFER_RELATION_ID, CP_VOUCHER_ID, PAY_TRANSFER_VOU_ID)
+		VALUES
+		  (#payTransferRelationId#, #cpVoucherId#, #payTransferVouId#)
+	</insert>
+
+	<delete id="deleteCpPayTransferVou" parameterClass="cpPayTransferVou">
+		DELETE FROM CP_PAY_TRANSFER_VOU T WHERE T.PAY_TRANSFER_VOU_ID = #payTransferVouId#
+	</delete>
+
+	<delete id="deleteCpPayTransferListByVouNo" parameterClass="cpPayTransferVou">
+		DELETE FROM CP_PAY_TRANSFER_LIST T WHERE T.PAY_TRANSFER_VOU_ID = #payTransferVouId#
+	</delete>
+
+	<delete id="deleteCpPayRelationByVouNo" parameterClass="cpPayTransferVou">
+		DELETE FROM CP_PAY_TRANSFER_RELATION T WHERE T.PAY_TRANSFER_VOU_ID = #payTransferVouId#
+	</delete>
+
+	<update id="updateCpPayTransferVouAstatus" parameterClass="map">
+		UPDATE CP_PAY_TRANSFER_VOU T SET T.A_STATUS_CODE = #status# WHERE T.PAY_TRANSFER_VOU_ID IN ($ids$)
+	</update>
+
+	<update id="updateCpPayTransferVouPrintTimes" parameterClass="string">
+		UPDATE CP_PAY_TRANSFER_VOU T
+		   SET T.PRINT_TIMES = T.PRINT_TIMES + 1
+		 WHERE T.PAY_TRANSFER_VOU_ID IN ($value$)
+	</update>
+
+</sqlMap>

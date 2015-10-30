@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpDzCoDatetime" >
+
+  <resultMap id="cpDzCoDateTimeResult" class="com.ufgov.zc.common.cp.model.CpDzCoDatetime" >
+      <result property="nd" column="ND" jdbcType="INTEGER"/>
+    <result property="isDz" column="IS_DZ" jdbcType="CHAR"/>
+    <result property="dzMonth" column="DZ_MONTH" jdbcType="INTEGER"/>
+    <result property="dzLimit" column="DZ_LIMIT" jdbcType="DATE"/>
+  </resultMap>
+
+	<select id="getCpDzCoDateTime" resultMap="cpDzCoDateTimeResult" parameterClass="map">
+		SELECT * FROM dz_co_datetime WHERE ND = #nd#
+	</select>
+
+	<update id="updatecpDzCoDatetime" parameterClass="com.ufgov.zc.common.cp.model.CpDzCoDatetime">
+		UPDATE dz_co_datetime
+        SET is_dz = #isDz#, dz_limit = #dzLimit:DATE#
+        WHERE nd=#nd# AND dz_month=#dzMonth#
+	</update>
+	
+	 <resultMap id="dzDateMap" class="com.ufgov.zc.common.cp.model.CpDzCoDatetime" >
+	 	<result property="dzMonth" column="DZ_MONTH" jdbcType="INTEGER"/>
+	    <result property="dzLimit" column="DZ_LIMIT" />
+	 </resultMap>
+	 <select id="getCpDzCoDateTimeMap" resultMap="dzDateMap" parameterClass="map">
+		SELECT DZ_MONTH,DZ_LIMIT FROM dz_co_datetime WHERE ND = #nd# and IS_DZ='Y'
+	 </select>
+</sqlMap>

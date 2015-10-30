@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<!DOCTYPE sqlMap      
+
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ZC_PAY_GK_INFO">
+
+	<typeAlias alias="zcPayGkInfo" type="com.ufgov.zc.common.zc.model.ZcPayGkInfo" />
+
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+		
+		
+	<resultMap id="zcPayGkInfoResult" class="zcPayGkInfo">
+		<result property="zcBillType" column="ZC_BILL_TYPE" />
+		<result property="zcBillId" column="ZC_BILL_ID" />
+		<result property="gkVouId" column="GK_VOU_ID" />
+		<result property="gkReturnFlag" column="GK_RETURN_FLAG" />
+		<result property="gkReturnReason" column="GK_RETURN_REASON" />
+		<result property="gkReturnDate" jdbcType="GK_RETURN_DATE" javaType="java.util.Date" column="INPUT_DATE" />
+		<result property="sendGkDate" jdbcType="SEND_GK_DATE" javaType="java.util.Date" column="INPUT_DATE" />
+		<result property="gkVouType" column="GK_VOU_TYPE" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="zcPayGkInfo">
+		insert into zc_pay_gk_info
+	    (zc_bill_type, zc_bill_id, gk_vou_id, gk_return_flag, gk_return_date,GK_RETURN_REASON, send_gk_date, gk_vou_type)
+	    values
+	    (#zcBillType#,#zcBillId#,#gkVouId#,#gkReturnFlag#,#gkReturnDate:TIMESTAMP#,#gkReturnReason#,#sendGkDate:TIMESTAMP#,#gkVouType#)
+	</insert>	
+	<delete id="deleteByZcBillId" parameterClass="string">
+		delete from
+		zc_pay_gk_info
+		where
+		zc_bill_id = #value#
+	</delete>
+
+</sqlMap>

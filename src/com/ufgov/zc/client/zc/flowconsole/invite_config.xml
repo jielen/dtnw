@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<network>
+
+    <node id="ZC_EB_ENTRUST" x="34" y="4"
+          text="任务受理"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/jieshourenwu.png"
+          highlight_icon="/img/flow_console/highlight_icon/jieshourenwu.png"
+          gray_icon="/img/flow_console/gray_icon/jieshourenwu.png"
+          icon="/img/flow_console/gen_icon/jieshourenwu.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.RenWuNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" param="com.ufgov.zc.client.zc.zcebentrust.ZcEbEntrustListPanel" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" param="com.ufgov.zc.client.zc.zcebentrust.ZcEbEntrustListPanel" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_ENTRUST" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <node id="ZC_EB_AUDIT_SHEET" x="189" y="4"
+          text="批办单"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/pibandan.png"
+          highlight_icon="/img/flow_console/highlight_icon/pibandan.png"
+          gray_icon="/img/flow_console/gray_icon/pibandan.png"
+          icon="/img/flow_console/gen_icon/pibandan.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.PiBanDanNodeBusiness"
+          >
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" param="com.ufgov.zc.client.zc.auditsheet.ZcEbAuditSheetListPanel" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_AUDIT_SHEET" offsetX="13" offsetY="59"/>
+    </node>
+    <node id="ZC_EB_BULLETIN_ZGYS" x="344" y="4"
+          text="资格预审公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinZgysNodeBusiness" >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_ZGYS" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <node id="ZC_EB_PROJ" x="499" y="4"
+          text="招标文件"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhaobiaowenjianzhizuo.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhaobiaowenjianzhizuo.png"
+          gray_icon="/img/flow_console/gray_icon/zhaobiaowenjianzhizuo.png"
+          icon="/img/flow_console/gen_icon/zhaobiaowenjianzhizuo.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.ProjectNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_PROJ" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <node id="ZC_EB_BULLETIN_CG" x="650" y="4"
+          text="采购公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhaobiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhaobiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhaobiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhaobiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinCgNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_CG" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+
+
+    <node id="ZC_EB_BULLETIN_CHG" x="650" y="154"
+          text="变更公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinChgNodeBusiness"
+        >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_CHG" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    <node id="ZC_EB_PROJECT_SUPPORT" x="499" y="154"
+          text="供应商投标"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/baomingguanli.png"
+          highlight_icon="/img/flow_console/highlight_icon/baomingguanli.png"
+          gray_icon="/img/flow_console/gray_icon/baomingguanli.png"
+          icon="/img/flow_console/gen_icon/baomingguanli.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.SigupNodeBusiness"
+          >
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_PROJECT_SUPPORT" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    <node id="ZC_EB_BULLETIN_DLY" x="344" y="154"
+          text="延期公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinDlyNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_DLY" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <node id="ZC_EB_PROJ_CHG" x="189" y="154"
+          text="采购方式变更"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/weituoxieyi.png"
+          highlight_icon="/img/flow_console/highlight_icon/weituoxieyi.png"
+          gray_icon="/img/flow_console/gray_icon/weituoxieyi.png"
+          icon="/img/flow_console/gen_icon/weituoxieyi.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.ZcEbPurTypeChgNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_PROJ_CHG" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+     <node id="ZC_EB_OPENBID" x="34" y="154"
+          text="开标管理"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/kaibiaoguanli.png"
+          highlight_icon="/img/flow_console/highlight_icon/kaibiaoguanli.png"
+          gray_icon="/img/flow_console/gray_icon/kaibiaoguanli.png"
+          icon="/img/flow_console/gen_icon/kaibiaoguanli.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.OpenBidNodeBusiness"
+          >
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_OPENBID" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <!-- 第二行 -->
+
+    <node id="ZC_EB_EVALBIDTEAM" x="34" y="305" 
+          text="评标管理"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/pingbiaoguanli.png"
+          highlight_icon="/img/flow_console/highlight_icon/pingbiaoguanli.png"
+          gray_icon="/img/flow_console/gray_icon/pingbiaoguanli.png"
+          icon="/img/flow_console/gen_icon/pingbiaoguanli.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.CommentBidNodeBusiness"
+          >
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_EVALBIDTEAM" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+    
+    <node id="ZC_EB_BULLETIN_YZB" x="189" y="305" 
+          text="预中标公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinYzbNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_YZB" action="X002" offsetX="13" offsetY="59"/>
+   </node>
+
+    <node id="ZC_EB_BULLETIN_WID"  x="344" y="305" 
+          text="中标公告"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaogonggao.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaogonggao.png"
+          icon="/img/flow_console/gen_icon/zhongbiaogonggao.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.BulletinWinNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_BULLETIN_WID" action="X002" offsetX="13" offsetY="59"/>
+   </node>
+   
+    <node id="ZC_EB_NOTICE" x="499" y="305"  
+          text="成交通知书"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/zhongbiaotongzhishu.png"
+          highlight_icon="/img/flow_console/highlight_icon/zhongbiaotongzhishu.png"
+          gray_icon="/img/flow_console/gray_icon/zhongbiaotongzhishu.png"
+          icon="/img/flow_console/gen_icon/zhongbiaotongzhishu.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.WinNoticeNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_EB_NOTICE" action="X002" offsetX="13" offsetY="59"/>
+   </node>
+    
+     <node id="ZC_XMCG_HT" x="650" y="305"  
+          text="合同管理"
+          tooltip="This is a tooltip of a node"
+          gen_icon="/img/flow_console/gen_icon/hetongguanli.png"
+          highlight_icon="/img/flow_console/highlight_icon/hetongguanli.png"
+          gray_icon="/img/flow_console/gray_icon/hetongguanli.png"
+          icon="/img/flow_console/gen_icon/hetongguanli.png"
+          nodeBusiness="com.ufgov.zc.client.zc.flowconsole.business.ContractNodeBusiness"
+          >
+        <button id="add" tooltip="新增" icon="/img/flow_console/bt1_1.png" highlight_icon="/img/flow_console/bt1.png"  gen_icon="/img/flow_console/bt1_1.png" action="X002" offsetX="13" offsetY="13"/>
+        <button id="view" tooltip="审批" icon="/img/flow_console/bt2_2.png" highlight_icon="/img/flow_console/bt2.png"  gen_icon="/img/flow_console/bt2_2.png" action="X002" offsetX="13" offsetY="38"/>
+        <button id="list" tooltip="列表" icon="/img/flow_console/bt3_3.png" highlight_icon="/img/flow_console/bt3.png"  gen_icon="/img/flow_console/bt3_3.png" param="ZC_XMCG_HT" action="X002" offsetX="13" offsetY="59"/>
+    </node>
+
+    <arrow x="145" y="30" direction="right" rotation="0"/>
+    <arrow x="300" y="30" direction="right" rotation="0"/>
+    <arrow x="455" y="30" direction="right" rotation="0"/>
+    <arrow x="610" y="30" direction="right" rotation="0"/>
+    
+    <arrow x="683" y="115" direction="down" rotation="0"/>
+    
+    <arrow x="139" y="180" direction="left" rotation="0"/>
+    <arrow x="294" y="180" direction="left" rotation="0"/>
+    <arrow x="449" y="180" direction="left" rotation="0"/>
+    <arrow x="604" y="180" direction="left" rotation="0"/>
+    
+    <arrow x="65" y="265" direction="down" rotation="0"/>
+    
+    <arrow x="139" y="330" direction="right" rotation="0"/>
+    <arrow x="294" y="330" direction="right" rotation="0"/>
+    <arrow x="449" y="330" direction="right" rotation="0"/>
+    <arrow x="604" y="330" direction="right" rotation="0"/>
+
+</network>

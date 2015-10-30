@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpCcaccountInfo" >
+	<typeAlias alias="cpCcaccountInfo" type="com.ufgov.zc.common.gwk.model.CpCcaccountInfo" />
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="cardInfoResult" class="cpCcaccountInfo" >
+		<result column="ND" property="nd"  />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+		<result column="IDENTITY_CARD" property="identityCard" jdbcType="VARCHAR" />
+		<result column="CARD_USER" property="cardUser" jdbcType="VARCHAR" />
+		<result column="CARD_SERIAL" property="cardSerial" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_CODE" property="receBankCode" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NAME" property="receBankName" jdbcType="VARCHAR" />
+	</resultMap>
+
+
+  <select id="getCardInfo" resultMap="cardInfoResult"
+		parameterClass="elementCondition">
+	   SELECT * FROM cp_ccaccount_info MASTER where MASTER.nd = #nd#  and master.co_code=#coCode#
+  </select>
+  
+    <resultMap id="gwkCardInfoResult" class="cpCcaccountInfo" >
+		<result column="RECE_BANK_CODE" property="receBankCode" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NAME" property="receBankName" jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+		<result column="fakaNum" property="extendField1" />
+		<result column="jiesuanzhanghuNum" property="extendField2" />
+		<result column="huankuanNum" property="extendField3" />
+	</resultMap>
+  
+	<select id="getGwkAnalyzeInfoForBank" resultMap="gwkCardInfoResult"	parameterClass="elementCondition">
+		SELECT rece_bank_code,rece_bank_name,'' CO_CODE,'' CO_NAME,COUNT(*) fakaNum, 
+			(SELECT COUNT(*) FROM cp_ccbank_acc A WHERE A.Nd=master.Nd AND a.bank_code = master.Rece_Bank_Code) jiesuanzhanghuNum,
+			(SELECT COUNT(*) FROM cp_ccgather B WHERE B.Nd=master.Nd AND B.Rece_Bank_Code = master.Rece_Bank_Code) huankuanNum
+		FROM cp_ccaccount_info master where nd=#nd#
+		<isNotNull prepend="AND" property="startDate">
+			master.BEGIN_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			master.BEGIN_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="yesNoAll">
+			<isEqual property="yesNoAll" compareValue="Y">
+				master.is_used ='Y'
+			</isEqual>
+			<isEqual property="yesNoAll" compareValue="N">
+				master.is_used ='N'
+			</isEqual>
+		</isNotNull>
+		GROUP BY nd,rece_bank_code,rece_bank_name
+	</select>
+	
+	<select id="getGwkAnalyzeInfoForDw" resultMap="gwkCardInfoResult"	parameterClass="elementCondition">
+		SELECT co_code,co_name,rece_bank_code,rece_bank_name,COUNT(*) fakaNum, 
+			(SELECT COUNT(*) FROM cp_ccbank_acc A WHERE A.Nd=master.Nd AND a.bank_code = master.Rece_Bank_Code AND a.co_code = master.Co_Code) jiesuanzhanghuNum,
+			(SELECT COUNT(*) FROM cp_ccgather B WHERE B.Nd=master.Nd AND B.Rece_Bank_Code = master.Rece_Bank_Code AND b.co_code = master.Co_Code) huankuanNum
+	  	FROM cp_ccaccount_info master where nd=#nd#
+	  	<include refid="ElementCondition.CoCodeFilter" />
+	  	<isNotNull prepend="AND" property="startDate">
+			master.BEGIN_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			master.BEGIN_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="receBankCode">
+			master.rece_bank_code = #receBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="yesNoAll">
+			<isEqual property="yesNoAll" compareValue="Y">
+				master.is_used ='Y'
+			</isEqual>
+			<isEqual property="yesNoAll" compareValue="N">
+				master.is_used ='N'
+			</isEqual>
+		</isNotNull>
+		GROUP BY nd,rece_bank_code,rece_bank_name,co_code,co_name
+	</select>
+  
+</sqlMap>

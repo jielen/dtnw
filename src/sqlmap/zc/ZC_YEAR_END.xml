@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ZC_YEAR_END">
+
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<typeAlias alias="zcYearPlan" type="com.ufgov.zc.common.zc.model.ZcYearPlan" />
+	<typeAlias alias="zcPProMitemBi" type="com.ufgov.zc.common.zc.model.ZcPProMitemBi" />
+
+	<parameterMap class="elementCondition" id="procedureParam">
+		<parameter property="zcMakeCode" jdbcType="varchar2" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap class="zcYearPlan" id="sdProcedureParam">
+		<parameter property="zcMakeCode" jdbcType="varchar2" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap class="zcYearPlan" id="jiChuZiLiaoJieZhuanParam">
+		<parameter property="nd" jdbcType="varchar2" mode="IN" />
+	</parameterMap>
+
+	<resultMap id="proEndResult" class="zcYearPlan">
+		<result column="zc_make_code" property="zcMakeCode" jdbcType="VARCHAR" />
+		<result column="zc_make_name" property="zcMakeName" jdbcType="VARCHAR" />
+		<result column="zc_make_status" property="zcMakeStatus"
+			jdbcType="VARCHAR" />
+		<result column="zc_pifu_cgfs" property="zcCgType" jdbcType="VARCHAR" />
+		<result column="zc_yep_flag" property="zcYepFlag" jdbcType="VARCHAR" />
+		<result column="co_code" property="coCode" jdbcType="VARCHAR" />
+		<result column="co_name" property="coName" jdbcType="VARCHAR" />
+		<result column="zc_money_bi_sum" property="zcMakeSum" jdbcType="DECIMAL" />
+		<result column="zc_ht_num" property="zcHtSum" jdbcType="DECIMAL" />
+		<result column="zc_bal_sum" property="zcBalSum" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<resultMap id="carraryResult" class="zcYearPlan">
+		<result column="zc_make_code" property="zcMakeCode" jdbcType="VARCHAR" />
+		<result column="zc_make_name" property="zcMakeName" jdbcType="VARCHAR" />
+		<result column="zc_make_status" property="zcMakeStatus"
+			jdbcType="VARCHAR" />
+		<result column="zc_pifu_cgfs" property="zcCgType" jdbcType="VARCHAR" />
+		<result column="zc_yep_flag" property="zcYepFlag" jdbcType="VARCHAR" />
+		<result column="co_code" property="coCode" jdbcType="VARCHAR" />
+		<result column="co_name" property="coName" jdbcType="VARCHAR" />
+		<result column="nd" property="nd" jdbcType="INTEGER" />
+		<result column="zc_money_bi_sum" property="zcMakeSum" jdbcType="DECIMAL" />
+		<result column="zc_ht_sum" property="zcHtSum" jdbcType="DECIMAL" />
+		<result column="zc_bal_sum" property="zcBalSum" jdbcType="DECIMAL" />
+		<result column="zc_make_jz_sum" property="zcMakeJzSum"	jdbcType="DECIMAL" />
+		<result column="zc_ht_jz_sum" property="zcHtJzSum" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<resultMap id="zcPProMitemBiResult" class="zcPProMitemBi">
+		<result column="zc_make_code" property="zcMakeCode" jdbcType="VARCHAR" />
+		<result column="zc_bi_no" property="zcBiNo" jdbcType="VARCHAR" />
+		<result column="zc_use_bi_id" property="zcUseBiId" jdbcType="VARCHAR" />
+		<result column="zc_bi_jhua_sum" property="zcBiJhuaSum"
+			jdbcType="DECIMAL" />
+		<result column="zc_bi_bcjs_sum" property="zcBiYjbaSum"
+			jdbcType="DECIMAL" />
+	</resultMap>
+	<!-- 获取结项时计划占用的指标，合同占用的指标 ,以及已经支付了的指标金额-->
+		<select id="getJieXiangBi" parameterClass="elementCondition"	resultClass="hashmap">
+			SELECT ZC_BI_NO,
+		               ZC_USE_BI_ID,
+		               SUM(ZC_BI_JHUA_SUM) AS ZC_BI_JHUA_SUM,
+		               SUM(ZC_BI_BCSY_SUM) AS ZC_BI_BCSY_SUM,
+       				   SUM(ZHIFUSUM) AS ZHIFUSUM
+		          FROM (SELECT M.ZC_BI_NO,
+			               M.ZC_BI_JHUA_SUM,
+			               H.ZC_BI_BCSY_SUM,
+			               M.ZC_USE_BI_ID,
+			               NVL(BALI.ZC_BI_BCJS_SUM, 0) AS ZHIFUSUM
+			          FROM ZC_P_PRO_MITEM_BI M,
+			               ZC_XMCG_HT_BI H,
+			               ZC_XMCG_HT HT,
+			               (SELECT PBI.*
+			                  FROM ZC_P_PRO_BAL_BI PBI, ZC_P_PRO_BAL BAL
+			                 WHERE PBI.ZC_BAL_ID = BAL.ZC_BAL_ID
+			                   AND BAL.ZC_BAL_STATUS = 'exec') BALI
+			         WHERE M.ZC_BI_NO = H.ZC_BI_NO
+			           AND H.ZC_HT_CODE = HT.ZC_HT_CODE
+			           AND HT.ZC_MAKE_CODE = M.ZC_MAKE_CODE
+			           AND HT.ND = #nd#
+			           and ht.zc_parht_code is null
+			           AND HT.ZC_MAKE_CODE IN ($zcText0$)
+			           AND M.ZC_MAKE_CODE = BALI.ZC_CODE(+)
+			           AND M.ZC_USE_BI_ID = BALI.ZC_HT_BI_NO(+)
+				       union
+				        select htbi.zc_bi_no,
+				               htbi.zc_bi_bcsy_sum AS ZC_BI_JHUA_SUM,
+				               htbi.zc_bi_bcsy_sum AS ZC_BI_BCSY_SUM,
+				               htbi.zc_use_bi_id,
+				               NVL(bbi.ZC_BI_BCJS_SUM, 0) AS ZHIFUSUM
+				          from zc_xmcg_ht      ht,
+				               zc_xmcg_ht_bi   htbi,
+				               zc_p_pro_bal    b,
+				               zc_p_pro_bal_bi bbi
+				         where ht.zc_ht_code = b.zc_ht_code(+)
+				           and b.zc_bal_id = bbi.zc_bal_id
+				           and b.ZC_BAL_STATUS = 'exec'
+				           and ht.nd = #nd#
+				           and ht.zc_parht_code is not null
+				           and HT.ZC_MAKE_CODE IN ($zcText0$)
+				           and ht.zc_ht_code = htbi.zc_ht_code
+				           and htbi.zc_use_bi_id = bbi.zc_ht_bi_no(+)) A
+		         	GROUP BY A.ZC_BI_NO, ZC_USE_BI_ID
+			         union 
+					 select mbi.zc_bi_no,mbi.zc_use_bi_id,mbi.zc_bi_jhua_sum,0 as ZC_BI_BCSY_SUM,0 as ZHIFUSUM
+					   from zc_p_pro_mitem_bi mbi, zc_p_pro_make m
+					  where m.zc_make_code = mbi.zc_make_code
+					    and not exists
+					  (select * from zc_xmcg_ht h where h.zc_make_code = m.zc_make_code)
+					    and m.nd = #nd#
+					    and m.zc_make_code in ($zcText0$)
+		</select>
+
+	<select id="selectZcProEnd" parameterClass="elementCondition"
+		resultMap="proEndResult">
+		select mk.zc_make_code,
+		mk.zc_make_name,
+		mk.zc_make_status,
+		mk.zc_pifu_cgfs,
+		mk.zc_yep_flag,
+		mk.zc_temp_make_code,
+		mk.zc_money_bi_sum,
+		mk.co_code,
+		nvl(h.zc_ht_num,0) zc_ht_num,
+		nvl(b.zc_bal_sum,0) zc_bal_sum,
+		e.co_name
+		from zc_p_pro_make mk,
+		(select ht.zc_make_code, sum(ht.zc_ht_num) zc_ht_num
+		from zc_xmcg_ht ht
+		where ht.zc_ht_status = 'exec'
+         and ht.nd=#nd#
+		group by ht.zc_make_code) h,
+		(select bal.zc_make_code, sum(bal.zc_bal_sum) zc_bal_sum
+		from zc_p_pro_bal bal
+		where bal.zc_bal_status = 'exec'
+         and bal.nd=#nd#
+		group by bal.zc_make_code) b,
+		ma_company e
+		where mk.zc_make_code = h.zc_make_code(+)
+		and mk.zc_make_code = b.zc_make_code(+)
+		and mk.co_code=e.co_code
+		and mk.nd=e.nd
+		<isNotEmpty prepend="and" property="coCode"> 
+       <![CDATA[ 
+            mk.co_code = #coCode#
+   	]]>
+		</isNotEmpty>
+		and mk.nd=#nd#
+		and mk.zc_yep_flag=#status#
+	</select>
+
+	<select id="selectBudget" parameterClass="String" resultMap="zcPProMitemBiResult">
+		select jh.zc_make_code,
+		jh.zc_bi_no,
+		nvl(sum(jh.zc_bi_jhua_sum), 0) zc_bi_jhua_sum,
+		jh.zc_use_bi_id,
+		nvl(sum(bb.zc_bi_bcjs_sum), 0) zc_bi_bcjs_sum
+		from (select mb.zc_make_code,
+		mb.zc_bi_no,
+		mb.zc_bi_jhua_sum,
+		mb.zc_use_bi_id
+		from zc_p_pro_mitem_bi mb
+		union (select hb.zc_make_code,
+		hb.zc_bi_no,
+		hb.zc_bi_bcsy_sum,
+		hb.zc_use_bi_id
+		from zc_xmcg_ht_bi hb, zc_xmcg_ht ht
+		where hb.zc_ht_code = ht.zc_ht_code
+		and ht.zc_parht_code is not null
+		and ht.zc_ht_status = 'exec')) jh,
+		zc_p_pro_bal_bi bb
+		where jh.zc_make_code in ($value$)
+		and jh.zc_bi_no is not null
+		and jh.zc_make_code = bb.zc_code(+)
+		and jh.zc_bi_no = bb.zc_bi_no(+)
+		group by jh.zc_make_code, jh.zc_bi_no, jh.zc_use_bi_id
+		order by zc_make_code,zc_bi_no, zc_bi_bcjs_sum
+
+	</select>
+
+	<update id="updateMakeYepFlag" parameterClass="String">
+		update
+		zc_p_pro_make set zc_yep_flag='10' where zc_make_code in ($zcMakeCodes$)
+	</update>
+
+	<update id="updateMakeYepFlagLastPay" parameterClass="String">
+		update
+		zc_p_pro_make set zc_yep_flag='11' where zc_make_code =#value#
+	</update>
+
+	<update id="updateMakeYepFlagOverLastPay" parameterClass="String">
+		update
+		zc_p_pro_make set zc_yep_flag='10' where zc_make_code =#value#
+	</update>
+
+	<update id="updateMakeYepFlagByFlag" parameterClass="elementCondition">
+		update
+		zc_p_pro_make set zc_yep_flag=#dattr1# where zc_make_code in
+		(#zcMakeCode#)
+	</update>
+
+	<update id="updateMakeYepFlagByMakeCode" parameterClass="String">
+		update
+		zc_p_pro_make set zc_yep_flag='10' where zc_make_code=#value#
+	</update>
+
+	<procedure id="carraryNewMake" parameterMap="procedureParam">
+	   <![CDATA[
+	    { call sp_zc_yearend_carray (?) }
+	   ]]>
+	</procedure>
+
+	<procedure id="cancelCarraryMake" parameterMap="procedureParam">
+	   <![CDATA[
+	    { call sp_zc_cancel_yearend (?) }
+	   ]]>
+	</procedure>
+	
+	<procedure id="carrarySdNewMake" parameterMap="sdProcedureParam">
+		<![CDATA[
+	    { call sp_zc_sd_yearend_carrary (?) }
+	   	]]>
+	</procedure>
+	<procedure id="jiChuZiLiaoJieZhuan" parameterMap="jiChuZiLiaoJieZhuanParam">
+	<!-- 采购基础资料结转，参数为结转后的年度 -->
+	   <![CDATA[
+	    { call sp_zc_jiChuZiLiaoJieZhuan (?) }
+	   ]]>
+	</procedure>
+	<insert id="saveMakeBi" parameterClass="zcPProMitemBi">
+		insert into
+		ZC_JZ_MAKE_TEMP (zc_make_code,zc_bi_no,zc_jhua_sum)
+		values(#zcMakeCode#,#zcBiNo#,#zcBiJhuaSum#)
+	</insert>
+	
+	<insert id="saveHtBi" parameterClass="zcPProMitemBi">
+		insert into
+		ZC_JZ_Ht_TEMP (zc_make_code,zc_bi_no,zc_jhua_sum)
+		values(#zcMakeCode#,#zcBiNo#,#zcBiJhuaSum#)
+	</insert>
+</sqlMap>

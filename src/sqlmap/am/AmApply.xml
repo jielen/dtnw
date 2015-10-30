@@ -1,0 +1,1105 @@
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AmApply">
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<typeAlias alias="amApply"
+		type="com.ufgov.zc.common.am.model.AmApply" />
+	<resultMap id="amApplyResult"
+		class="com.ufgov.zc.common.am.model.AmApply">
+		<result column="AM_APPLY_ID" property="amApplyId"
+			jdbcType="VARCHAR" />
+		<result column="INPUT_GROUP_ID" property="inputGroupId"
+			jdbcType="VARCHAR" />
+		<result column="AM_VOUCHER_ID" property="amVoucherId"
+			jdbcType="VARCHAR" />
+		<result column="AM_AP_BILL_ID" property="amApBillId"
+			jdbcType="VARCHAR" />
+		<result column="BI_BALANCE_ID" property="biBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="DP_BALANCE_ID" property="dpBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="IS_SUM_AM_APPLY" property="isSumAmApply"
+			jdbcType="CHAR" />
+		<result column="SUM_AM_APPLY_ID" property="sumAmApplyId"
+			jdbcType="VARCHAR" />
+		<result column="BI_TARGET_CODE" property="biTargetCode"
+			jdbcType="VARCHAR" />
+		<result column="CREATE_TYPE" property="createType"
+			jdbcType="CHAR" />
+		<result column="CONTROL_TYPE" property="controlType"
+			jdbcType="CHAR" />
+		<result column="DEC_TYPE" property="decType" jdbcType="CHAR" />
+		<result column="IS_CREATE_VOU" property="isCreateVou"
+			jdbcType="CHAR" />
+		<result column="AM_ADJUST_CODE" property="amAdjustCode"
+			jdbcType="VARCHAR" />
+		<result column="ND" property="nd" jdbcType="DECIMAL" />
+		<result column="PROC_DATE" property="procDate" jdbcType="DATE" />
+		<result column="INPUTOR_ID" property="inputorId"
+			jdbcType="VARCHAR" />
+		<result column="CDATE" property="cdate" jdbcType="DATE" />
+		<result column="OPERATION_TYPE_CODE"
+			property="operationTypeCode" jdbcType="VARCHAR" />
+		<result column="PAYTYPE_CODE" property="paytypeCode"
+			jdbcType="VARCHAR" />
+		<result column="PRE_MONTH" property="preMonth"
+			jdbcType="INTEGER" nullValue="0" />
+		<result column="BAL_MODE_CODE" property="balModeCode"
+			jdbcType="VARCHAR" />
+		<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="B_ACC_ID" property="baccId" jdbcType="VARCHAR" />
+		<result column="B_ACC_CODE" property="baccCode"
+			jdbcType="VARCHAR" />
+		<result column="OUTLAY_CODE" property="outlayCode"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_TYPE_CODE" property="projectTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_CODE" property="projectCode"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_DETAIL_CODE"
+			property="projectDetailCode" jdbcType="VARCHAR" />
+		<result column="FUND_CODE" property="fundCode"
+			jdbcType="VARCHAR" />
+		<result column="ORIGIN_CODE" property="originCode"
+			jdbcType="VARCHAR" />
+		<result column="PAYOUT_CODE" property="payoutCode"
+			jdbcType="VARCHAR" />
+		<result column="MANAGE_CODE" property="manageCode"
+			jdbcType="VARCHAR" />
+		<result column="INCEPTDOC_CODE" property="inceptDocCode"
+			jdbcType="VARCHAR" />
+		<result column="SENDDOC_TYPE_CODE" property="sendDocTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="SENDDOC_CODE" property="sendDocCode"
+			jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="ORG_MONEY" property="orgMoney"
+			jdbcType="DECIMAL" />
+		<result column="CUR_MONEY" property="curMoney"
+			jdbcType="DECIMAL" />
+
+		<result column="RECE_CODE" property="receCode" />
+		<result column="RECE_ACCCODE" property="receAccCode" />
+		<result column="RECE_ACCNAME" property="receAccName" />
+		<result column="RECE_BANKNODECODE" property="receBankNodeCode" />
+		<result column="RECE_BANKNO" property="receBankNo" />
+		<result column="RECE_BANKNODENAME" property="receBankNodeName" />
+		<result column="RECE_BANKACCCODE" property="receBankAccCode" />
+		<result column="RECE_BANKREMARK" property="receBankRemark" />
+
+		<result column="PROCESS_INST_ID" property="processInstId"
+			jdbcType="DECIMAL" />
+		<result column="AUDITOR_ID" property="auditorId"
+			jdbcType="VARCHAR" />
+		<result column="A_DATE" property="adate" jdbcType="DATE" />
+		<result column="A_OPINION" property="aopinion"
+			jdbcType="VARCHAR" />
+		<result column="A_STATUS_CODE" property="astatusCode"
+			jdbcType="VARCHAR" />
+		<result column="AN_STATUS" property="anStatus"
+			jdbcType="VARCHAR" />
+		<result column="WF_CONTENT_BRIEF" property="wfContentBrief"
+			jdbcType="VARCHAR" />
+		<result column="IS_VALID" property="isValid" jdbcType="CHAR" />
+		<result column="CANCELER_ID" property="cancelerId"
+			jdbcType="VARCHAR" />
+		<result column="CANCEL_DATE" property="cancelDate"
+			jdbcType="DATE" />
+		<result column="CANCEL_OPINION" property="cancelOpinion"
+			jdbcType="VARCHAR" />
+		<result column="FILENAME" property="filename"
+			jdbcType="VARCHAR" />
+		<result column="FILENAME_BLOBID" property="filenameBlobid"
+			jdbcType="VARCHAR" />
+		<result column="D_ATTR1" property="dattr1" jdbcType="VARCHAR" />
+		<result column="D_ATTR2" property="dattr2" jdbcType="VARCHAR" />
+		<result column="D_ATTR3" property="dattr3" jdbcType="VARCHAR" />
+		<result column="D_ATTR4" property="dattr4" jdbcType="VARCHAR" />
+		<result column="D_ATTR5" property="dattr5" jdbcType="VARCHAR" />
+		<result column="PRINT_TIMES" property="printTimes"
+			jdbcType="DECIMAL" />
+		<result column="STAMP" property="stamp" jdbcType="DECIMAL" />
+		<result column="INPUTOR_NAME" property="inputorName"
+			jdbcType="VARCHAR" />
+		<result column="AUDITOR_NAME" property="auditorName"
+			jdbcType="VARCHAR" />
+		<result column="VOU_NO" property="vouNo" jdbcType="VARCHAR" />
+		<result column="AM_VOUCHER_ID_BAK" property="amVoucherIdBak"
+			jdbcType="VARCHAR" />
+		<result column="VOU_NO_BAK" property="vouNoBak"
+			jdbcType="VARCHAR" />
+		<result column="CONTRACT_CODE" property="contractCode"
+			jdbcType="VARCHAR" />
+		<result column="AM_MONEY1" property="amMoney1"
+			jdbcType="DECIMAL" />
+		<result column="AM_MONEY2" property="amMoney2"
+			jdbcType="DECIMAL" />
+		<result column="AM_MONEY3" property="amMoney3"
+			jdbcType="DECIMAL" />
+		<result column="AM_MONEY4" property="amMoney4"
+			jdbcType="DECIMAL" />
+		<result column="PROJECT_TOTAL_MONEY"
+			property="projectTotalMoney" jdbcType="DECIMAL" />
+		<result column="PROJECT_DOC" property="projectDoc"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_PLAN_NAME" property="projectPlanName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap class="amApply" id="amApplyResultForBiBalance"
+		extends="amApplyResult">
+		<result column="BI_MONEY" property="biMoney" jdbcType="DECIMAL"
+			nullValue="0" />
+		<result column="BI_PAYSUM" property="biPaySum"
+			jdbcType="DECIMAL" nullValue="0" />
+		<result column="BI_BALANCE" property="biBalance"
+			jdbcType="DECIMAL" nullValue="0" />
+		<result column="ext_money1" property="extMoney1"
+			jdbcType="DECIMAL" nullValue="0" />
+		<result column="ext_money2" property="extMoney2"
+			jdbcType="DECIMAL" nullValue="0" />
+	</resultMap>
+
+	<resultMap class="amApply" id="amApplyResultForPrint"
+		extends="amApplyResultForBiBalance">
+		<result column="INCEPTDOC_NAME" property="inceptDocName" />
+		<result column="SENDDOC_NAME" property="sendDocName" />
+		<result column="OPERATION_TYPE_NAME"
+			property="operationTypeName" />
+		<result column="PAYTYPE_NAME" property="paytypeName" />
+		<result column="BAL_MODE_NAME" property="balModeName" />
+		<result column="ORG_NAME" property="orgName" />
+		<result column="CO_NAME" property="coName" />
+		<result column="B_ACC_NAME" property="baccName" />
+		<result column="OUTLAY_NAME" property="outlayName" />
+		<result column="PROJECT_NAME" property="projectName" />
+		<result column="PROJECT_DETAIL_NAME"
+			property="projectDetailName" />
+		<result column="FUND_NAME" property="fundName" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="PAYOUT_NAME" property="payoutName" />
+		<result column="MANAGE_NAME" property="manageName" />
+		<result column="D_ATTR1_NAME" property="dattr1Name" />
+		<result column="D_ATTR2_NAME" property="dattr2Name" />
+		<result column="D_ATTR3_NAME" property="dattr3Name" />
+		<result column="D_ATTR4_NAME" property="dattr4Name" />
+		<result column="D_ATTR5_NAME" property="dattr5Name" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey" resultMap="amApplyResult"
+		parameterClass="amApply">
+		select AM_APPLY_ID, INPUT_GROUP_ID, AM_VOUCHER_ID,
+		AM_AP_BILL_ID, BI_BALANCE_ID, DP_BALANCE_ID, IS_SUM_AM_APPLY,
+		SUM_AM_APPLY_ID, BI_TARGET_CODE, CREATE_TYPE, CONTROL_TYPE,
+		DEC_TYPE, IS_CREATE_VOU, AM_ADJUST_CODE, ND, PROC_DATE,
+		INPUTOR_ID, CDATE, OPERATION_TYPE_CODE, PAYTYPE_CODE, PRE_MONTH,
+		BAL_MODE_CODE, ORG_CODE, CO_CODE, B_ACC_ID, B_ACC_CODE,
+		OUTLAY_CODE, PROJECT_TYPE_CODE, PROJECT_CODE, FUND_CODE,
+		ORIGIN_CODE, PAYOUT_CODE, MANAGE_CODE, INCEPTDOC_CODE,
+		SENDDOC_TYPE_CODE, SENDDOC_CODE, REMARK, ORG_MONEY, CUR_MONEY,
+		RECE_CODE, RECE_ACCCODE, RECE_ACCNAME, RECE_BANKNODECODE,
+		RECE_BANKNO, RECE_BANKNODENAME,RECE_BANKREMARK,
+		RECE_BANKACCCODE, PROCESS_INST_ID, AUDITOR_ID, A_DATE,
+		A_OPINION, A_STATUS_CODE, AN_STATUS, WF_CONTENT_BRIEF, IS_VALID,
+		CANCELER_ID, CANCEL_DATE, CANCEL_OPINION, FILENAME,
+		FILENAME_BLOBID, D_ATTR1, D_ATTR2, D_ATTR3, D_ATTR4, D_ATTR5,
+		PRINT_TIMES, STAMP, INPUTOR_NAME, AUDITOR_NAME, VOU_NO,
+		AM_VOUCHER_ID_BAK, VOU_NO_BAK, CONTRACT_CODE, AM_MONEY1,
+		AM_MONEY2, AM_MONEY3, AM_MONEY4, PROJECT_TOTAL_MONEY,
+		PROJECT_DOC, PROJECT_PLAN_NAME,PROJECT_DETAIL_CODE from AM_APPLY
+		where AM_APPLY_ID = #amApplyId:VARCHAR#
+	</select>
+
+	<update id="updateAmApplyReceInfo" parameterClass="amApply">
+		update AM_APPLY
+		set PAY_CODE=#payCode:VARCHAR#,
+		    PAY_ACCCODE=#payAccCode:VARCHAR#,
+		    PAY_ACCNAME=#payAccName:VARCHAR#,
+		    PAY_BANKACCCODE=#payBankAccCode:VARCHAR#,
+			PAY_BANKNO=#payBankNo:VARCHAR#,
+			PAY_BANKNODECODE=#payBankNodeCode:VARCHAR#,
+			PAY_BANKNODENAME=#payBankNodeName:VARCHAR#,
+			RECE_CODE=#receCode:VARCHAR#,
+			RECE_ACCCODE=#receAccCode:VARCHAR#,
+			RECE_ACCNAME=#receAccName:VARCHAR#,
+			RECE_BANKACCCODE=#receBankAccCode:VARCHAR#,
+			RECE_BANKNO=#receBankNo:VARCHAR#,
+			RECE_BANKNODECODE=#receBankNodeCode:VARCHAR#,
+			RECE_BANKNODENAME=#receBankNodeName:VARCHAR#
+		 where AM_APPLY_ID=#amApplyId:VARCHAR#
+	</update>
+
+	<update id="updateProcDateForAmBpAeEdit" parameterClass="amApply">
+		update AM_APPLY
+		set proc_date = #procDate:DATE#
+		where AM_APPLY_ID=#amApplyId:VARCHAR#
+	</update>
+
+	<delete id="deleteByPrimaryKey" parameterClass="amApply">
+		delete from AM_APPLY where AM_APPLY_ID = #amApplyId:VARCHAR#
+	</delete>
+
+	<delete id="deleteById" parameterClass="string">
+		delete from AM_APPLY where AM_APPLY_ID = #id:VARCHAR#
+	</delete>
+
+	<update id="setSumAmApplyIdNull" parameterClass="string">
+		update AM_APPLY set sum_am_apply_id= null where
+		sum_am_apply_id=#sumAmApplyId:VARCHAR#
+	</update>
+
+	<sql id="amApplyTableHead">select master.*</sql>
+
+	<select id="getAmApplyForAmBpAeEditList"
+		resultMap="amApplyResultForBiBalance"
+		parameterClass="elementCondition">
+		<include refid="amApplyTableHead" />
+		,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.EXT_MONEY1" />
+		,
+		<include refid="ElementName.EXT_MONEY2" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_apply MASTER where (CONTROL_TYPE=2 or control_type=9)
+		and IS_SUM_AM_APPLY=0
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmApplyForApplySum"
+		resultMap="amApplyResultForBiBalance"
+		parameterClass="elementCondition">
+		<include refid="amApplyTableHead" />,
+		<include refid="ElementName.BI_MONEY" />,
+		<include refid="ElementName.BI_BALANCE" />,
+		<include refid="ElementName.BI_PAY_SUM" />,
+		<include refid="ElementName.EXT_MONEY1" />,
+		<include refid="ElementName.EXT_MONEY2" />
+		 from am_apply MASTER where sum_am_apply_id is null and nd=#nd#
+		and is_valid='1'
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_AM_APPLY= #isSum#
+		</isNotNull>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmApplyByIdList"
+		resultMap="amApplyResultForBiBalance" parameterClass="Map">
+		<include refid="amApplyTableHead" />
+		,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.EXT_MONEY1" />
+		,
+		<include refid="ElementName.EXT_MONEY2" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+
+		from am_apply MASTER
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="amApplyIdList" open="("
+				close=")" conjunction="OR">
+				am_apply_id=#amApplyIdList[]#
+			</iterate>
+		</dynamic>
+		for update
+	</select>
+
+	<select id="getAmApplyForProvider"
+		resultMap="amApplyResultForBiBalance"
+		parameterClass="elementCondition">
+		<include refid="amApplyTableHead" />
+		,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.EXT_MONEY1" />
+		,
+		<include refid="ElementName.EXT_MONEY2" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_apply MASTER where CONTROL_TYPE=2 and IS_SUM_AM_APPLY=0
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmApplyForAmBpaeAuditList"
+		resultMap="amApplyResultForBiBalance"
+		parameterClass="elementCondition">
+		<include refid="amApplyTableHead" />,
+		<include refid="ElementName.BI_MONEY" />,
+		<include refid="ElementName.EXT_MONEY1" />,
+		<include refid="ElementName.EXT_MONEY2" />,
+		<include refid="ElementName.BI_BALANCE" />,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_apply master where (CONTROL_TYPE=2 or control_type=9)
+		and IS_SUM_AM_APPLY=0
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="WfCommonAudited.WfCommonAudited" />
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmApplyForAmPafpv" resultMap="amApplyResult"
+		parameterClass="elementCondition">
+		select master.* from am_apply MASTER where nd=#nd# and
+		a_status_code='3'
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE_LIKE" />
+		<isNotNull prepend="AND" property="isCreateVou">
+			is_create_vou=#isCreateVou#
+		</isNotNull>
+		<isNotNull prepend="AND" property="billType">
+			<isEqual property="billType" compareValue="1">
+				b_acc_id='9'
+			</isEqual>
+			<isEqual property="billType" compareValue="2">
+				control_type='3'
+			</isEqual>
+			<isEqual property="billType" compareValue="3">
+				<isNotNull prepend="" property="dataRuleCondiStr">
+					$dataRuleCondiStr$
+				</isNotNull>
+			</isEqual>
+			<isEqual property="billType" compareValue="4">
+				nvl(b_acc_id,0) !='9' and control_type !='3'
+				<isNotNull prepend="" property="dataRuleCondiStr">
+					$dataRuleCondiStr$
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmApplyForAmApplyQueryList" resultMap="amApplyResult"
+		parameterClass="elementCondition">
+		select master.*,0 dp_money,0 dp_Balance,0 dp_PaySum FROM
+		AM_APPLY MASTER WHERE MASTER.IS_SUM_AM_APPLY='0'
+		<isNotNull prepend="AND" property="nd">
+			MASTER.ND = #nd#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE like #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectCode">
+			PROJECT_CODE = #projectCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="orgCode">
+			ORG_CODE = #orgCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="inceptDocCode">
+			INCEPTDOC_CODE = #inceptDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+			SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="baccCode">
+			B_ACC_CODE like #baccCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="outlayCode">
+			OUTLAY_CODE like #outlayCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="payoutCode">
+			PAYOUT_CODE like #payoutCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="manageCode">
+			MANAGE_CODE like #manageCode#||'%'
+		</isNotNull>
+
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="draft">
+				a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="auditing">
+				(a_status_code='2' or a_status_code='4')and is_valid='1'
+			</isEqual>
+			<isEqual property="status"
+				compareValue="auditednocreatevou">
+				a_status_code='3' and is_create_vou='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="createdvou">
+				is_create_vou='1' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="receipt">
+				is_valid='1' AND (SELECT deal_state FROM am_voucher
+				WHERE am_voucher_id=MASTER.am_voucher_id)='3'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="updateAmApplyFieldValueById" parameterClass="Map">
+		update am_apply set $fieldName$ = #fieldValue# where am_apply_id
+		= #amApplyId#
+	</update>
+
+	<update id="updateAmApplyForUndo" parameterClass="Map">
+		update am_apply SET IS_VALID=#isValid#,A_STATUS_CODE='9' WHERE
+		am_apply_id = #amApplyId# AND IS_VALID='1'
+	</update>
+
+	<update id="updateAmApplyForAudit" parameterClass="amApply">
+		UPDATE AM_APPLY SET auditor_id=#auditorId:VARCHAR#,
+		auditor_name=#auditorName:VARCHAR#, a_date=#adate:DATE# WHERE
+		AM_APPLY_ID=#amApplyId:VARCHAR#
+	</update>
+
+	<update id="updateAmApplyForAfterUnAudit" parameterClass="String">
+		update AM_APPLY set AM_VOUCHER_ID = NULL,VOU_NO=null,
+		IS_CREATE_VOU = 0 WHERE IS_CREATE_VOU='1' AND IS_VALID='1' and
+		AM_APPLY_ID = #amApplyId:VARCHAR#
+	</update>
+
+	<resultMap id="amApplyResultForUpdate" class="amApply">
+		<result column="AM_APPLY_ID" property="amApplyId"
+			jdbcType="VARCHAR" />
+		<result column="INPUT_GROUP_ID" property="inputGroupId"
+			jdbcType="VARCHAR" />
+		<result column="AM_VOUCHER_ID" property="amVoucherId"
+			jdbcType="VARCHAR" />
+		<result column="AM_AP_BILL_ID" property="amApBillId"
+			jdbcType="VARCHAR" />
+		<result column="BI_BALANCE_ID" property="biBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="DP_BALANCE_ID" property="dpBalanceId"
+			jdbcType="VARCHAR" />
+		<result column="IS_SUM_AM_APPLY" property="isSumAmApply"
+			jdbcType="CHAR" />
+		<result column="SUM_AM_APPLY_ID" property="sumAmApplyId"
+			jdbcType="VARCHAR" />
+		<result column="ORG_MONEY" property="orgMoney"
+			jdbcType="DECIMAL" />
+		<result column="CUR_MONEY" property="curMoney"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<select id="getAmApplyByAmApplyId"
+		resultMap="amApplyResultForUpdate" parameterClass="string">
+		select * from am_apply where AM_APPLY_ID=#amApplyId:VARCHAR#
+	</select>
+
+	<parameterMap id="SP_AM_CREATE_AMVOUCHER_MAP"
+		class="java.util.HashMap">
+		<parameter property="coCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="amApplyIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="amVoucherIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="vouNos" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="inputGroupIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="draftIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="svNd" jdbcType="INTEGER"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="svBillTypeCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="userId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="userName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payAcccode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payAccname" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankAcccode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankNo" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBanknodeCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBanknodeName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="createDate" jdbcType="DATE"
+			javaType="java.util.Date" mode="IN" />
+		<parameter property="isSum" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="rtnStr" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="amApplyCreateAmVoucher"
+		parameterMap="SP_AM_CREATE_AMVOUCHER_MAP">
+		{call
+		SP_AM_CREATE_AMVOUCHER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+
+	<insert id="insertAmApply" parameterClass="amApply">
+		insert into AM_APPLY ( AM_APPLY_ID, INPUT_GROUP_ID,
+		AM_VOUCHER_ID, AM_AP_BILL_ID, BI_BALANCE_ID, DP_BALANCE_ID,
+		IS_SUM_AM_APPLY, SUM_AM_APPLY_ID, BI_TARGET_CODE, ND, PROC_DATE,
+		INPUTOR_ID, CDATE, OPERATION_TYPE_CODE, PAYTYPE_CODE, PRE_MONTH,
+		BAL_MODE_CODE, ORG_CODE, CO_CODE, B_ACC_ID, B_ACC_CODE,
+		OUTLAY_CODE, PROJECT_TYPE_CODE, PROJECT_CODE, FUND_CODE,
+		ORIGIN_CODE, PAYOUT_CODE, MANAGE_CODE, INCEPTDOC_CODE,
+		SENDDOC_TYPE_CODE, SENDDOC_CODE, REMARK, ORG_MONEY, CUR_MONEY,
+		RECE_CODE, RECE_ACCCODE, RECE_ACCNAME, RECE_BANKNODECODE,
+		RECE_BANKNO, RECE_BANKNODENAME, RECE_BANKACCCODE,
+		PROCESS_INST_ID, AUDITOR_ID, A_DATE, A_OPINION, A_STATUS_CODE,
+		AN_STATUS, WF_CONTENT_BRIEF, CANCELER_ID, CANCEL_DATE,
+		CANCEL_OPINION, FILENAME, CONTROL_TYPE, FILENAME_BLOBID,
+		D_ATTR1, D_ATTR2, D_ATTR3, D_ATTR4, D_ATTR5,STAMP, INPUTOR_NAME,
+		AUDITOR_NAME, VOU_NO, AM_VOUCHER_ID_BAK, VOU_NO_BAK,
+		CONTRACT_CODE, AM_MONEY1, AM_MONEY2, AM_MONEY3, AM_MONEY4,
+		PROJECT_TOTAL_MONEY, PROJECT_DOC,
+		PROJECT_PLAN_NAME,RECE_BANKREMARK,PROJECT_DETAIL_CODE,
+		PAY_ACCCODE, PAY_ACCNAME, PAY_BANKNODECODE, PAY_BANKNO,
+		PAY_BANKNODENAME, PAY_BANKACCCODE ) values (#amApplyId:VARCHAR#,
+		#inputGroupId:VARCHAR#, #amVoucherId:VARCHAR#,
+		#amApBillId:VARCHAR#, #biBalanceId:VARCHAR#,
+		#dpBalanceId:VARCHAR#, #isSumAmApply:CHAR#,
+		#sumAmApplyId:VARCHAR#, #biTargetCode:VARCHAR#, #nd:DECIMAL#,
+		#procDate:DATE#, #inputorId:VARCHAR#, #cdate:DATE#,
+		#operationTypeCode:VARCHAR#, #paytypeCode:VARCHAR#,
+		#preMonth:DECIMAL#, #balModeCode:VARCHAR#, #orgCode:VARCHAR#,
+		#coCode:VARCHAR#, #baccId:VARCHAR#, #baccCode:VARCHAR#,
+		#outlayCode:VARCHAR#, #projectTypeCode:VARCHAR#,
+		#projectCode:VARCHAR#, #fundCode:VARCHAR#, #originCode:VARCHAR#,
+		#payoutCode:VARCHAR#, #manageCode:VARCHAR#,
+		#inceptDocCode:VARCHAR#, #sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#, #remark:VARCHAR#, #orgMoney:DECIMAL#,
+		#curMoney:DECIMAL#, #receCode:VARCHAR#, #receAccCode:VARCHAR#,
+		#receAccName:VARCHAR#, #receBankNodeCode:VARCHAR#,
+		#receBankNo:VARCHAR#, #receBankNodeName:VARCHAR#,
+		#receBankAccCode:VARCHAR#, #processInstId:DECIMAL#,
+		#auditorId:VARCHAR#, #adate:DATE#, #aopinion:VARCHAR#,
+		#astatusCode:VARCHAR#, #anStatus:VARCHAR#,
+		#wfContentBrief:VARCHAR#, #cancelerId:VARCHAR#,
+		#cancelDate:DATE#, #cancelOpinion:VARCHAR#,
+		#filename:VARCHAR#,#controlType#, #filenameBlobid:VARCHAR#,
+		#dattr1:VARCHAR#, #dattr2:VARCHAR#, #dattr3:VARCHAR#,
+		#dattr4:VARCHAR#, #dattr5:VARCHAR#, #stamp:DECIMAL#,
+		#inputorName:VARCHAR#, #auditorName:VARCHAR#, #vouNo:VARCHAR#,
+		#amVoucherIdBak:VARCHAR#, #vouNoBak:VARCHAR#,
+		#contractCode:VARCHAR#, #amMoney1:DECIMAL#, #amMoney2:DECIMAL#,
+		#amMoney3:DECIMAL#, #amMoney4:DECIMAL#,
+		#projectTotalMoney:DECIMAL#, #projectDoc:VARCHAR#,
+		#projectPlanName:VARCHAR#,#receBankRemark:VARCHAR#,#projectDetailCode:VARCHAR#,
+		#payAccCode:VARCHAR#, #payAccName:VARCHAR#,
+		#payBankNodeCode:VARCHAR#, #payBankNo:VARCHAR#,
+		#payBankNodeName:VARCHAR#, #payBankAccCode:VARCHAR# )
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterClass="amApply">
+		update AM_APPLY set INPUT_GROUP_ID = #inputGroupId:VARCHAR#,
+		AM_VOUCHER_ID = #amVoucherId:VARCHAR#, AM_AP_BILL_ID =
+		#amApBillId:VARCHAR#, BI_BALANCE_ID = #biBalanceId:VARCHAR#,
+		DP_BALANCE_ID = #dpBalanceId:VARCHAR#, IS_SUM_AM_APPLY =
+		#isSumAmApply:CHAR#, SUM_AM_APPLY_ID = #sumAmApplyId:VARCHAR#,
+		BI_TARGET_CODE = #biTargetCode:VARCHAR#, CREATE_TYPE =
+		#createType:CHAR#, CONTROL_TYPE = #controlType:CHAR#, DEC_TYPE =
+		#decType:CHAR#, IS_CREATE_VOU = #isCreateVou:CHAR#,
+		AM_ADJUST_CODE = #amAdjustCode:VARCHAR#, ND = #nd:DECIMAL#,
+		PROC_DATE = #procDate:DATE#, INPUTOR_ID = #inputorId:VARCHAR#,
+		CDATE = #cdate:DATE#, OPERATION_TYPE_CODE =
+		#operationTypeCode:VARCHAR#, PAYTYPE_CODE =
+		#paytypeCode:VARCHAR#, PRE_MONTH = #preMonth:DECIMAL#,
+		BAL_MODE_CODE = #balModeCode:VARCHAR#, ORG_CODE =
+		#orgCode:VARCHAR#, CO_CODE = #coCode:VARCHAR#, B_ACC_ID =
+		#baccId:VARCHAR#, B_ACC_CODE = #baccCode:VARCHAR#, OUTLAY_CODE =
+		#outlayCode:VARCHAR#, PROJECT_TYPE_CODE =
+		#projectTypeCode:VARCHAR#, PROJECT_CODE = #projectCode:VARCHAR#,
+		PROJECT_DETAIL_CODE = #projectDetailCode:VARCHAR#, FUND_CODE =
+		#fundCode:VARCHAR#, ORIGIN_CODE = #originCode:VARCHAR#,
+		PAYOUT_CODE = #payoutCode:VARCHAR#, MANAGE_CODE =
+		#manageCode:VARCHAR#, INCEPTDOC_CODE = #inceptDocCode:VARCHAR#,
+		SENDDOC_TYPE_CODE = #sendDocTypeCode:VARCHAR#, SENDDOC_CODE =
+		#sendDocCode:VARCHAR#, REMARK = #remark:VARCHAR#, ORG_MONEY =
+		#orgMoney:DECIMAL#, CUR_MONEY = #curMoney:DECIMAL#, RECE_CODE =
+		#receCode:VARCHAR#, RECE_ACCCODE = #receAccCode:VARCHAR#,
+		RECE_ACCNAME = #receAccName:VARCHAR#, RECE_BANKNODECODE =
+		#receBankNodeCode:VARCHAR#, RECE_BANKNO = #receBankNo:VARCHAR#,
+		RECE_BANKNODENAME = #receBankNodeName:VARCHAR#, RECE_BANKACCCODE
+		= #receBankAccCode:VARCHAR#, PROCESS_INST_ID =
+		#processInstId:DECIMAL#, AUDITOR_ID = #auditorId:VARCHAR#,
+		A_DATE = #adate:DATE#, A_OPINION = #aopinion:VARCHAR#,
+		A_STATUS_CODE = #astatusCode:VARCHAR#, AN_STATUS =
+		#anStatus:VARCHAR#, WF_CONTENT_BRIEF = #wfContentBrief:VARCHAR#,
+		IS_VALID = #isValid:CHAR#, CANCELER_ID = #cancelerId:VARCHAR#,
+		CANCEL_DATE = #cancelDate:DATE#, CANCEL_OPINION =
+		#cancelOpinion:VARCHAR#, FILENAME = #filename:VARCHAR#,
+		FILENAME_BLOBID = #filenameBlobid:VARCHAR#, D_ATTR1 =
+		#dattr1:VARCHAR#, D_ATTR2 = #dattr2:VARCHAR#, D_ATTR3 =
+		#dattr3:VARCHAR#, D_ATTR4 = #dattr4:VARCHAR#, D_ATTR5 =
+		#dattr5:VARCHAR#, PRINT_TIMES = #printTimes:DECIMAL#, STAMP =
+		#stamp:DECIMAL#, INPUTOR_NAME = #inputorName:VARCHAR#,
+		AUDITOR_NAME = #auditorName:VARCHAR#, VOU_NO = #vouNo:VARCHAR#,
+		AM_VOUCHER_ID_BAK = #amVoucherIdBak:VARCHAR#, VOU_NO_BAK =
+		#vouNoBak:VARCHAR#, CONTRACT_CODE = #contractCode:VARCHAR#,
+		AM_MONEY1 = #amMoney1:DECIMAL#, AM_MONEY2 = #amMoney2:DECIMAL#,
+		AM_MONEY3 = #amMoney3:DECIMAL#, AM_MONEY4 = #amMoney4:DECIMAL#,
+		PROJECT_TOTAL_MONEY = #projectTotalMoney:DECIMAL#, PROJECT_DOC =
+		#projectDoc:VARCHAR#, PROJECT_PLAN_NAME =
+		#projectPlanName:VARCHAR#,
+		RECE_BANKREMARK=#receBankRemark:VARCHAR# , PAY_ACCCODE =
+		#receAccCode:VARCHAR#, PAY_ACCNAME = #receAccName:VARCHAR#,
+		PAY_BANKNODECODE = #receBankNodeCode:VARCHAR#, PAY_BANKNO =
+		#receBankNo:VARCHAR#, PAY_BANKNODENAME =
+		#receBankNodeName:VARCHAR#, RECE_BANKACCCODE =
+		#receBankAccCode:VARCHAR#, PAY_ACCCODE = #payAccCode:VARCHAR#,
+		PAY_ACCNAME = #payAccName:VARCHAR#, PAY_BANKNODECODE =
+		#payBankNodeCode:VARCHAR#, PAY_BANKNO = #payBankNo:VARCHAR#,
+		PAY_BANKNODENAME = #payBankNodeName:VARCHAR#, PAY_BANKACCCODE =
+		#payBankAccCode:VARCHAR#, where AM_APPLY_ID =
+		#amApplyId:VARCHAR#
+	</update>
+
+	<update id="updateAmApplyByPrimaryKey" parameterClass="amApply">
+		update AM_APPLY
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="inputGroupId">
+				INPUT_GROUP_ID = #inputGroupId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="amVoucherId">
+				AM_VOUCHER_ID = #amVoucherId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="amApBillId">
+				AM_AP_BILL_ID = #amApBillId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="biBalanceId">
+				BI_BALANCE_ID = #biBalanceId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dpBalanceId">
+				DP_BALANCE_ID = #dpBalanceId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isSumAmApply">
+				IS_SUM_AM_APPLY = #isSumAmApply:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sumAmApplyId">
+				SUM_AM_APPLY_ID = #sumAmApplyId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="biTargetCode">
+				BI_TARGET_CODE = #biTargetCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="createType">
+				CREATE_TYPE = #createType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="controlType">
+				CONTROL_TYPE = #controlType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="decType">
+				DEC_TYPE = #decType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isCreateVou">
+				IS_CREATE_VOU = #isCreateVou:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="amAdjustCode">
+				AM_ADJUST_CODE = #amAdjustCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="nd">
+				ND = #nd:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="procDate">
+				PROC_DATE = #procDate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="inputorId">
+				INPUTOR_ID = #inputorId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cdate">
+				CDATE = #cdate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="operationTypeCode">
+				OPERATION_TYPE_CODE = #operationTypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="paytypeCode">
+				PAYTYPE_CODE = #paytypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="preMonth">
+				PRE_MONTH = #preMonth:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="balModeCode">
+				BAL_MODE_CODE = #balModeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="orgCode">
+				ORG_CODE = #orgCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="coCode">
+				CO_CODE = #coCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="baccId">
+				B_ACC_ID = #baccId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="baccCode">
+				B_ACC_CODE = #baccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outlayCode">
+				OUTLAY_CODE = #outlayCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="projectTypeCode">
+				PROJECT_TYPE_CODE = #projectTypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="projectCode">
+				PROJECT_CODE = #projectCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="fundCode">
+				FUND_CODE = #fundCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="originCode">
+				ORIGIN_CODE = #originCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="payoutCode">
+				PAYOUT_CODE = #payoutCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="manageCode">
+				MANAGE_CODE = #manageCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="inceptDocCode">
+				INCEPTDOC_CODE = #inceptDocCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sendDocTypeCode">
+				SENDDOC_TYPE_CODE = #sendDocTypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sendDocCode">
+				SENDDOC_CODE = #sendDocCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+				REMARK = #remark:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="orgMoney">
+				ORG_MONEY = #orgMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="curMoney">
+				CUR_MONEY = #curMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="receCode">
+				RECE_CODE = #receCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receAccCode">
+				RECE_ACCCODE = #receAccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receAccName">
+				RECE_ACCNAME = #receAccName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNodeCode">
+				RECE_BANKNODECODE = #receBankNodeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNo">
+				RECE_BANKNO = #receBankNo:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNodeName">
+				RECE_BANKNODENAME = #receBankNodeName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankAccCode">
+				RECE_BANKACCCODE = #receBankAccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="processInstId">
+				PROCESS_INST_ID = #processInstId:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="auditorId">
+				AUDITOR_ID = #auditorId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="adate">
+				A_DATE = #adate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="aopinion">
+				A_OPINION = #aopinion:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="astatusCode">
+				A_STATUS_CODE = #astatusCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="anStatus">
+				AN_STATUS = #anStatus:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="wfContentBrief">
+				WF_CONTENT_BRIEF = #wfContentBrief:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isValid">
+				IS_VALID = #isValid:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelerId">
+				CANCELER_ID = #cancelerId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelDate">
+				CANCEL_DATE = #cancelDate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelOpinion">
+				CANCEL_OPINION = #cancelOpinion:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="filename">
+				FILENAME = #filename:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="filenameBlobid">
+				FILENAME_BLOBID = #filenameBlobid:VARCHAR#
+			</isNotNull>
+			<isNull prepend="," property="filename">
+				FILENAME = null
+			</isNull>
+			<isNull prepend="," property="filenameBlobid">
+				FILENAME_BLOBID = null
+			</isNull>
+			<isNotNull prepend="," property="dattr1">
+				D_ATTR1 = #dattr1:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr2">
+				D_ATTR2 = #dattr2:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr3">
+				D_ATTR3 = #dattr3:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr4">
+				D_ATTR4 = #dattr4:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr5">
+				D_ATTR5 = #dattr5:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="printTimes">
+				PRINT_TIMES = #printTimes:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="stamp">
+				STAMP = #stamp:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="inputorName">
+				INPUTOR_NAME = #inputorName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="auditorName">
+				AUDITOR_NAME = #auditorName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="vouNo">
+				VOU_NO = #vouNo:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="amVoucherIdBak">
+				AM_VOUCHER_ID_BAK = #amVoucherIdBak:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="vouNoBak">
+				VOU_NO_BAK = #vouNoBak:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="contractCode">
+				CONTRACT_CODE = #contractCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="amMoney1">
+				AM_MONEY1 = #amMoney1:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="amMoney2">
+				AM_MONEY2 = #amMoney2:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="amMoney3">
+				AM_MONEY3 = #amMoney3:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="amMoney4">
+				AM_MONEY4 = #amMoney4:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="projectTotalMoney">
+				PROJECT_TOTAL_MONEY = #projectTotalMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="projectDoc">
+				PROJECT_DOC = #projectDoc:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="projectPlanName">
+				PROJECT_PLAN_NAME = #projectPlanName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankRemark">
+				RECE_BANKREMARK=#receBankRemark:VARCHAR#
+			</isNotNull>
+		</dynamic>
+		where AM_APPLY_ID = #amApplyId:VARCHAR#
+	</update>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE AM_APPLY SET PRINT_TIMES=PRINT_TIMES+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="amApplyIdList" open="("
+				close=")" conjunction="OR">
+				AM_APPLY_ID=#amApplyIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<update id="updateSumAmApplyId" parameterClass="amApply">
+		update am_apply set sum_am_apply_id= #sumAmApplyId:VARCHAR#
+		where am_apply_id=#amApplyId:VARCHAR#
+	</update>
+
+	<update id="updateAmApplyAfterSum" parameterClass="Map">
+		UPDATE am_apply SET IS_CREATE_VOU='1',
+				AM_VOUCHER_ID=#amVoucherId:VARCHAR#,
+				VOU_NO=#vouNo:VARCHAR#,
+	            AM_VOUCHER_ID_BAK=#amVoucherId:VARCHAR#,
+	            VOU_NO_BAK=#vouNo:VARCHAR#,
+	            STAMP=nvl(STAMP,1)+1
+         WHERE am_apply_id=#amApplyId:VARCHAR#
+		        AND is_create_vou='0'
+		        AND a_status_code='3'
+	</update>
+
+	<select id="getAmApplyBySumAmApplyId"
+		resultMap="amApplyResultForBiBalance" parameterClass="Map">
+		<include refid="amApplyTableHead" />
+		,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.EXT_MONEY1" />
+		,
+		<include refid="ElementName.EXT_MONEY2" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_apply master where sum_am_apply_id=#sumAmApplyId#
+	</select>
+
+	<select id="getAmApplyBySumAmApplyIdForPrint"
+		resultMap="amApplyResultForPrint" parameterClass="Map">
+		<include refid="amApplyTableHead" />
+		,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		,
+		<include refid="ElementName.EXT_MONEY1" />
+		,
+		<include refid="ElementName.EXT_MONEY2" />
+		,
+		<include refid="ElementName.INCEPTDOC_NAME" />
+		,
+		<include refid="ElementName.SENDDOC_NAME" />
+		,
+		<include refid="ElementName.CO_NAME" />
+		,
+		<include refid="ElementName.ORG_NAME" />
+		,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		<include refid="ElementName.B_ACC_NAME" />
+		,
+		<include refid="ElementName.OUTLAY_NAME" />
+		,
+		<include refid="ElementName.PROJECT_NAME" />
+		,
+		<include refid="ElementName.PROJECT_DETAIL_NAME" />
+		,
+		<include refid="ElementName.MANAGE_NAME" />
+		,
+		<include refid="ElementName.PAYOUT_NAME" />
+		,
+		<include refid="ElementName.PAYTYPE_NAME" />
+		,
+		<include refid="ElementName.ORIGIN_NAME" />
+		,
+		<include refid="ElementName.OPERATION_TYPE_NAME" />
+		,
+		<include refid="ElementName.BAL_MODE_NAME" />
+		,
+		<include refid="ElementName.D_ATTR1_NAME" />
+		,
+		<include refid="ElementName.D_ATTR2_NAME" />
+		,
+		<include refid="ElementName.D_ATTR3_NAME" />
+		,
+		<include refid="ElementName.D_ATTR4_NAME" />
+		,
+		<include refid="ElementName.D_ATTR5_NAME" />
+		from am_apply master
+		<dynamic prepend="WHERE">
+		  <iterate prepend="AND" property="sumAmApplyIdList"
+           open="(" close=")" conjunction="OR">
+           sum_am_apply_id=#sumAmApplyIdList[]#
+          </iterate>
+       </dynamic>
+	</select>
+
+
+</sqlMap>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<!DOCTYPE sqlMap      
+
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="ZcEbDaiBian">
+
+	<typeAlias alias="ZcEbDaiBian" type="com.ufgov.zc.common.zc.model.ZcEbDaibian" />
+
+	<typeAlias alias="elementCondition" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap class="ZcEbDaiBian" id="ZcEbDaiBianResult">
+
+		<result column="DAI_BIAN_USER" property="daiBianUser" jdbcType="VARCHAR" />
+
+		<result column="CO_USER" property="coUser" jdbcType="VARCHAR" />
+
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />	
+
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />	
+
+		<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />	
+
+		<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />	
+
+		<result column="EMP_NAME" property="empName" jdbcType="VARCHAR" />	
+		
+		<result column="POSI_CODE" property="posiCode" jdbcType="VARCHAR" />	
+		
+		<result column="ORG_POSI_id" property="orgPosiCode" jdbcType="VARCHAR" />
+		
+
+	</resultMap>
+
+	<select id="getCompanyByDaibian" resultMap="ZcEbDaiBianResult" parameterClass="elementCondition">
+
+		select t.*, m.co_name, o.org_code, o.org_name,e.emp_name,ep.posi_code,op.org_posi_id
+	      from ZC_EB_DAIBIAN t, ma_company m, as_org o,as_emp e,as_emp_position ep,as_org_position op
+	     where m.co_code = t.co_code
+	       and m.nd = #nd#
+	       and m.nd = o.nd
+	       and o.co_code = '000'
+	       and m.f_org_code = o.org_code
+	       and t.dai_bian_user = #zcText0#
+	       and t.co_user=e.emp_code
+	       and e.emp_code=ep.emp_code
+   		   and m.nd=ep.nd
+	       and ep.posi_code=op.posi_code
+	       and ep.co_code=op.co_code
+	       and ep.nd=op.nd
+	       <isNotNull prepend="and" property="zcText1">
+	       	t.co_code=#zcText1#
+	       </isNotNull>
+	    order by t.co_code
+
+	</select>	
+
+</sqlMap>
+

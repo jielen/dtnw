@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpDzCoResult" >
+  <typeAlias alias="ecDto" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="cpDzCoResult" class="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+    <result property="coCode" column="co_code" />
+	<result property="coName" column="co_name" />
+	<result property="dzTimes" column="DZ_TIMES" />
+	<result property="dzMonth" column="DZ_MONTH" />
+	<result property="dzDate" column="DZ_DATE" />
+	<result property="dzPerson" column="DZ_PERSON" />
+	<result property="dzResult" column="DZ_RESULT" />
+	<result property="dzRemark" column="DZ_REMARK" />
+	<result property="dzNd" column="DZ_ND" />
+	<result property="dzPayoutMoney" column="DZ_PAYOUT_MONEY" />
+	<result property="dzBalanceMoney" column="DZ_BALANCE_MONEY" />
+
+  </resultMap>
+
+	<select id="getCpDzCoResultQueryList" resultMap="cpDzCoResult" parameterClass="ecDto">
+		SELECT * FROM DZ_CO_RESULT
+		<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			to_date(to_char(DZ_DATE,'yyyy-mm-dd'),'yyyy-mm-dd')
+			 = #startDate:DATE#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="coCode" >
+			co_code like #coCode#||'%'
+		</isNotNull>
+
+		<isNotEqual prepend="AND" property="month" compareValue="0">
+			DZ_MONTH = #month#
+		</isNotEqual>
+		</dynamic>
+	</select>
+	<resultMap id="dzResultMap" class="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+	 	<result property="dzMonth"  column="DZ_MONTH" />
+	    <result property="dzResult" column="DZ_RESULT" />
+	 </resultMap>
+	<select id="getCpDzCoResultMap" resultMap="dzResultMap" parameterClass="ecDto">
+		SELECT DZ_MONTH,DZ_RESULT FROM DZ_CO_RESULT where DZ_ND=#nd#
+		<isNotNull prepend="AND" property="coCode" >
+			co_code = #coCode#
+		</isNotNull>
+	</select>
+	
+	<select id="getDzMonth" resultClass="int" parameterClass="ecDto">
+		SELECT DISTINCT extract(month from proc_date) MONTH FROM $tableName$ WHERE  nd =#nd#  and is_valid='1'
+		<isNotNull prepend="AND" property="coCode" >
+			co_code = #coCode#
+		</isNotNull>
+		<!--		
+		<isNotNull prepend="AND" property="paytypeCode" >
+			paytype_code = #paytypeCode#
+		</isNotNull>-->
+		 ORDER BY MONTH DESC
+	</select>
+
+</sqlMap>

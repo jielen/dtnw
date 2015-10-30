@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpInterfaceTempchx" >
+  <resultMap id="CpInterfaceCollectTempchxResult" class="com.ufgov.zc.common.cp.model.CpInterfaceCollectTempchx" >
+    <result column="CHECKACCOUNTID" property="checkaccountid" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_CODE" property="payBanknodeCode" jdbcType="VARCHAR" />
+    <result column="SEQU" property="sequ" jdbcType="DECIMAL" />
+    <result column="PTYPE" property="ptype" jdbcType="DECIMAL" />
+    <result column="PAYTYPE_CODE" property="paytypeCode" jdbcType="VARCHAR" />
+    <result column="PAYTYPE_NAME" property="paytypeName" jdbcType="VARCHAR" />
+    <result column="BEGINDATE" property="begindate" jdbcType="VARCHAR" />
+    <result column="ENDDATE" property="enddate" jdbcType="VARCHAR" />
+    <result column="EID" property="eid" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="EID_NAME" property="eidName" jdbcType="VARCHAR" />
+    <result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+    <result column="BID" property="bid" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE_1" property="baccCode1" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE_2" property="baccCode2" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE_3" property="baccCode3" jdbcType="VARCHAR" />
+    <result column="BID_NAME" property="bidName" jdbcType="VARCHAR" />
+    <result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR" />
+    <result column="IID" property="iid" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="IID_NAME" property="iidName" jdbcType="VARCHAR" />
+    <result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
+    <result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+    <result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR" />
+    <result column="DWQKWH" property="dwqkwh" jdbcType="VARCHAR" />
+    <result column="SENDDOC_NAME" property="senddocName" jdbcType="VARCHAR" />
+    <result column="TOTALMONEY" property="totalmoney" jdbcType="DECIMAL" />
+    <result column="USEDMONEY" property="usedmoney" jdbcType="DECIMAL" />
+    <result column="DIFFERFLAG" property="differflag" jdbcType="DECIMAL" />
+    <result column="PAY_BANKACCOUNT" property="payBankaccount" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_NAME" property="payBanknodeName" jdbcType="VARCHAR" />
+    <result column="CZ_COLLECT_SUM" property="czCollectSum" jdbcType="DECIMAL" />
+    <result column="CZ_PAYOUT_SUM" property="czPayoutSum" jdbcType="DECIMAL" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_DATE" property="accountDate" jdbcType="DATE" />
+    <result column="BANK_DATE" property="bankDate" jdbcType="DATE" />
+    <result column="IMPORT_DATE" property="importDate" jdbcType="DATE" />
+    <result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR" />
+    <result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR" />
+
+
+  </resultMap>
+
+  <resultMap id="CpInterfaceAmountCheckResult" class="com.ufgov.zc.common.cp.model.CpInterfaceAmountTempchx" >
+    <result column="SIGN" property="sign" jdbcType="VARCHAR" />
+    <result column="CHECKACCOUNTID" property="checkAccountId" jdbcType="VARCHAR" />
+    <result column="MONTH" property="month" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_CODE" property="payBanknodeCode" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_NAME" property="payBanknodeName" jdbcType="VARCHAR" />
+    <result column="EID" property="eid" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="BID" property="bid" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="IID" property="iid" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="EID_NAME" property="eidName" jdbcType="VARCHAR" />
+    <result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+    <result column="BID_NAME" property="bidName" jdbcType="VARCHAR" />
+    <result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR" />
+    <result column="IID_NAME" property="iidName" jdbcType="VARCHAR" />
+    <result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
+    <result column="DWQKWH" property="dwqkwh" jdbcType="VARCHAR" />
+    <result column="SENDDOC_CODE" property="senddocCode" jdbcType="VARCHAR" />
+    <result column="SENDDOC_NAME" property="senddocName" jdbcType="VARCHAR" />
+    <result column="MONEY" property="money" jdbcType="DECIMAL" />
+    <result column="CZ_AMOUNT_SUM" property="czAmountSum" jdbcType="DECIMAL" />
+    <result column="DID" property="did" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="MID" property="mid" jdbcType="VARCHAR" />
+    <result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR" />
+    <result column="PID" property="pid" jdbcType="VARCHAR" />
+    <result column="PAYOUT_CODE" property="payoutCode" jdbcType="VARCHAR" />
+    <result column="BPID" property="bpid" jdbcType="VARCHAR" />
+    <result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+    <result column="BUDGETSRCID" property="budgetsrcid" jdbcType="VARCHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="BTYPEID" property="btypeid" jdbcType="VARCHAR" />
+    <result column="DID_NAME" property="didName" jdbcType="VARCHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="MID_NAME" property="midName" jdbcType="VARCHAR" />
+    <result column="FUND_NAME" property="fundName" jdbcType="VARCHAR" />
+    <result column="PID_NAME" property="pidName" jdbcType="VARCHAR" />
+    <result column="PAYOUT_NAME" property="payoutName" jdbcType="VARCHAR" />
+    <result column="BPID_NAME" property="bpidName" jdbcType="VARCHAR" />
+    <result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR" />
+    <result column="BUDGETSRCNAME" property="budgetsrcname" jdbcType="VARCHAR" />
+    <result column="BTYPENAME" property="btypename" jdbcType="VARCHAR" />
+    <result column="DIFFERFLAG" property="differflag" jdbcType="DECIMAL" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_DATE" property="accountDate" jdbcType="TIMESTAMP" />
+    <result column="BEGINDATE" property="begindate" jdbcType="VARCHAR" />
+    <result column="ENDDATE" property="enddate" jdbcType="VARCHAR" />
+    <result column="PLAN_DATE" property="planDate" jdbcType="VARCHAR" />
+    <result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR" />
+    <result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <resultMap id="CpInterfacePayoutCheckResult" class="com.ufgov.zc.common.cp.model.CpInterfacePayoutTempchx" >
+    <result column="ANUMBER" property="anumber" jdbcType="VARCHAR" />
+    <result column="CHECKACCOUNTID" property="checkAccountId" jdbcType="VARCHAR" />
+    <result column="PTYPE" property="ptype" jdbcType="DECIMAL" />
+    <result column="PAYTYPE_CODE" property="paytypeCode" jdbcType="VARCHAR" />
+    <result column="PAYTYPE_NAME" property="paytypeName" jdbcType="VARCHAR" />
+    <result column="INPUTDATE" property="inputdate" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_CODE" property="payBanknodeCode" jdbcType="VARCHAR" />
+    <result column="PAY_BANKNODE_NAME" property="payBanknodeName" jdbcType="VARCHAR" />
+    <result column="EID" property="eid" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="BID" property="bid" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="IID" property="iid" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="EID_NAME" property="eidName" jdbcType="VARCHAR" />
+    <result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+    <result column="BID_NAME" property="bidName" jdbcType="VARCHAR" />
+    <result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR" />
+    <result column="IID_NAME" property="iidName" jdbcType="VARCHAR" />
+    <result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
+    <result column="DWQKWH" property="dwqkwh" jdbcType="VARCHAR" />
+    <result column="SENDDOC_CODE" property="senddocCode" jdbcType="VARCHAR" />
+    <result column="SENDDOC_NAME" property="senddocName" jdbcType="VARCHAR" />
+    <result column="MONEY" property="money" jdbcType="DECIMAL" />
+    <result column="CZ_PAYOUT_SUM" property="czPayoutSum" jdbcType="DECIMAL" />
+    <result column="DID" property="did" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="MID" property="mid" jdbcType="VARCHAR" />
+    <result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR" />
+    <result column="PID" property="pid" jdbcType="VARCHAR" />
+    <result column="PAYOUT_CODE" property="payoutCode" jdbcType="VARCHAR" />
+    <result column="BPID" property="bpid" jdbcType="VARCHAR" />
+    <result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+    <result column="BUDGETSRCID" property="budgetsrcid" jdbcType="VARCHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="BTYPEID" property="btypeid" jdbcType="VARCHAR" />
+    <result column="DID_NAME" property="didName" jdbcType="VARCHAR" />
+    <result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+    <result column="MID_NAME" property="midName" jdbcType="VARCHAR" />
+    <result column="FUND_NAME" property="fundName" jdbcType="VARCHAR" />
+    <result column="PID_NAME" property="pidName" jdbcType="VARCHAR" />
+    <result column="PAYOUT_NAME" property="payoutName" jdbcType="VARCHAR" />
+    <result column="BPID_NAME" property="bpidName" jdbcType="VARCHAR" />
+    <result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR" />
+    <result column="BUDGETSRCNAME" property="budgetsrcname" jdbcType="VARCHAR" />
+    <result column="BTYPENAME" property="btypename" jdbcType="VARCHAR" />
+    <result column="PURPOSE" property="purpose" jdbcType="VARCHAR" />
+    <result column="DIFFERFLAG" property="differflag" jdbcType="DECIMAL" />
+    <result column="MARK" property="mark" jdbcType="VARCHAR" />
+    <result column="PAY_ACC_CODE" property="payAccCode" jdbcType="VARCHAR" />
+    <result column="CLEAR_DATE" property="clearDate" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_DATE" property="accountDate" jdbcType="TIMESTAMP" />
+    <result column="BANK_DATE" property="bankDate" jdbcType="TIMESTAMP" />
+    <result column="IMPORT_DATE" property="importDate" jdbcType="TIMESTAMP" />
+    <result column="BEGINDATE" property="begindate" jdbcType="VARCHAR" />
+    <result column="ENDDATE" property="enddate" jdbcType="VARCHAR" />
+    <result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR" />
+    <result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR" />
+  </resultMap>
+
+	<select id="getCpInterfaceCollectTempchx" resultMap="CpInterfaceCollectTempchxResult" parameterClass="map">
+		select * from CP_INTERFACE_COLLECT_TEMPCHX
+		where PAYTYPE_CODE = #paytypeCode#
+		<isNotNull prepend="AND" property="payBankCode">
+			PAY_BANK_CODE =#payBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+					begindate=#startDate# and enddate=#endDate#
+			</isNotNull>
+	  	</isNotNull>
+		<iterate prepend="AND" property="differflagList" open="(" close=")" conjunction="or">
+			DIFFERFLAG = #differflagList[]#
+		</iterate>
+		order by bank_date, differflag
+	</select>
+
+	<select id="getCpInterfaceAmountTempchx" resultMap="CpInterfaceAmountCheckResult" parameterClass="map">
+		select * from CP_INTERFACE_AMOUNT_CHECK
+		where 1=1
+		<isNotNull prepend="AND" property="payBankCode">
+			PAY_BANK_CODE =#payBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+					to_date(PLAN_DATE,'YYYY-MM-DD') BETWEEN #startDate:DATE# AND #endDate:DATE#
+			</isNotNull>
+	  	</isNotNull>
+		<iterate prepend="AND" property="differflagList" open="(" close=")" conjunction="or">
+			DIFFERFLAG = #differflagList[]#
+		</iterate>
+		order by differflag
+	</select>
+
+	<select id="getCpInterfacePayoutTempchx" resultMap="CpInterfacePayoutCheckResult" parameterClass="map">
+		select * from CP_INTERFACE_PAYOUT_CHECK
+		where PAYTYPE_CODE = #paytypeCode#
+		<isNotNull prepend="AND" property="payBankCode">
+			PAY_BANK_CODE =#payBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+					BANK_DATE BETWEEN #startDate:DATE# AND #endDate:DATE#
+			</isNotNull>
+	  	</isNotNull>
+		<iterate prepend="AND" property="differflagList" open="(" close=")" conjunction="or">
+			DIFFERFLAG = #differflagList[]#
+		</iterate>
+		order by bank_date, differflag
+	</select>
+
+	<parameterMap id="SP_CP_INTERFACE_COLLECT_MAP" class="java.util.HashMap">
+    	<parameter property="startDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="endDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="paytypeCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="payBankCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_INTERFACE_COLLECT" parameterMap="SP_CP_INTERFACE_COLLECT_MAP">
+		{call SP_CP_INTERFACE_COLLECT(?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="SP_CP_INTERFACE_AMOUNT_MAP" class="java.util.HashMap">
+    	<parameter property="startDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="endDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="paytypeCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="payBankCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_INTERFACE_AMOUNT" parameterMap="SP_CP_INTERFACE_AMOUNT_MAP">
+		{call SP_CP_INTERFACE_AMOUNT(?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="SP_CP_INTERFACE_PAYOUT_MAP" class="java.util.HashMap">
+    	<parameter property="startDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="endDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="paytypeCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="payBankCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_INTERFACE_PAYOUT" parameterMap="SP_CP_INTERFACE_PAYOUT_MAP">
+		{call SP_CP_INTERFACE_PAYOUT(?,?,?,?,?)}
+	</procedure>
+
+</sqlMap>

@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.ztb.table.entity;public class GridCell extends GridColumn {  public final static String ROW_NUMBER = "ROW_NUMBER";  private int rowNumber;  public int getRowNumber() {    return rowNumber;  }  public void setRowNumber(int rowNumber) {    this.rowNumber = rowNumber;  }}

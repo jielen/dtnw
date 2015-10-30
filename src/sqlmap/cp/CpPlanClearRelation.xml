@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpPlanClearRelation">
+	<resultMap class="com.ufgov.zc.common.cp.model.CpPlanClearRelation"
+		id="cpPlanClearRelationResult">
+		<result column="PLAN_CLEAR_RELATION_ID" jdbcType="VARCHAR"	property="planClearRelationId" />
+		<result column="DP_DETAIL_ID" jdbcType="VARCHAR" property="dpDetailId" />
+		<result column="PLAN_CLEAR_BILL_ID" jdbcType="VARCHAR"	property="planClearBillId" />
+		<result column="B_ACC_CODE" jdbcType="VARCHAR" property="baccCode" />
+		<result column="B_ACC_NAME" jdbcType="VARCHAR" property="baccName" />
+		<result column="CO_CODE" jdbcType="VARCHAR" property="coCode" />
+		<result column="CO_NAME" jdbcType="VARCHAR" property="coName" />
+		<result column="CUR_MONEY" jdbcType="DECIMAL" property="curMoney" />
+		<result column="MONTH" jdbcType="DECIMAL" property="month" />
+		<result column="OUTLAY_CODE" jdbcType="VARCHAR" property="outlayCode" />
+		<result column="OUTLAY_NAME" jdbcType="VARCHAR" property="outlayName" />
+		<result column="PROC_DATE" jdbcType="DATE" property="procdate" />
+		<result column="PROJECT_CODE" jdbcType="VARCHAR" property="projectCode" />
+		<result column="PROJECT_NAME" jdbcType="VARCHAR" property="projectName" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearRelation"
+		resultMap="cpPlanClearRelationResult">
+
+		select PLAN_CLEAR_RELATION_ID, DP_DETAIL_ID,
+		PLAN_CLEAR_BILL_ID, B_ACC_CODE,
+		B_ACC_NAME,
+		CO_CODE, CO_NAME, CUR_MONEY,
+		MONTH, OUTLAY_CODE, OUTLAY_NAME, PROC_DATE,
+		PROJECT_CODE,
+		PROJECT_NAME
+		from CP_PLAN_CLEAR_RELATION
+		where PLAN_CLEAR_RELATION_ID =
+		#planClearRelationId:VARCHAR#
+  </select>
+
+	<delete id="deleteByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearRelation">
+		delete from
+		CP_PLAN_CLEAR_RELATION
+		where PLAN_CLEAR_RELATION_ID =
+		#planClearRelationId:VARCHAR#
+  </delete>
+
+	<insert id="insert" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearRelation">
+		insert into
+		CP_PLAN_CLEAR_RELATION (PLAN_CLEAR_RELATION_ID, DP_DETAIL_ID,
+		PLAN_CLEAR_BILL_ID, B_ACC_CODE, B_ACC_NAME, CO_CODE, CO_NAME,
+		CUR_MONEY, MONTH, OUTLAY_CODE,
+		OUTLAY_NAME, PROC_DATE, PROJECT_CODE,
+		PROJECT_NAME)
+		values (#planClearRelationId:VARCHAR#,
+		#dpDetailId:VARCHAR#,
+		#planClearBillId:VARCHAR#,
+		#baccCode:VARCHAR#,
+		#baccName:VARCHAR#, #coCode:VARCHAR#, #coName:VARCHAR#,
+		#curMoney:DECIMAL#, #month:DECIMAL#, #outlayCode:VARCHAR#,
+		#outlayName:VARCHAR#,
+		#procdate:DATE#, #projectCode:VARCHAR#,
+		#projectName:VARCHAR#)
+  </insert>
+	<update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearRelation">
+		update
+		CP_PLAN_CLEAR_RELATION
+		set DP_DETAIL_ID = #dpDetailId:VARCHAR#,
+		PLAN_CLEAR_BILL_ID = #planClearBillId:VARCHAR#,
+		B_ACC_CODE =
+		#baccCode:VARCHAR#,
+		B_ACC_NAME = #baccName:VARCHAR#,
+		CO_CODE =
+		#coCode:VARCHAR#,
+		CO_NAME = #coName:VARCHAR#,
+		CUR_MONEY =
+		#curMoney:DECIMAL#,
+		MONTH = #month:DECIMAL#,
+		OUTLAY_CODE =
+		#outlayCode:VARCHAR#,
+		OUTLAY_NAME = #outlayName:VARCHAR#,
+		PROC_DATE =
+		#procdate:DATE#,
+		PROJECT_CODE = #projectCode:VARCHAR#,
+		PROJECT_NAME =
+		#projectName:VARCHAR#
+		where PLAN_CLEAR_RELATION_ID =
+		#planClearRelationId:VARCHAR#
+  </update>
+	<update id="updateDynamicByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearRelation">
+		update CP_PLAN_CLEAR_RELATION
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="dpDetailId">
+				DP_DETAIL_ID =
+				#dpDetailId:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="planClearBillId">
+				PLAN_CLEAR_BILL_ID =
+				#planClearBillId:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="baccCode">
+				B_ACC_CODE =
+				#baccCode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="baccName">
+				B_ACC_NAME =
+				#baccName:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="coCode">
+				CO_CODE = #coCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="coName">
+				CO_NAME = #coName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="curMoney">
+				CUR_MONEY =
+				#curMoney:DECIMAL#
+      </isNotNull>
+			<isNotNull prepend="," property="month">
+				MONTH = #month:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="outlayCode">
+				OUTLAY_CODE =
+				#outlayCode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="outlayName">
+				OUTLAY_NAME =
+				#outlayName:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="procdate">
+				PROC_DATE = #procdate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="projectCode">
+				PROJECT_CODE =
+				#projectCode:VARCHAR#
+      </isNotNull>
+			<isNotNull prepend="," property="projectName">
+				PROJECT_NAME =
+				#projectName:VARCHAR#
+      </isNotNull>
+		</dynamic>
+		where PLAN_CLEAR_RELATION_ID = #planClearRelationId:VARCHAR#
+	</update>
+
+	<resultMap id="dpDetailResult"  class="com.ufgov.zc.common.cp.model.CpPlanClearRelation">
+		<result property="dpDetailId" column="dp_detail_id" />
+		<result property="curMoney" column="cur_money" />
+		<result property="month" column="month" />
+		<result property="procdate" column="proc_date" jdbcType="DATE" />
+		<result property="coCode" column="co_code" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="fundCode" column="fund_code" />
+		<result property="inceptDocCode" column="inceptdoc_code" />
+		<result property="manageCode" column="manage_code" />
+		<result property="orgCode" column="org_code" />
+		<result property="originCode" column="origin_code" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="paytypeCode" column="paytype_code" />
+		<result property="projectTypeCode" column="PROJECT_TYPE_CODE" />
+		<result property="projectCode" column="project_code" />
+		<result property="sendDocTypeCode" column="SENDDOC_TYPE_CODE" />
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="planAgentBillId" column="plan_agent_bill_id" />
+		<result property="planClearBillId" column="plan_clear_bill_id" />
+	</resultMap>
+
+	<select id="getCpPlanClearRelation" resultMap="dpDetailResult" parameterClass="String">
+		select * from dp_detail where PLAN_CLEAR_BILL_ID=#planClearBillId#
+	</select>
+
+	<select id="getCpPlanClearRelationForVouNo" resultMap="dpDetailResult" parameterClass="String">
+		select * from dp_detail where PLAN_CLEAR_BILL_NO=#vouNo#
+	</select>
+</sqlMap>

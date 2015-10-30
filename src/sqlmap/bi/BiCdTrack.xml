@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiCdTrack">
+	<typeAlias alias="biCdTrack"
+		type="com.ufgov.zc.common.bi.model.BiCdTrack" />
+	<typeAlias alias="conditionDto"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="biCdTrackResult" class="biCdTrack">
+		<result column="BI_CD_TRACK_ID" property="biCdTrackId" />
+		<result column="INPUT_GROUP_ID" property="inputGroupId" />
+		<result column="BI_BILL_ID" property="biBillId" />
+		<result column="ORIGIN_BALANCE_ID" property="originBalanceId" />
+		<result column="TARGET_BALANCE_ID" property="targetBalanceId" />
+		<result column="NEW_BI_TRACK_ID" property="newBiTrackId" />
+		<result column="NEW_BI_BALANCE_ID" property="newBiBalanceId" />
+		<result column="IS_CREATE_BI" property="isCreateBi" />
+		<result column="BI_CREATOR_ID" property="biCreatorId" />
+		<result column="BI_CREATE_DATE" property="biCreateDate" />
+		<result column="BI_LEVEL" property="biLevel" />
+		<result column="CREATE_TYPE" property="createType" />
+		<result column="CO_CODE" property="coCode" />
+		<result column="B_ACC_CODE" property="baccCode" />
+		<result column="OUTLAY_CODE" property="outlayCode" />
+		<result column="PROJECT_TYPE_CODE" property="projectTypeCode" />
+		<result column="PROJECT_CODE" property="projectCode" />
+		<result column="FUND_CODE" property="fundCode" />
+		<result column="ORIGIN_CODE" property="originCode" />
+		<result column="PAYTYPE_CODE" property="paytypeCode" />
+		<result column="PAYOUT_CODE" property="payoutCode" />
+		<result column="MANAGE_CODE" property="manageCode" />
+		<result column="INCEPTDOC_CODE" property="inceptDocCode" />
+		<result column="SENDDOC_TYPE_CODE" property="sendDocTypeCode" />
+		<result column="SENDDOC_CODE" property="sendDocCode" />
+		<result column="PROCESS_INST_ID" property="processInstId" />
+		<result column="ORG_CODE" property="orgCode" />
+		<result column="BI_TARGET_CODE" property="biTargetCode" />
+		<result column="ND" property="nd" />
+		<result column="PROC_DATE" property="procDate" />
+		<result column="INPUTOR_ID" property="inputorId" />
+		<result column="INPUTOR_NAME" property="inputorName" />
+		<result column="CDATE" property="cdate" />
+		<result column="PARLOR_CODE" property="parlorCode" />
+		<result column="AUDITOR_ID" property="auditorId" />
+		<result column="AUDITOR_NAME" property="auditorName" />
+		<result column="A_DATE" property="adate" />
+		<result column="A_OPINION" property="aopinion" />
+		<result column="A_STATUS_CODE" property="astatusCode" />
+		<result column="AN_STATUS" property="anStatus" />
+		<result column="WF_CONTENT_BRIEF" property="wfContentBrief" />
+		<result column="IS_VALID" property="isValid" />
+		<result column="CANCELER_ID" property="cancelerId" />
+		<result column="CANCEL_DATE" property="cancelDate" />
+		<result column="CANCEL_OPINION" property="cancelOpinion" />
+		<result column="REMARK" property="remark" />
+		<result column="ORG_MONEY" property="orgMoney" />
+		<result column="CUR_MONEY" property="curMoney" />
+		<result column="D_ATTR1" property="dattr1" />
+		<result column="D_ATTR2" property="dattr2" />
+		<result column="D_ATTR3" property="dattr3" />
+		<result column="D_ATTR4" property="dattr4" />
+		<result column="D_ATTR5" property="dattr5" />
+		<result column="FILENAME" property="fileName" />
+		<result column="FILENAME_BLOBID" property="fileNameBlobId" />
+		<result column="CD_TYPE" property="cdType" />
+	</resultMap>
+
+	<insert id="insertBiCdTrack" parameterClass="biCdTrack">
+		insert into bi_cd_track( BI_CD_TRACK_ID
+		,INPUT_GROUP_ID,BI_BILL_ID,
+		ORIGIN_BALANCE_ID,TARGET_BALANCE_ID,NEW_BI_TRACK_ID,NEW_BI_BALANCE_ID
+		,IS_CREATE_BI,BI_CREATOR_ID,BI_CREATE_DATE,BI_LEVEL,CREATE_TYPE,BI_TARGET_CODE,CO_CODE
+		, B_ACC_CODE , ORG_CODE , FUND_CODE , OUTLAY_CODE , PROJECT_CODE
+		, ORIGIN_CODE , PAYOUT_CODE , MANAGE_CODE ,
+		PROC_DATE,INPUTOR_ID,INPUTOR_NAME,CDATE,PARLOR_CODE,PROJECT_TYPE_CODE,
+		PAYTYPE_CODE,INCEPTDOC_CODE,SENDDOC_TYPE_CODE,SENDDOC_CODE,AUDITOR_ID,
+		AUDITOR_NAME,A_DATE,A_OPINION,AN_STATUS,WF_CONTENT_BRIEF,IS_VALID,
+		CANCELER_ID,CANCEL_DATE,CANCEL_OPINION,ORG_MONEY,CUR_MONEY,FILENAME,
+		FILENAME_BLOBID,D_ATTR1,D_ATTR2,D_ATTR3,D_ATTR4,D_ATTR5,
+		A_STATUS_CODE , REMARK , ND,CD_TYPE,PROCESS_INST_ID) values
+		(#biCdTrackId:VARCHAR#,#inputGroupId:VARCHAR#,#biBillId:VARCHAR#,
+		#originBalanceId:VARCHAR#,#targetBalanceId:VARCHAR#,#newBiTrackId:VARCHAR#,
+		#newBiBalanceId:VARCHAR#,#isCreateBi:VARCHAR#,#biCreatorId:VARCHAR#,
+		#biCreateDate:DATE#,#biLevel:VARCHAR#,#createType:VARCHAR#,#biTargetCode:VARCHAR#,
+		#coCode:VARCHAR#, #baccCode:VARCHAR#, #orgCode:VARCHAR#,
+		#fundCode:VARCHAR#, #outlayCode:VARCHAR#, #projectCode:VARCHAR#,
+		#originCode:VARCHAR#, #payoutCode:VARCHAR#,
+		#manageCode:VARCHAR#,
+		#procDate:DATE#,#inputorId:VARCHAR#,#inputorName:VARCHAR#,
+		#cdate:DATE#, #parlorCode:VARCHAR#,#projectTypeCode:VARCHAR#,
+		#paytypeCode:VARCHAR#,#inceptDocCode:VARCHAR#,#sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#,#auditorId:VARCHAR#,#auditorName:VARCHAR#,#adate:DATE#,
+		#aopinion:VARCHAR#,#anStatus:VARCHAR#,#wfContentBrief:VARCHAR#,#isValid:VARCHAR#,
+		#cancelerId:VARCHAR#,#cancelDate:DATE#,#cancelOpinion:VARCHAR#,#orgMoney:DECIMAL#,
+		#curMoney:DECIMAL#,#fileName:VARCHAR#,#fileNameBlobId:VARCHAR#,
+		#dattr1:VARCHAR#,#dattr2:VARCHAR#,#dattr3:VARCHAR#,#dattr4:VARCHAR#,#dattr5:VARCHAR#,
+		#astatusCode:CHAR#, #remark:VARCHAR#,
+		#nd:INTEGER#,#cdType:CHAR#,#processInstId:DECIMAL#)
+	</insert>
+
+	<select id="getBiCdTrack" resultMap="biCdTrackResult"
+		parameterClass="elementCondition">
+		SELECT master.* FROM bi_cd_track master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="cdType">
+				master.cd_type =#cdType#
+			</isNotNull>
+			<include refid="ElementCondition.StartDate" />
+			<include refid="ElementCondition.EndDate" />
+			<include refid="ElementCondition.PROJECT_CODE" />
+			<include refid="ElementCondition.FUND_CODE" />
+			<include refid="ElementCondition.ORIGIN_CODE" />
+			<include refid="ElementCondition.PAYOUT_CODE" />
+			<include refid="ElementCondition.PAYTYPE_CODE" />
+			<include refid="ElementCondition.MANAGE_CODE" />
+			<include refid="ElementCondition.CoCodeFilter" />
+			<include refid="ElementCondition.ORG_CODE" />
+			<include refid="ElementCondition.B_ACC_CODE" />
+			<include refid="ElementCondition.OUTLAY_CODE" />
+			<include refid="WfCommonAudited.WfCommonAudited" />
+			<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="unImport">
+					( (a_status_code ='3' or a_status_code='5') and
+					is_create_bi='0' )
+				</isEqual>
+				<isEqual property="status" compareValue="imported">
+					( (a_status_code ='3' or a_status_code='5') and
+					is_create_bi='1')
+				</isEqual>
+			</isNotNull>
+			
+			<isNotNull prepend="AND" property="status">
+				<isNotEqual  property="status"
+					compareValue="all">
+					master.is_valid='1'
+				</isNotEqual>
+			</isNotNull>
+		</dynamic>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="update" parameterClass="biCdTrack">
+		UPDATE bi_cd_track SET
+		new_bi_balance_id=#newBiBalanceId:VARCHAR#, new_bi_track_id =
+		#newBiTrackId:VARCHAR#, is_create_bi=#isCreateBi:VARCHAR#,
+		bi_create_date=#biCreateDate:DATE#,
+		bi_creator_id=#biCreatorId:VARCHAR# WHERE bi_cd_track_id =
+		#biCdTrackId:VARCHAR#
+	</update>
+
+	<update id="updateIsValid" parameterClass="biCdTrack">
+		UPDATE bi_cd_track SET is_valid=#isValid:VARCHAR# WHERE
+		bi_cd_track_id = #biCdTrackId:VARCHAR#
+	</update>
+
+</sqlMap>

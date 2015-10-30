@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpCctradeInfo">
+	<typeAlias alias="cpCctradeInfo"
+		type="com.ufgov.zc.common.gwk.model.CpCctradeInfo" />
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="CpCctradeInfoResult" class="cpCctradeInfo">
+		<result column="ND" property="nd" jdbcType="DECIMAL" />
+		<result column="TRADE_NUM" property="tradeNum" jdbcType="VARCHAR" />
+		<result column="TRADE_SERIAL_CODE" property="tradeSerialCode"
+			jdbcType="VARCHAR" />
+		<result column="CARD_USER" property="cardUser" jdbcType="VARCHAR" />
+		<result column="IDENTITY_CODE" property="identityCode"
+			jdbcType="VARCHAR" />
+		<result column="CARD_SERIAL" property="cardSerial" jdbcType="VARCHAR" />
+		<result column="BUSINESS_NAME" property="businessName"
+			jdbcType="VARCHAR" />
+		<result column="TRADE_DATE" property="tradeDate" jdbcType="DATE" />
+		<result column="TRADE_MONEY" property="tradeMoney" jdbcType="DECIMAL" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="STATUS" property="status" jdbcType="VARCHAR" />
+		<result column="CONSUME_MONEY" property="consumeMoney"
+			jdbcType="DECIMAL" />
+		<result column="WORKFLOW_INSTANCE" property="workflowInstance"
+			jdbcType="VARCHAR" />
+		<result column="WORKFLOW_STEP" property="workflowStep"
+			jdbcType="VARCHAR" />
+		<result column="TRADE_TYPE" property="tradeType" jdbcType="VARCHAR" />
+		<result column="CONFIRM_TREADE_USER" property="confirmTreadeUser"
+			jdbcType="VARCHAR" />
+		<result column="PAY_DATE" property="payDate" jdbcType="DATE" />
+		<result column="CREDIT_NUM" property="creditNum" jdbcType="DECIMAL" />
+		<result column="AUDIT_DATE" property="auditDate" jdbcType="DATE" />
+		<result column="INPUTOR" property="inputor" jdbcType="VARCHAR" />
+		<result column="INPUTOR_NAME" property="inputorName" jdbcType="VARCHAR" />
+		<result column="VOUCHER_NO" property="voucherNo" jdbcType="VARCHAR" />
+		<result column="RECORD_DATE" property="recordDate" jdbcType="DATE" />
+		<result column="TRADE_DIDIAN" property="tradeDidian" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_CODE" property="receBankCode"
+			jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NAME" property="receBankName"
+			jdbcType="VARCHAR" />
+		<result column="IS_USED" property="isUsed" jdbcType="CHAR" />
+		<result column="AUDIT_USER" property="auditUser" jdbcType="VARCHAR" />
+		<result column="AUDIT_USER_NAME" property="auditUserName"
+			jdbcType="VARCHAR" />
+		<result column="BEGIN_DATE" property="beginDate" jdbcType="DATE" />
+		<result column="IS_REGISTER" property="isRegister" jdbcType="CHAR" />
+		<result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+		<result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR" />
+		<result column="SERIAL_SUM" property="serialSum" jdbcType="VARCHAR" />
+		<result column="OLD_SERIAL_CODE" property="oldSerialCode"
+			jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="CZ_CODE" property="czCode" jdbcType="VARCHAR" />
+		<result column="EXPENSE_NO" property="expenseNo" jdbcType="VARCHAR" />
+		<result column="DP_BALANCE_ID" property="dpBalanceId" jdbcType="VARCHAR" />
+		<result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+		<result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR" />
+		<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+		<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+		<result column="ACCO_TYPE" property="accoType" jdbcType="VARCHAR" />
+		<result column="RECE_BANKNODE_ADDRESS" property="receBanknodeAddress"
+			jdbcType="VARCHAR" />
+		<result column="CP_APPLY_ID" property="cpApplyId" jdbcType="VARCHAR" />
+		<result column="CONTENT" property="content" jdbcType="VARCHAR" />
+		<result column="IS_SPLIT" property="isSplit" jdbcType="CHAR" />
+		<result column="ORIGIN_TRADE_NUM" property="originTradeNum"
+			jdbcType="VARCHAR" />
+		<result column="CONSUME_DATE" property="consumeDate" jdbcType="DATE" />
+		<result column="BANK_ACCOUNT" property="bankAccount" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap class="cpCctradeInfo" id="coPayMentInfoResult">
+		<result property="coCode" column="co_code" />
+		<result property="coName" column="co_name" />
+		<result property="cardSerial" column="card_serial" />
+		<result property="cardUser" column="card_user" />
+		<result property="vouNo" column="vou_no" />
+		<result column="RECE_BANK_NAME" property="receBankName"	/>
+		<result column="trade_didian" property="tradeDidian" />
+		<result property="baccCode" column="b_acc_code" />
+		<result column="B_ACC_NAME" property="baccName" />
+		<result property="outlayCode" column="outlay_code" />
+		<result column="OUTLAY_NAME" property="outlayName" />
+		<result property="tradeMoney" column="trade_money" />
+		<result property="consumeMoney" column="consume_money" />
+		<result property="payBankAccCode" column="pay_bankacccode" />
+		<result property="confirmTreadeUser" column="confirm_treade_user" />
+		<result column="DEAL_STATE" property="dealState" />
+		<result column="BANK_DATE" property="bankDate" jdbcType="DATE" />
+		<result column="CONTENT" property="content" />
+		<result column="REMARK" property="remark" />
+
+	</resultMap>
+
+	<select id="selectDataByWhere" resultMap="CpCctradeInfoResult"
+		parameterClass="elementCondition">
+		SELECT nd, trade_num, trade_serial_code, card_user, identity_code,
+		card_serial, business_name,
+		trade_date, trade_money, remark, status,
+		consume_money, workflow_instance,
+		workflow_step,
+		trade_type,
+		confirm_treade_user, pay_date, credit_num, audit_date, inputor,
+		inputor_name,
+		voucher_no, record_date, trade_didian, rece_bank_code,
+		rece_bank_name, is_used,
+		audit_user,
+		audit_user_name, begin_date,
+		is_register, outlay_code, outlay_name, serial_sum,
+		old_serial_code,
+		co_code, cz_code, expense_no, dp_balance_id,
+		b_acc_code, b_acc_name,
+		org_code, org_name, co_name, acco_type, rece_banknode_address,
+		cp_apply_id,
+		content, is_split,
+		origin_trade_num, consume_date,
+		(SELECT
+		bank_account FROM cp_ccaccount_info WHERE
+		card_serial=MASTER.Card_Serial AND nd = MASTER.Nd AND Rownum=1)
+		bank_account
+		FROM cp_cctrade_info MASTER
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="tradeDate">
+				MASTER.trade_date=#tradeDate#
+	  	</isNotNull>
+			<isNotNull prepend="AND" property="receBankCode">
+				MASTER.rece_bank_code =
+				#receBankCode#
+	  	</isNotNull>
+			<isNotNull prepend="AND" property="orgMoney">
+				<isNotEqual property="orgMoney" compareValue="0">
+					MASTER.trade_money $orgMoneyOperator$ #orgMoney:DECIMAL#
+				</isNotEqual>
+			</isNotNull>
+			<isNotNull prepend="AND" property="nd">
+				MASTER.nd = #nd#
+			</isNotNull>
+			<include refid="ElementCondition.CO_CODE" />
+			<include refid="ElementCondition.CoCodeFilter" />
+            <include refid="BusiNumLim.BusiNumLimStr" />
+		</dynamic>
+	</select>
+	<select id="getCpGwkCoPaymentInfo" resultMap="coPayMentInfoResult"
+		parameterClass="elementCondition">
+		SELECT MASTER.* FROM ( SELECT cc.co_code,cc.co_name
+		,cc.card_serial
+		,cc.card_user,cc.trade_didian,
+		(select vou_no FROM cp_voucher cp WHERE cp.vou_no=cc.voucher_no AND cc.nd=cp.nd) vou_no
+		,cc.rece_bank_code
+		,cc.rece_bank_name
+		,(SELECT b_acc_code FROM cp_voucher cp WHERE cp.vou_no=cc.voucher_no AND cp.nd	= cc.nd and cp.paytype_code='0202') b_acc_code
+		,'' b_acc_name
+		,(SELECT outlay_code FROM cp_voucher cp WHERE cp.vou_no=cc.voucher_no AND	cp.nd = cc.nd and cp.paytype_code='0202') outlay_code
+		,'' outlay_name
+		,cc.trade_money
+		,cc.consume_money
+		,(SELECT pay_bankacccode FROM cp_voucher cp WHERE cp.vou_no = cc.voucher_no AND cp.nd=cc.nd and cp.paytype_code='0202') pay_bankacccode
+		,cc.confirm_treade_user
+		,(SELECT deal_state FROM cp_voucher cp WHERE cp.vou_no=cc.voucher_no AND cp.nd=cc.nd and cp.paytype_code='0202') deal_state
+		,(SELECT bank_date FROM cp_voucher cp WHERE cp.vou_no = cc.voucher_no AND cp.nd=cc.nd and cp.paytype_code='0202') bank_date
+		,CC.CONTENT
+		,cc.remark
+		FROM cp_cctrade_info cc
+		WHERE cc.Is_Register='Y' ) MASTER
+		<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="receBankCode">
+			MASTER.rece_bank_code = #receBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			MASTER.deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="content">
+			MASTER.content = #content#
+		</isNotNull>
+        <isNotNull prepend="AND" property="orgMoney">
+				<isNotEqual property="orgMoney" compareValue="0">
+					MASTER.trade_money $orgTradeMoneyOperator$ #orgMoney:DECIMAL#
+				</isNotEqual>
+		</isNotNull>
+		 <isNotNull prepend="AND" property="curMoney">
+				<isNotEqual property="curMoney" compareValue="0">
+					MASTER.consume_money $orgMoneyOperator$ #curMoney:DECIMAL#
+				</isNotEqual>
+		</isNotNull>
+	  	<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.CoCodeFilter"/>
+		</dynamic>
+	</select>
+
+
+	<insert id="insert" parameterClass="cpCctradeInfo">
+		insert into cp_cctrade_info (trade_serial_code, trade_num,
+		card_user, identity_code,card_serial,trade_money,trade_date,
+		remark,status,consume_money,inputor,inputor_name,rece_bank_code,rece_bank_name,is_used,nd,
+		co_code,co_name,content) values (#tradeSerialCode:VARCHAR#,
+		#tradeNum:VARCHAR#, #cardUser:VARCHAR#, #identityCode:VARCHAR#,
+		#cardSerial:VARCHAR#,#tradeMoney:DECIMAL#, #tradeDate:Date#,
+		#remark:VARCHAR#, #status:VARCHAR# , #consumeMoney:DECIMAL#,
+		#inputor:VARCHAR#, #inputorName:VARCHAR#, #receBankCode:VARCHAR#
+		, #receBankName:VARCHAR#, #isUsed:VARCHAR#,#nd:INTEGER#,
+		#coCode:VARCHAR#, #coName:VARCHAR#, #content:VARCHAR#)
+	</insert>
+
+
+	<select id="getTradeInfo" resultMap="CpCctradeInfoResult"
+		parameterClass="elementCondition">
+		SELECT master.*, (SELECT bank_account FROM cp_ccaccount_info
+		WHERE card_serial=MASTER.Card_Serial AND nd = MASTER.Nd AND
+		Rownum=1) bank_account FROM cp_cctrade_info MASTER where
+		MASTER.nd = #nd# and MASTER.CO_CODE = #coCode# and
+		MASTER.is_used='Y'
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="unSended">
+				status='10'
+			</isEqual>
+			<isEqual property="status" compareValue="sended">
+				status='20'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				status='50'
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		order by trade_num desc
+	</select>
+
+	<delete id="deleteTradeInfo" parameterClass="cpCctradeInfo">
+		delete from cp_cctrade_info t where t.nd=#nd# and
+		t.trade_num=#tradeNum#
+	</delete>
+	<update id="updateTradeInfoStatus" parameterClass="cpCctradeInfo">
+		update cp_cctrade_info t set t.status=#status# where t.nd=#nd# and
+		t.trade_num=#tradeNum#
+	</update>
+</sqlMap>

@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.flowconsole.business;import com.ufgov.zc.common.system.RequestMeta;public interface INodeBusiness {  public boolean isArrieCurrentNode(String businessId, RequestMeta meta);  public void showAddWindow();  //public boolean isFlag(String n);}

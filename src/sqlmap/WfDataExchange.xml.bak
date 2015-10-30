@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WfDataExchange">
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<!-- ²Ý¸å -->
+	<insert id="insert_Draft" parameterClass="com.kingdrive.workflow.model.runtime.DraftModel">
+		INSERT INTO AS_WF_DRAFT
+		  (WF_DRAFT_ID,
+		   WF_DRAFT_NAME,
+		   COMPO_ID,
+		   MASTER_TAB_ID,
+		   USER_ID,
+		   USER_NAME,
+		   SAVE_TIME,
+		   STATUS)
+		VALUES
+		  (#draftId#,
+		   #draftName#,
+		   #compoId#,
+		   #masteTableId#,
+		   #userId#,
+		   #userName#,
+		   #saveTime#,
+		   #status#)
+	</insert>
+	<delete id="remove_Draft_byIdLst" parameterClass="elementCondition">
+		DELETE FROM as_wf_draft t 
+		WHERE t.wf_draft_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>	
+	<select id="get_Draft_byIdLst" parameterClass="elementCondition" resultMap="draftmap">
+		SELECT * FROM as_wf_draft t 
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.wf_draft_id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+        </isNotEmpty>	
+	</select>
+	
+	<!-- ÊµÀý -->
+	<insert id="insert_Instance" parameterClass="com.kingdrive.workflow.model.runtime.InstanceModel">
+		INSERT INTO WF_INSTANCE
+		  (INSTANCE_ID,
+		   NAME,
+		   DESCRIPTION,
+		   TEMPLATE_ID,
+		   OWNER,
+		   START_TIME,
+		   END_TIME,
+		   STATUS,
+		   PARENT_INSTANCE_ID)
+		VALUES
+		  (#instanceId#,
+		   #name#,
+		   #description:VARCHAR#,
+		   #templateId#,
+		   #owner#,
+		   #startTime#,
+		   #endTime#,
+		   #status#,
+		   #parentInstanceId#)
+	</insert>
+	<delete id="remove_Instance_byIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_instance t 
+		WHERE 
+			t.instance_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	<select id="get_Instance_byIdLst" parameterClass="elementCondition" resultMap="instancemap">
+		SELECT * FROM wf_instance t 
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+        </isNotEmpty>	
+	</select>
+	
+	<!-- current task -->
+	<insert id="insert_CurrentTask" parameterClass="com.kingdrive.workflow.model.runtime.CurrentTaskModel">
+		INSERT INTO WF_CURRENT_TASK
+		  (CURRENT_TASK_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   EXECUTOR,
+		   DELEGATION_ID,
+		   OWNER,
+		   CREATOR,
+		   CREATE_TIME,
+		   LIMIT_EXECUTE_TIME,
+		   RESPONSIBILITY,
+		   PARENT_TASK_ID,
+		   GRANTER_ID,
+		   GRANTER_INFO)
+		VALUES
+		  (#currentTaskId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #executor#,
+		   #delegationId#,
+		   #owner#,
+		   #creator#,
+		   #createTime#,
+		   #limitExecuteTime:VARCHAR#,
+		   #responsibility#,
+		   #parentTaskId#,
+		   #granterId#,
+		   #granterInfo#)
+	</insert>
+	<delete id="remove_currentTaskByIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_current_task t 
+				t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	<select id="get_currentTaskByIdLst" parameterClass="elementCondition" resultMap="currenttaskmap">
+		SELECT *
+		  FROM wf_current_task t
+		 INNER JOIN WF_INSTANCE i ON t.INSTANCE_ID = i.INSTANCE_ID
+		                         AND i.STATUS = 1		                          
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+    </isNotEmpty>	
+	</select>
+	
+	<!-- taskexecutor -->
+	<insert id="insert_TaskExecutor" parameterClass="com.kingdrive.workflow.model.runtime.TaskExecutorModel">
+		INSERT INTO WF_TASK_EXECUTOR
+		  (TASK_EXECUTOR_ORDER_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   EXECUTOR,
+		   EXECUTOR_ORDER,
+		   RESPONSIBILITY
+		   )
+		VALUES
+		  (#taskExecutorOrderId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #executor#,
+		   #executorOrder#,
+		   #responsibility#
+		   )	
+	</insert>
+	<select id="get_TaskExecutorByIdLst" parameterClass="elementCondition" resultMap="taskexecutormap">
+  		SELECT t.* FROM wf_task_executor t		                          
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+    </isNotEmpty>	
+	</select>
+	<delete id="remove_TaskExecutorByIdLst" parameterClass="elementCondition">
+		DELETE FROM WF_TASK_EXECUTOR t where t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	
+	<!-- action -->
+	<insert id="insert_Action" parameterClass="com.kingdrive.workflow.model.runtime.ActionModel">
+		INSERT INTO WF_ACTION
+		  (ACTION_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   ACTION_NAME,
+		   EXECUTOR,
+		   EXECUTE_TIME,
+		   DESCRIPTION,
+		   OWNER,
+		   LIMIT_EXECUTE_TIME)
+		VALUES
+		  (#actionId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #actionName:VARCHAR#,
+		   #executor#,
+		   #executeTime#,
+		   #description:VARCHAR#,
+		   #owner#,
+		   #limitExecuteTime:VARCHAR#)		
+	</insert>
+	
+	<delete id="remove_ActionByIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_action t where t.instance_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	
+	<select id="get_ActionByIdLst" parameterClass="elementCondition" resultMap="actionmap">
+		SELECT * FROM wf_action t where t.instance_id in  
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</select>
+	
+	<!-- actionhistory -->
+	<insert id="insert_ActionHistory" parameterClass="com.kingdrive.workflow.model.runtime.ActionHistoryModel">
+		INSERT INTO WF_ACTION_HISTORY
+		  (ACTION_HISTORY_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   ACTION_NAME,
+		   EXECUTOR,
+		   EXECUTE_TIME,
+		   DESCRIPTION,
+		   OWNER,
+		   LIMIT_EXECUTE_TIME)
+		VALUES
+		  (#actionHistoryId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #actionName:VARCHAR#,
+		   #executor#,
+		   #executeTime#,
+		   #description:VARCHAR#,
+		   #owner#,
+		   #limitExecuteTime:VARCHAR#)
+	</insert>
+	<select id="get_ActionHistoryByIdLst" parameterClass="elementCondition" resultMap="actionhistorymap">
+		SELECT * FROM wf_action_history t, wf_instance i WHERE t.Instance_Id=i.Instance_Id AND i.status>-9
+		and t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+		
+	</select>
+	
+	<!-- statevalue -->
+	<insert id="insert_StateValue" parameterClass="com.kingdrive.workflow.model.runtime.StateValueModel">
+		INSERT INTO WF_STATE_VALUE
+		  (STATE_VALUE_ID, INSTANCE_ID, STATE_ID, VALUE)
+		VALUES
+		  (#stateValueId#,
+		   #instanceId#,
+		   #stateId#,
+		   #value#)
+	</insert>
+	
+	<select id="get_StateValueByIdLst" parameterClass="elementCondition" resultMap="statevaluemap">
+		SELECT * FROM wf_state_value t WHERE t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</select>
+		
+	<delete id="remove_StateValueByIdLst" parameterClass="elementCondition">
+		DELETE FROM WF_STATE_VALUE t WHERE t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+</sqlMap>
+

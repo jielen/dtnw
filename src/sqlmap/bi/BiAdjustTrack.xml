@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiAdjustTrack" >
+
+	<typeAlias alias="biAdjustTrack" type="com.ufgov.zc.common.bi.model.BiAdjustTrack" />
+	<typeAlias alias="conditionDto" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="biAdjustTrackResult" class="biAdjustTrack" >
+    <result column="BI_TRACK_ID" property="biTrackId" jdbcType="VARCHAR" />
+    <result column="INPUT_GROUP_ID" property="inputGroupId" jdbcType="VARCHAR" />
+    <result column="ABI_TRACK_ID" property="abiTrackId" jdbcType="VARCHAR" />
+    <result column="TBI_TRACK_ID" property="tbiTrackId" jdbcType="VARCHAR" />
+    <result column="ABI_BALANCE_ID" property="abiBalanceId" jdbcType="VARCHAR" />
+    <result column="TBI_BALANCE_ID" property="tbiBalanceId" jdbcType="VARCHAR" />
+    <result column="BI_BILL_ID" property="biBillId" jdbcType="VARCHAR" />
+    <result column="ORIGIN_TRACK_ID" property="originTrackId" jdbcType="VARCHAR" />
+    <result column="ORIGIN_BALANCE_ID" property="originBalanceId" jdbcType="VARCHAR" />
+    <result column="TARGET_BALANCE_ID" property="targetBalanceId" jdbcType="VARCHAR" />
+    <result column="BI_LEVEL" property="biLevel" jdbcType="CHAR" />
+    <result column="BI_ADJUST_CODE" property="biAdjustCode" jdbcType="VARCHAR" />
+    <result column="BI_TARGET_CODE" property="biTargetCode" jdbcType="VARCHAR" />
+    <result column="CREATE_TYPE" property="createType" jdbcType="CHAR" />
+    <result column="ND" property="nd" jdbcType="DECIMAL" />
+    <result column="PROC_DATE" property="procDate" jdbcType="DATE" />
+    <result column="IS_CONTROL" property="isControl" jdbcType="CHAR" />
+    <result column="IS_CARRYDOWN" property="isCarrydown" jdbcType="CHAR" />
+    <result column="INPUTOR_ID" property="inputorId" jdbcType="VARCHAR" />
+    <result column="INPUTOR_NAME" property="inputorName" jdbcType="VARCHAR" />
+    <result column="CDATE" property="cdate" jdbcType="DATE" />
+    <result column="PARLOR_CODE" property="parlorCode" jdbcType="VARCHAR" />
+    <result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="B_ACC_ID" property="baccId" jdbcType="VARCHAR" />
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+    <result column="PROJECT_TYPE_CODE" property="projectTypeCode" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR" />
+    <result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+    <result column="PAYTYPE_CODE" property="paytypeCode" jdbcType="VARCHAR" />
+    <result column="PAYOUT_CODE" property="payoutCode" jdbcType="VARCHAR" />
+    <result column="MANAGE_CODE" property="manageCode" jdbcType="VARCHAR" />
+    <result column="INCEPTDOC_CODE" property="inceptDocCode" jdbcType="VARCHAR" />
+    <result column="SENDDOC_TYPE_CODE" property="sendDocTypeCode" jdbcType="VARCHAR" />
+    <result column="SENDDOC_CODE" property="sendDocCode" jdbcType="VARCHAR" />
+    <result column="PROCESS_INST_ID" property="processInstId" jdbcType="DECIMAL" />
+    <result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR" />
+    <result column="AUDITOR_NAME" property="auditorName" jdbcType="VARCHAR" />
+    <result column="A_DATE" property="adate" jdbcType="DATE" />
+    <result column="A_OPINION" property="aopinion" jdbcType="VARCHAR" />
+    <result column="A_STATUS_CODE" property="astatusCode" jdbcType="VARCHAR" />
+    <result column="AN_STATUS" property="anStatus" jdbcType="VARCHAR" />
+    <result column="WF_CONTENT_BRIEF" property="wfContentBrief" jdbcType="VARCHAR" />
+    <result column="IS_VALID" property="isValid" jdbcType="CHAR" />
+    <result column="CANCELER_ID" property="cancelerId" jdbcType="VARCHAR" />
+    <result column="CANCEL_DATE" property="cancelDate" jdbcType="DATE" />
+    <result column="CANCEL_OPINION" property="cancelOpinion" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="ORG_MONEY" property="orgMoney" jdbcType="DECIMAL" />
+    <result column="CUR_MONEY" property="curMoney" jdbcType="DECIMAL" />
+    <result column="FILENAME" property="fileName" jdbcType="VARCHAR" />
+    <result column="FILENAME_BLOBID" property="filenameBlobid" jdbcType="VARCHAR" />
+    <result column="D_ATTR1" property="dattr1" jdbcType="VARCHAR" />
+    <result column="D_ATTR2" property="dattr2" jdbcType="VARCHAR" />
+    <result column="D_ATTR3" property="dattr3" jdbcType="VARCHAR" />
+    <result column="D_ATTR4" property="dattr4" jdbcType="VARCHAR" />
+    <result column="D_ATTR5" property="dattr5" jdbcType="VARCHAR" />
+    <result column="STAMP" property="stamp" jdbcType="DECIMAL" />
+    <result column="GEN_BI_TRACK_ID" property="genBiTrackId" jdbcType="VARCHAR" />
+    <result column="GEN_DP_DETAIL_ID" property="genDpDetailId" jdbcType="VARCHAR" />
+    <result column="GEN_AM_APPLY_ID" property="genAmApplyId" jdbcType="VARCHAR" />
+    <result column="GEN_AM_VOUCHER_ID" property="genAmVoucherId" jdbcType="VARCHAR" />
+    <result column="GEN_CP_APPLY_ID" property="genCpApplyId" jdbcType="VARCHAR" />
+    <result column="GEN_CP_VOUCHER_ID" property="genCpVoucherId" jdbcType="VARCHAR" />
+    <result column="GEN_BILL_TYPE" property="genBillType" jdbcType="VARCHAR" />
+    <result column="IS_COUNTERSIGN" property="isCountersign" jdbcType="CHAR" />
+    <result column="COUNTERSIGNER" property="counterSigner" jdbcType="VARCHAR" />
+    <result column="GEN_DP_BALANCE_ID" property="genDpBalanceId" jdbcType="VARCHAR" />
+    <result column="OPERATION_TYPE_CODE" property="operationTypeCode" jdbcType="VARCHAR" />
+    <result column="IS_IORD" property="isIord" jdbcType="CHAR" />
+    <result column="AM_MONEY" property="amMoney" jdbcType="DECIMAL" />
+    <result column="DP_MONEY" property="dpMoney" jdbcType="DECIMAL" />
+    <result column="CP_MONEY" property="cpMoney" jdbcType="DECIMAL" />
+	<result property="biMoney" column="BI_MONEY" nullValue="0" />
+	<result property="biBalance" column="BI_BALANCE" nullValue="0" />
+	<result property="biPaySum" column="BI_PAYSUM" nullValue="0" />
+	<result column="RECE_CODE" property="receCode" />
+    <result column="RECE_ACCCODE" property="receAccCode" />
+    <result column="RECE_ACCNAME" property="receAccName" />
+    <result column="RECE_BANKNODECODE" property="receBankNodeCode" />
+    <result column="RECE_BANKNO" property="receBankNo" />
+    <result column="RECE_BANKNODENAME" property="receBankNodeName" />
+    <result column="RECE_BANKACCCODE" property="receBankAccCode" />
+    <result column="RECE_BANKREMARK" property="receBankRemark" />
+  </resultMap>
+
+  <insert id="insertBiAdjustTrack" parameterClass="biAdjustTrack" >
+    insert into BI_ADJUST_TRACK (BI_TRACK_ID, INPUT_GROUP_ID, ABI_TRACK_ID, TBI_TRACK_ID,
+      ABI_BALANCE_ID, TBI_BALANCE_ID, BI_BILL_ID, ORIGIN_TRACK_ID, ORIGIN_BALANCE_ID,
+      TARGET_BALANCE_ID, BI_LEVEL, BI_ADJUST_CODE, BI_TARGET_CODE, CREATE_TYPE, ND, PROC_DATE,
+      IS_CONTROL, IS_CARRYDOWN, INPUTOR_ID,INPUTOR_NAME, CDATE, PARLOR_CODE, ORG_CODE, CO_CODE, B_ACC_ID,
+      B_ACC_CODE, OUTLAY_CODE, PROJECT_TYPE_CODE, PROJECT_CODE, FUND_CODE, ORIGIN_CODE,
+      PAYTYPE_CODE, PAYOUT_CODE, MANAGE_CODE, INCEPTDOC_CODE, SENDDOC_TYPE_CODE, SENDDOC_CODE,
+      PROCESS_INST_ID, AUDITOR_ID, A_DATE, A_OPINION, A_STATUS_CODE, AN_STATUS, WF_CONTENT_BRIEF,
+      IS_VALID, CANCELER_ID, CANCEL_DATE, CANCEL_OPINION, REMARK, ORG_MONEY, CUR_MONEY, FILENAME,
+      FILENAME_BLOBID, D_ATTR1, D_ATTR2, D_ATTR3, D_ATTR4, D_ATTR5, STAMP, GEN_BI_TRACK_ID,
+      GEN_DP_DETAIL_ID, GEN_AM_APPLY_ID, GEN_AM_VOUCHER_ID, GEN_CP_APPLY_ID, GEN_CP_VOUCHER_ID,
+      GEN_BILL_TYPE, IS_COUNTERSIGN, COUNTERSIGNER, GEN_DP_BALANCE_ID, OPERATION_TYPE_CODE, IS_IORD,
+      AM_MONEY, DP_MONEY, CP_MONEY,
+      RECE_CODE,RECE_ACCCODE, RECE_ACCNAME, RECE_BANKNODECODE, RECE_BANKNO, RECE_BANKNODENAME,RECE_BANKACCCODE,RECE_BANKREMARK)
+    values (#biTrackId:VARCHAR#, #inputGroupId:VARCHAR#, #abiTrackId:VARCHAR#, #tbiTrackId:VARCHAR#,
+      #abiBalanceId:VARCHAR#, #tbiBalanceId:VARCHAR#, #biBillId:VARCHAR#, #originTrackId:VARCHAR#,
+      #originBalanceId:VARCHAR#, #targetBalanceId:VARCHAR#, #biLevel:CHAR#, #biAdjustCode:VARCHAR#,
+      #biTargetCode:VARCHAR#, #createType:CHAR#, #nd:DECIMAL#, #procDate:DATE#, #isControl:CHAR#,
+      #isCarrydown:CHAR#, #inputorId:VARCHAR#, #inputorName:VARCHAR#, #cdate:DATE#, #parlorCode:VARCHAR#,
+      #orgCode:VARCHAR#, #coCode:VARCHAR#, #baccId:VARCHAR#, #baccCode:VARCHAR#,
+      #outlayCode:VARCHAR#, #projectTypeCode:VARCHAR#, #projectCode:VARCHAR#, #fundCode:VARCHAR#,
+      #originCode:VARCHAR#, #paytypeCode:VARCHAR#, #payoutCode:VARCHAR#, #manageCode:VARCHAR#,
+      #inceptDocCode:VARCHAR#, #sendDocTypeCode:VARCHAR#, #sendDocCode:VARCHAR#,
+      #processInstId:DECIMAL#, #auditorId:VARCHAR#, #adate:DATE#, #aopinion:VARCHAR#,
+      #astatusCode:VARCHAR#, #anStatus:VARCHAR#, #wfContentBrief:VARCHAR#, #isValid:CHAR#,
+      #cancelerId:VARCHAR#, #cancelDate:DATE#, #cancelOpinion:VARCHAR#, #remark:VARCHAR#,
+      #orgMoney:DECIMAL#, #curMoney:DECIMAL#, #fileName:VARCHAR#, #filenameBlobid:VARCHAR#,
+      #dattr1:VARCHAR#, #dattr2:VARCHAR#, #dattr3:VARCHAR#, #dattr4:VARCHAR#, #dattr5:VARCHAR#,
+      #stamp:DECIMAL#, #genBiTrackId:VARCHAR#, #genDpDetailId:VARCHAR#, #genAmApplyId:VARCHAR#,
+      #genAmVoucherId:VARCHAR#, #genCpApplyId:VARCHAR#, #genCpVoucherId:VARCHAR#,
+      #genBillType:VARCHAR#, #isCountersign:CHAR#, #counterSigner:VARCHAR#,
+      #genDpBalanceId:VARCHAR#, #operationTypeCode:VARCHAR#, #isIord:CHAR#, #amMoney:DECIMAL#,
+      #dpMoney:DECIMAL#, #cpMoney:DECIMAL#,#receCode:VARCHAR#, #receAccCode:VARCHAR#,
+      #receAccName:VARCHAR#, #receBankNodeCode:VARCHAR#,#receBankNo:VARCHAR#, #receBankNodeName:VARCHAR#,
+      #receBankAccCode:VARCHAR#,#receBankRemark:VARCHAR#)
+  </insert>
+
+    <select id="selectBiAdjustByPk" resultMap="biAdjustTrackResult" parameterClass="biAdjustTrack" >
+    select master.*,
+			<include refid="ElementName.BI_MONEY_ADJUST" />,
+		  <include refid="ElementName.BI_BALANCE_ADJUST" />,
+		  <include refid="ElementName.BI_PAY_SUM_ADJUST" />
+    from BI_ADJUST_TRACK master
+    where master.BI_TRACK_ID = #biTrackId:VARCHAR#
+  </select>
+
+  	<select id="getBiAdjustTrackEditByDto" resultMap="biAdjustTrackResult" parameterClass="conditionDto">
+		select * from (SELECT master.*,
+			<include refid="ElementName.BI_MONEY_ADJUST" />,
+		  <include refid="ElementName.BI_BALANCE_ADJUST" />,
+		  <include refid="ElementName.BI_PAY_SUM_ADJUST" />
+		 FROM bi_adjust_track master  where process_inst_id is not null
+		 <dynamic prepend="">
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			<include refid="ElementCondition.CO_CODE"/>
+			<include refid="ElementCondition.FUND_CODE_LIKE"/>
+			<include refid="ElementCondition.PROJECT_CODE"/>
+			<include refid="ElementCondition.ORIGIN_CODE"/>
+			<include refid="ElementCondition.MANAGE_CODE"/>
+			<include refid="WfCommonEdit.wfCommonEdit" />
+			<include refid="BusiNumLim.BusiNumLimStr" />
+		 </dynamic>
+		 	) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+	<select id="getBiAdjustTrackEditDetailByDto" resultMap="biAdjustTrackResult" parameterClass="biAdjustTrack">
+		SELECT master.*,
+			<include refid="ElementName.BI_MONEY_ADJUST" />,
+		  <include refid="ElementName.BI_BALANCE_ADJUST" />,
+		  <include refid="ElementName.BI_PAY_SUM_ADJUST" />
+		 FROM bi_adjust_track master
+		 <dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="inputGroupId">
+				master.input_group_id =#inputGroupId#
+			</isNotNull>
+			<isNotNull prepend="AND" property="biAdjustCode">
+				<isEqual property="biAdjustCode" compareValue="601">
+					master.process_inst_id is null
+			    </isEqual>
+			</isNotNull>
+		 </dynamic>
+	</select>
+	<select id="getBiAdjustTrackAuditByDto" resultMap="biAdjustTrackResult" parameterClass="conditionDto">
+		 select * from ( SELECT master.*,
+			<include refid="ElementName.BI_MONEY_ADJUST" />,
+		  <include refid="ElementName.BI_BALANCE_ADJUST" />,
+		  <include refid="ElementName.BI_PAY_SUM_ADJUST" />
+		 FROM bi_adjust_track master  WHERE process_inst_id is NOT null
+		 <dynamic prepend="AND">
+			<isNotNull prepend="AND" property="nd">
+				master.nd =#nd#
+			</isNotNull>
+			 <include refid="ElementCondition.CoCodeFilter" />
+			<include refid="ElementCondition.CO_CODE"/>
+			<include refid="ElementCondition.FUND_CODE_LIKE"/>
+			<include refid="ElementCondition.PROJECT_CODE"/>
+			<include refid="ElementCondition.ORIGIN_CODE"/>
+			<include refid="ElementCondition.MANAGE_CODE"/>
+			<include refid="WfCommonAudited.WfCommonAudited" />
+			<include refid="BusiNumLim.BusiNumLimStr" />
+		 </dynamic>
+		  	) MASTER
+
+		<include refid="ElementCondition.OrderColumns" />
+
+	</select>
+
+	<delete id="deleteBiAdjustTrackById" parameterClass="string">
+		delete from bi_adjust_track master where master.input_group_id in
+		(select input_group_id from bi_adjust_track where bi_track_id=#biTrackId:VARCHAR#)
+	</delete>
+
+	<parameterMap id="biGenerateBillParameter" class="java.util.HashMap">
+		<parameter property="pPkValue" jdbcType="VARCHAR"	        javaType="java.lang.String" mode="IN" />
+		<parameter property="pBalanceId" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiAdjustCode" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiAdjustBiMoney" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiAdjustMoney" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiGenBillType" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pUserId" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pProcDate" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRemark" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pIsIorD" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr1" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr2" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr3" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage" jdbcType="VARCHAR"		javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="biGenerateBill" parameterMap="biGenerateBillParameter">
+		{call SP_BI_GENBILL_FORBIBALANCE(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="biAdjustBeforeSaveParameter" class="java.util.HashMap">
+		<parameter property="pPkValue" jdbcType="VARCHAR"	    javaType="java.lang.String" mode="IN" />
+		<parameter property="pBalanceId" jdbcType="VARCHAR"	    javaType="java.lang.String" mode="IN" />
+		<parameter property="pAdjustMoney" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr1" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr2" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr3" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage" jdbcType="VARCHAR"	javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="biAdjustBeforeSave" parameterMap="biAdjustBeforeSaveParameter">
+		{call SP_BIADJUST_BEFORE_SAVE(?,?,?,?,?,?,?)}
+	</procedure>
+	
+	<parameterMap id="updateAdjustMoneyParameter" class="java.util.HashMap">
+		<parameter property="pBalanceId"   jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pAdjustMoney" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pIsiord"      jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage"  jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+	</parameterMap>
+	<procedure id="updateAdjustMoney" parameterMap="updateAdjustMoneyParameter">
+		{call SP_BIADJUST_UPDATE_BALANCE(?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="biAdjustReworkParameter" class="java.util.HashMap">
+		<parameter property="pPkValue" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pBalanceId" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiAdjustCode" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pAdjustBiMoney" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pAdjustMoney" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pBiGenBillType" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pUserId" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pProcDate" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRemark" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pIsIorD" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr1" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr2" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr3" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage" jdbcType="VARCHAR"		javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="biAdjustRework" parameterMap="biAdjustReworkParameter">
+		{call SP_BI_ADJUST_REWORK(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+
+	<update id="updateAuditInfo" parameterClass="biAdjustTrack">
+		UPDATE bi_adjust_track
+		  SET auditor_id=#auditorId:VARCHAR#,
+		  	  auditor_name=#auditorName:VARCHAR#
+		WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<update id="upDataBiAdjustTrack" parameterClass="biAdjustTrack">
+		UPDATE bi_adjust_track
+		  SET org_money=#orgMoney#,
+			  cur_money=#curMoney#,
+		      RECE_CODE = #receCode:VARCHAR#,
+		      RECE_ACCCODE = #receAccCode:VARCHAR#,
+		      RECE_ACCNAME = #receAccName:VARCHAR#,
+		      RECE_BANKNODECODE = #receBankNodeCode:VARCHAR#,
+		      RECE_BANKNO = #receBankNo:VARCHAR#,
+		      RECE_BANKNODENAME = #receBankNodeName:VARCHAR#,
+		      RECE_BANKACCCODE = #receBankAccCode:VARCHAR#,
+		      RECE_BANKREMARK=#receBankRemark:VARCHAR#
+		WHERE bi_track_id=#biTrackId:VARCHAR#
+	</update>
+
+	<select id="getBiAdjustTrackForUpdateById" resultMap="biAdjustTrackResult" 	parameterClass="String">
+		SELECT master.*,
+			<include refid="ElementName.BI_MONEY_ADJUST" />,
+		  <include refid="ElementName.BI_BALANCE_ADJUST" />,
+		  <include refid="ElementName.BI_PAY_SUM_ADJUST" />
+		  from bi_adjust_track  master where bi_track_id=#biTrackId:VARCHAR# for update
+	</select>
+
+	<update id="updateBiAdjustTrackIsValid" parameterClass="Map">
+		UPDATE bi_adjust_track SET
+		is_valid=#isValid#,a_status_code=#astatusCode#
+		WHERE	bi_track_id=#biTrackId# AND is_valid=1
+	</update>
+
+</sqlMap>

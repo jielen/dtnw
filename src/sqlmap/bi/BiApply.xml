@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiApply">
+
+	<typeAlias alias="biApply" type="com.ufgov.zc.common.bi.model.BiApply" />
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="biApplyResult" class="biApply">
+		<result column="bi_apply_id" property="biApplyId" jdbcType="VARCHAR" />
+		<result column="cur_money" property="biCurMoney" jdbcType="DECIMAL" />
+		<result column="b_acc_code" property="baccCode" jdbcType="VARCHAR" />
+		<result column="input_group_id" property="inputGroupId" />
+		<result column="senddoc_code" property="sendDocCode" />
+		<result column="inceptdoc_code" property="inceptDocCode" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="proc_date" property="procDate" jdbcType="DATE" />
+		<result column="dz_date" property="dzDate" jdbcType="DATE" />
+		<result column="ND" property="nd" />
+		<result column="is_dz" property="isDz" />
+		<result column="gl_vou_iid" property="glvouiId" />
+		<result column="gl_vou_date" property="glvouDate" />
+		<result column="gl_vou_inputer" property="glvouInputer" />
+	</resultMap>
+
+	<select id="getBiApply" resultMap="biApplyResult"
+		parameterClass="elementCondition">
+		SELECT master.* FROM bi_apply master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="unDzed">
+					is_dz ='N'
+				</isEqual>
+				<isEqual property="status" compareValue="dzed">
+					is_dz ='Y'
+				</isEqual>
+			</isNotNull>
+		    <isNotNull prepend="AND" property="nd">
+	  		  MASTER.ND = #nd#
+	  	    </isNotNull>
+			<include refid="ElementCondition.B_ACC_CODE" />
+			<include refid="ElementCondition.SENDDOC_CODE" />
+			<include refid="ElementCondition.INCEPTDOC_CODE" />
+		</dynamic>
+
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<insert id="insertBiApply" parameterClass="biApply">
+	    insert into
+		bi_apply(BI_APPLY_ID,SENDDOC_CODE,B_ACC_CODE,CUR_MONEY,INPUT_GROUP_ID,
+		ND,PROC_DATE,IS_DZ,DZ_DATE,REMARK) values
+		(#biApplyId:VARCHAR#,#sendDocCode:VARCHAR#, #baccCode:VARCHAR#,
+		#biCurMoney:DECIMAL#,#inputGroupId:VARCHAR#, #nd:INTEGER#,
+		#procDate:DATE#, #isDz:VARCHAR#, #dzDate:DATE#,#remark:VARCHAR#)
+	</insert>
+	<update id="updateBiApply" parameterClass="biApply">
+	    update bi_apply set
+		SENDDOC_CODE=#sendDocCode:VARCHAR#, B_ACC_CODE=#baccCode:VARCHAR#,
+		CUR_MONEY=#biCurMoney:DECIMAL#,INPUT_GROUP_ID=#inputGroupId:VARCHAR#,
+		ND= #nd:INTEGER# ,PROC_DATE=#procDate:DATE#,
+		IS_DZ=#isDz:VARCHAR#, DZ_DATE =#dzDate:DATE#,
+		REMARK=#remark:VARCHAR#  where
+		BI_APPLY_ID=#biApplyId:VARCHAR#
+	</update>
+	<delete id="deleteBiApply" parameterClass="Map">
+		delete from bi_apply
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="biApplyIdList" open="("
+				close=")" conjunction="OR">
+				BI_APPLY_ID=#biApplyIdList[]# </iterate>
+		</dynamic>
+	</delete>
+	<update id="updateBiApplyForIsDz" parameterClass="Map">
+	    update bi_apply set
+	    is_dz = 'Y'
+	    <dynamic prepend="WHERE">
+			<iterate prepend="AND" property="biApplyIdList" open="("
+				close=")" conjunction="OR">
+				BI_APPLY_ID=#biApplyIdList[]# </iterate>
+		</dynamic>
+	</update>
+	<update id="updateBiApplyForCancelDz" parameterClass="Map">
+	    update bi_apply set
+	    is_dz = 'N', dz_date = null
+	    <dynamic prepend="WHERE">
+			<iterate prepend="AND" property="biApplyIdList" open="("
+				close=")" conjunction="OR">
+				BI_APPLY_ID=#biApplyIdList[]# </iterate>
+		</dynamic>
+	</update>
+
+</sqlMap>

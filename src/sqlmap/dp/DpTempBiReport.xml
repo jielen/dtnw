@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DpTempBiReport">
+	<typeAlias alias="dpTempBiReport"
+		type="com.ufgov.zc.common.dp.dto.DpTempBiReport" />
+
+	<resultMap id="dpTempBiReportResult" class="dpTempBiReport">
+		<result property="orgCode" column="org_code" />
+		<result property="orgName" column="org_name" />
+		<result property="fundCode" column="fund_code" />
+		<result property="fundName" column="fund_name" />
+		<result property="month" column="month" />
+		<result property="nd" 	column="nd" />
+		<result property="coCode" column="co_code" />
+		<result property="coName" column="co_name" />
+		<result property="curMoney" column="cur_money" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="baccName" column="b_acc_name" />
+		<result property="originCode" column="origin_code" />
+		<result property="originName" column="origin_name" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="projectCode" column="project_code" />
+		<result property="projectName" column="project_name" />
+		<result property="dattr2" column="d_attr2" />
+		<result property="dattr2Name" column="dattr2_Name" />
+		<result property="batchInfo" column="batch_info" />
+	</resultMap>
+
+<!-- 
+   <select id="getApproveTableViewList" resultMap="dpTempBiReportResult"	parameterClass="Map">
+         SELECT dp.dp_detail_id,dp.month,
+		      dp.org_code,(SELECT org_name  FROM as_org MASTER WHERE co_code = (SELECT co_code FROM ma_company WHERE co_type_code = '01' AND nd = MASTER.nd)  AND nd = dp.nd AND org_code=dp.org_code ) org_name,
+      		  dp.fund_code,(SELECT fund_name FROM ma_cp_fund WHERE fund_code = dp.fund_code And Nd = dp.Nd) fund_name,
+		      dp.co_code,(Select co_Name From ma_company Where co_code = dp.co_code And Nd = dp.Nd) co_Name,
+		      dp.cur_money ,
+		      dp.project_code,
+		      dp.b_acc_code,((SELECT b_acc_name  FROM ma_bacc  WHERE b_acc_code = dp.b_acc_code AND nd = dp.nd)) b_acc_name,
+		      dp.origin_code,(SELECT origin_name FROM ma_cp_origin WHERE origin_code = dp.origin_code AND nd = dp.nd) origin_name,
+		      dp.payout_code,dp.d_attr2,(SELECT extend_name FROM ma_cp_extend WHERE extend_type='02' and extend_code = dp.d_attr2 AND nd = dp.nd) dattr2_Name
+		 FROM DP_DETAIL dp , Bi_Balance b
+         WHERE dp.bi_balance_id=b.bi_balance_id(+)
+         	AND dp.nd=b.nd(+)
+	        <dynamic prepend="">
+	        	<iterate prepend="AND" property="dpDetailIdList" open="(" close=")" conjunction="OR">
+					dp.dp_detail_id=#dpDetailIdList[]#
+				</iterate>
+			</dynamic>
+	</select>
+-->
+    <select id="getApproveTableViewList" resultMap="dpTempBiReportResult"	parameterClass="Map">
+	     SELECT dp.nd,dp.month,dp.batch_info,
+	          dp.org_code,(SELECT org_name  FROM as_org MASTER WHERE co_code = (SELECT co_code FROM ma_company WHERE co_type_code = '01' AND nd = MASTER.nd)  AND nd = dp.nd AND org_code=dp.org_code ) org_name,
+	          dp.fund_code,(SELECT fund_name FROM ma_cp_fund WHERE fund_code = dp.fund_code And Nd = dp.Nd) fund_name,
+	          dp.co_code,(Select co_Name From ma_company Where co_code = dp.co_code And Nd = dp.Nd) co_Name,
+	          SUM(dp.cur_money) cur_money ,
+	          dp.b_acc_code,((SELECT b_acc_name  FROM ma_bacc  WHERE b_acc_code = dp.b_acc_code AND nd = dp.nd)) b_acc_name,
+	          dp.origin_code,(SELECT origin_name FROM ma_cp_origin WHERE origin_code = dp.origin_code AND nd = dp.nd) origin_name,
+	          dp.payout_code,
+	          dp.project_code,
+	          dp.d_attr2,
+	          decode(dp.payout_code,'02',(SELECT pd_project_name FROM gk_project_v WHERE pd_project_code=dp.project_code),'') project_name,
+	          decode(dp.payout_code,'03',(SELECT extend_name FROM ma_cp_extend WHERE extend_type='02' and extend_code = dp.d_attr2 AND nd = dp.nd),'') dattr2_Name
+	     FROM DP_DETAIL dp 
+	        where  dp.is_valid='1' 
+<!--     	 		and (dp.a_status_code='5' or dp.a_status_code='3') 
+				AND dp.plan_clear_bill_id IS NOT NULL
+-->	     <dynamic prepend="">
+        	<iterate prepend="AND" property="dpDetailIdList" open="(" close=")" conjunction="OR">
+				dp.dp_detail_id=#dpDetailIdList[]#
+			</iterate>
+		</dynamic>
+     	GROUP BY month,nd,batch_info,fund_code,org_code, co_code, b_acc_code, origin_code,payout_code,project_code,d_attr2
+	</select>
+	
+	<resultMap id="sumMoneyResult" class="dpTempBiReport">
+		<result property="biMoney" column="bi_money" nullValue="0"/>
+		<result property="usedMoneySum" column="used_money_sum" nullValue="0"/>
+		<result property="balance" column="balance" nullValue="0"/>
+	</resultMap>
+	
+	<select id="getSumMoney" resultMap="sumMoneyResult" parameterClass="Map">
+		SELECT sum(master.bi_money-master.bi_assign_money-master.am_money-master.dp_money-master.cp_money-master.lp_money-master.freeze_money-master.cd_money) balance,
+		       sum(bi_money) bi_money ,
+		       sum(master.am_money+master.dp_money+master.cp_money+master.lp_money) used_money_sum
+		 FROM Bi_Balance master 
+		 WHERE  nd = #nd# and bi_level='03'  
+			<isNotNull prepend="AND" property="fundCode">
+				MASTER.FUND_CODE like #fundCode# || '%'
+			</isNotNull>						
+			<isNotNull prepend="AND" property="orgCode">
+				MASTER.ORG_CODE = #orgCode#
+			</isNotNull>	
+			<isNotNull prepend="AND" property="coCode">
+				MASTER.CO_CODE = #coCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="baccCode">
+				MASTER.B_ACC_CODE =	#baccCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="originCode">
+				MASTER.ORIGIN_CODE = #originCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="dattr2">
+				MASTER.D_ATTR2 = #dattr2#
+			</isNotNull>
+			<isNotNull prepend="AND" property="projectCode">
+				MASTER.PROJECT_CODE = #projectCode#
+			</isNotNull>
+	</select>
+
+</sqlMap>

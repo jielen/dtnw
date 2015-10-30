@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpPayClearList">
+
+	<typeAlias alias="cpPayClearList" type="com.ufgov.zc.common.cp.model.CpPayClearList"/>
+
+	<resultMap id="cpPayClearListResult" class="cpPayClearList">
+		<result column="PAY_CLEAR_LIST_ID" property="payClearListId" jdbcType="VARCHAR"/>
+		<result column="PAY_CLEAR_BILL_ID" property="payClearBillId" jdbcType="VARCHAR"/>
+		<result column="SEQU" property="sequ" jdbcType="DECIMAL"/>
+		<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR"/>
+		<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR"/>
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR"/>
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR"/>
+		<result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR"/>
+		<result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR"/>
+		<result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR"/>
+		<result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR"/>
+		<result column="PROJECT_TYPE_CODE" property="projectTypeCode" jdbcType="VARCHAR"/>
+		<result column="PROJECT_TYPE_NAME" property="projectTypeName" jdbcType="VARCHAR"/>
+		<result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR"/>
+		<result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR"/>
+		<result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR"/>
+		<result column="FUND_NAME" property="fundName" jdbcType="VARCHAR"/>
+		<result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR"/>
+		<result column="ORIGIN_NAME" property="originName" jdbcType="VARCHAR"/>
+		<result column="PAYOUT_CODE" property="payoutCode" jdbcType="VARCHAR"/>
+		<result column="PAYOUT_NAME" property="payoutName" jdbcType="VARCHAR"/>
+		<result column="INCEPTDOC_CODE" property="inceptdocCode" jdbcType="VARCHAR"/>
+		<result column="INCEPTDOC_NAME" property="inceptdocName" jdbcType="VARCHAR"/>
+		<result column="MANAGE_CODE" property="manageCode" jdbcType="VARCHAR"/>
+		<result column="MANAGE_NAME" property="manageName" jdbcType="VARCHAR"/>
+		<result column="PAY_VOU_NO" property="payVouNo" jdbcType="VARCHAR"/>
+		<result column="VOU_NO" property="vouNo" jdbcType="VARCHAR"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+		<result column="MONEY" property="money" jdbcType="DECIMAL"/>
+		<result column="MONEY1" property="money1" jdbcType="DECIMAL"/>
+		<result column="MONEY2" property="money2" jdbcType="DECIMAL"/>
+		<result column="MONEY3" property="money3" jdbcType="DECIMAL"/>
+		<result column="D_ATTR1" property="dattr1" jdbcType="VARCHAR"/>
+		<result column="D_ATTR2" property="dattr2" jdbcType="VARCHAR"/>
+		<result column="D_ATTR3" property="dattr3" jdbcType="VARCHAR"/>
+		<result column="D_ATTR4" property="dattr4" jdbcType="VARCHAR"/>
+		<result column="D_ATTR5" property="dattr5" jdbcType="VARCHAR"/>
+		<result column="STAMP" property="stamp" jdbcType="DECIMAL"/>
+		<result column="D_ATTR1_NAME" property="dattr1Name" jdbcType="VARCHAR"/>
+		<result column="D_ATTR2_NAME" property="dattr2Name" jdbcType="VARCHAR"/>
+		<result column="D_ATTR3_NAME" property="dattr3Name" jdbcType="VARCHAR"/>
+		<result column="D_ATTR4_NAME" property="dattr4Name" jdbcType="VARCHAR"/>
+		<result column="D_ATTR5_NAME" property="dattr5Name" jdbcType="VARCHAR"/>
+		<result column="ND" property="nd" jdbcType="DECIMAL"/>
+		<result column="SENDDOC_CODE" jdbcType="VARCHAR" property="sendDocCode" />
+		<result column="SENDDOC_NAME" jdbcType="VARCHAR" property="sendDocName" />
+	</resultMap>
+
+
+	<insert id="insertCpPayClearList" parameterClass="cpPayClearList">
+        INSERT INTO CP_PAY_CLEAR_LIST
+		  (PAY_CLEAR_LIST_ID,
+		   PAY_CLEAR_BILL_ID,
+		   SEQU,
+		   ORG_CODE,
+		   ORG_NAME,
+		   CO_CODE,
+		   CO_NAME,
+		   B_ACC_CODE,
+		   B_ACC_NAME,
+		   OUTLAY_CODE,
+		   OUTLAY_NAME,
+		   PROJECT_TYPE_CODE,
+		   PROJECT_TYPE_NAME,
+		   PROJECT_CODE,
+		   PROJECT_NAME,
+		   FUND_CODE,
+		   FUND_NAME,
+		   ORIGIN_CODE,
+		   ORIGIN_NAME,
+		   PAYOUT_CODE,
+		   PAYOUT_NAME,
+		   INCEPTDOC_CODE,
+		   INCEPTDOC_NAME,
+		   MANAGE_CODE,
+		   MANAGE_NAME,
+		   PAY_VOU_NO,
+		   VOU_NO,
+		   REMARK,
+		   MONEY,
+		   MONEY1,
+		   MONEY2,
+		   MONEY3,
+		   D_ATTR1,
+		   D_ATTR2,
+		   D_ATTR3,
+		   D_ATTR4,
+		   D_ATTR5,
+		   STAMP,
+		   D_ATTR1_NAME,
+		   D_ATTR2_NAME,
+		   D_ATTR3_NAME,
+		   D_ATTR4_NAME,
+		   D_ATTR5_NAME,
+		   ND,
+		   SENDDOC_CODE,
+		   SENDDOC_NAME)
+		VALUES(
+		  #payClearListId:VARCHAR#,
+		  #payClearBillId:VARCHAR#,
+		  #sequ:DECIMAL#,
+		  #orgCode:VARCHAR#,
+		  (SELECT org_name FROM v_cp_org WHERE org_code=#orgCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #coCode:VARCHAR#,
+		  (SELECT CO_NAME FROM MA_COMPANY WHERE CO_CODE = #coCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #baccCode:VARCHAR#,
+		  (SELECT b_acc_name FROM ma_bacc WHERE b_acc_code=#baccCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #outlayCode:VARCHAR#,
+		  (SELECT outlay_name FROM ma_outlaytype WHERE outlay_code=#outlayCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #projectTypeCode:VARCHAR#,
+		  (SELECT project_type_name FROM ma_project_type WHERE project_type_code=#projectTypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #projectCode:VARCHAR#,
+		   (SELECT pd_project_name FROM v_cp_project WHERE pd_project_code=#projectCode:VARCHAR#),
+		  #fundCode:VARCHAR#,
+		  (SELECT fund_name FROM ma_cp_fund WHERE fund_code=#fundCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #originCode:VARCHAR#,
+		  (SELECT Origin_name FROM ma_cp_origin WHERE Origin_code=#originCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #payoutCode:VARCHAR#,
+		  (SELECT payout_name FROM ma_cp_payout WHERE payout_code=#payoutCode:VARCHAR# AND ND=#nd:DECIMAL#),
+          #inceptdocCode:VARCHAR#,
+          (SELECT inceptdoc_name FROM ma_cp_inceptDoc WHERE inceptdoc_code=#inceptdocCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #manageCode:VARCHAR#,
+		  (SELECT manage_name FROM ma_cp_manage WHERE manage_code=#manageCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		  #payVouNo:VARCHAR#,
+		  #vouNo:VARCHAR#,
+		  #remark:VARCHAR#,
+		  #money:VARCHAR#,
+		  #money1:DECIMAL#,
+		  #money2:DECIMAL#,
+		  #money3:DECIMAL#,
+		  #dattr1:VARCHAR#,
+		  #dattr2:VARCHAR#,
+		  #dattr3:VARCHAR#,
+		  #dattr4:VARCHAR#,
+		  #dattr5:VARCHAR#,
+		  #stamp:DECIMAL#,
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr1:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='01'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr2:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='02'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr3:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='03'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr4:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='04'),
+		  (SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr5:VARCHAR#  AND nd=#nd:DECIMAL# AND extend_type='05'),
+		  #nd:DECIMAL#,
+		  #sendDocCode:VARCHAR#,
+		  (SELECT senddoc_name FROM ma_cp_senddoc WHERE senddoc_code=#sendDocCode:VARCHAR# AND ND=#nd:DECIMAL#)
+		    )
+
+
+	</insert>
+
+	<select id="getCpPayClearListByBillId" resultMap="cpPayClearListResult" parameterClass="string">
+		select PAY_CLEAR_LIST_ID, PAY_CLEAR_BILL_ID, SEQU, ORG_CODE, ORG_NAME,
+		CO_CODE, CO_NAME, B_ACC_CODE, B_ACC_NAME, OUTLAY_CODE, OUTLAY_NAME,
+		PROJECT_TYPE_CODE, PROJECT_TYPE_NAME, PROJECT_CODE, PROJECT_NAME, FUND_CODE,
+		FUND_NAME, ORIGIN_CODE, ORIGIN_NAME, PAYOUT_CODE, PAYOUT_NAME, MANAGE_CODE,
+		MANAGE_NAME, PAY_VOU_NO, REMARK, MONEY, MONEY1, MONEY2, MONEY3, D_ATTR1,
+		D_ATTR2, D_ATTR3, D_ATTR4, D_ATTR5, STAMP, D_ATTR1_NAME, D_ATTR2_NAME,
+		D_ATTR3_NAME, D_ATTR4_NAME, D_ATTR5_NAME, ND, INCEPTDOC_CODE, INCEPTDOC_NAME,SENDDOC_CODE,SENDDOC_NAME,VOU_NO
+		from CP_PAY_CLEAR_LIST
+		where PAY_CLEAR_BILL_ID = #payClearBillId:VARCHAR#
+		 order by co_code,fund_code,b_acc_code
+	</select>
+
+	<select id="getCpPayClearListForList" resultMap="cpPayClearListResult" parameterClass="map">
+		select * from CP_PAY_CLEAR_LIST
+		<dynamic prepend="WHERE">
+		  <iterate prepend="AND" property="billIdList"
+           open="(" close=")" conjunction="OR">
+             PAY_CLEAR_BILL_ID=#billIdList[]#
+          </iterate>
+       </dynamic>
+       order by co_code,fund_code,b_acc_code
+	</select>
+
+
+</sqlMap>

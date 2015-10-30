@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- - Application context definition for JPetStore's business layer. - Contains 
+	bean references to the transaction manager and to the DAOs in - dataAccessContext-local/jta.xml 
+	(see web.xml's "contextConfigLocation"). -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:app="http://www.ufgov.com.cn/schema/app/1.0"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+    
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+	
+		<!-- sqlmap 配置 -->
+		<bean id="WFsqlMapClient"
+			class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+			<property name="configLocation" value="classpath:resource/sqlmap/SqlMapConfig.xml" />
+			<property name="dataSource" ref="myDataSource" />
+		</bean>
+		<!-- wfengine 元数据操作用dao -->
+		<bean id="WFMetaDao"
+			class="com.ufgov.workflow.engine.internal.dao.impl.WFMetaDaoImpl">
+			<property name="sqlMapClient" ref="WFsqlMapClient" />
+		</bean>
+		<!-- wfengine 运行时操作用dao -->
+		<bean id="WFRuntimeDao"
+			class="com.ufgov.workflow.engine.internal.dao.impl.WFRuntimeDaoImpl">
+			<property name="sqlMapClient" ref="WFsqlMapClient" />
+		</bean>
+		<bean id="TemplateBuilder"
+			class="com.ufgov.workflow.engine.internal.service.db.TemplateBuilder">
+			<property name="metaDao" ref="WFMetaDao" />
+		</bean>
+		<bean id="WFCommonService"
+			class="com.ufgov.workflow.engine.service.WFCommonService">
+			<property name="runtimeService" ref="WFRuntimeService" />
+			<property name="metaService" ref="WFMetaService" />
+			<property name="resourceService" ref="WFResourceService" />
+		</bean>
+		<bean id="basicService"
+			class="com.ufgov.workflow.engine.service.BasicService"
+			abstract="true">
+			<property name="runtimeService" ref="WFRuntimeService" />
+			<property name="metaService" ref="WFMetaService" />
+			<property name="commonService" ref="WFCommonService" />
+			<property name="resourceService" ref="WFResourceService" />
+		</bean>
+		<bean id="activateService"
+			class="com.ufgov.workflow.engine.internal.service.ActivateServiceImpl"
+			parent="basicService" />
+		<bean id="callbackService"
+			class="com.ufgov.workflow.engine.internal.service.CallbackServiceImpl"
+			parent="basicService" />
+		<bean id="commitService"
+			class="com.ufgov.workflow.engine.internal.service.CommitServiceImpl"
+			parent="basicService" />
+		<bean id="deactivateService"
+			class="com.ufgov.workflow.engine.internal.service.DeactivateServiceImpl"
+			parent="basicService" />
+		<bean id="interruptService"
+			class="com.ufgov.workflow.engine.internal.service.InterruptServiceImpl"
+			parent="basicService" />
+		<bean id="restartService"
+			class="com.ufgov.workflow.engine.internal.service.RestartServiceImpl"
+			parent="basicService" />
+		<bean id="reworkService"
+			class="com.ufgov.workflow.engine.internal.service.ReworkServiceImpl"
+			parent="basicService" />
+		<bean id="transferService"
+			class="com.ufgov.workflow.engine.internal.service.TransferServiceImpl"
+			parent="basicService" />
+		<bean id="untreadService"
+			class="com.ufgov.workflow.engine.internal.service.UntreadServiceImpl"
+			parent="basicService" />
+		<bean id="handoverService"
+			class="com.ufgov.workflow.engine.internal.service.HandoverServiceImpl"
+			parent="basicService" />
+
+		<bean  id="traceService" class="com.ufgov.workflow.engine.service.TraceService">
+			<property name="runtimeService" ref="WFRuntimeService" />
+		</bean>
+		<bean id="WFRuntimeService"
+			class="com.ufgov.workflow.engine.internal.service.db.WFRuntimeServiceImpl">
+			<property name="runtimeDao" ref="WFRuntimeDao" />
+		</bean>
+		<bean id="WFMetaService"
+			class="com.ufgov.workflow.engine.internal.service.db.WFMetaServiceImpl">
+			<property name="builder" ref="TemplateBuilder" />
+		</bean>
+		<bean id="WFResourceService"
+			class="com.ufgov.workflow.engine.service.ResourceService">
+			<property name="runtimeService" ref="WFRuntimeService" />
+			<property name="metaService" ref="WFMetaService" />
+		</bean>
+		<bean id="WFEngine" class="com.ufgov.workflow.engine.BasicWFEngine"
+			scope="prototype">
+			<property name="commonService" ref="WFCommonService" />
+			<property name="activateService" ref="activateService" />
+			<property name="callbackService" ref="callbackService" />
+			<property name="commitService" ref="commitService" />
+			<property name="deactivateService" ref="deactivateService" />
+			<property name="interruptService" ref="interruptService" />
+			<property name="restartService" ref="restartService" />
+			<property name="reworkService" ref="reworkService" />
+			<property name="transferService" ref="transferService" />
+			<property name="untreadService" ref="untreadService" />
+			<property name="traceService" ref="traceService" />
+		</bean>
+	
+		<!-- 工作流暂用
+		<bean id="currentTransactionManager"
+			class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="myDataSource"></property>
+		</bean>
+	<tx:advice id="wfTxAdvice"
+		transaction-manager="currentTransactionManager">
+		<tx:attributes>
+			<tx:method name="*" rollback-for="Exception" />
+		</tx:attributes>
+	</tx:advice>
+	 -->
+	<aop:config>
+		<aop:pointcut id="workflowServiceRun"
+			expression="execution(* com.ufgov.workflow.WFEngine.*(..))" />
+		<aop:advisor pointcut-ref="workflowServiceRun" advice-ref="gkTxAdvice" />
+	</aop:config>
+	
+</beans>

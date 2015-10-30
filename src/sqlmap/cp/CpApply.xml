@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CpApply">
+	<typeAlias alias="cpApply"	type="com.ufgov.zc.common.cp.model.CpApply" />
+	<typeAlias alias="ecDto"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="cpApplyResult" class="cpApply">
+		<result property="nd" column="nd" />
+		<result property="cpApplyId" column="cp_apply_id" />
+		<result property="inputGroupId" column="input_group_id" />
+		<result property="cpVoucherId" column="cp_voucher_id" />
+		<result property="cpApBillId" column="cp_ap_bill_id" />
+		<result property="dpBalanceId" column="dp_balance_id" />
+		<result property="isSumCpApply" column="is_sum_cp_apply" />
+		<result property="sumCpApplyId" column="sum_cp_apply_id" />
+		<result property="gbPackCode" column="gb_pack_code" />
+		<result property="createType" column="create_type" />
+		<result property="controlType" column="control_type" />
+		<result property="decType" column="dec_type" />
+		<result property="isCreateVou" column="is_create_vou" />
+		<result property="cpAdjustCode" column="cp_adjust_code" />
+		<result property="operationTypeCode" column="operation_type_code" />
+		<result property="balModeCode" column="bal_mode_code" />
+		<result property="baccId" column="b_acc_id" />
+		<result property="biBalanceId" column="BI_BALANCE_ID" />
+		<result property="dpCdUseMoney" column="dp_cd_use_money" />
+
+		<result property="receCode" column="rece_code" />
+		<result property="receAccCode" column="rece_acccode" />
+		<result property="receAccName" column="rece_accname" />
+		<result property="receBankNodeCode" column="rece_banknodecode" />
+		<result property="receBankNo" column="rece_bankno" />
+		<result property="receBankNodeName" column="rece_banknodename" />
+		<result property="receBankAccCode" column="rece_bankacccode" />
+		<result property="processInstId" column="process_inst_id" />
+		<result property="auditorId" column="auditor_id" />
+
+		<result property="adate" column="a_date" />
+		<result property="aopinion" column="a_opinion" />
+		<result property="astatusCode" column="a_status_code" />
+		<result property="anStatus" column="an_status" />
+		<result property="wfContentBrief" column="wf_content_brief" />
+		<result property="isValid" column="is_valid" />
+		<result property="cancelerId" column="canceler_id" />
+		<result property="cancelDate" column="cancel_date" />
+		<result property="cancelOpinion" column="cancel_opinion" />
+		<result property="fileName" column="filename" />
+		<result property="fileNameBlobId" column="filename_blobid" />
+		<result property="stamp" column="stamp"  nullValue="0"/>
+		<result property="vouNo" column="vou_no" />
+		<result property="auditorName" column="auditor_name" />
+		<result property="inputorName" column="inputor_name" />
+		<result property="cpVoucherIdBak" column="cp_voucher_id_bak" />
+		<result property="vouNoBak" column="vou_no_bak" />
+		<result property="contractCode" column="contract_code" />
+
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="inputorId" column="inputor_id" />
+
+		<result property="cdate" column="cdate" jdbcType="DATE" />
+		<result property="procDate" column="proc_date" jdbcType="DATE" />
+
+		<result property="dpMoney" column="dp_money" nullValue="0" />
+		<result property="dpBalance" column="dp_balance" nullValue="0" />
+		<result property="dpPaySum" column="dp_paysum" nullValue="0" />
+
+		<result property="biTargetCode" column="bi_target_code" />
+
+		<result property="coCode" column="co_code" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="fundCode" column="fund_code" />
+		<result property="inceptDocCode" column="inceptdoc_code" />
+		<result property="manageCode" column="manage_code" />
+		<result property="orgCode" column="org_code" />
+		<result property="originCode" column="origin_code" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="paytypeCode" column="paytype_code" />
+		<result property="projectTypeCode" column="project_type_code" />
+		<result property="projectCode" column="project_code" />
+		<result property="sendDocTypeCode" column="senddoc_type_code" />
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="remark" column="remark" />
+		<result property="isCounterSign" column="is_countersign" />
+		<result property="counterSigner" column="countersigner" />
+		<result property="dattr1" column="D_ATTR1" />
+		<result property="dattr2" column="D_ATTR2" />
+		<result property="dattr3" column="D_ATTR3" />
+		<result property="dattr4" column="D_ATTR4" />
+		<result property="dattr5" column="D_ATTR5" />
+		<result property="payAccCode" column="pay_acccode" />
+		<result property="payAccName" column="pay_accname" />
+		<result property="payBankAccCode" column="pay_bankacccode" />
+		<result property="payBankNo" column="pay_bankno" />
+		<result property="payBankNodeCode" column="pay_banknodecode" />
+		<result property="payBankNodeName" column="pay_banknodename" />
+		<result property="payBankCode" column="pay_bank_code" />
+		<result property="payBankName" column="pay_bank_name" />
+		<result property="clearAccCode" column="clear_acc_code" />
+		<result property="clearAccName" column="clear_acc_name" />
+		<result property="clearAccNo" column="clear_acc_no" />
+		<result property="clearBankCode" column="clear_bank_code" />
+		<result property="clearBankName" column="clear_bank_name" />
+		<result property="clearBankNo" column="clear_bank_no" />
+	</resultMap>
+
+	<select id="getCpApplyCount" resultClass="int"	parameterClass="map">
+		Select count(dp_detail_id) From dp_detail
+	</select>
+
+	<select id="getCpApply" resultMap="cpApplyResult"	parameterClass="int">
+		select master.* from gk_cp_apply_v MASTER order by cp_apply_id
+	</select>
+
+	<delete id="deleteCpApplyById" parameterClass="String">
+		delete from cp_apply where cp_apply_id=#cpApplyId:VARCHAR#
+	</delete>
+
+	<update id="updateCpApplyFieldValueById" parameterClass="Map">
+		update cp_apply set $fieldName$ = #fieldValue# where cp_apply_id
+		= #cpApplyId#
+	</update>
+
+	<update id="updateCpApplyDpCdUseMoneyById" parameterClass="Map">
+		update cp_apply set $fieldName$ = #dpCdUseMoney# where
+		cp_apply_id = #cpApplyId#
+	</update>
+
+	<select id="selectCpApplyById" resultMap="cpApplyResult" parameterClass="String">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance FROM
+		CP_APPLY master where cp_apply_id=#cpApplyId:VARCHAR#
+	</select>
+	<select id="getCpApplyBean" resultMap="cpApplyResult" parameterClass="ecDto">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance FROM
+		CP_APPLY master where cp_apply_id=#cpApplyId:VARCHAR# and ND = #nd#
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+	</select>
+	<select id="getCpApplyForCpDaAuditList" resultMap="cpApplyResult" parameterClass="ecDto">
+		select
+		MASTER.*,monthView.dp_money,monthView.dp_paysum,monthView.dp_balance
+		FROM CP_APPLY MASTER ,$dpBalanceMonthView$ monthView WHERE
+		MASTER.ND=monthView.ND AND
+		MASTER.DP_BALANCE_ID=monthView.DP_BALANCE_ID AND
+		MASTER.control_type='1' AND MASTER.IS_SUM_CP_APPLY='0'
+		<isNotNull prepend="AND" property="nd">
+			MASTER.ND = #nd#
+		</isNotNull>
+		<isNotNull prepend="AND" property="clearBankCode">
+			MASTER.clear_bank_code = #clearBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="payBankCode">
+		  pay_bank_code =#payBankCode:VARCHAR#
+		 </isNotNull>
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+		    <isEqual property="status" compareValue="todo">
+				master.process_inst_id in (select instance_id from v_wf_current_task_gk53 where executor = #executor:VARCHAR# )
+				and a_status_code!='7'
+			</isEqual>
+			<isEqual property="status" compareValue="done">
+				master.process_inst_id in ( select instance_id from V_WF_ACTION_HISTORY_GK53 where executor = #executor:VARCHAR# )
+				and a_status_code!='3' and a_status_code!='5' and a_status_code!='7'
+	  		</isEqual>
+			<isEqual property="status" compareValue="audited">
+				(a_status_code ='3' or a_status_code='5')
+	  	    </isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid  != '9'
+			</isEqual>
+            <isEqual property="status" compareValue="locked">
+				a_status_code = '7'
+			</isEqual>
+		</isNotNull>
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpApplyForCpDaEditList" resultMap="cpApplyResult"
+		parameterClass="ecDto">
+		select
+		MASTER.*,monthView.dp_money,monthView.dp_paysum,monthView.dp_balance
+		FROM CP_APPLY MASTER ,$dpBalanceMonthView$ monthView WHERE
+		MASTER.ND=monthView.ND AND
+		MASTER.DP_BALANCE_ID=monthView.DP_BALANCE_ID AND
+		MASTER.control_type='1' AND MASTER.IS_SUM_CP_APPLY='0' AND
+		MASTER.ND = #nd#
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpApplyForCpApplyQueryList" resultMap="cpApplyResult"
+		parameterClass="ecDto">
+		select MASTER.*,0 dp_money,0 dp_Balance,0 dp_PaySum FROM
+		CP_APPLY MASTER WHERE MASTER.IS_SUM_CP_APPLY='0'
+		<isNotNull prepend="AND" property="nd">
+			MASTER.ND = #nd#
+		</isNotNull>
+
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<isNotNull prepend="AND" property="payBankCode">
+		  pay_bank_code =#payBankCode:VARCHAR#
+		 </isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="draft">
+				a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="auditing">
+				(a_status_code='2' or a_status_code='4')and is_valid='1'
+			</isEqual>
+			<isEqual property="status"
+				compareValue="auditednocreatevou">
+				a_status_code='3' and is_create_vou='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="createdvou">
+				is_create_vou='1' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getCpApplyInfo" resultMap="cpApplyResult"
+		parameterClass="Map">
+		select MASTER.*,0 dp_money,0 dp_Balance,0 dp_PaySum FROM
+		CP_APPLY MASTER WHERE MASTER.IS_SUM_CP_APPLY='0' AND
+		MASTER.is_valid != '9'  AND MASTER.nd=#nd# AND MASTER.control_type='1'
+		AND MASTER.dp_balance_id=#dpBalanceId#
+	</select>
+
+	<select id="getCpApplyForCpDtzd" resultMap="cpApplyResult"	parameterClass="map">
+		select MASTER.*,0 dp_money,0 dp_Balance,0 dp_PaySum
+		from cp_apply MASTER where paytype_code='0201'
+		and is_sum_cp_apply='0' and a_status_code='3' and MASTER.ND = #nd#
+		<isNotNull prepend="AND" property="isCreateVou">
+			MASTER.is_create_vou =#isCreateVou#
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			MASTER.FUND_CODE like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode2">
+			MASTER.FUND_CODE like #fundCode2#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="clearBankCode">
+			MASTER.clear_bank_code = #clearBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			MASTER.pay_bank_code = #bankCode#
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+	<update id="updateCpApplyForUndo" parameterClass="Map">
+		update cp_apply SET IS_VALID=#isValid#,A_STATUS_CODE='9' WHERE
+		cp_apply_id = #cpApplyId# AND IS_VALID='1'
+	</update>
+
+	<update id="updateCpApplyForAfterUnAudit" parameterClass="String">
+		update CP_APPLY set CP_VOUCHER_ID = NULL,VOU_NO=null,
+		IS_CREATE_VOU = 0 WHERE CP_APPLY_ID = #cpApplyId:VARCHAR# and
+		IS_CREATE_VOU='1' AND IS_VALID='1'
+	</update>
+
+	<update id="updateCpApplyForAudit" parameterClass="cpApply">
+		UPDATE CP_APPLY SET auditor_id=#auditorId:VARCHAR#,
+		auditor_name=#auditorName:VARCHAR#, a_date=#adate:DATE# WHERE
+		CP_APPLY_ID=#cpApplyId:VARCHAR#
+	</update>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE CP_APPLY SET print_times=print_times+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpApplyIdList" open="("
+				close=")" conjunction="OR">
+				CP_APPLY_ID=#cpApplyIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<insert id="insertCpApply" parameterClass="cpApply">
+		insert into CP_APPLY( nd, cp_apply_id, input_group_id,
+		cp_voucher_id, cp_ap_bill_id, dp_balance_id, is_sum_cp_apply,
+		sum_cp_apply_id, gb_pack_code, create_type, control_type,
+		dec_type, is_create_vou, cp_adjust_code, operation_type_code,
+		bal_mode_code, b_acc_id, dp_cd_use_money, rece_code,
+		rece_acccode, rece_accname, rece_banknodecode, rece_bankno,
+		rece_banknodename, rece_bankacccode, process_inst_id,
+		auditor_id, a_date, a_opinion, a_status_code, an_status,
+		wf_content_brief, is_valid, canceler_id, cancel_date,
+		cancel_opinion, filename, filename_blobid, stamp, vou_no,
+		auditor_name, cp_voucher_id_bak, vou_no_bak, contract_code,
+		org_money, cur_money, inputor_id, cdate, proc_date,
+		bi_target_code, co_code, b_acc_code, fund_code, inceptdoc_code,
+		manage_code, org_code, origin_code, outlay_code, payout_code,
+		paytype_code, project_type_code, project_code,
+		senddoc_type_code, senddoc_code, remark, D_ATTR1, D_ATTR2,
+		D_ATTR3, D_ATTR4, D_ATTR5, is_countersign, pay_acccode,
+		pay_accname, pay_bankacccode, pay_bankno, pay_banknodecode,
+		pay_banknodename, pay_bank_code, pay_bank_name, clear_acc_code,
+		clear_acc_name, clear_acc_no, clear_bank_code, clear_bank_name,
+		clear_bank_no, countersigner ) values ( #nd:INTEGER#,
+		#cpApplyId:VARCHAR#, #inputGroupId:VARCHAR#,
+		#cpVoucherId:VARCHAR#, #cpApBillId:VARCHAR#,
+		#dpBalanceId:VARCHAR#, #isSumCpApply:VARCHAR#,
+		#sumCpApplyId:VARCHAR#, #gbPackCode:VARCHAR#,
+		#createType:VARCHAR#, #controlType:VARCHAR#, #decType:VARCHAR#,
+		#isCreateVou:VARCHAR#, #cpAdjustCode:VARCHAR#,
+		#operationTypeCode:VARCHAR#, #balModeCode:VARCHAR#,
+		#baccId:VARCHAR#, #dpCdUseMoney#, #receCode:VARCHAR#,
+		#receAccCode:VARCHAR#, #receAccName:VARCHAR#,
+		#receBankNodeCode:VARCHAR#, #receBankNo:VARCHAR#,
+		#receBankNodeName:VARCHAR#, #receBankAccCode:VARCHAR#,
+		#processInstId:INTEGER#, #auditorId:VARCHAR#, #adate:DATE#,
+		#aopinion:VARCHAR#, #astatusCode:VARCHAR#, #anStatus:VARCHAR#,
+		#wfContentBrief:VARCHAR#, #isValid:VARCHAR#,
+		#cancelerId:VARCHAR#, #cancelDate:VARCHAR#,
+		#cancelOpinion:VARCHAR#, #fileName:VARCHAR#,
+		#fileNameBlobId:VARCHAR#, #stamp:INTEGER#, #vouNo:VARCHAR#,
+		#auditorName:VARCHAR#, #cpVoucherIdBak:VARCHAR#,
+		#vouNoBak:VARCHAR#, #contractCode:VARCHAR#, #orgMoney#,
+		#curMoney#, #inputorId:VARCHAR#, #cdate:DATE#, #procDate:DATE#,
+		#biTargetCode:VARCHAR#, #coCode:VARCHAR#, #baccCode:VARCHAR#,
+		#fundCode:VARCHAR#, #inceptDocCode:VARCHAR#,
+		#manageCode:VARCHAR#, #orgCode:VARCHAR#, #originCode:VARCHAR#,
+		#outlayCode:VARCHAR#, #payoutCode:VARCHAR#,
+		#paytypeCode:VARCHAR#, #projectTypeCode:VARCHAR#,
+		#projectCode:VARCHAR#, #sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#, #remark:VARCHAR#, #dattr1:VARCHAR#,
+		#dattr2:VARCHAR#, #dattr3:VARCHAR#, #dattr4:VARCHAR#,
+		#dattr5:VARCHAR#, #isCounterSign:VARCHAR#, #payAccCode:VARCHAR#,
+		#payAccName:VARCHAR#, #payBankAccCode:VARCHAR#,
+		#payBankNo:VARCHAR#, #payBankNodeCode:VARCHAR#,
+		#payBankNodeName:VARCHAR#, #payBankCode:VARCHAR#,
+		#payBankName:VARCHAR#, #clearAccCode:VARCHAR#,
+		#clearAccName:VARCHAR#, #clearAccNo:VARCHAR#,
+		#clearBankCode:VARCHAR#, #clearBankName:VARCHAR#,
+		#clearBankNo:VARCHAR#, #counterSigner:VARCHAR#)
+	</insert>
+
+	<update id="updateCpApply"
+		parameterClass="com.ufgov.zc.common.cp.model.CpApply">
+		update CP_APPLY
+		<dynamic prepend="set">
+			<isNotNull prepend="," property="inputGroupId">
+				INPUT_GROUP_ID = #inputGroupId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cpVoucherId">
+				CP_VOUCHER_ID = #cpVoucherId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cpApBillId">
+				CP_AP_BILL_ID = #cpApBillId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dpBalanceId">
+				DP_BALANCE_ID = #dpBalanceId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isSumCpApply">
+				IS_SUM_CP_APPLY = #isSumCpApply:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sumCpApplyId">
+				SUM_CP_APPLY_ID = #sumCpApplyId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="gbPackCode">
+				GB_PACK_CODE = #gbPackCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="createType">
+				CREATE_TYPE = #createType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="controlType">
+				CONTROL_TYPE = #controlType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="decType">
+				DEC_TYPE = #decType:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isCreateVou">
+				IS_CREATE_VOU = #isCreateVou:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cpAdjustCode">
+				CP_ADJUST_CODE = #cpAdjustCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="nd">
+				ND = #nd:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="procDate">
+				PROC_DATE = #procDate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="inputorId">
+				INPUTOR_ID =#inputorId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cdate">
+				CDATE = #cdate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="balModeCode">
+				BAL_MODE_CODE = #balModeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="orgCode">
+				ORG_CODE = #orgCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="coCode">
+				CO_CODE = #coCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="baccId">
+				B_ACC_ID = #baccid:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="baccCode">
+				B_ACC_CODE = #baccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="outlayCode">
+				OUTLAY_CODE = #outlayCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="projectTypeCode">
+				PROJECT_TYPE_CODE = #projectTypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="projectCode">
+				PROJECT_CODE = #projectCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="fundCode">
+				FUND_CODE = #fundCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="originCode">
+				ORIGIN_CODE = #originCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="paytypeCode">
+				PAYTYPE_CODE = #paytypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="payoutCode">
+				PAYOUT_CODE = #payoutCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="manageCode">
+				MANAGE_CODE = #manageCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="inceptDocCode">
+				INCEPTDOC_CODE = #inceptDocCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sendDocTypeCode">
+				SENDDOC_TYPE_CODE = #sendDocTypeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="sendDocCode">
+				SENDDOC_CODE = #sendDocCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="remark">
+				REMARK = #remark:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="orgMoney">
+				ORG_MONEY = #orgMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="curMoney">
+				CUR_MONEY = #curMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="dpCdUseMoney">
+				DP_CD_USE_MONEY = #dpCdUseMoney:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="receCode">
+				RECE_CODE = #receCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receAccCode">
+				RECE_ACCCODE = #receAccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receAccName">
+				RECE_ACCNAME = #receAccName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNodeCode">
+				RECE_BANKNODECODE = #receBankNodeCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNo">
+				RECE_BANKNO = #receBankNo:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankNodeName">
+				RECE_BANKNODENAME = #receBankNodeName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="receBankAccCode">
+				RECE_BANKACCCODE = #receBankAccCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="processInstId">
+				PROCESS_INST_ID = #processInstId:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="auditorId">
+				AUDITOR_ID = #auditorId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="adate">
+				A_DATE = #adate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="aopinion">
+				A_OPINION = #aopinion:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="astatusCode">
+				A_STATUS_CODE = #astatusCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="anStatus">
+				AN_STATUS = #anStatus:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="wfContentBrief">
+				WF_CONTENT_BRIEF = #wfContentBrief:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isValid">
+				IS_VALID = #isValid:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelerId">
+				CANCELER_ID = #cancelerId:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelDate">
+				CANCEL_DATE = #cancelDate:DATE#
+			</isNotNull>
+			<isNotNull prepend="," property="cancelOpinion">
+				CANCEL_OPINION = #cancelOpinion:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="fileName">
+				FILENAME = #fileName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="fileNameBlobId">
+				FILENAME_BLOBID = #fileNameBlobId:VARCHAR#
+			</isNotNull>
+			<isNull prepend="," property="fileName">
+				FILENAME = null
+			</isNull>
+			<isNull prepend="," property="fileNameBlobId">
+				FILENAME_BLOBID = null
+			</isNull>
+			<isNotNull prepend="," property="dattr1">
+				D_ATTR1 = #dattr1:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr2">
+				D_ATTR2 = #dattr2:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr3">
+				D_ATTR3 = #dattr3:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr4">
+				D_ATTR4 = #dattr4:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="dattr5">
+				D_ATTR5 = #dattr5:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="stamp">
+				STAMP = #stamp:DECIMAL#
+			</isNotNull>
+			<isNotNull prepend="," property="vouNo">
+				VOU_NO = #vouNo:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="auditorName">
+				AUDITOR_NAME = #auditorName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="isCounterSign">
+				IS_COUNTERSIGN = #isCounterSign:CHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="counterSigner">
+				COUNTERSIGNER = #counterSigner:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="inputorName">
+				INPUTOR_NAME = #inputorName:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="cpVoucherIdBak">
+				CP_VOUCHER_ID_BAK = #cpVoucherIdBak:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="vouNoBak">
+				VOU_NO_BAK =#vouNoBak:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="contractCode">
+				CONTRACT_CODE = #contractCode:VARCHAR#
+			</isNotNull>
+			<isNotNull prepend="," property="operationTypeCode">
+				OPERATION_TYPE_CODE = #operationTypeCode:VARCHAR#
+			</isNotNull>
+		</dynamic>
+		where CP_APPLY_ID = #cpApplyId:VARCHAR#
+	</update>
+
+
+	<resultMap class="cpApply" id="cpApplyResultForPrint"
+		extends="cpApplyResult">
+		<result column="INCEPTDOC_NAME" property="inceptDocName" />
+		<result column="SENDDOC_NAME" property="sendDocName" />
+		<result column="PAYTYPE_NAME" property="paytypeName" />
+		<result column="ORG_NAME" property="orgName" />
+		<result column="CO_NAME" property="coName" />
+		<result column="B_ACC_NAME" property="baccName" />
+		<result column="OUTLAY_NAME" property="outlayName" />
+		<result column="PROJECT_NAME" property="projectName" />
+		<result column="FUND_NAME" property="fundName" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="PAYOUT_NAME" property="payoutName" />
+		<result column="MANAGE_NAME" property="manageName" />
+		<result column="D_ATTR1_NAME" property="dattr1Name" />
+		<result column="D_ATTR2_NAME" property="dattr2Name" />
+		<result column="D_ATTR3_NAME" property="dattr3Name" />
+		<result column="D_ATTR4_NAME" property="dattr4Name" />
+		<result column="D_ATTR5_NAME" property="dattr5Name" />
+	</resultMap>
+
+	<select id="getCpApplyByIdList" resultMap="cpApplyResult"
+		parameterClass="map">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance From
+		cp_apply master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpApplyIdList" open="("
+				close=")" conjunction="OR">
+				cp_apply_id=#cpApplyIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getCpApplyBySumCpApplyId" resultMap="cpApplyResult"
+		parameterClass="Map">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance from
+		cp_apply master where sum_cp_apply_id=#sumCpApplyId#
+	</select>
+
+	<select id="getCpApplyBySumCpApplyIdList" resultMap="cpApplyResult"
+		parameterClass="map">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance From
+		cp_apply master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="sumCpApplyIdList" open="("
+				close=")" conjunction="OR">
+				sum_cp_apply_id=#sumCpApplyIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getCpApplyForSum" resultMap="cpApplyResult"
+		parameterClass="elementCondition">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance From
+		cp_apply master where nd=#nd# AND IS_VALID='1' AND
+		sum_cp_apply_id IS NULL and paytype_code= #paytypeCode#
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<isNotNull prepend="AND" property="isSum">
+			is_sum_cp_apply= #isSum#
+		</isNotNull>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="updateSumCpApplyId" parameterClass="cpApply">
+		update CP_APPLY set sum_cp_apply_id= #sumCpApplyId:VARCHAR#
+		where cp_apply_id=#cpApplyId:VARCHAR#
+	</update>
+
+	<update id="setSumCpApplyIdNull" parameterClass="string">
+		update CP_APPLY set sum_cp_apply_id= null where
+		sum_cp_apply_id=#sumCpApplyId:VARCHAR#
+	</update>
+
+	<select id="getCpApplyBySumCpApplyIdForPrint"
+		resultMap="cpApplyResultForPrint" parameterClass="Map">
+		select MASTER.*,0 dp_money,0 dp_paysum,0 dp_balance ,
+		<include refid="ElementName.INCEPTDOC_NAME" />
+		,
+		<include refid="ElementName.SENDDOC_NAME" />
+		,
+		<include refid="ElementName.CO_NAME" />
+		,
+		<include refid="ElementName.ORG_NAME" />
+		,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		<include refid="ElementName.B_ACC_NAME" />
+		,
+		<include refid="ElementName.OUTLAY_NAME" />
+		,
+		<include refid="ElementName.PROJECT_NAME" />
+		,
+		<include refid="ElementName.MANAGE_NAME" />
+		,
+		<include refid="ElementName.PAYOUT_NAME" />
+		,
+		<include refid="ElementName.PAYTYPE_NAME" />
+		,
+		<include refid="ElementName.ORIGIN_NAME" />
+		,
+		<include refid="ElementName.D_ATTR1_NAME" />
+		,
+		<include refid="ElementName.D_ATTR2_NAME" />
+		,
+		<include refid="ElementName.D_ATTR3_NAME" />
+		,
+		<include refid="ElementName.D_ATTR4_NAME" />
+		,
+		<include refid="ElementName.D_ATTR5_NAME" />
+		from cp_apply master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="sumCpApplyIdList" open="("
+				close=")" conjunction="OR">
+				sum_cp_apply_id=#sumCpApplyIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+
+	<resultMap id="gwkTradeInfo" class="cpApply">
+		<result property="nd" column="nd" />
+		<result property="cpApplyId" column="cp_apply_id" />
+		<result property="receAccName" column="rece_accname" />
+		<result property="inputorName" column="inputor_name" />
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="procDate" column="proc_date" jdbcType="DATE" />
+		<result property="coCode" column="co_code" />
+		<result property="orgCode" column="org_code" />
+		<result property="remark" column="remark" />
+		<result property="payAccName" column="pay_accname" />
+		<result property="payBankAccCode" column="pay_bankacccode" />
+	</resultMap>
+
+
+	<select id="getGwkTradeInfo" resultMap="gwkTradeInfo"	parameterClass="Map">
+		  SELECT card_user pay_accname,
+			     card_serial pay_bankacccode,
+			     trade_date proc_date,
+			     trade_money org_money,
+			     consume_money cur_money,
+			     business_name rece_accname,
+			     nd,
+			     co_code,
+			     org_code,
+			     inputor_name,
+			     cp_apply_id,
+			     remark
+		  FROM cp_cctrade_info
+		  where cp_apply_id=#cpApplyId:VARCHAR# and ND = #nd#
+	</select>
+
+	<update id="updateCpApplyForLocked" parameterClass="cpApply">
+		UPDATE CP_APPLY SET a_status_code ='7' WHERE
+		CP_APPLY_ID=#cpApplyId:VARCHAR#
+	</update>
+	<update id="updateCpApplyForUnLocked" parameterClass="cpApply">
+		UPDATE CP_APPLY SET a_status_code ='3' WHERE
+		CP_APPLY_ID=#cpApplyId:VARCHAR#
+	</update>
+
+</sqlMap>

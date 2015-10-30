@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.ztb.util;import com.thoughtworks.xstream.io.HierarchicalStreamWriter;import com.thoughtworks.xstream.io.xml.XppDriver;import java.io.Writer;public class MyXppDriver extends XppDriver {  public HierarchicalStreamWriter createWriter(Writer out) {    return new MyPrettyPrintWriter(out);  }}

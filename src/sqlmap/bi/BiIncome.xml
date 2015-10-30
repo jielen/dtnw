@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BiIncome">
+
+	<typeAlias alias="biIncome" type="com.ufgov.zc.common.bi.model.BiIncome" />
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+		
+	<resultMap id="biIncomeResult" class="biIncome">
+		<result column="bi_income_id" property="biIncomeId"
+			jdbcType="VARCHAR" />
+		<result column="cur_money" property="curMoney"
+			jdbcType="DECIMAL" />
+		<result column="org_code" property="orgCode" jdbcType="VARCHAR" />
+		<result column="co_code" property="coCode" jdbcType="VARCHAR" />
+		<result column="b_acc_code" property="baccCode"
+			jdbcType="VARCHAR" />
+		<result column="outlay_code" property="outlayCode"
+			jdbcType="VARCHAR" />
+		<result column="project_code" property="projectCode"
+			jdbcType="VARCHAR" />
+		<result column="fund_code" property="fundCode"
+			jdbcType="VARCHAR" />
+		<result column="origin_code" property="originCode"
+			jdbcType="VARCHAR" />
+		<result column="payout_code" property="payoutCode"
+			jdbcType="VARCHAR" />
+		<result column="manage_code" property="manageCode"
+			jdbcType="VARCHAR" />
+		<result column="a_status_code" property="astatusCode"
+			jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="proc_date" property="procDate" jdbcType="DATE" />
+		<result column="inputor_id" property="inputorId"
+			jdbcType="VARCHAR" />
+		<result column="income_type" property="incomeType"
+			jdbcType="VARCHAR" />
+		<result column="gl_vou_no" property="glVouNo"
+			jdbcType="VARCHAR" />
+		<result column="gl_vou_inputor_id" property="glVouInputorId"
+			jdbcType="VARCHAR" />
+		<result column="gl_vou_date" property="glVouDate"
+			jdbcType="DATE" />
+		<result column="ND" property="nd" />
+	</resultMap>
+
+	<select id="getBiIncome" resultMap="biIncomeResult"
+		parameterClass="elementCondition">
+		SELECT master.* FROM bi_income master
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="biIncomeType">
+				master.income_type =#biIncomeType#
+			</isNotNull>
+			<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="unSended">
+					a_status_code ='0'
+				</isEqual>
+				<isEqual property="status" compareValue="sended">
+					a_status_code ='3'
+				</isEqual>
+			</isNotNull>
+			
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.OUTLAY_CODE" />
+			
+		</dynamic>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<insert id="insertBiIncome" parameterClass="biIncome">
+		insert into bi_income( BI_INCOME_ID , CO_CODE , B_ACC_CODE ,
+		ORG_CODE , FUND_CODE , OUTLAY_CODE , PROJECT_CODE , ORIGIN_CODE
+		, PAYOUT_CODE , MANAGE_CODE , CUR_MONEY , INPUTOR_ID , PROC_DATE
+		, A_STATUS_CODE , REMARK , INCOME_TYPE , GL_VOU_NO ,
+		GL_VOU_INPUTOR_ID, GL_VOU_DATE , ND ) values
+		(#biIncomeId:VARCHAR#, #coCode:VARCHAR#, #baccCode:VARCHAR#,
+		#orgCode:VARCHAR#, #fundCode:VARCHAR#, #outlayCode:VARCHAR#,
+		#projectCode:VARCHAR#, #originCode:VARCHAR#,
+		#payoutCode:VARCHAR#, #manageCode:VARCHAR#, #curMoney:DECIMAL#,
+		#inputorId:VARCHAR#, #procDate:DATE#, #astatusCode:CHAR#,
+		#remark:VARCHAR#, #incomeType:CHAR#, #glVouNo:VARCHAR#,
+		#glVouInputorId:VARCHAR#, #glVouDate:DATE#, #nd:INTEGER#)
+	</insert>
+
+	<update id="updateBiIncome" parameterClass="biIncome">
+		update bi_income set CO_CODE=#coCode:VARCHAR#,
+		B_ACC_CODE=#baccCode:VARCHAR#, ORG_CODE=#orgCode:VARCHAR#,
+		FUND_CODE=#fundCode:VARCHAR#, OUTLAY_CODE=#outlayCode:VARCHAR#,
+		PROJECT_CODE=#projectCode:VARCHAR#,
+		ORIGIN_CODE=#originCode:VARCHAR#,
+		PAYOUT_CODE=#payoutCode:VARCHAR#,
+		MANAGE_CODE=#manageCode:VARCHAR#, CUR_MONEY=#curMoney:DECIMAL#,
+		INPUTOR_ID=#inputorId:VARCHAR#, PROC_DATE=#procDate:DATE#,
+		A_STATUS_CODE=#astatusCode:CHAR#, REMARK=#remark:VARCHAR#,
+		INCOME_TYPE=#incomeType:CHAR#, GL_VOU_NO =#glVouNo:VARCHAR#,
+		GL_VOU_INPUTOR_ID=#glVouInputorId:VARCHAR#,
+		GL_VOU_DATE=#glVouDate:DATE#,ND= #nd:INTEGER# where
+		BI_INCOME_ID=#biIncomeId:VARCHAR#
+	</update>
+
+	<delete id="deleteBiIncome" parameterClass="Map">
+		delete from bi_income
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="biIncomeIdList" open="("
+				close=")" conjunction="OR">
+				bi_Income_Id=#biIncomeIdList[]#
+			</iterate>
+		</dynamic>
+	</delete>
+
+</sqlMap>

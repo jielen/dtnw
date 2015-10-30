@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+
+<sqlMap namespace="AmVoucher">
+
+	<typeAlias alias="amVoucher" type="com.ufgov.zc.common.am.model.AmVoucher" />
+	<typeAlias alias="elementCondition" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="amVoucherResult" class="amVoucher">
+		<result column="AM_VOUCHER_ID" property="amVoucherId"/>
+		<result column="INPUT_GROUP_ID" property="inputGroupId"/>
+		<result column="BI_BALANCE_ID" property="biBalanceId"/>
+		<result column="DP_BALANCE_ID" property="dpBalanceId"/>
+		<result column="IS_SUM_AM_VOUCHER" property="isSumAmVoucher"/>
+		<result column="SUM_AM_VOUCHER_ID" property="sumAmVoucherId"/>
+		<result column="BI_TARGET_CODE" property="biTargetCode"/>
+		<result column="CREATE_TYPE" property="createType"/>
+		<result column="CONTROL_TYPE" property="controlType"/>
+		<result column="DEC_TYPE" property="decType"/>
+		<result column="AM_ADJUST_CODE" property="amAdjustCode"/>
+		<result column="ADJUST_VOUCHER_ID" property="adjustVoucherId"/>
+		<result column="ND" property="nd"/>
+		<result column="PROC_DATE" property="procDate"/>
+		<result column="VOU_NO" property="vouNo"/>
+		<result column="INPUTOR_ID" property="inputorId"/>
+		<result column="CDATE" property="cdate"/>
+		<result column="PRINT_TIMES" property="printTimes"/>
+		<result column="DEAL_STATE" property="dealState"/>
+		<result column="BANK_AUDITOR_ID" property="bankAuditorId"/>
+		<result column="BANK_DATE" property="bankDate"/>
+		<result column="CHECK_NO" property="checkNo"/>
+		<result column="OPERATION_TYPE_CODE" property="operationTypeCode"/>
+		<result column="PAYTYPE_CODE" property="paytypeCode"/>
+		<result column="PRE_MONTH" property="preMonth" nullValue="0" />
+		<result column="BAL_MODE_CODE" property="balModeCode"/>
+		<result column="ORG_CODE" property="orgCode"/>
+		<result column="CO_CODE" property="coCode"/>
+		<result column="B_ACC_ID" property="baccId"/>
+		<result column="B_ACC_CODE" property="baccCode"/>
+		<result column="OUTLAY_CODE" property="outlayCode"/>
+		<result column="PROJECT_TYPE_CODE" property="projectTypeCode"/>
+		<result column="PROJECT_CODE" property="projectCode"/>
+		<result column="PROJECT_DETAIL_CODE" property="projectDetailCode"/>
+		<result column="FUND_CODE" property="fundCode"/>
+		<result column="ORIGIN_CODE" property="originCode"/>
+		<result column="PAYOUT_CODE" property="payoutCode"/>
+		<result column="MANAGE_CODE" property="manageCode"/>
+		<result column="INCEPTDOC_CODE" property="inceptDocCode"/>
+		<result column="SENDDOC_TYPE_CODE" property="sendDocTypeCode"/>
+		<result column="SENDDOC_CODE" property="sendDocCode"/>
+
+		<result column="REMARK" property="remark"/>
+		<result column="ORG_MONEY" property="orgMoney"/>
+		<result column="CUR_MONEY" property="curMoney"/>
+		<result column="PAY_CODE" property="payCode"/>
+		<result column="PAY_ACCCODE" property="payAccCode"/>
+		<result column="PAY_ACCNAME" property="payAccName"/>
+		<result column="PAY_BANKNODECODE" property="payBankNodeCode"/>
+		<result column="PAY_BANKNO" property="payBankNo"/>
+		<result column="PAY_BANKNODENAME" property="payBankNodeName"/>
+		<result column="PAY_BANKACCCODE" property="payBankAccCode"/>
+
+		<result column="RECE_CODE" property="receCode"/>
+		<result column="RECE_ACCCODE" property="receAccCode"/>
+		<result column="RECE_ACCNAME" property="receAccName"/>
+		<result column="RECE_BANKNODECODE" property="receBankNodeCode"/>
+		<result column="RECE_BANKNO" property="receBankNo"/>
+		<result column="RECE_BANKNODENAME" property="receBankNodeName"/>
+		<result column="RECE_BANKACCCODE" property="receBankAccCode"/>
+
+		<result column="PROCESS_INST_ID" property="processInstId"/>
+		<result column="AUDITOR_ID" property="auditorId"/>
+		<result column="A_DATE" property="adate"/>
+		<result column="A_OPINION" property="aopinion"/>
+		<result column="A_STATUS_CODE" property="astatusCode"/>
+		<result column="AN_STATUS" property="anStatus"/>
+		<result column="WF_CONTENT_BRIEF" property="wfContentBrief"/>
+		<result column="IS_VALID" property="isValid"/>
+		<result column="CANCELER_ID" property="cancelerId"/>
+		<result column="CANCEL_DATE" property="cancelDate"/>
+		<result column="CANCEL_OPINION" property="cancelOpinion"/>
+		<result column="FILENAME" property="filename"/>
+		<result column="FILENAME_BLOBID" property="filenameBlobid"/>
+		<result column="D_ATTR1" property="dattr1"/>
+		<result column="D_ATTR2" property="dattr2"/>
+		<result column="D_ATTR3" property="dattr3"/>
+		<result column="D_ATTR4" property="dattr4"/>
+		<result column="D_ATTR5" property="dattr5"/>
+
+		<result column="CO_VOU_NO" property="coVouNo"/>
+		<result column="CO_VOU_INPUTOR_ID" property="coVouInputorId"/>
+		<result column="CO_VOU_DATE" property="coVouDate"/>
+		<result column="GL_VOU_NO" property="glVouNo"/>
+		<result column="GL_VOU_INPUTOR_ID" property="glVouInputorId"/>
+		<result column="GL_VOU_DATE" property="glVouDate"/>
+		<result column="CO_VOU_NO_BEF" property="coVouNoBef"/>
+		<result column="CO_VOU_INPUTOR_ID_BEF" property="coVouInputorIdBef"/>
+		<result column="CO_VOU_DATE_BEF" property="coVouDateBef"/>
+		<result column="GL_VOU_NO_BEF" property="glVouNoBef"/>
+		<result column="GL_VOU_INPUTOR_ID_BEF" property="glVouInputorIdBef"/>
+		<result column="GL_VOU_DATE_BEF" property="glVouDateBef"/>
+		<result column="CP_VOU_NO" property="cpVouNo"/>
+		<result column="CP_VOU_INPUTOR_ID" property="cpVouInputorId"/>
+		<result column="CP_VOU_DATE" property="cpVouDate"/>
+		<result column="CP_VOU_NO_BEF" property="cpVouNoBef"/>
+		<result column="CP_VOU_INPUTOR_ID_BEF" property="cpVouInputorIdBef"/>
+		<result column="CP_VOU_DATE_BEF" property="cpVouDateBef"/>
+		<result column="CO_ACCOUNT_ID" property="coAccountId"/>
+		<result column="CP_ACCOUNT_ID" property="cpAccountId"/>
+		<result column="GL_ACCOUNT_ID" property="glAccountId"/>
+		<result column="STAMP" property="stamp"/>
+		<result column="EXPR9_NUM" property="expr9Num"/>
+		<result column="INPUTOR_NAME" property="inputorName"/>
+		<result column="AUDITOR_NAME" property="auditorName"/>
+		<result column="IS_OUTER_BAL" property="isOuterBal"/>
+		<result column="CONTRACT_CODE" property="contractCode"/>
+		<result column="AM_APPLY_ID" property="amApplyId"/>
+	</resultMap>
+
+	<resultMap class="amVoucher" id="amApplyResultForDpBalance" extends="amVoucherResult">
+		<result property="dpMoney" column="dp_money" nullValue="0" />
+		<result property="dpBalance" column="dp_balance" nullValue="0" />
+		<result property="dpPaySum" column="dp_paysum" nullValue="0" />
+	</resultMap>
+
+	<resultMap class="amVoucher" id="amVoucherResultForBiBalance" extends="amVoucherResult">
+		 <result column="BI_MONEY" property="biMoney" jdbcType="DECIMAL"
+			nullValue="0" />
+		<result column="BI_PAYSUM" property="biPaySum"
+			jdbcType="DECIMAL" nullValue="0" />
+		<result column="BI_BALANCE" property="biBalance"
+			jdbcType="DECIMAL" nullValue="0" />
+	</resultMap>
+
+	<sql id="amVoucherTable">
+		select MASTER.*
+	</sql>
+
+	<select id="getAmVoucherForAmPvmDpEditN" resultMap="amApplyResultForDpBalance" parameterClass="elementCondition">
+	SELECT MASTER.* FROM (select AM_MASTER.*,monthView.dp_money,monthView.dp_paysum,monthView.dp_balance
+    FROM am_voucher AM_MASTER ,
+    (SELECT A.DP_BALANCE_ID,A.ND,A.dp_cd_money+A.DP_MONEY1+A.DP_MONEY2+A.DP_MONEY3 AS dp_money, A.AM_MONEY + A.CP_MONEY AS dp_paysum,A.dp_cd_money+A.DP_MONEY1+A.DP_MONEY2+A.DP_MONEY3 -A.AM_MONEY-A.CP_MONEY-A.FREEZE_MONEY-A.CD_MONEY AS dp_balance FROM DP_BALANCE A )
+    monthView
+    WHERE AM_MASTER.ND=monthView.ND
+    AND AM_MASTER.DP_BALANCE_ID=monthView.DP_BALANCE_ID
+    and AM_MASTER.nd= #nd#
+    AND AM_MASTER.Control_Type='1'
+    UNION ALL
+    SELECT  AM_MASTER.*,bi_balance.bi_money dp_money,
+    (bi_balance.AM_MONEY+bi_balance.DP_MONEY+bi_balance.CP_MONEY+bi_balance.LP_MONEY ) dp_paysum,
+    ( bi_balance.BI_MONEY-bi_balance.BI_ASSIGN_MONEY-bi_balance.AM_MONEY-bi_balance.DP_MONEY-bi_balance.CP_MONEY-bi_balance.LP_MONEY-bi_balance.FREEZE_MONEY-bi_balance.CD_MONEY) dp_balance
+     FROM am_voucher AM_MASTER ,bi_balance
+    WHERE AM_MASTER.ND=bi_balance.ND
+    AND AM_MASTER.BI_BALANCE_ID=bi_balance.BI_BALANCE_ID
+    AND bi_balance.BI_MONEY-bi_balance.BI_ASSIGN_MONEY-bi_balance.AM_MONEY-bi_balance.DP_MONEY-bi_balance.CP_MONEY-bi_balance.LP_MONEY-bi_balance.FREEZE_MONEY-bi_balance.CD_MONEY>0
+    and AM_MASTER.nd=#nd#
+    AND AM_MASTER.Control_Type='7' ) MASTER
+    WHERE (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+    and MASTER.is_sum_am_voucher='0' and MASTER.sum_am_voucher_id is null
+    <include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+	  	   </isEqual>
+	  	   <isEqual property="status" compareValue="printed">
+				print_times>0
+	  	   </isEqual>
+	  	</isNotNull>
+	  	<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getAmVoucherForAmPvmBiEdit" resultMap="amVoucherResultForBiBalance" parameterClass="elementCondition">
+    	select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_voucher master where
+        (master.am_adjust_code='101' or master.am_adjust_code='102')
+        and master.is_sum_am_voucher='0' and master.sum_am_voucher_id is null
+        and master.control_type='2'
+        <include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+	  	   </isEqual>
+	  	   <isEqual property="status" compareValue="printed">
+				print_times>0
+	  	   </isEqual>
+	  	</isNotNull>
+	  	<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmVoucherForAmPvmBiAudit" resultMap="amVoucherResultForBiBalance" parameterClass="elementCondition">
+    	select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from am_voucher master where
+        (master.am_adjust_code='101' or master.am_adjust_code='102')
+        and master.is_sum_am_voucher='0' and master.sum_am_voucher_id is null
+        and master.control_type='2'
+        <include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+	  	   </isEqual>
+	  	   <isEqual property="status" compareValue="printed">
+				print_times>0
+	  	   </isEqual>
+	  	</isNotNull>
+	  	<include refid="WfCommonAudited.WfCommonAudited" />
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+
+	<select id="getAmVoucherForAmPvmDpAudit" resultMap="amApplyResultForDpBalance" parameterClass="elementCondition">
+	SELECT MASTER.* FROM (select AM_MASTER.*,monthView.dp_money,monthView.dp_paysum,monthView.dp_balance
+    FROM am_voucher AM_MASTER ,
+    (SELECT A.DP_BALANCE_ID,A.ND,A.dp_cd_money+A.DP_MONEY1+A.DP_MONEY2+A.DP_MONEY3 AS dp_money, A.AM_MONEY + A.CP_MONEY AS dp_paysum,A.dp_cd_money+A.DP_MONEY1+A.DP_MONEY2+A.DP_MONEY3 -A.AM_MONEY-A.CP_MONEY-A.FREEZE_MONEY-A.CD_MONEY AS dp_balance FROM DP_BALANCE A )
+    monthView
+    WHERE AM_MASTER.ND=monthView.ND
+    AND AM_MASTER.DP_BALANCE_ID=monthView.DP_BALANCE_ID
+    and AM_MASTER.nd= #nd#
+    AND AM_MASTER.Control_Type='1'
+    UNION ALL
+    SELECT  AM_MASTER.*,bi_balance.bi_money dp_money,
+    (bi_balance.AM_MONEY+bi_balance.DP_MONEY+bi_balance.CP_MONEY+bi_balance.LP_MONEY ) dp_paysum,
+    ( bi_balance.BI_MONEY-bi_balance.BI_ASSIGN_MONEY-bi_balance.AM_MONEY-bi_balance.DP_MONEY-bi_balance.CP_MONEY-bi_balance.LP_MONEY-bi_balance.FREEZE_MONEY-bi_balance.CD_MONEY) dp_balance
+     FROM am_voucher AM_MASTER ,bi_balance
+    WHERE AM_MASTER.ND=bi_balance.ND
+    AND AM_MASTER.BI_BALANCE_ID=bi_balance.BI_BALANCE_ID
+    AND bi_balance.BI_MONEY-bi_balance.BI_ASSIGN_MONEY-bi_balance.AM_MONEY-bi_balance.DP_MONEY-bi_balance.CP_MONEY-bi_balance.LP_MONEY-bi_balance.FREEZE_MONEY-bi_balance.CD_MONEY>0
+    and AM_MASTER.nd=#nd#
+    AND AM_MASTER.Control_Type='7' ) MASTER
+    WHERE (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+    and MASTER.is_sum_am_voucher='0' and MASTER.sum_am_voucher_id is null
+    <include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+	  	   </isEqual>
+	  	   <isEqual property="status" compareValue="printed">
+				print_times>0
+	  	   </isEqual>
+	  	</isNotNull>
+	  	<include refid="WfCommonAudited.WfCommonAudited" />
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getAmVoucherForAmPvmDp" resultMap="amApplyResultForDpBalance" parameterClass="elementCondition">
+		<include refid="amVoucherTable"/>
+		,monthView.dp_money,monthView.dp_paysum,monthView.dp_balance
+		FROM am_voucher MASTER ,$dpBalanceMonthView$ monthView
+		WHERE MASTER.ND=monthView.ND
+		AND MASTER.DP_BALANCE_ID=monthView.DP_BALANCE_ID
+		and MASTER.nd=#nd# and MASTER.is_sum_am_voucher=#isSum# and MASTER.sum_am_voucher_id is null
+		and (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="controlType">
+			CONTROL_TYPE = #controlType#
+		</isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+	  	   </isEqual>
+	  	   <isEqual property="status" compareValue="printed">
+				print_times>0
+	  	   </isEqual>
+	  	</isNotNull>
+	  	<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+    <select id="getAmVoucherForAmVoucherQueryList"  resultMap="amVoucherResult" parameterClass="elementCondition">
+	    <include refid="amVoucherTable" />
+        ,0 dp_money,0 dp_Balance,0 dp_PaySum
+		FROM AM_VOUCHER MASTER
+		WHERE MASTER.IS_SUM_AM_VOUCHER='0'
+		<isNotNull prepend="AND" property="nd">
+	  		MASTER.ND = #nd#
+	  	</isNotNull>
+	  	<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+		<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE like #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectCode">
+			PROJECT_CODE = #projectCode#
+		</isNotNull>
+        <isNotNull prepend="AND" property="orgCode">
+			ORG_CODE = #orgCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="inceptDocCode">
+			INCEPTDOC_CODE = #inceptDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+			SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="baccCode">
+			B_ACC_CODE like #baccCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="outlayCode">
+			OUTLAY_CODE like #outlayCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="payoutCode">
+			PAYOUT_CODE like #payoutCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="manageCode">
+			MANAGE_CODE like #manageCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			DEAL_STATE = #dealState#
+		</isNotNull>
+
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="draft">
+				a_status_code='0' and is_valid='1'
+	  	   </isEqual>
+		    <isEqual property="status" compareValue="auditing">
+			    (a_status_code='2' or a_status_code='4')and is_valid='1'
+		   </isEqual>
+		   <isEqual property="status" compareValue="auditednosendbank">
+              a_status_code='3' and is_valid='1' and deal_state='0'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+			    is_valid = '0'
+		   </isEqual>
+		   <isEqual property="status" compareValue="all">
+			    is_valid != '9'
+		   </isEqual>
+        </isNotNull>
+        <include refid="ElementCondition.CoCodeFilter"/>
+	  	<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmVoucherForAmDvList" resultMap="amVoucherResult" parameterClass="elementCondition">
+		<include refid="amVoucherTable"/>
+	     from am_voucher MASTER where MASTER.ND=#nd# and MASTER.control_type='3'
+	     <isNotNull prepend="AND" property="coCode">
+	  		MASTER.CO_CODE = #coCode#
+	  	</isNotNull>
+	  	<isNotNull prepend="AND" property="projectCode">
+	  		MASTER.PROJECT_CODE = #projectCode#
+	  	</isNotNull>
+	  	<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="todo">
+              a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="done">
+              a_status_code='3'and (deal_state='0' or deal_state='2') and is_valid ='1'
+	  		</isEqual>
+	  		<isEqual property="status" compareValue="all">
+              is_valid != '9'
+	  		</isEqual>
+	  	</isNotNull>
+	  	<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+					MASTER.PROC_DATE BETWEEN #startDate:DATE# AND #endDate:DATE#
+			</isNotNull>
+	  	</isNotNull>
+	    <include refid="ElementCondition.OrderColumns" />
+   </select>
+
+	<select id="getAmVoucher" resultMap="amVoucherResult" parameterClass="elementCondition">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER
+		where nd=#nd# and is_sum_am_voucher=#isSum#
+		and (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+		<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="controlType">
+			CONTROL_TYPE = #controlType#
+		</isNotNull>
+		<isNotNull prepend="AND" property="printTimes">
+				<isEqual property="printTimes" compareValue="1">
+					PRINT_TIMES>0
+		  	   </isEqual>
+		  	   <isEqual property="printTimes" compareValue="2">
+					PRINT_TIMES=0
+		  	   </isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmVoucherBySumAmVoucherId"
+		resultMap="amVoucherResult" parameterClass="Map">
+		select * from am_voucher where
+		sum_am_voucher_id=#sumAmVoucherId#
+	</select>
+
+	<select id="getAmVoucherForSum" resultMap="amVoucherResult" parameterClass="elementCondition">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER
+		where nd=#nd# and is_sum_am_voucher=#isSum# and sum_am_voucher_id is null
+		and (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+		and a_status_code='3' and is_valid='1'
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter"/>
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+	    <include refid="ElementCondition.PAYOUT_CODE"/>
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<isNotNull prepend="AND" property="dealState">
+					deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+		<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+
+		<isNotNull prepend="AND"  property="bankType">
+			substr(PAY_BANKNODECODE,0,3) in ($bankType$)
+		</isNotNull>
+		<isNotNull property="operationTypeCode" prepend="AND">
+			operation_type_code = #operationTypeCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="exportTimes">
+			<isEqual property="exportTimes" compareValue="1">
+				MASTER.expr9_num = 0
+			</isEqual>
+			<isEqual property="exportTimes" compareValue="2">
+				<![CDATA[
+					MASTER.expr9_num > 0
+				]]>
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="exportTipsTimes">
+			<isEqual property="exportTipsTimes" compareValue="1">
+				MASTER.EXPR_TIPS_NUM = 0
+			</isEqual>
+			<isEqual property="exportTipsTimes" compareValue="2">
+				<![CDATA[
+					MASTER.EXPR_TIPS_NUM > 0
+				]]>
+			</isEqual>
+		</isNotNull>
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+		order by MASTER.vou_no
+	</select>
+
+
+	<select id="getAmVoucherForNewSum" resultMap="amVoucherResult" parameterClass="elementCondition">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER
+		where nd=#nd# and is_sum_am_voucher=#isSum# and sum_am_voucher_id is null
+		and (MASTER.am_adjust_code='101' or MASTER.am_adjust_code='102')
+		and a_status_code='3' and is_valid='1' and deal_state='6'
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter"/>
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+		<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="controlType">
+			CONTROL_TYPE = #controlType#
+		</isNotNull>
+
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+
+
+	<select id="getAmVoucherSumDetailById" resultMap="amVoucherResult" parameterClass="map">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER
+		where sum_am_voucher_id=#amVoucherId#
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAmVoucherById" resultMap="amVoucherResult" parameterClass="String">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER where am_voucher_id=#amVoucherId:VARCHAR#
+	</select>
+
+	<select id="getAmVoucherByIdList" resultMap="amVoucherResult"
+		parameterClass="Map">
+		select * from am_voucher
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="amVoucherIdList" open="("
+				close=")" conjunction="OR">
+				am_voucher_id=#amVoucherIdList[]#
+			</iterate>
+		</dynamic>
+		for update
+	</select>
+
+	<select id="getAmVoucherSumDetailByIdList" resultMap="amVoucherResult" parameterClass="map">
+		<include refid="amVoucherTable"/>
+		from am_voucher MASTER where
+		<iterate property="amVoucherIdList" open="(" close=")" conjunction="OR">
+			sum_am_voucher_id=#amVoucherIdList[]#
+		</iterate>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<delete id="deleteAmVoucherById" parameterClass="String">
+		delete from	am_voucher where am_voucher_id=#amVoucherId:VARCHAR#
+	</delete>
+
+	<update id="updateAmVoucherPayInfo" parameterClass="amVoucher">
+		update am_voucher
+		set PAY_CODE=#payCode:VARCHAR#, PAY_ACCCODE=#payAccCode:VARCHAR#, PAY_ACCNAME=#payAccName:VARCHAR#, PAY_BANKACCCODE=#payBankAccCode:VARCHAR#,
+			PAY_BANKNO=#payBankNo:VARCHAR#, PAY_BANKNODECODE=#payBankNodeCode:VARCHAR#, PAY_BANKNODENAME=#payBankNodeName:VARCHAR#,
+			RECE_CODE=#receCode:VARCHAR#, RECE_ACCCODE=#receAccCode:VARCHAR#, RECE_ACCNAME=#receAccName:VARCHAR#, RECE_BANKACCCODE=#receBankAccCode:VARCHAR#,
+			RECE_BANKNO=#receBankNo:VARCHAR#, RECE_BANKNODECODE=#receBankNodeCode:VARCHAR#, RECE_BANKNODENAME=#receBankNodeName:VARCHAR#
+		where am_voucher_id=#amVoucherId# or sum_am_voucher_id=#amVoucherId#
+	</update>
+
+	<update id="updateAstatusCodeAndDealState" parameterClass="Map">
+      update am_voucher set A_STATUS_CODE= #aStatueCode#,a_date = #adate# where am_voucher_id=#amVoucherId#
+    </update>
+
+	<parameterMap id="SP_AM_UNCREATE_AMVOUCHER_MAP" class="java.util.HashMap">
+    	<parameter property="amVoucherIds" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="isSum" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="uncreateAmVoucher" parameterMap="SP_AM_UNCREATE_AMVOUCHER_MAP">
+		{call SP_AM_UNCREATE_AMVOUCHER(?,?,?)}
+	</procedure>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		update am_voucher set print_times=print_times+1
+		<dynamic prepend="WHERE">
+		  <iterate prepend="AND" property="amVoucherIdList" open="(" close=")" conjunction="OR">
+			  am_voucher_id=#amVoucherIdList[]# or sum_am_voucher_id=#amVoucherIdList[]#
+          </iterate>
+       </dynamic>
+	</update>
+
+	<insert id="insertAmVoucher" parameterClass="com.ufgov.zc.common.am.model.AmVoucher">
+		insert into AM_VOUCHER (am_voucher_id, input_group_id, bi_balance_id, dp_balance_id,
+		      is_sum_am_voucher, sum_am_voucher_id, bi_target_code, create_type, control_type, dec_type,
+		      am_adjust_code, adjust_voucher_id, nd, proc_date, vou_no, inputor_id, cdate, print_times,
+		      deal_state, bank_auditor_id, bank_date, check_no, operation_type_code, paytype_code,
+		      pre_month, bal_mode_code, org_code, co_code, b_acc_id, b_acc_code, outlay_code,
+		      project_type_code, project_code, fund_code, origin_code, payout_code, manage_code,
+		      inceptdoc_code, senddoc_type_code, senddoc_code, remark, org_money, cur_money, pay_code,
+		      pay_acccode, pay_accname, pay_banknodecode, pay_bankno, pay_banknodename, pay_bankacccode,
+		      rece_code, rece_acccode, rece_accname, rece_banknodecode, rece_bankno, rece_banknodename,
+		      rece_bankacccode, process_inst_id, auditor_id, a_date, a_opinion, a_status_code, an_status,
+		      wf_content_brief, is_valid, canceler_id, cancel_date, cancel_opinion, filename,
+		      filename_blobid, d_attr1, d_attr2, d_attr3, d_attr4, d_attr5, co_vou_no, co_vou_inputor_id,
+		      co_vou_date, gl_vou_no, gl_vou_inputor_id, gl_vou_date, co_vou_no_bef, co_vou_inputor_id_bef,
+		      co_vou_date_bef, gl_vou_no_bef, gl_vou_inputor_id_bef, gl_vou_date_bef, cp_vou_no,
+		      cp_vou_inputor_id, cp_vou_date, cp_vou_no_bef, cp_vou_inputor_id_bef, cp_vou_date_bef,
+		      co_account_id, cp_account_id, gl_account_id, stamp, expr9_num, inputor_name, auditor_name,
+		      is_outer_bal, contract_code, am_apply_id)
+		 values (#amVoucherId:VARCHAR#, #inputGroupId:VARCHAR#, #biBalanceId:VARCHAR#,
+		      #dpBalanceId:VARCHAR#, #isSumAmVoucher:CHAR#, #sumAmVoucherId:VARCHAR#,
+		      #biTargetCode:VARCHAR#, #createType:CHAR#, #controlType:CHAR#, #decType:CHAR#,
+		      #amAdjustCode:VARCHAR#, #adjustVoucherId:VARCHAR#, #nd:DECIMAL#, #procDate:DATE#,
+		      #vouNo:VARCHAR#, #inputorId:VARCHAR#, #cdate:DATE#, #printTimes:INTEGER#, #dealState:CHAR#,
+		      #bankAuditorId:VARCHAR#, #bankDate:DATE#, #checkNo:VARCHAR#, #operationTypeCode:VARCHAR#,
+		      #paytypeCode:VARCHAR#, #preMonth:DECIMAL#, #balModeCode:VARCHAR#, #orgCode:VARCHAR#,
+		      #coCode:VARCHAR#, #baccId:VARCHAR#, #baccCode:VARCHAR#, #outlayCode:VARCHAR#,
+		      #projectTypeCode:VARCHAR#, #projectCode:VARCHAR#, #fundCode:VARCHAR#, #originCode:VARCHAR#,
+		      #payoutCode:VARCHAR#, #manageCode:VARCHAR#, #inceptDocCode:VARCHAR#,
+		      #sendDocTypeCode:VARCHAR#, #sendDocCode:VARCHAR#, #remark:VARCHAR#, #orgMoney:DECIMAL#,
+		      #curMoney:DECIMAL#, #payCode:VARCHAR#, #payAccCode:VARCHAR#, #payAccName:VARCHAR#,
+		      #payBankNodeCode:VARCHAR#, #payBankNo:VARCHAR#, #payBankNodeName:VARCHAR#,
+		      #payBankAccCode:VARCHAR#, #receCode:VARCHAR#, #receAccCode:VARCHAR#, #receAccName:VARCHAR#,
+		      #receBankNodeCode:VARCHAR#, #receBankNo:VARCHAR#, #receBankNodeName:VARCHAR#,
+		      #receBankAccCode:VARCHAR#, #processInstId:DECIMAL#, #auditorId:VARCHAR#, #adate:DATE#,
+		      #aopinion:VARCHAR#, #astatusCode:VARCHAR#, #anStatus:VARCHAR#, #wfContentBrief:VARCHAR#,
+		      #isValid:CHAR#, #cancelerId:VARCHAR#, #cancelDate:DATE#, #cancelOpinion:VARCHAR#,
+		      #filename:VARCHAR#, #filenameBlobid:VARCHAR#, #dattr1:VARCHAR#, #dattr2:VARCHAR#,
+		      #dattr3:VARCHAR#, #dattr4:VARCHAR#, #dattr5:VARCHAR#, #coVouNo:VARCHAR#,
+		      #coVouInputorId:VARCHAR#, #coVouDate:DATE#, #glVouNo:VARCHAR#, #glVouInputorId:VARCHAR#,
+		      #glVouDate:DATE#, #coVouNoBef:VARCHAR#, #coVouInputorIdBef:VARCHAR#, #coVouDateBef:DATE#,
+		      #glVouNoBef:VARCHAR#, #glVouInputorIdBef:VARCHAR#, #glVouDateBef:DATE#, #cpVouNo:VARCHAR#,
+		      #cpVouInputorId:VARCHAR#, #cpVouDate:DATE#, #cpVouNoBef:VARCHAR#, #cpVouInputorIdBef:VARCHAR#,
+		      #cpVouDateBef:DATE#, #coAccountId:VARCHAR#, #cpAccountId:VARCHAR#, #glAccountId:VARCHAR#,
+		      #stamp:DECIMAL#, #expr9Num:DECIMAL#, #inputorName:VARCHAR#, #auditorName:VARCHAR#,
+		      #isOuterBal:CHAR#, #contractCode:VARCHAR#, #amApplyId:VARCHAR#)
+	</insert>
+
+	<update id= "updateAmVoucher" parameterClass="com.ufgov.zc.common.am.model.AmVoucher">
+		update AM_VOUCHER
+		    <dynamic prepend="set" >
+		      <isNotNull prepend="," property="procDate" >
+		        PROC_DATE = #procDate:DATE#
+		      </isNotNull>
+		      <isNotNull prepend="," property="inputorId" >
+		        INPUTOR_ID = #inputorId:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="cdate" >
+		        CDATE = #cdate:DATE#
+		      </isNotNull>
+		      <isNotNull prepend="," property="operationTypeCode" >
+		        OPERATION_TYPE_CODE = #operationTypeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="paytypeCode" >
+		        PAYTYPE_CODE = #paytypeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="preMonth" >
+		        PRE_MONTH = #preMonth:DECIMAL#
+		      </isNotNull>
+		      <isNotNull prepend="," property="balModeCode" >
+		        BAL_MODE_CODE = #balModeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="orgCode" >
+		        ORG_CODE = #orgCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="coCode" >
+		        CO_CODE = #coCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="baccCode" >
+		        B_ACC_CODE = #baccCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="outlayCode" >
+		        OUTLAY_CODE = #outlayCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="projectTypeCode" >
+		        PROJECT_TYPE_CODE = #projectTypeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="projectCode" >
+		        PROJECT_CODE = #projectCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="fundCode" >
+		        FUND_CODE = #fundCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="originCode" >
+		        ORIGIN_CODE = #originCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payoutCode" >
+		        PAYOUT_CODE = #payoutCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="manageCode" >
+		        MANAGE_CODE = #manageCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="inceptDocCode" >
+		        INCEPTDOC_CODE = #inceptDocCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="sendDocTypeCode" >
+		        SENDDOC_TYPE_CODE = #sendDocTypeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="sendDocCode" >
+		        SENDDOC_CODE = #sendDocCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="remark" >
+		        REMARK = #remark:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="orgMoney" >
+		        ORG_MONEY = #orgMoney:DECIMAL#
+		      </isNotNull>
+		      <isNotNull prepend="," property="curMoney" >
+		        CUR_MONEY = #curMoney:DECIMAL#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payAccCode" >
+		        PAY_ACCCODE = #payAccCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payAccName" >
+		        PAY_ACCNAME = #payAccName:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payBankNodeCode" >
+		        PAY_BANKNODECODE = #payBankNodeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payBankNodeName" >
+		        PAY_BANKNODENAME = #payBankNodeName:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="payBankAccCode" >
+		        PAY_BANKACCCODE = #payBankAccCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receCode" >
+		        RECE_CODE = #receCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receAccCode" >
+		        RECE_ACCCODE = #receAccCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receAccName" >
+		        RECE_ACCNAME = #receAccName:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receBankNodeCode" >
+		        RECE_BANKNODECODE = #receBankNodeCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receBankNo" >
+		        RECE_BANKNO = #receBankNo:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receBankNodeName" >
+		        RECE_BANKNODENAME = #receBankNodeName:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="receBankAccCode" >
+		        RECE_BANKACCCODE = #receBankAccCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="isValid" >
+		        IS_VALID = #isValid:CHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="dattr1" >
+		        D_ATTR1 = #dattr1:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="dattr2" >
+		        D_ATTR2 = #dattr2:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="dattr3" >
+		        D_ATTR3 = #dattr3:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="dattr4" >
+		        D_ATTR4 = #dattr4:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="dattr5" >
+		        D_ATTR5 = #dattr5:VARCHAR#
+		      </isNotNull>
+		     <isNotNull prepend="," property="inputorName" >
+		        INPUTOR_NAME = #inputorName:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="contractCode" >
+		        CONTRACT_CODE = #contractCode:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="amApplyId" >
+		        AM_APPLY_ID = #amApplyId:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="filename" >
+		        FILENAME = #filename:VARCHAR#
+		      </isNotNull>
+		      <isNotNull prepend="," property="filenameBlobid" >
+		        FILENAME_BLOBID = #filenameBlobid:VARCHAR#
+		      </isNotNull>
+		      <isNull prepend="," property="filename">
+				FILENAME =	null
+		  	  </isNull>
+			  <isNull prepend="," property="filenameBlobid">
+				FILENAME_BLOBID = null
+		  	  </isNull>
+		    </dynamic>
+		    where AM_VOUCHER_ID = #amVoucherId:VARCHAR#
+    </update>
+    <select id="getAmVoucherForAmVoucherResponse"  resultMap="amVoucherResult" parameterClass="elementCondition">
+	    select * FROM AM_VOUCHER MASTER
+		WHERE (IS_SUM_AM_VOUCHER='1' OR SUM_AM_VOUCHER_ID IS NULL) and a_status_code='3' and is_valid='1'
+		and MASTER.deal_state=#dealState# and MASTER.ND = #nd#
+    	<include refid="ElementCondition.StartDate" />
+    	<include refid="ElementCondition.EndDate" />
+    	<include refid="ElementCondition.PROJECT_CODE" />
+    	<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE"/>
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE"/>
+		<include refid="ElementCondition.B_ACC_CODE_LIKE"/>
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE"/>
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE"/>
+		<include refid="ElementCondition.MANAGE_CODE_LIKE"/>
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE"/>
+        <include refid="ElementCondition.CoCodeFilter"/>
+	  	<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getIsGlVou" resultClass="java.lang.String" parameterClass="Map">
+		SELECT am_voucher_id FROM am_voucher WHERE  (gl_vou_no IS NOT NULL OR cp_vou_no IS NOT NULL OR co_vou_no IS NOT NULL)
+		<iterate prepend="and" property="amVoucherIds" open="(" close=")" conjunction="OR">
+			am_voucher_id = #amVoucherIds[]#
+		</iterate>
+		order by am_voucher_id desc
+	</select>
+
+	<update id="updateResponseAmVoucherDealState" parameterClass="Map">
+      	UPDATE am_voucher SET deal_state=#dealState#
+      	<dynamic prepend="WHERE">
+			<iterate prepend="and" property="amVoucherIds" open="(" close=")" conjunction="OR">
+				(am_voucher_id = #amVoucherIds[]# or sum_am_voucher_id = #amVoucherIds[]# )
+			</iterate>
+		</dynamic>
+    </update>
+
+    <update id="updateSumAmVoucherId" parameterClass="amVoucher">
+		update am_voucher set sum_am_voucher_id=
+		#sumAmVoucherId:VARCHAR# where
+		am_voucher_id=#amVoucherId:VARCHAR#
+	</update>
+
+	<update id="setSumAmVoucherIdNull" parameterClass="string">
+		update am_voucher set sum_am_voucher_id= null where
+		sum_am_voucher_id=#sumAmVoucherId:VARCHAR#
+	</update>
+
+	<update id="updateExpoTimes" parameterClass="string">
+		update am_voucher t set t.expr9_num = t.expr9_num + 1 where t.am_voucher_id=#value#
+	</update>
+
+	<update id="updateExpoTipsTimes" parameterClass="string">
+		update am_voucher t set t.EXPR_TIPS_NUM = t.EXPR_TIPS_NUM + 1 where t.am_voucher_id=#value#
+	</update>
+
+	<update id="updateVoucherGroupDealState" parameterClass="Map">
+		UPDATE AM_VOUCHER T SET T.Deal_State = #dealState#, t.bank_date=sysdate WHERE T.paytype_code = #payTypeCode# and (T.VOU_NO=#voucherNo# OR T.SUM_AM_VOUCHER_ID = (SELECT AM_VOUCHER_ID FROM AM_VOUCHER WHERE VOU_NO=#voucherNo#))
+	</update>
+
+	<update id="updateAmVoucherForAudit" parameterClass="amVoucher">
+		UPDATE AM_VOUCHER SET auditor_id=#auditorId:VARCHAR#,
+		auditor_name=#auditorName:VARCHAR#, a_date=#adate:DATE# WHERE
+		am_voucher_id=#amVoucherId:VARCHAR#
+	</update>
+
+	<update id="updateAmVoucherFieldValueById" parameterClass="Map">
+		update am_voucher set $fieldName$ = #fieldValue# where am_voucher_id
+		= #amVoucherId#
+	</update>
+
+	<update id="updateAmVoucherForUndo" parameterClass="Map">
+		update am_voucher SET IS_VALID=#isValid#,A_STATUS_CODE='9' WHERE
+		am_voucher_id = #amVoucherId# AND IS_VALID='1'
+	</update>
+</sqlMap>

@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.flowconsole.businessflow;import com.ufgov.zc.client.zc.flowconsole.MoudelFlowConsoleCanvas;public class TalksBidFlowConsoleCanvas extends MoudelFlowConsoleCanvas {  /**   * 竞争性谈判   */  private static final long serialVersionUID = -208835548739784133L;  public TalksBidFlowConsoleCanvas() {    super("talks_flow_config.xml");  }}

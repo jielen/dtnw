@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpPayDayBill">
+
+	<typeAlias alias="cpPayDayBill" type="com.ufgov.zc.common.cp.model.CpPayDayBill" />
+
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<typeAlias alias="cpPayDayList" type="com.ufgov.zc.common.cp.model.CpPayDayList" />
+
+	<typeAlias alias="cpPayDayRelation"
+		type="com.ufgov.zc.common.cp.model.CpPayDayRelation" />
+
+	<resultMap id="cpPayDayBillResult" class="cpPayDayBill">
+		<result column="PAY_DAY_BILL_ID" property="payDayBillId"
+			jdbcType="VARCHAR" />
+		<result column="ND" property="nd" jdbcType="DECIMAL" />
+		<result column="BILL_NO" property="billNo" jdbcType="VARCHAR" />
+		<result column="PROC_DATE" property="procDate" jdbcType="DATE" />
+		<result column="INPUTOR_ID" property="inputorId" jdbcType="VARCHAR" />
+		<result column="CDATE" property="cdate" jdbcType="DATE" />
+		<result column="OPERATION_TYPE_CODE" property="operationTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="OPERATION_TYPE_NAME" property="operationTypeName"
+			jdbcType="VARCHAR" />
+		<result column="PRINT_TIMES" property="printTimes" jdbcType="DECIMAL" />
+		<result column="CP_ADJUST_CODE" property="cpAdjustCode"
+			jdbcType="VARCHAR" />
+		<result column="CO_TOP_CODE" property="coTopCode" jdbcType="VARCHAR" />
+		<result column="CO_TOP_NAME" property="coTopName" jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+		<result column="AGENT_BANK_CODE" property="agentBankCode"
+			jdbcType="VARCHAR" />
+		<result column="AGENT_BANK_NAME" property="agentBankName"
+			jdbcType="VARCHAR" />
+		<result column="PAY_CODE" property="payCode" jdbcType="VARCHAR" />
+		<result column="PAY_NAME" property="payName" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_NO" property="payBankNo" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_CODE" property="payAccCode" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_NAME" property="payAccName" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_NO" property="payAccNo" jdbcType="VARCHAR" />
+		<result column="RECE_CODE" property="receCode" jdbcType="VARCHAR" />
+		<result column="RECE_NAME" property="receName" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_CODE" property="receBankCode"
+			jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NAME" property="receBankName"
+			jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NO" property="receBankNo" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_CODE" property="receAccCode" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_NAME" property="receAccName" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_NO" property="receAccNo" jdbcType="VARCHAR" />
+		<result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR" />
+		<result column="FUND_NAME" property="fundName" jdbcType="VARCHAR" />
+		<result column="PAYTYPE_CODE" property="paytypeCode" jdbcType="VARCHAR" />
+		<result column="PAYTYPE_NAME" property="paytypeName" jdbcType="VARCHAR" />
+		<result column="MANAGE_CODE" property="manageCode" jdbcType="VARCHAR" />
+		<result column="MANAGE_NAME" property="manageName" jdbcType="VARCHAR" />
+		<result column="PROCESS_INST_ID" property="processInstId"
+			jdbcType="DECIMAL" />
+		<result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR" />
+		<result column="A_DATE" property="adate" jdbcType="DATE" />
+		<result column="A_OPINION" property="aopinion" jdbcType="VARCHAR" />
+		<result column="A_STATUS_CODE" property="astatusCode" jdbcType="VARCHAR" />
+		<result column="A_STATUS_NAME" property="astatusName" jdbcType="VARCHAR" />
+		<result column="AN_STATUS" property="anStatus" jdbcType="VARCHAR" />
+		<result column="IS_VALID" property="isValid" jdbcType="CHAR" />
+		<result column="CANCELER_ID" property="cancelerId" jdbcType="VARCHAR" />
+		<result column="CANCEL_DATE" property="cancelDate" jdbcType="DATE" />
+		<result column="CANCEL_OPINION" property="cancelOpinion"
+			jdbcType="VARCHAR" />
+		<result column="PAY_VOU_NO_LIST" property="payVouNoList"
+			jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="FILENAME" property="filename" jdbcType="VARCHAR" />
+		<result column="FILENAME_BLOBID" property="filenameBlobid"
+			jdbcType="VARCHAR" />
+		<result column="CP_VOU_NO" property="cpVouNo" jdbcType="VARCHAR" />
+		<result column="CP_VOU_INPUTOR_ID" property="coVouInputorId"
+			jdbcType="VARCHAR" />
+		<result column="CP_VOU_DATE" property="cpVouDate" jdbcType="VARCHAR" />
+		<result column="GL_VOU_NO" property="glVouNo" jdbcType="VARCHAR" />
+		<result column="GL_VOU_INPUTOR_ID" property="glVouInputorId"
+			jdbcType="VARCHAR" />
+		<result column="GL_VOU_DATE" property="glVouDate" jdbcType="VARCHAR" />
+		<result column="SUM_MONEY" property="sumMoney" jdbcType="DECIMAL" />
+		<result column="SUM_MONEY1" property="sumMoney1" jdbcType="DECIMAL" />
+		<result column="SUM_MONEY2" property="sumMoney2" jdbcType="DECIMAL" />
+		<result column="SUM_MONEY3" property="sumMoney3" jdbcType="DECIMAL" />
+		<result column="M_ATTR1" property="mattr1" jdbcType="VARCHAR" />
+		<result column="M_ATTR2" property="mattr2" jdbcType="VARCHAR" />
+		<result column="M_ATTR3" property="mattr3" jdbcType="VARCHAR" />
+		<result column="M_ATTR4" property="mattr4" jdbcType="VARCHAR" />
+		<result column="M_ATTR5" property="mattr5" jdbcType="VARCHAR" />
+		<result column="STAMP" property="stamp" jdbcType="DECIMAL" />
+
+	</resultMap>
+
+	<resultMap id="cpPayDayListResult" class="cpPayDayList">
+		<result column="PAY_DAY_LIST_ID" property="payDayListId"
+			jdbcType="VARCHAR" />
+		<result column="PAY_DAY_BILL_ID" property="payDayBillId"
+			jdbcType="VARCHAR" />
+		<result column="SEQU" property="sequ" jdbcType="DECIMAL" />
+		<result column="ORG_CODE" property="orgCode" jdbcType="VARCHAR" />
+		<result column="ORG_NAME" property="orgName" jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+		<result column="PAYTYPE_CODE" property="paytypeCode" jdbcType="VARCHAR" />
+		<result column="PAYTYPE_NAME" property="paytypeName" jdbcType="VARCHAR" />
+		<result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+		<result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR" />
+		<result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR" />
+		<result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR" />
+		<result column="PROJECT_TYPE_CODE" property="projectTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_TYPE_NAME" property="projectTypeName"
+			jdbcType="VARCHAR" />
+		<result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+		<result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR" />
+		<result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR" />
+		<result column="FUND_NAME" property="fundName" jdbcType="VARCHAR" />
+		<result column="ORIGIN_CODE" property="originCode" jdbcType="VARCHAR" />
+		<result column="ORIGIN_NAME" property="originName" jdbcType="VARCHAR" />
+		<result column="PAYOUT_CODE" property="payoutCode" jdbcType="VARCHAR" />
+		<result column="PAYOUT_NAME" property="payoutName" jdbcType="VARCHAR" />
+		<result column="MANAGE_CODE" property="manageCode" jdbcType="VARCHAR" />
+		<result column="MANAGE_NAME" property="manageName" jdbcType="VARCHAR" />
+		<result column="PAY_CODE" property="payCode" jdbcType="VARCHAR" />
+		<result column="PAY_NAME" property="payName" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_NO" property="payBankNo" jdbcType="VARCHAR" />
+		<result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_CODE" property="payAccCode" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_NAME" property="payAccName" jdbcType="VARCHAR" />
+		<result column="PAY_ACC_NO" property="payAccNo" jdbcType="VARCHAR" />
+		<result column="RECE_CODE" property="receCode" jdbcType="VARCHAR" />
+		<result column="RECE_NAME" property="receName" jdbcType="VARCHAR" />
+		<result column="RECE_BANK_CODE" property="receBankCode"
+			jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NAME" property="receBankName"
+			jdbcType="VARCHAR" />
+		<result column="RECE_BANK_NO" property="receBankNo" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_CODE" property="receAccCode" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_NAME" property="receAccName" jdbcType="VARCHAR" />
+		<result column="RECE_ACC_NO" property="receAccNo" jdbcType="VARCHAR" />
+		<result column="PAY_VOU_NO" property="payVouNo" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="MONEY" property="money" jdbcType="DECIMAL" />
+		<result column="MONEY1" property="money1" jdbcType="DECIMAL" />
+		<result column="MONEY2" property="money2" jdbcType="DECIMAL" />
+		<result column="MONEY3" property="money3" jdbcType="DECIMAL" />
+		<result column="MONEY4" property="money4" jdbcType="DECIMAL" />
+		<result column="MONEY5" property="money5" jdbcType="DECIMAL" />
+		<result column="D_ATTR1" property="dattr1" jdbcType="VARCHAR" />
+		<result column="D_ATTR2" property="dattr2" jdbcType="VARCHAR" />
+		<result column="D_ATTR3" property="dattr3" jdbcType="VARCHAR" />
+		<result column="D_ATTR4" property="dattr4" jdbcType="VARCHAR" />
+		<result column="D_ATTR5" property="dattr5" jdbcType="VARCHAR" />
+		<result column="STAMP" property="stamp" jdbcType="DECIMAL" />
+		<result column="D_ATTR1_NAME" property="dattr1Name" jdbcType="VARCHAR" />
+		<result column="D_ATTR2_NAME" property="dattr1Name" jdbcType="VARCHAR" />
+		<result column="D_ATTR3_NAME" property="dattr1Name" jdbcType="VARCHAR" />
+		<result column="D_ATTR4_NAME" property="dattr1Name" jdbcType="VARCHAR" />
+		<result column="D_ATTR5_NAME" property="dattr1Name" jdbcType="VARCHAR" />
+		<result column="ND" property="nd" jdbcType="DECIMAL" />
+		<result column="VOU_NO" property="vouNo" jdbcType="VARCHAR" />
+		<result column="PAY_TRANSFER_VOU_ID" property="payTransferVouId"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="cpPayDayRelationResult" class="cpPayDayRelation">
+		<result column="PAY_DAY_RELATION_ID" property="payDayRelationId"
+			jdbcType="VARCHAR" />
+		<result column="CP_VOUCHER_ID" property="cpVoucherId" jdbcType="VARCHAR" />
+		<result column="PAY_DAY_BILL_ID" property="payDayBillId"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="CpPayDayBillCondition">
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="nd">
+				MASTER.ND = #nd#
+			</isNotNull>
+			<isNotNull prepend="AND" property="startDate">
+				<![CDATA[
+				MASTER.PROC_DATE >= #startDate#
+				]]>
+			</isNotNull>
+			<isNotNull prepend="AND" property="endDate">
+				<![CDATA[
+				MASTER.PROC_DATE <= #endDate#
+				]]>
+			</isNotNull>
+			<isNotNull prepend="AND" property="fundCode">
+				MASTER.FUND_CODE =
+				#fundCode#
+			</isNotNull>
+			<isNotNull prepend="AND" property="astatusCode">
+				<isNotEqual property="astatusCode" compareValue="5">
+					MASTER.A_STATUS_CODE = #astatusCode#
+				</isNotEqual>
+			</isNotNull>
+			<isNotNull prepend="AND" property="printTimes">
+				<isEqual property="printTimes" compareValue="0">
+					MASTER.PRINT_TIMES = 0
+				</isEqual>
+				<isEqual property="printTimes" compareValue="1">
+					MASTER.PRINT_TIMES > 0
+				</isEqual>
+			</isNotNull>
+
+			<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="accepted">
+                    a_status_code = '3'
+	  	        </isEqual>
+				<isEqual property="status" compareValue="unaccepted">
+					a_status_code = '2'
+	  	        </isEqual>
+				<isEqual property="status" compareValue="all">
+					is_valid != '9'
+			    </isEqual>
+			</isNotNull>
+		</dynamic>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</sql>
+
+	<select id="getCpPayDayBill" resultMap="cpPayDayBillResult"
+		parameterClass="elementCondition">
+		SELECT PAY_DAY_BILL_ID,
+		ND,
+		BILL_NO,
+		PROC_DATE,
+		INPUTOR_ID,
+		CDATE,
+		OPERATION_TYPE_CODE,
+		<include refid="ElementName.OPERATION_TYPE_NAME" />
+		,
+		PRINT_TIMES,
+		CP_ADJUST_CODE,
+		CO_TOP_CODE,
+		CO_TOP_NAME,
+		CO_CODE,
+		CO_NAME,
+		AGENT_BANK_CODE,
+		<include refid="ElementName.AGENT_BANK_NAME" />
+		,
+		PAY_CODE,
+		PAY_NAME,
+		PAY_BANK_CODE,
+		PAY_BANK_NO,
+		PAY_BANK_NAME,
+		PAY_ACC_CODE,
+		PAY_ACC_NAME,
+		PAY_ACC_NO,
+		RECE_CODE,
+		RECE_NAME,
+		RECE_BANK_CODE,
+		RECE_BANK_NAME,
+		RECE_BANK_NO,
+		RECE_ACC_CODE,
+		RECE_ACC_NAME,
+		RECE_ACC_NO,
+		FUND_CODE,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		PAYTYPE_CODE,
+		PAYTYPE_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		PROCESS_INST_ID,
+		AUDITOR_ID,
+		A_DATE,
+		A_OPINION,
+		A_STATUS_CODE,
+		<include refid="ElementName.A_STATUS_NAME" />
+		,
+		AN_STATUS,
+		IS_VALID,
+		CANCELER_ID,
+		CANCEL_DATE,
+		CANCEL_OPINION,
+		PAY_VOU_NO_LIST,
+		REMARK,
+		FILENAME,
+		FILENAME_BLOBID,
+		CP_VOU_NO,
+		CP_VOU_INPUTOR_ID,
+		CP_VOU_DATE,
+		GL_VOU_NO,
+		GL_VOU_INPUTOR_ID,
+		GL_VOU_DATE,
+		SUM_MONEY,
+		SUM_MONEY1,
+		SUM_MONEY2,
+		SUM_MONEY3,
+		M_ATTR1,
+		M_ATTR2,
+		M_ATTR3,
+		M_ATTR4,
+		M_ATTR5,
+		STAMP
+		FROM CP_PAY_DAY_BILL MASTER
+		<include refid="CpPayDayBillCondition" />
+		ORDER BY MASTER.BILL_NO DESC
+	</select>
+
+
+
+	<select id="getCpPayDayListByDayBillId" resultMap="cpPayDayListResult"
+		parameterClass="string">
+		SELECT PAY_DAY_LIST_ID,
+		PAY_DAY_BILL_ID,
+		SEQU,
+		ORG_CODE,
+		ORG_NAME,
+		CO_CODE,
+		CO_NAME,
+		PAYTYPE_CODE,
+		PAYTYPE_NAME,
+		B_ACC_CODE,
+		B_ACC_NAME,
+		OUTLAY_CODE,
+		OUTLAY_NAME,
+		PROJECT_TYPE_CODE,
+		PROJECT_TYPE_NAME,
+		PROJECT_CODE,
+		PROJECT_NAME,
+		FUND_CODE,
+		FUND_NAME,
+		ORIGIN_CODE,
+		ORIGIN_NAME,
+		PAYOUT_CODE,
+		PAYOUT_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		PAY_CODE,
+		PAY_NAME,
+		PAY_BANK_CODE,
+		PAY_BANK_NO,
+		PAY_BANK_NAME,
+		PAY_ACC_CODE,
+		PAY_ACC_NAME,
+		PAY_ACC_NO,
+		RECE_CODE,
+		RECE_NAME,
+		RECE_BANK_CODE,
+		RECE_BANK_NAME,
+		RECE_BANK_NO,
+		RECE_ACC_CODE,
+		RECE_ACC_NAME,
+		RECE_ACC_NO,
+		PAY_VOU_NO,
+		REMARK,
+		MONEY,
+		MONEY1,
+		MONEY2,
+		MONEY3,
+		MONEY4,
+		MONEY5,
+		D_ATTR1,
+		D_ATTR2,
+		D_ATTR3,
+		D_ATTR4,
+		D_ATTR5,
+		STAMP,
+		D_ATTR1_NAME,
+		D_ATTR2_NAME,
+		D_ATTR3_NAME,
+		D_ATTR4_NAME,
+		D_ATTR5_NAME,
+		ND,
+		VOU_NO,
+		PAY_TRANSFER_VOU_ID
+		FROM
+		CP_PAY_DAY_LIST MASTER
+		WHERE
+		MASTER.PAY_DAY_BILL_ID = #value#
+	</select>
+
+	<select id="getCpPayDayList" resultMap="cpPayDayListResult"
+		parameterClass="elementCondition">
+		select * from CP_PAY_DAY_LIST where
+		PAY_DAY_BILL_ID in (
+		select PAY_DAY_BILL_ID from CP_PAY_DAY_BILL master
+		<include refid="CpPayDayBillCondition" />
+		)
+	</select>
+
+	<select id="getCpPayDayListByPayDayBillId" resultMap="cpPayDayListResult"
+		parameterClass="Map">
+		select * from CP_PAY_DAY_LIST where
+		PAY_DAY_BILL_ID = #payDayBillId#
+	</select>
+
+	<select id="getCpPayDayRelationByDayBillId" resultMap="cpPayDayRelationResult"
+		parameterClass="string">
+		SELECT * FROM CP_PAY_DAY_RELATION MASTER WHERE
+		MASTER.PAY_DAY_BILL_ID = #value#
+	</select>
+
+	<select id="getCpPayDayRelation" resultMap="cpPayDayRelationResult"
+		parameterClass="elementCondition">
+		SELECT * FROM CP_PAY_DAY_RELATION MASTER WHERE MASTER.PAY_DAY_BILL_ID
+		in(
+		select PAY_DAY_BILL_ID from CP_PAY_DAY_BILL master
+		<include refid="CpPayDayBillCondition" />
+		)
+	</select>
+
+	<update id="updateCpvoucherByPayDayBillId" parameterClass="map">
+		UPDATE CP_VOUCHER T SET T.PAY_DAY_BILL_ID = #payDayBillId# WHERE
+		T.CP_VOUCHER_ID IN ($payVouNoList$)
+	</update>
+
+	<update id="updateCpvoucherByPayDayBillIdForDel" parameterClass="map">
+		UPDATE CP_VOUCHER T SET T.PAY_DAY_BILL_ID = null WHERE
+		T.PAY_DAY_BILL_ID = #payDayBillId#
+	</update>
+
+	<insert id="insertCpPayDayBill" parameterClass="cpPayDayBill">
+		INSERT INTO
+		CP_PAY_DAY_BILL
+		(PAY_DAY_BILL_ID,
+		ND,
+		BILL_NO,
+		PROC_DATE,
+		INPUTOR_ID,
+		CDATE,
+		OPERATION_TYPE_CODE,
+		PRINT_TIMES,
+		CP_ADJUST_CODE,
+		CO_TOP_CODE,
+		CO_TOP_NAME,
+		CO_CODE,
+		CO_NAME,
+		AGENT_BANK_CODE,
+		AGENT_BANK_NAME,
+		PAY_CODE,
+		PAY_NAME,
+		PAY_BANK_CODE,
+		PAY_BANK_NO,
+		PAY_BANK_NAME,
+		PAY_ACC_CODE,
+		PAY_ACC_NAME,
+		PAY_ACC_NO,
+		RECE_CODE,
+		RECE_NAME,
+		RECE_BANK_CODE,
+		RECE_BANK_NAME,
+		RECE_BANK_NO,
+		RECE_ACC_CODE,
+		RECE_ACC_NAME,
+		RECE_ACC_NO,
+		FUND_CODE,
+		FUND_NAME,
+		PAYTYPE_CODE,
+		PAYTYPE_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		PROCESS_INST_ID,
+		AUDITOR_ID,
+		A_DATE,
+		A_OPINION,
+		A_STATUS_CODE,
+		AN_STATUS,
+		IS_VALID,
+		CANCELER_ID,
+		CANCEL_DATE,
+		CANCEL_OPINION,
+		REMARK,
+		FILENAME,
+		FILENAME_BLOBID,
+		CP_VOU_NO,
+		CP_VOU_INPUTOR_ID,
+		CP_VOU_DATE,
+		GL_VOU_NO,
+		GL_VOU_INPUTOR_ID,
+		GL_VOU_DATE,
+		SUM_MONEY,
+		SUM_MONEY1,
+		SUM_MONEY2,
+		SUM_MONEY3,
+		M_ATTR1,
+		M_ATTR2,
+		M_ATTR3,
+		M_ATTR4,
+		M_ATTR5,
+		STAMP
+		)
+		VALUES
+		(
+		#payDayBillId:VARCHAR#,
+		#nd:DECIMAL#,
+		#billNo:VARCHAR#,
+		#procDate:DATE#,
+		#inputorId:VARCHAR#,
+		#cdate:DATE#,
+		#operationTypeCode:VARCHAR#,
+		#printTimes:VARCHAR#,
+		#cpAdjustCode:VARCHAR#,
+		#coTopCode:VARCHAR#,
+		#coTopName:VARCHAR#,
+		#coCode:VARCHAR#,
+		#coName:VARCHAR#,
+		#agentBankCode:VARCHAR#,
+		#agentBankName:VARCHAR#,
+		#payCode:VARCHAR#,
+		#payName:VARCHAR#,
+		#payBankCode:VARCHAR#,
+		#payBankNo:VARCHAR#,
+		#payBankName:VARCHAR#,
+		#payAccCode:VARCHAR#,
+		#payAccName:VARCHAR#,
+		#payAccNo:VARCHAR#,
+		#receCode:VARCHAR#,
+		#receName:VARCHAR#,
+		#receBankCode:VARCHAR#,
+		#receBankName:VARCHAR#,
+		#receBankNo:VARCHAR#,
+		#receAccCode:VARCHAR#,
+		#receAccName:VARCHAR#,
+		#receAccNo:VARCHAR#,
+		#fundCode:VARCHAR#,
+		#fundName:VARCHAR#,
+		#paytypeCode:VARCHAR#,
+		#paytypeName:VARCHAR#,
+		#manageCode:VARCHAR#,
+		#manageName:VARCHAR#,
+		#processInstId:DECIMAL#,
+		#auditorId:VARCHAR#,
+		#adate:DATE#,
+		#aopinion:VARCHAR#,
+		#astatusCode:VARCHAR#,
+		#anStatus:VARCHAR#,
+		#isValid:VARCHAR#,
+		#cancelerId:VARCHAR#,
+		#cancelDate:DATE#,
+		#cancelOpinion:VARCHAR#,
+		#remark:VARCHAR#,
+		#filename:VARCHAR#,
+		#filenameBlobid:VARCHAR#,
+		#cpVouNo:VARCHAR#,
+		#coVouInputorId:VARCHAR#,
+		#cpVouDate:VARCHAR#,
+		#glVouNo:VARCHAR#,
+		#glVouInputorId:VARCHAR#,
+		#glVouDate:VARCHAR#,
+		#sumMoney:DECIMAL#,
+		#sumMoney1:DECIMAL#,
+		#sumMoney2:DECIMAL#,
+		#sumMoney3:DECIMAL#,
+		#mattr1:VARCHAR#,
+		#mattr2:VARCHAR#,
+		#mattr3:VARCHAR#,
+		#mattr4:VARCHAR#,
+		#mattr5:VARCHAR#,
+		#stamp:DECIMAL#
+		)
+	</insert>
+
+	<insert id="insertCpPayDayList" parameterClass="cpPayDayList">
+		INSERT INTO
+		CP_PAY_DAY_LIST
+		(PAY_DAY_LIST_ID,
+		PAY_DAY_BILL_ID,
+		SEQU,
+		ORG_CODE,
+		ORG_NAME,
+		CO_CODE,
+		CO_NAME,
+		B_ACC_CODE,
+		B_ACC_NAME,
+		OUTLAY_CODE,
+		OUTLAY_NAME,
+		PROJECT_TYPE_CODE,
+		PROJECT_TYPE_NAME,
+		PROJECT_CODE,
+		PROJECT_NAME,
+		FUND_CODE,
+		FUND_NAME,
+		ORIGIN_CODE,
+		ORIGIN_NAME,
+		PAYOUT_CODE,
+		PAYOUT_NAME,
+		PAYTYPE_CODE,
+		PAYTYPE_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		PAY_CODE,
+		PAY_NAME,
+		PAY_BANK_CODE,
+		PAY_BANK_NO,
+		PAY_BANK_NAME,
+		PAY_ACC_CODE,
+		PAY_ACC_NAME,
+		PAY_ACC_NO,
+		RECE_CODE,
+		RECE_NAME,
+		RECE_BANK_CODE,
+		RECE_BANK_NAME,
+		RECE_BANK_NO,
+		RECE_ACC_CODE,
+		RECE_ACC_NAME,
+		RECE_ACC_NO,
+		PAY_VOU_NO,
+		REMARK,
+		MONEY,
+		MONEY1,
+		MONEY2,
+		MONEY3,
+		MONEY4,
+		MONEY5,
+		D_ATTR1,
+		D_ATTR2,
+		D_ATTR3,
+		D_ATTR4,
+		D_ATTR5,
+		STAMP,
+		D_ATTR1_NAME,
+		D_ATTR2_NAME,
+		D_ATTR3_NAME,
+		D_ATTR4_NAME,
+		D_ATTR5_NAME,
+		ND,
+		VOU_NO,
+		PAY_TRANSFER_VOU_ID)
+		VALUES(
+		#payDayListId:VARCHAR#,
+		#payDayBillId:VARCHAR#,
+		#sequ:DECIMAL#,
+		#orgCode:VARCHAR#,
+		(SELECT org_name FROM v_cp_org WHERE org_code=#orgCode:VARCHAR# AND
+		ND=#nd:DECIMAL#),
+		#coCode:VARCHAR#,
+		(SELECT CO_NAME FROM MA_COMPANY WHERE CO_CODE = #coCode:VARCHAR# AND
+		ND=#nd:DECIMAL#),
+		#baccCode:VARCHAR#,
+		(SELECT b_acc_name FROM ma_bacc WHERE b_acc_code=#baccCode:VARCHAR# AND
+		ND=#nd:DECIMAL#),
+		#outlayCode:VARCHAR#,
+		(SELECT outlay_name FROM ma_outlaytype WHERE outlay_code=#outlayCode:VARCHAR#
+		AND ND=#nd:DECIMAL#),
+		#projectTypeCode:VARCHAR#,
+		(SELECT project_type_name FROM ma_project_type WHERE
+		project_type_code=#projectTypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#projectCode:VARCHAR#,
+		(SELECT pd_project_name FROM v_cp_project WHERE
+		pd_project_code=#projectCode:VARCHAR#),
+		#fundCode:VARCHAR#,
+		(SELECT fund_name FROM ma_cp_fund WHERE fund_code=#fundCode:VARCHAR# AND
+		ND=#nd:DECIMAL#),
+		#originCode:VARCHAR#,
+		(SELECT Origin_name FROM ma_cp_origin WHERE Origin_code=#originCode:VARCHAR#
+		AND ND=#nd:DECIMAL#),
+		#payoutCode:VARCHAR#,
+		(SELECT payout_name FROM ma_cp_payout WHERE payout_code=#payoutCode:VARCHAR#
+		AND ND=#nd:DECIMAL#),
+		#paytypeCode:VARCHAR#,
+		(SELECT PAYTYPE_NAME FROM MA_CP_PAYTYPE WHERE PAYTYPE_CODE =
+		#paytypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#manageCode:VARCHAR#,
+		(SELECT manage_name FROM ma_cp_manage WHERE manage_code=#manageCode:VARCHAR#
+		AND ND=#nd:DECIMAL#),
+		#payCode:VARCHAR#,
+		#payName:VARCHAR#,
+		#payBankCode:VARCHAR#,
+		#payBankNo:VARCHAR#,
+		#payBankName:VARCHAR#,
+		#payAccCode:VARCHAR#,
+		#payAccName:VARCHAR#,
+		#payAccNo:VARCHAR#,
+		#receCode:VARCHAR#,
+		#receName:VARCHAR#,
+		#receBankCode:VARCHAR#,
+		#receBankName:VARCHAR#,
+		#receBankNo:VARCHAR#,
+		#receAccCode:VARCHAR#,
+		#receAccName:VARCHAR#,
+		#receAccNo:VARCHAR#,
+		#payVouNo:VARCHAR#,
+		#remark:VARCHAR#,
+		#money:VARCHAR#,
+		#money1:DECIMAL#,
+		#money2:DECIMAL#,
+		#money3:DECIMAL#,
+		#money4:DECIMAL#,
+		#money5:DECIMAL#,
+		#dattr1:VARCHAR#,
+		#dattr2:VARCHAR#,
+		#dattr3:VARCHAR#,
+		#dattr4:VARCHAR#,
+		#dattr5:VARCHAR#,
+		#stamp:DECIMAL#,
+		(SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr1:VARCHAR# AND
+		nd=#nd:DECIMAL# AND extend_type='01'),
+		(SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr2:VARCHAR# AND
+		nd=#nd:DECIMAL# AND extend_type='02'),
+		(SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr3:VARCHAR# AND
+		nd=#nd:DECIMAL# AND extend_type='03'),
+		(SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr4:VARCHAR# AND
+		nd=#nd:DECIMAL# AND extend_type='04'),
+		(SELECT extend_name FROM ma_cp_extend WHERE extend_code=#dattr5:VARCHAR# AND
+		nd=#nd:DECIMAL# AND extend_type='05'),
+		#nd:DECIMAL#,
+		#vouNo:VARCHAR#,
+		#payTransferVouId:VARCHAR#)
+	</insert>
+
+	<insert id="insertCpPayDayRelation" parameterClass="cpPayDayRelation">
+		INSERT INTO
+		CP_PAY_DAY_RELATION
+		(PAY_DAY_RELATION_ID, CP_VOUCHER_ID, PAY_DAY_BILL_ID)
+		VALUES
+		(#payDayRelationId#, #cpVoucherId#, #payDayBillId#)
+	</insert>
+
+	<delete id="deleteCpPayDayBill" parameterClass="cpPayDayBill">
+		DELETE FROM
+		CP_PAY_DAY_BILL T WHERE T.PAY_DAY_BILL_ID = #payDayBillId#
+	</delete>
+
+	<delete id="deleteCpPayDayListByDayBill" parameterClass="cpPayDayBill">
+		DELETE
+		FROM CP_PAY_DAY_LIST T WHERE T.PAY_DAY_BILL_ID = #payDayBillId#
+	</delete>
+
+	<delete id="deleteCpPayRelationByDayBill" parameterClass="cpPayDayBill">
+		DELETE
+		FROM CP_PAY_DAY_RELATION T WHERE T.PAY_DAY_BILL_ID = #payDayBillId#
+	</delete>
+
+	<update id="updateCpPayDayBillAstatus" parameterClass="map">
+		UPDATE
+		CP_PAY_DAY_BILL T SET T.A_STATUS_CODE = #status# WHERE
+		T.PAY_DAY_BILL_ID IN ($ids$)
+	</update>
+
+	<update id="updateCpPayDayBillPrintTimes" parameterClass="string">
+		UPDATE
+		CP_PAY_DAY_BILL T
+		SET T.PRINT_TIMES = T.PRINT_TIMES + 1
+		WHERE T.PAY_DAY_BILL_ID IN ($value$)
+	</update>
+
+	<update id="updateCpPayDayBillForAccepted" parameterClass="cpPayDayBill">
+		UPDATE
+		CP_PAY_DAY_BILL T SET T.A_STATUS_CODE = '3' WHERE
+		T.PAY_DAY_BILL_ID = #payDayBillId#
+	</update>
+
+	<update id="updateCpPayDayBillForCancelAccepted" parameterClass="cpPayDayBill">
+		UPDATE
+		CP_PAY_DAY_BILL T SET T.A_STATUS_CODE = '2' WHERE
+		T.PAY_DAY_BILL_ID = #payDayBillId#
+	</update>
+
+</sqlMap>

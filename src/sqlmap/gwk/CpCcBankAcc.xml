@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpCcBankAcc" >
+	<typeAlias alias="cpCcBankAcc" type="com.ufgov.zc.common.gwk.model.CpCcbankAcc" />
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="cpCcBankAccResult" class="cpCcBankAcc" >
+    <result column="PID" property="pid" jdbcType="VARCHAR" />
+    <result column="BANK_CODE" property="bankCode" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+    <result column="BANK_ACC_CODE" property="bankAccCode" jdbcType="VARCHAR" />
+    <result column="BANK_ACC_NAME" property="bankAccName" jdbcType="VARCHAR" />
+    <result column="BANK_ACC_NO" property="bankAccNo" jdbcType="VARCHAR" />
+    <result column="BANKNODE_CODE" property="banknodeCode" jdbcType="VARCHAR" />
+    <result column="BANKNODE_NAME" property="banknodeName" jdbcType="VARCHAR" />
+    <result column="ND" property="nd" jdbcType="DECIMAL" />
+    <result column="IS_USED" property="isUsed" jdbcType="CHAR" />
+  </resultMap>
+
+
+  <select id="getCpCcBankAccInfo" resultMap="cpCcBankAccResult"
+		parameterClass="elementCondition">
+	   SELECT * FROM cp_ccbank_acc MASTER
+	   <dynamic prepend="WHERE">
+	   	<isNotNull prepend="AND" property="bankCode">
+			MASTER.BANK_CODE = #bankCode#
+		</isNotNull>
+	    <isNotNull prepend="AND" property="nd">
+	  		MASTER.nd = #nd#
+	  	</isNotNull>
+	  	<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.CoCodeFilter"/>
+		</dynamic>
+	</select>
+</sqlMap>

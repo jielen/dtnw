@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BcDetail">
+	<typeAlias alias="bcDetail" type="com.ufgov.zc.common.bi.model.BcDetail" />
+	<typeAlias alias="conditionDto"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="BcDetailResult" class="bcDetail">
+		<result column="BC_DETAIL_ID" property="bcDetailId" jdbcType="VARCHAR" />
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+		<result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+		<result column="AM_MONEY" property="amMoney" jdbcType="DECIMAL" />
+		<result column="CO_SELF_MONEY" property="coSelfMoney" jdbcType="DECIMAL" />
+		<result column="BANK_LOAN_MONEY" property="bankLoanMoney"
+			jdbcType="DECIMAL" />
+		<result column="USE_MONEY" property="useMoney" jdbcType="DECIMAL" />
+		<result column="OTHER" property="other" jdbcType="VARCHAR" />
+		<result column="FUND_ATTRIBUTE" property="fundAttribute"
+			jdbcType="VARCHAR" />
+		<result column="KIND" property="kind" jdbcType="VARCHAR" />
+		<result column="ND" property="nd" jdbcType="INTEGER" />
+		<result column="NDRC_SENDDOC_CODE" property="ndrcSenddocCode"
+			jdbcType="VARCHAR" />
+		<result column="ARMY_SENDDOC_CODE" property="armySenddocCode"
+			jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+		<result column="IS_APPROPRIATE" property="isAppropriate" jdbcType="VARCHAR" />
+		<result column="TAG" property="tag" jdbcType="DECIMAL"/>
+
+	</resultMap>
+
+	<select id="getBcDetailById" resultMap="BcDetailResult"
+		parameterClass="bcDetail">
+		select MASTER.* from BC_DETAIL MASTER where BC_DETAIL_ID =
+		#bcDetailId:VARCHAR#
+  </select>
+
+	<delete id="deleteBcDetail" parameterClass="Map">
+		delete from BC_DETAIL
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="idList" open="(" close=")"
+				conjunction="OR">
+				BC_DETAIL_ID=#idList[]# </iterate>
+		</dynamic>
+	</delete>
+
+	<update id="sendDownBcDetail" parameterClass="Map">
+		update  BC_DETAIL set IS_APPROPRIATE = '1'
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="idList" open="(" close=")"
+				conjunction="OR">
+				BC_DETAIL_ID=#idList[]# </iterate>
+		</dynamic>
+	</update>
+
+	<update id="callBackBcDetail" parameterClass="Map">
+		update  BC_DETAIL set IS_APPROPRIATE = '0'
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="idList" open="(" close=")"
+				conjunction="OR">
+				BC_DETAIL_ID=#idList[]# </iterate>
+		</dynamic>
+	</update>
+
+	<insert id="insertBcDetail" parameterClass="bcDetail">
+		insert into BC_DETAIL (BC_DETAIL_ID, CO_CODE, PROJECT_CODE, AM_MONEY,
+		CO_SELF_MONEY,
+		BANK_LOAN_MONEY, USE_MONEY, OTHER, FUND_ATTRIBUTE, KIND, ND, NDRC_SENDDOC_CODE,
+		ARMY_SENDDOC_CODE, REMARK)
+		values (#bcDetailId:VARCHAR#, #coCode:VARCHAR#, #projectCode:VARCHAR#,
+		#amMoney:DECIMAL#,
+		#coSelfMoney:DECIMAL#, #bankLoanMoney:DECIMAL#, #useMoney:DECIMAL#, #other:VARCHAR#,
+		#fundAttribute:VARCHAR#, #kind:VARCHAR#, #nd:DECIMAL#,
+		#ndrcSenddocCode:VARCHAR#,
+		#armySenddocCode:VARCHAR#, #remark:VARCHAR#)
+  </insert>
+	<update id="updateBcDetail" parameterClass="bcDetail">
+		update BC_DETAIL set
+		CO_CODE = #coCode:VARCHAR#,
+		PROJECT_CODE = #projectCode:VARCHAR#,
+		AM_MONEY = #amMoney:DECIMAL#,
+		CO_SELF_MONEY = #coSelfMoney:DECIMAL#,
+		BANK_LOAN_MONEY = #bankLoanMoney:DECIMAL#,
+		USE_MONEY = #useMoney:DECIMAL#,
+		OTHER = #other:VARCHAR#,
+		FUND_ATTRIBUTE = #fundAttribute:VARCHAR#,
+		KIND = #kind:VARCHAR#,
+		ND = #nd:DECIMAL#,
+		NDRC_SENDDOC_CODE = #ndrcSenddocCode:VARCHAR#,
+		ARMY_SENDDOC_CODE = #armySenddocCode:VARCHAR#,
+		REMARK = #remark:VARCHAR#
+		<isNotNull property="isForArm" prepend=",">
+			TAG = #tag:DECIMAL#
+		</isNotNull>
+		where BC_DETAIL_ID = #bcDetailId:VARCHAR#
+  </update>
+
+	<select id="getBcDetail" parameterClass="conditionDto"
+		resultMap="BcDetailResult">
+		SELECT * FROM BC_DETAIL master
+		<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="appropriated">
+					master.IS_APPROPRIATE = '1'
+				</isEqual>
+				<isEqual property="status" compareValue="unAppropriated">
+					master.IS_APPROPRIATE = '0'
+				</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundAttribute">
+				master.FUND_ATTRIBUTE = #fundAttribute#
+		</isNotNull>
+		<isNotNull prepend="AND" property="kind">
+				master.KIND = #kind#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+				master.ARMY_SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+			<include refid="ElementCondition.CoCodeFilter" />
+			<include refid="ElementCondition.PROJECT_CODE" />
+
+		</dynamic>
+	</select>
+
+	<select id="getBcDetailFoArmInput" parameterClass="conditionDto"
+		resultMap="BcDetailResult">
+		SELECT * FROM BC_DETAIL master
+		where master.Am_Money - master.USE_MONEY > 0
+		<isNotNull prepend="AND" property="status">
+				<isEqual property="status" compareValue="appropriated">
+					master.IS_APPROPRIATE = '1'
+				</isEqual>
+				<isEqual property="status" compareValue="unAppropriated">
+					master.IS_APPROPRIATE = '0'
+				</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundAttribute">
+				master.FUND_ATTRIBUTE = #fundAttribute#
+		</isNotNull>
+		<isNotNull prepend="AND" property="kind">
+				master.KIND = #kind#
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+	</select>
+
+	<delete id="deleteTrackById" parameterClass="String">
+		DELETE FROM BI_TRACK T WHERE t.Bi_Track_Id=#value#
+	</delete>
+
+	<update id="withdrawMoneyFromTrack" parameterClass="map">
+		UPDATE BC_DETAIL T SET t.USE_MONEY = t.USE_MONEY - #money#, t.TAG = t.TAG-1 WHERE T.BC_DETAIL_ID=#id#
+	</update>
+
+	<update id="withdrawMoneyFromBalance" parameterClass="map">
+		UPDATE BI_BALANCE T SET T.BI_ASSIGN_MONEY = T.BI_ASSIGN_MONEY - #money# WHERE t.Bi_Balance_Id=#id#
+	</update>
+</sqlMap>

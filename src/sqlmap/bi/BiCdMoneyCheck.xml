@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="BiCdMoneyCheck">
+	<typeAlias alias="biCdMoneyCheckDto" type="com.ufgov.zc.dto.BiCarryReviewFormDto" />
+	<resultMap id="biCdMoneyCheck" class="com.ufgov.zc.common.commonbiz.dto.BiCdMoneyCheck">
+		<result property="orgCode" column="org_code" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="baccName" column="b_acc_name" />
+		<result property="projectCode" column="project_code" />
+		<result property="projectName" column="project_name" />
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="coName" column="co_name" />
+
+		<result property="biSubtotal" column="bi_subtotal" />
+		<result property="biLaborage" column="bi_laborage" />
+		<result property="biGov" column="bi_gov" />
+
+		<result property="biWarrant" column="bi_warrant" />
+
+		<result property="cpSubtotal" column="cp_subtotal" />
+		<result property="cpLaborage" column="cp_laborage" />
+		<result property="cpGov" column="cp_gov" />
+
+		<result property="cpWarrant" column="cp_warrant" />
+	</resultMap>
+
+	<select id="getBiCdMoneyCheck" resultMap="biCdMoneyCheck"
+		parameterClass="map">
+		SELECT (SELECT co_name from ma_company where
+    co_code=#coCode:VARCHAR# AND nd =#nd#) AS co_name,
+    (SELECT org_name
+    FROM v_cp_org WHERE org_code = v.org_code and nd =#nd#) AS org_code,
+    b_acc_code,
+    (SELECT b_acc_name
+    FROM ma_bacc
+    WHERE b_acc_code = v.b_acc_code
+    AND nd = #nd#) AS b_acc_name,
+    project_code,
+    (SELECT pd_project_name
+    FROM pd_project
+    WHERE pd_project_code = v.project_code) AS project_name,
+    senddoc_code,
+    SUM(v.xiaoji) AS bi_subtotal,
+    SUM(v.gongzi) AS bi_laborage,
+    SUM(v.zhengfu) AS bi_gov,
+    SUM(v.shouquan) AS bi_warrant,
+
+    SUM(v.xiaojic) AS cp_subtotal,
+    SUM(v.gongzic) AS cp_laborage,
+    SUM(v.zhengfuc) AS cp_gov,
+    SUM(v.shouquanc) AS cp_warrant
+
+    FROM (SELECT org_code,
+    b_acc_code,
+    project_code,
+    senddoc_code,
+    SUM(decode(paytype_code, 0201, bi_money, 0)) AS xiaoji,
+    SUM(decode(paytype_code,
+    0201,
+    decode(payout_code, 01, bi_money, 0),
+    0)) AS gongzi,
+    SUM(decode(paytype_code,
+    0201,
+    decode(payout_code, 03, bi_money, 0),
+    0)) as zhengfu,
+    SUM(decode(paytype_code, 0202, bi_money, 0)) as shouquan,
+    0 AS xiaojic,
+    0 AS gongzic,
+    0 AS zhengfuc,
+    0 AS shouquanc
+    FROM bi_balance
+    WHERE bi_level = '03'
+    AND nd = #nd#
+    AND co_code =#coCode:VARCHAR#
+    GROUP BY org_code, b_acc_code, project_code, senddoc_code
+    UNION ALL
+    SELECT org_code,
+    b_acc_code,
+    project_code,
+    senddoc_code,
+    0,
+    0,
+    0,
+    0,
+    SUM(decode(paytype_code, 0201, cur_money, 0)) AS xiaojic,
+
+    SUM(decode(paytype_code,
+    0201,
+    decode(payout_code, 01, cur_money, 0),
+    0)) AS gongzic,
+    SUM(decode(paytype_code,
+    0201,
+    decode(payout_code, 03, cur_money, 0),
+    0)) AS zhengfuc,
+    SUM(decode(paytype_code, 0202, cur_money, 0)) AS shouquanc
+    FROM cp_voucher
+    WHERE (deal_state = '3'
+    OR deal_state = '4')
+    AND nd = #nd# and co_code =#coCode:VARCHAR#
+    GROUP BY org_code, b_acc_code, project_code, senddoc_code
+    ) v
+    GROUP BY org_code, b_acc_code, project_code, senddoc_code
+	</select>
+</sqlMap>

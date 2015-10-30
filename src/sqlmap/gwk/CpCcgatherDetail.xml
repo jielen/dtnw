@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpCcgatherDetail">
+	<typeAlias alias="cpCcgatherDetail"
+		type="com.ufgov.zc.common.gwk.model.CpCcgatherDetail" />
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="cpCcgatherDetailResult" class="cpCcgatherDetail">
+		<result property="coCode" column="co_code" />
+		<result property="coName" column="co_name" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="outlayName" column="outlay_name" />
+		<result property="voucherNo" column="voucher_no" />
+		<result property="zeroBankName" column="ZERO_BANK_NAME" />
+		<result column="DEAL_STATE" property="dealState" />
+		<result column="BANK_DATE" property="bankDate" jdbcType="DATE" />
+		<result column="RECE_BANK_NAME" property="receBankName"	jdbcType="VARCHAR" />
+		<result property="cardSerial" column="card_serial" />
+		<result property="cardUser" column="card_user" />
+		<result property="bankStatus" column="bank_status" />
+		<result property="payDate" column="pay_date" jdbcType="DATE" />
+		<result property="consumeMoney" column="consume_money" />
+		<result column="CONTENT" property="content" />
+	</resultMap>
+
+
+	<select id="getCpGwkBankPaymentInfo" resultMap="cpCcgatherDetailResult"	parameterClass="elementCondition">
+		SELECT MASTER.* FROM (SELECT cc.Voucher_No,
+			cc.co_code ,cc.co_name,cc.outlay_Code ,cc.outlay_Name
+			,(SELECT rece_bank_name from CP_VOUCHER cp where cp.vou_no=cc.voucher_no and cp.nd=cc.nd and cp.paytype_code='0202') ZERO_BANK_NAME
+			,(select deal_state from cp_voucher cp where cp.vou_no =cc.voucher_no and cp.nd=cc.nd and cp.paytype_code='0202') DEAL_STATE
+			,(SELECT bank_date FROM cp_voucher cp WHERE cp.vou_no = cc.voucher_no AND cp.nd=cc.nd and cp.paytype_code='0202') bank_date
+			,CC.RECE_BANK_NAME
+			,CC.RECE_BANK_CODE
+			,CC.CARD_SERIAL
+			,cc.card_user
+			,CC.BANK_STATUS
+			,CC.PAY_DATE
+			,CC.CONSUME_MONEY
+			,(SELECT content FROM CP_CCTRADE_INFO ca WHERE ca.nd=cc.nd AND	ca.card_serial=CC.CARD_SERIAL AND rownum=1)	content
+			FROM cp_ccgather_detail cc 
+		) MASTER
+		<dynamic prepend="WHERE">
+			<isNotNull prepend="AND" property="receBankCode">
+				MASTER.rece_bank_code =	#receBankCode#
+	    	</isNotNull>
+			<isNotNull prepend="AND" property="bankStartDate">
+				bank_date &gt;= #bankStartDate#
+		    </isNotNull>
+		    <isNotNull prepend="AND" property="bankEndDate">
+			    bank_date &lt;= #bankEndDate#
+		    </isNotNull>
+		    <isNotNull prepend="AND" property="payStartDate">
+				PAY_DATE &gt;= #payStartDate#
+		    </isNotNull>
+		    <isNotNull prepend="AND" property="payEndDate">
+			    PAY_DATE &lt;= #payStartDate#
+		    </isNotNull>
+		    <isNotNull prepend="AND" property="bankStatus">
+			    MASTER.bank_status = #bankStatus#
+		    </isNotNull>
+		    <include refid="BusiNumLim.BusiNumLimStr" />
+			<include refid="ElementCondition.CoCodeFilter"/>
+		</dynamic>
+
+	</select>
+</sqlMap>

@@ -1,0 +1,2 @@
+1、修改CA给的FinanceBiddingCall类，添加一个构造函数，函数的参数为LevelOneTwoBuilder的实例；
+2、给FinanceBiddingCall添加一个LevelOneTwoBuilder属性，作为实例变量；

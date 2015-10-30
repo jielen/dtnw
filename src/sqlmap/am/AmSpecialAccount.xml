@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="AmSpecialAccount">
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<typeAlias alias="amSpecialAccount"
+		type="com.ufgov.zc.common.am.model.AmSpecialAccount" />
+
+	<resultMap id="amSpecialAccountResult" class="amSpecialAccount">
+		<result column="bi_balance_id" property="biBalanceId" />
+		<result column="CO_CODE" property="coCode" />
+		<result column="B_ACC_CODE" property="baccCode" />
+		<result column="PROJECT_CODE" property="projectCode" />
+		<result column="ORG_CODE" property="orgCode" />
+		<result column="ORIGIN_CODE" property="originCode" />
+		<result column="FUND_CODE" property="fundCode" />
+		<result column="BALANCE" property="balance" />
+		<result column="money" property="money" />
+		<result column="paySum" property="paySum" />
+		
+		<result property="accCode" column="ACC_CODE" />
+		<result property="accName" column="ACC_NAME" />
+		<result property="bankAccCode" column="BANK_ACC_CODE" />
+		<result property="bankNo" column="BANK_NO" />
+		<result property="bankNodeCode" column="BANKNODE_CODE" />
+		<result property="bankNodeName" column="BANKNODE_NAME" />
+	</resultMap>
+
+	<select id="getSpecialAccount" resultMap="amSpecialAccountResult"
+		parameterClass="elementCondition">
+		select * from ( select * from am_special_account_balance master
+		where master.nd=#nd#
+			<include refid="ElementCondition.PROJECT_CODE" />
+			<include refid="ElementCondition.B_ACC_CODE" />
+			<include refid="ElementCondition.CoCodeFilter" />
+			<include refid="BusiNumLim.BusiNumLimStr" />
+		) master
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+</sqlMap>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="JjPlan">
+	<typeAlias alias="jjPlan"	type="com.ufgov.zc.common.jj.model.JjPlan" />
+	<typeAlias alias="jjPlanDetail"	type="com.ufgov.zc.common.jj.model.JjPlanDetail" />
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="jjPlanResult" class="jjPlan">
+		<result property="oid" column="oid" />
+		<result property="jjPlanCode" column="JJ_PLAN_CODE" />
+		<result property="projectCode" column="PROJECT_CODE" />
+		<result property="projectName" column="PROJECT_NAME" />
+		<result property="auditMoney" column="AUDIT_MONEY" nullValue="0" />
+		<result property="planMoney" column="PLAN_MONEY" nullValue="0" />
+		<result property="orgMoney" column="ORG_MONEY" nullValue="0" />
+		<result property="curMoney" column="CUR_MONEY" nullValue="0" />
+		<result property="projectStartDate" column="PROJECT_START_DATE" />
+		<result property="coCode" column="CO_CODE" />
+		<result property="directorCoCode" column="DIRECTOR_CO_CODE" />
+		<result property="nd" column="ND" nullValue="0" />
+		<result property="month" column="MONTH" nullValue="0" />
+		<result property="procDate" column="PROC_DATE" jdbcType="DATE" />
+		<result property="inputorId" column="INPUTOR_ID" />
+		<result property="inputorName" column="INPUTOR_NAME" />
+		<result property="processInstId" column="PROCESS_INST_ID" />
+		<result property="auditorId" column="AUDITOR_ID" />
+		<result property="auditorName" column="AUDITOR_NAME" />
+		<result property="astatusCode" column="A_STATUS_CODE" />
+		<result property="isEffect" column="IS_EFFECT" />
+		<result property="effectDate" column="EFFECT_DATE" jdbcType="DATE" />
+		<result property="isValid" column="IS_VALID" />
+		<result property="remark" column="REMARK" />
+		<result property="fundCode" column="FUND_CODE" />
+		<result property="printTimes" column="PRINT_TIMES"	nullValue="0" />
+		<result property="isFinished" column="IS_FINISHED" />
+		<result property="sumEffectMoney" column="SUM_EFFECT_MONEY"	nullValue="0" />
+		<result property="sumPayMoney" column="SUM_PAY_MONEY" nullValue="0" />
+		<result property="sumBalance" column="sum_balance" nullValue="0" />
+	</resultMap>
+
+
+	<resultMap id="jjPlanDetailResult" class="jjPlanDetail">
+		<result property="oid" column="oid" />
+		<result property="jjPlanOid" column="JJ_PLAN_OID" />
+		<result property="jjPlanDetailName"	column="JJ_PLAN_DETAIL_NAME" />
+		<result property="paytypeCode" column="PAYTYPE_CODE" />
+		<result property="paytypeName" column="PAYTYPE_NAME" />
+		<result property="receAccName" column="RECE_ACCNAME" />
+		<result property="receBankNodeName" column="RECE_BANKNODENAME" />
+		<result property="receBankAccCode" column="RECE_BANKACCCODE" />
+		<result property="budgetMoney" column="BUDGET_MONEY" nullValue="0" />
+		<result property="annualBalance" column="ANNUAL_BALANCE" nullValue="0" />
+		<result property="constructionProgress"	column="CONSTRUCTION_PROGRESS" nullValue="0" />
+		<result property="sumEffectMoney" column="SUM_EFFECT_MONEY"	nullValue="0" />
+		<result property="sumPayMoney" column="SUM_PAY_MONEY" nullValue="0" />
+		<result property="orgMoney" column="ORG_MONEY" nullValue="0" />
+		<result property="curMoney" column="CUR_MONEY" nullValue="0" />
+		<result property="balance" column="BALANCE" nullValue="0" />
+		<result property="remark" column="REMARK" />
+		<result property="editStatus" column="EDIT_STATUS" />
+	</resultMap>
+
+	<select id="getJjPlan" resultMap="jjPlanResult" parameterClass="elementCondition">
+		SELECT master.*, 
+	       (SELECT SUM(sum_effect_money) FROM jj_plan_detail de WHERE de.jj_plan_oid = master.OID) sum_effect_money, 
+	       (SELECT SUM(sum_pay_money) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_pay_money,
+	       (SELECT SUM(balance) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_balance
+	     FROM jj_plan master
+	     WHERE is_valid = '1'
+	     AND is_finished = '0'
+		<include refid="ElementCondition.CoCodeFilter" />
+	</select>
+
+	<select id="getJjPlanByOid" resultMap="jjPlanResult" parameterClass="string">
+		SELECT master.*, 
+	       (SELECT SUM(sum_effect_money) FROM jj_plan_detail de WHERE de.jj_plan_oid = master.OID) sum_effect_money, 
+	       (SELECT SUM(sum_pay_money) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_pay_money,
+	       (SELECT SUM(balance) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_balance
+		From jj_plan master where oid=#oid#
+	</select>
+
+	<select id="getJjPlanDetailByJjPlanOid"
+		resultMap="jjPlanDetailResult" parameterClass="string">
+		Select * From jj_plan_detail where jj_plan_oid=#oid# order by create_time
+	</select>
+
+	<select id="getJjPlanDetailByOid" resultMap="jjPlanDetailResult"
+		parameterClass="string">
+		Select * From jj_plan_detail where oid=#oid#
+	</select>
+
+	<select id="getJjPlanDetailByOidForUpdate"
+		resultMap="jjPlanDetailResult" parameterClass="string">
+		Select * From jj_plan_detail where oid=#oid#
+	</select>
+
+	<select id="getJjPlanDetailByOidList" resultMap="jjPlanDetailResult"
+		parameterClass="map">
+		Select * From jj_plan_detail
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="oidList" open="(" close=")"
+				conjunction="OR">
+				oid=#oidList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getJjPlanForEdit" resultMap="jjPlanResult"
+		parameterClass="elementCondition">
+		SELECT master.*, 
+		       (SELECT SUM(sum_effect_money) FROM jj_plan_detail de WHERE de.jj_plan_oid = master.OID) sum_effect_money, 
+		       (SELECT SUM(sum_pay_money) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_pay_money,
+		       (SELECT SUM(balance) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_balance
+		  FROM jj_plan master
+		 WHERE is_valid = '1'
+		   AND is_finished = '0'
+		   <include refid="ElementCondition.CoCodeFilter" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="unSended">
+				a_status_code in ('4','0') and  master.process_inst_id in
+				(
+				   ( select wf_draft_id from	as_wf_draft where user_id=#executor:VARCHAR# )
+				   union all 
+				 (select instance_id from
+				  v_wf_current_task_gk53 where executor =	#executor:VARCHAR# )
+				)
+			</isEqual>
+			<isEqual property="status" compareValue="sended">
+				master.process_inst_id in (select instance_id from
+				v_wf_action_history_gk53 where executor =
+				#executor:VARCHAR# ) and a_status_code!='3' and
+				a_status_code!='5'
+			</isEqual>
+			<isEqual property="status" compareValue="audited">
+				(a_status_code ='3' or a_status_code='5')
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+			<isEqual property="status" compareValue="effect">
+				is_valid != '9' and a_status_code='3' and is_effect='1'
+			</isEqual>			
+		</isNotNull>
+		
+			<isNotEqual property="status" compareValue="effect">
+			     <isNotNull prepend="AND" property="startDate">
+				MASTER.PROC_DATE
+				<![CDATA[>=]]>
+				#startDate:DATE#
+		       </isNotNull>
+		        <isNotNull prepend="AND" property="endDate">
+				   MASTER.PROC_DATE
+				     <![CDATA[<=]]>
+				#endDate:DATE#
+		          </isNotNull>
+			</isNotEqual>	
+			
+			<isEqual property="status" compareValue="effect">
+				<isNotNull prepend="AND" property="startDate">
+						MASTER.effect_date
+						<![CDATA[>=]]>
+						#startDate:DATE#
+		       </isNotNull>
+		        <isNotNull prepend="AND" property="endDate">
+				   MASTER.effect_date
+				     <![CDATA[<=]]>
+				#endDate:DATE#
+		          </isNotNull>
+			</isEqual>	
+	</select>
+
+	<select id="getJjPlanForAudit" resultMap="jjPlanResult" parameterClass="elementCondition">
+		SELECT master.*, 
+	       (SELECT SUM(sum_effect_money) FROM jj_plan_detail de WHERE de.jj_plan_oid = master.OID) sum_effect_money, 
+	       (SELECT SUM(sum_pay_money) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_pay_money,
+	       (SELECT SUM(balance) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_balance
+	     FROM jj_plan master
+	     WHERE is_valid = '1'
+	     AND is_finished = '0'	
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="todo">
+				master.process_inst_id in (select instance_id from
+				v_wf_current_task_gk53 where executor =
+				#executor:VARCHAR# )
+			</isEqual>
+			<isEqual property="status" compareValue="done">
+				master.process_inst_id in ( select instance_id from
+				V_WF_ACTION_HISTORY_GK53 where executor =
+				#executor:VARCHAR# ) and a_status_code!='3' and
+				a_status_code!='5' and is_effect!='1'
+			</isEqual>
+			<isEqual property="status" compareValue="audited">
+				(a_status_code ='3' or a_status_code='5') and
+				is_effect!='1'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid = '0' and is_effect!='1'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+			<isEqual property="status" compareValue="effect">
+				is_valid != '9' and a_status_code='3' and is_effect='1'
+			</isEqual>
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	
+		<isNotEqual property="status" compareValue="effect">
+			     <isNotNull prepend="AND" property="startDate">
+				MASTER.PROC_DATE
+				<![CDATA[>=]]>
+				#startDate:DATE#
+		       </isNotNull>
+		        <isNotNull prepend="AND" property="endDate">
+				   MASTER.PROC_DATE
+				     <![CDATA[<=]]>
+				#endDate:DATE#
+		          </isNotNull>
+		</isNotEqual>	
+			
+		<isEqual property="status" compareValue="effect">
+				<isNotNull prepend="AND" property="startDate">
+						MASTER.effect_date
+						<![CDATA[>=]]>
+						#startDate:DATE#
+		       </isNotNull>
+		        <isNotNull prepend="AND" property="endDate">
+				   MASTER.effect_date
+				     <![CDATA[<=]]>
+				#endDate:DATE#
+		          </isNotNull>
+	     </isEqual>	
+			
+	</select>
+
+	<insert id="insertJjPlan" parameterClass="jjPlan">
+		insert into jj_plan( OID, JJ_PLAN_CODE , PROJECT_CODE ,
+		PROJECT_NAME , AUDIT_MONEY , PLAN_MONEY , ORG_MONEY , CUR_MONEY
+		, PROJECT_START_DATE , CO_CODE , DIRECTOR_CO_CODE , ND , MONTH ,
+		PROC_DATE , INPUTOR_ID , INPUTOR_NAME , PROCESS_INST_ID ,
+		AUDITOR_ID , AUDITOR_NAME , A_DATE , A_STATUS_CODE , IS_EFFECT ,
+		EFFECT_DATE , IS_VALID , REMARK ,FUND_CODE) values(
+		#oid:VARCHAR#, #jjPlanCode:VARCHAR#, #projectCode:VARCHAR#,
+		#projectName:VARCHAR#, #auditMoney:DECIMAL# ,
+		#planMoney:DECIMAL# , #orgMoney:DECIMAL# , #curMoney:DECIMAL# ,
+		#projectStartDate:DATE# , #coCode# , #directorCoCode#,
+		#nd:INTEGER# , #month:INTEGER# , #procDate:DATE# ,
+		#inputorId:VARCHAR# , #inputorName:VARCHAR# , #processInstId# ,
+		#auditorId:VARCHAR# , #auditorName:VARCHAR# , #adate:DATE# ,
+		#astatusCode# , #isEffect:VARCHAR# , #effectDate:DATE# ,
+		#isValid# , #remark:VARCHAR#, #fundCode:VARCHAR#)
+	</insert>
+
+	<update id="updateJjPlan" parameterClass="JjPlan">
+		UPDATE jj_plan SET AUDITOR_ID=#auditorId:VARCHAR#, AUDITOR_NAME=
+		#auditorName:VARCHAR#, IS_EFFECT= #isEffect:VARCHAR#,
+		PROC_DATE=#procDate:DATE#, EFFECT_DATE= #effectDate:DATE#,
+		A_DATE= #adate:DATE#, ORG_MONEY = #orgMoney:DECIMAL# , CUR_MONEY
+		=#curMoney:DECIMAL#,month=#month:INTEGER#,a_status_code=#astatusCode:VARCHAR#,
+		PROCESS_INST_ID=#processInstId#,
+		PROJECT_NAME=#projectName:VARCHAR#,
+		AUDIT_MONEY=  #auditMoney:DECIMAL#, PLAN_MONEY=#planMoney:DECIMAL# ,
+		PROJECT_START_DATE=#projectStartDate:DATE#
+		 WHERE oid=#oid:VARCHAR#
+	</update>
+
+	<update id="updateJjPlanFinishStatus" parameterClass="JjPlan">
+		UPDATE jj_plan SET is_finished=#isFinished:VARCHAR# WHERE
+		oid=#oid:VARCHAR#
+	</update>
+
+	<update id="updateJjPlanEffectStatus" parameterClass="JjPlan">
+		UPDATE jj_plan SET is_effect=#isEffect:VARCHAR#, EFFECT_DATE=
+		#effectDate:DATE# WHERE oid=#oid:VARCHAR#
+	</update>
+
+
+	<update id="updateJjPlanAStatusForUnaudit"
+		parameterClass="JjPlan">
+		UPDATE jj_plan SET a_status_code='2',a_date=null WHERE
+		oid=#oid:VARCHAR#
+	</update>
+
+	<update id="updateSumPayMoney" parameterClass="map">
+		update jj_plan_detail t set
+		t.BALANCE=t.BALANCE-#payMoney# where t.oid=#oid#
+	</update>
+
+	<update id="updateSumEffectMoney" parameterClass="jjPlanDetail">
+		update jj_plan_detail t set t.edit_status='1',
+		t.sum_effect_money=t.sum_effect_money+t.cur_money,
+		t.sum_pay_money=t.sum_pay_money+t.cur_money,
+		t.balance=nvl(t.balance,0)+t.cur_money,
+		t.cur_money=null, t.org_money=null where t.oid=#oid#
+	</update>
+
+
+	<insert id="insertJjPlanDetail" parameterClass="jjPlanDetail">
+		insert into jj_plan_detail( OID , JJ_PLAN_DETAIL_NAME ,
+		JJ_PLAN_OID , PAYTYPE_CODE , PAYTYPE_NAME,RECE_ACCNAME ,
+		RECE_BANKNODENAME , RECE_BANKACCCODE , BUDGET_MONEY ,
+		ANNUAL_BALANCE , CONSTRUCTION_PROGRESS , SUM_EFFECT_MONEY ,
+		SUM_PAY_MONEY , ORG_MONEY , CUR_MONEY , REMARK , EDIT_STATUS ,create_time)
+		values( #oid:VARCHAR#, #jjPlanDetailName:VARCHAR#,
+		#jjPlanOid:VARCHAR# , #paytypeCode:VARCHAR# ,
+		#paytypeName:VARCHAR#,#receAccName:VARCHAR# ,
+		#receBankNodeName:VARCHAR# , #receBankAccCode:VARCHAR# ,
+		#budgetMoney:DECIMAL# , #annualBalance:DECIMAL# ,
+		#constructionProgress:DECIMAL# , #sumEffectMoney:DECIMAL# ,
+		#sumPayMoney:DECIMAL# , #orgMoney:DECIMAL# , #curMoney:DECIMAL#
+		, #remark:VARCHAR# , #editStatus:VARCHAR# ,#createTime:TIMESTAMP#)
+	</insert>
+
+	<update id="updateJjPlanDetail" parameterClass="JjPlanDetail">
+		UPDATE jj_plan_detail SET
+		JJ_PLAN_DETAIL_NAME=#jjPlanDetailName:VARCHAR# , PAYTYPE_CODE
+		=#paytypeCode:VARCHAR# , PAYTYPE_NAME=#paytypeName:VARCHAR# ,
+		RECE_ACCNAME = #receAccName:VARCHAR# , RECE_BANKNODENAME =
+		#receBankNodeName:VARCHAR# , RECE_BANKACCCODE =
+		#receBankAccCode:VARCHAR# , BUDGET_MONEY = #budgetMoney:DECIMAL#
+		, ANNUAL_BALANCE=#annualBalance:DECIMAL#, CONSTRUCTION_PROGRESS
+		= #constructionProgress:DECIMAL#, ORG_MONEY = #orgMoney:DECIMAL#
+		, CUR_MONEY = #curMoney:DECIMAL#, REMARK = #remark:VARCHAR#,
+		EDIT_STATUS = #editStatus:VARCHAR#, SUM_PAY_MONEY= #sumPayMoney:DECIMAL# WHERE oid=#oid:VARCHAR#
+	</update>
+
+	<delete id="deleteJjPlanDetail" parameterClass="JjPlanDetail">
+		delete jj_plan_detail where oid=#oid:VARCHAR#
+	</delete>
+	
+	<delete id="updateJjPlanMoney" parameterClass="JjPlanDetail">
+		UPDATE jj_plan t
+		SET t.cur_money=t.cur_money-#curMoney:DECIMAL#,t.org_money=t.org_money-#orgMoney:DECIMAL#
+		WHERE t.oid=#jjPlanOid:VARCHAR#
+	</delete>
+
+	<delete id="deleteJjPlan" parameterClass="JjPlan">
+		delete jj_plan where oid=#oid:VARCHAR#
+	</delete>
+
+	<select id="getJjPlanByProjectName" resultMap="jjPlanResult" parameterClass="map">
+		SELECT master.*, 
+	       (SELECT SUM(sum_effect_money) FROM jj_plan_detail de WHERE de.jj_plan_oid = master.OID) sum_effect_money, 
+	       (SELECT SUM(sum_pay_money) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_pay_money,
+	       (SELECT SUM(balance) FROM jj_plan_detail de  WHERE de.jj_plan_oid = master.OID) sum_balance
+	    FROM jj_plan master
+		where is_valid='1' 
+		and	is_finished='0' 
+		and co_code=#coCode:VARCHAR# 
+		AND project_name=#projectName:VARCHAR#
+	</select>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE jj_plan SET print_times=print_times+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="idList" open="(" close=")"
+				conjunction="OR">
+				oid=#idList[]#
+			</iterate>
+		</dynamic>
+	</update>
+</sqlMap>

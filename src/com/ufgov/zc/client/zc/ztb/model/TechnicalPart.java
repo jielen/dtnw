@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.ztb.model;import com.ufgov.zc.client.zc.ztb.model.face.ISmartUserObject;public class TechnicalPart implements ISmartUserObject {}

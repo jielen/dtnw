@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpPayClearRelation">
+
+	<typeAlias alias="cpPayClearRelation" type="com.ufgov.zc.common.cp.model.CpPayClearRelation"/>
+
+	<resultMap id="cpPayClearRelationResult" class="cpPayClearRelation">
+		<result column="PAY_CLEAR_RELATION_ID" property="payClearRelationId" jdbcType="VARCHAR"/>
+		<result column="CP_VOUCHER_ID" property="cpVoucherId" jdbcType="VARCHAR"/>
+		<result column="PAY_CLEAR_BILL_ID" property="payClearBillId" jdbcType="VARCHAR"/>
+		<result column="VOU_NO" property="vouNo" jdbcType="VARCHAR"/>
+		<result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR"/>
+		<result column="B_ACC_NAME" property="baccName" jdbcType="VARCHAR"/>
+		<result column="CO_CODE" property="coCode" jdbcType="VARCHAR"/>
+		<result column="CO_NAME" property="coName" jdbcType="VARCHAR"/>
+		<result column="CUR_MONEY" property="curMoney" jdbcType="DECIMAL"/>
+		<result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR"/>
+		<result column="FUND_NAME" property="fundName" jdbcType="VARCHAR"/>
+		<result column="OUTLAY_CODE" property="outlayCode" jdbcType="VARCHAR"/>
+		<result column="OUTLAY_NAME" property="outlayName" jdbcType="VARCHAR"/>
+		<result column="PROC_DATE" property="procDate" jdbcType="DATE"/>
+		<result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR"/>
+		<result column="PROJECT_NAME" property="projectName" jdbcType="VARCHAR"/>
+		<result column="INCEPTDOC_CODE" property="inceptdocCode" jdbcType="VARCHAR"/>
+		<result column="INCEPTDOC_NAME" property="inceptdocName" jdbcType="VARCHAR"/>
+		<result column="SENDDOC_CODE" jdbcType="VARCHAR" property="sendDocCode" />
+		<result column="SENDDOC_NAME" jdbcType="VARCHAR" property="sendDocName" />
+	</resultMap>
+
+	<insert id="insertCpPayClearRelation" parameterClass="cpPayClearRelation">
+        INSERT INTO CP_PAY_CLEAR_RELATION
+		  (PAY_CLEAR_RELATION_ID,
+		   PAY_CLEAR_BILL_ID,
+		   CP_VOUCHER_ID,
+		   VOU_NO,
+           B_ACC_CODE,
+		   B_ACC_NAME,
+           CO_CODE,
+		   CO_NAME,
+		   CUR_MONEY,
+		   FUND_CODE,
+		   FUND_NAME,
+		   OUTLAY_CODE,
+		   OUTLAY_NAME,
+		   PROC_DATE,
+		   PROJECT_CODE,
+		   PROJECT_NAME,
+		   INCEPTDOC_CODE,
+		   INCEPTDOC_NAME,
+		   SENDDOC_CODE,
+		   SENDDOC_NAME)
+		VALUES(
+		  #payClearRelationId:VARCHAR#,
+		  #payClearBillId:VARCHAR#,
+		  #cpVoucherId:VARCHAR#,
+		  #vouNo:VARCHAR#,
+		  #baccCode:VARCHAR#,
+          #baccName:VARCHAR#,
+          #coCode:VARCHAR#,
+          #coName:VARCHAR#,
+          #curMoney:DECIMAL#,
+          #fundCode:VARCHAR#,
+          #fundName:VARCHAR#,
+          #outlayCode:VARCHAR#,
+          #outlayName:VARCHAR#,
+          #procDate:DATE#,
+          #projectCode:VARCHAR#,
+          #projectName:VARCHAR#,
+          #inceptdocCode:VARCHAR#,
+          #inceptdocName:VARCHAR#,
+          #sendDocCode:VARCHAR#,
+          #sendDocName:VARCHAR#)
+	</insert>
+
+	<select id="getCpPayClearRelationByBillId" resultMap="cpPayClearRelationResult" parameterClass="string">
+		select *
+		from CP_PAY_CLEAR_RELATION
+		where PAY_CLEAR_BILL_ID = #payClearBillId:VARCHAR#
+	</select>
+
+</sqlMap>

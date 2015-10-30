@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpDzCoAccount" >
+  <resultMap id="CpDzCoAccountResultForMonth" class="com.ufgov.zc.common.cp.model.CpDzCoAccount" >
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="cmPayoutSum" property="cmPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmdPayoutSum" property="cmdPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmdGzPayoutSum" property="cmdGzPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmdZfPayoutSum" property="cmdZfPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmdQtPayoutSum" property="cmdQtPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmaBalance" 	property="cmaBalance" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cmaCurMoney" property="cmaCurMoney" jdbcType="DECIMAL" nullValue="0"/>  
+  </resultMap>
+  
+   <resultMap id="CpDzCoAccountResultForYear" class="com.ufgov.zc.common.cp.model.CpDzCoAccount" >
+    <result column="B_ACC_CODE" property="baccCode" jdbcType="VARCHAR" />
+    <result column="cyPayoutSum" property="cyPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cydPayoutSum" property="cydPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cydGzPayoutSum" property="cydGzPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cydZfPayoutSum" property="cydZfPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cydQtPayoutSum" property="cydQtPayoutSum" jdbcType="DECIMAL" nullValue="0"/>
+    <result column="cyaBalance" property="cyaBalance" jdbcType="DECIMAL" nullValue="0"/>  
+    <result column="cyaCurMoney" property="cyaCurMoney" jdbcType="DECIMAL" nullValue="0"/>  
+  </resultMap>
+  
+  <resultMap id="DzCoResultResult" class="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+    <result column="CO_CODE" property="coCode" />
+    <result column="DZ_MONTH" property="dzMonth" />
+    <result column="CO_NAME" property="coName" />
+    <result column="DZ_TIMES" property="dzTimes" />
+    <result column="DZ_DATE" property="dzDate" />
+    <result column="DZ_PERSON" property="dzPerson" />
+    <result column="DZ_RESULT" property="dzResult" />
+    <result column="DZ_PAYOUT_MONEY" property="dzPayoutMoney" />
+    <result column="DZ_BALANCE_MONEY" property="dzBalanceMoney" />
+    <result column="DZ_REMARK" property="dzRemark" />
+  </resultMap>
+    	
+	<select id="getCpDzCoAccountForMonth" resultMap="CpDzCoAccountResultForMonth" parameterClass="map">
+		SELECT  
+		       vou.B_ACC_CODE,
+		       SUM(CUR_MONEY) cmPayoutSum,
+		       SUM(DECODE(PAYTYPE_CODE,'0201',CUR_MONEY,0)) cmdPayoutSum,
+		       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '01', CUR_MONEY, 0),0)) cmdGzPayoutSum,
+		       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '03', CUR_MONEY, 0),0)) cmdZfPayoutSum, 
+		       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '01', 0,'03', 0, CUR_MONEY),0)) cmdQtPayoutSum,
+		       (SELECT SUM($curMonth$) FROM dp_balance bal WHERE 
+			        bal.nd=vou.nd AND bal.co_code=vou.co_code  
+			       AND bal.b_acc_code=vou.b_acc_code and bal.paytype_code='0202' ) cmaBalance,
+		       SUM(DECODE(PAYTYPE_CODE,'0202',CUR_MONEY,0)) cmaCurMoney         
+		FROM CP_VOUCHER vou 
+		WHERE  vou.Is_Valid='1' AND (vou.Deal_State='3' OR vou.Deal_State='4') and vou.CO_CODE =#coCode#
+			   and (vou.bank_date BETWEEN #startDate:DATE# AND #endDate:DATE#)
+		GROUP BY vou.nd, CO_CODE,TO_CHAR(BANK_DATE, 'MM'),B_ACC_CODE order by vou.B_ACC_CODE  asc  
+	</select>
+	
+	<select id="getCpDzCoAccountForYear" resultMap="CpDzCoAccountResultForYear" parameterClass="map">
+		SELECT     
+	       vou.B_ACC_CODE,
+	       SUM(CUR_MONEY) cyPayoutSum,
+	       SUM(DECODE(PAYTYPE_CODE,'0201',CUR_MONEY,0)) cydPayoutSum,
+	       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '01', CUR_MONEY, 0),0)) cydGzPayoutSum,
+	       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '03', CUR_MONEY, 0),0)) cydZfPayoutSum, 
+	       SUM(DECODE(PAYTYPE_CODE,'0201',DECODE(PAYOUT_CODE, '01', 0,'03', 0, CUR_MONEY),0)) cydQtPayoutSum,
+	       (SELECT SUM(dp_money1)+SUM(dp_money2)+SUM(dp_money3) 
+	       +SUM(dp_money4)
+	       +SUM(dp_money5)
+	       +SUM(dp_money6)
+	       +SUM(dp_money7)
+	       +SUM(dp_money8)
+	       +SUM(dp_money9)
+	       +SUM(dp_money10)
+	       +SUM(dp_money11)
+	       +SUM(dp_money12)
+	       FROM dp_balance bal WHERE 
+	        bal.nd=vou.nd AND bal.co_code=vou.co_code  
+	       AND bal.b_acc_code=vou.b_acc_code  and bal.paytype_code='0202') cyaBalance,
+	       SUM(DECODE(PAYTYPE_CODE,'0202',CUR_MONEY,0)) cyaCurMoney         
+	  	FROM CP_VOUCHER vou 
+	  	where vou.Is_Valid='1' AND (vou.Deal_State='3' OR vou.Deal_State='4') and vou.CO_CODE =#coCode#
+	 	GROUP BY vou.nd, CO_CODE,B_ACC_CODE order by vou.B_ACC_CODE  asc  
+	</select>
+	
+	<select id="getByPrimaryKey" resultClass="com.ufgov.zc.common.cp.model.CpDzCoResult" parameterClass="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+	     select * from DZ_CO_RESULT where CO_CODE = #coCode# and DZ_MONTH = #dzMonth#
+    </select>
+    
+	<insert id="insert" parameterClass="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+	    insert into DZ_CO_RESULT (CO_CODE, DZ_MONTH, CO_NAME, DZ_TIMES, DZ_DATE,DZ_ND,DZ_PERSON,
+	      DZ_RESULT, DZ_PAYOUT_MONEY, DZ_BALANCE_MONEY, DZ_REMARK)
+	    values (#coCode:VARCHAR#, #dzMonth#, #coName:VARCHAR#, 1,
+	      #dzDate:TIMESTAMP#,extract(YEAR from #dzDate#), #dzPerson:VARCHAR#, #dzResult:VARCHAR#,
+	      #dzPayoutMoney:DECIMAL#, #dzBalanceMoney:DECIMAL#, #dzRemark:VARCHAR#)
+    </insert>
+    
+	<update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpDzCoResult" >
+	    update DZ_CO_RESULT
+		    set CO_NAME = #coName:VARCHAR#,
+		      DZ_TIMES = DZ_TIMES+1,
+		      DZ_DATE = #dzDate:TIMESTAMP#,
+		      DZ_PERSON = #dzPerson:VARCHAR#,
+		      DZ_RESULT = #dzResult:VARCHAR#,
+		      DZ_PAYOUT_MONEY = #dzPayoutMoney:DECIMAL#,
+		      DZ_BALANCE_MONEY = #dzBalanceMoney:DECIMAL#,
+		      DZ_REMARK = #dzRemark:VARCHAR#
+	    where CO_CODE = #coCode# and DZ_MONTH = #dzMonth# and DZ_ND=#dzNd#
+    </update>
+
+</sqlMap>

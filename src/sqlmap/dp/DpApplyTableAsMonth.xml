@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DpApplyTableAsMonth">
+	<typeAlias alias="dpApplyTableAsMonth"
+		type="com.ufgov.zc.common.dp.dto.DpApplyTableAsMonth" />
+
+	<resultMap id="dpApplyTableAsMonthResult" class="dpApplyTableAsMonth">
+
+	    <result property="orgCode" column="org_code" />
+	    <result property="orgName" column="org_name" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="baccName" column="b_acc_name" />
+		<result property="payoutName" column="payout_name" />
+
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="sendDocName" column="senddoc_name" />
+		<result property="coName" column="co_name" />
+		<result property="coCode" column="co_code" />
+		<result property="fundName" column="fund_name" />
+		<result property="remark" column="remark" />
+
+		<result property="biSubtotal" column="bi_subtotal" />
+		<result property="biProject" column="bi_project" />
+		<result property="biLaborage" column="bi_laborage" />
+		<result property="biGoods" column="bi_goods" />
+		<result property="biWarrant" column="bi_warrant" />
+		<result property="biAggregate" column="bi_aggregate" />
+		<result property="biOther" column="bi_other" />
+
+	</resultMap>
+
+	<select id="getApplyTableForMonth" resultMap="dpApplyTableAsMonthResult" parameterClass="Map">
+   SELECT d.dp_detail_id,b.bi_balance_id,b.org_code,b.remark,b.co_code,b.fund_code,b.b_acc_code,
+    b.senddoc_code,
+      (SELECT PAYOUT_NAME
+    FROM ma_cp_payout
+    WHERE payout_code = d.payout_code
+    AND nd = #nd#) AS PAYOUT_NAME,
+    (SELECT fund_name
+    FROM ma_cp_fund
+    WHERE fund_code = b.fund_code
+    AND nd = #nd#) AS fund_name,
+
+    (SELECT co_name from ma_company where
+    co_code= #coCode# AND nd =#nd#) AS co_name,
+    (SELECT org_name
+    FROM v_cp_org WHERE org_code = b.org_code and nd =#nd#) AS org_name,
+    (SELECT b_acc_name
+    FROM ma_bacc
+    WHERE b_acc_code = b.b_acc_code
+    AND nd = #nd#) AS b_acc_name,
+     (SELECT senddoc_name
+    FROM ma_cp_sendDoc
+    WHERE senddoc_code = b.senddoc_code
+    AND nd = #nd#) AS senddoc_name,
+    SUM(decode(b.paytype_code, 0201, bi_money, 0)) AS bi_subtotal,
+    SUM(decode(b.paytype_code, 0201,decode(b.payout_code, 11, bi_money, 0),0)) AS bi_project,
+    SUM(decode(b.paytype_code,0201,decode(b.payout_code, 21, bi_money, 0), 0)) AS bi_laborage,
+    SUM(decode(b.paytype_code,0201,decode(b.payout_code, 13, bi_money, 0),0)) as bi_goods,
+    SUM(decode(b.paytype_code, 0202, bi_money, 0)) as bi_warrant,
+   (SUM(decode(b.paytype_code, 0201, bi_money, 0))+ SUM(decode(b.paytype_code, 0202, bi_money, 0))) AS bi_aggregate,
+   (SUM(decode(b.paytype_code, 0201, bi_money, 0))-
+    SUM(decode(b.paytype_code, 0201,decode(b.payout_code, 11, bi_money, 0),0))-
+    SUM(decode(b.paytype_code,0201,decode(b.payout_code, 21, bi_money, 0), 0))-
+    SUM(decode(b.paytype_code,0201,decode(b.payout_code, 13, bi_money, 0),0))) AS bi_other,
+     d.month AS MONTH
+    FROM bi_balance b ,dp_detail d
+    WHERE b.bi_balance_id = d.bi_balance_id
+
+
+    AND b.nd = #nd#
+    <iterate prepend="AND" property="dpDetailIdList"
+           open="(" close=")" conjunction="OR">
+           d.DP_DETAIL_ID=#dpDetailIdList[]#
+          </iterate>
+    GROUP BY b.org_code, b.b_acc_code, b.senddoc_code,d.month,b.bi_balance_id,b.remark,b.fund_code,b.co_code,d.dp_detail_id,d.payout_code
+	</select>
+
+
+</sqlMap>

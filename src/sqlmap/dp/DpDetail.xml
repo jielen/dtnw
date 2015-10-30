@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DpDetail">
+	<typeAlias alias="dpDetail"
+		type="com.ufgov.zc.common.dp.model.DpDetail" />
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="dpDetailResult" class="dpDetail">
+		<result property="nd" column="nd" />
+		<result property="isBiControl" column="is_bi_control" />
+		<result property="dpDetailId" column="dp_detail_id" />
+		<result property="dpBalanceId" column="dp_balance_id" />
+		<result property="inputGroupId" column="input_group_id" />
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="month" column="month" />
+		<result property="inputorId" column="inputor_id" />
+		<result property="inputorName" column="inputor_name" />
+		<result property="auditorId" column="auditor_id" />
+		<result property="auditorName" column="auditor_name" />
+		<result property="cdate" column="cdate" jdbcType="DATE" />
+		<result property="auditDate" column="a_date" jdbcType="DATE" />
+		<result property="procdate" column="proc_date" jdbcType="DATE" />
+		<result property="biBalanceId" column="bi_balance_id" />
+		<result property="biTargetCode" column="bi_target_code" />
+		<result property="coCode" column="co_code" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="fundCode" column="fund_code" />
+		<result property="inceptDocCode" column="inceptdoc_code" />
+		<result property="manageCode" column="manage_code" />
+		<result property="orgCode" column="org_code" />
+		<result property="originCode" column="origin_code" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="paytypeCode" column="paytype_code" />
+		<result property="projectTypeCode" column="PROJECT_TYPE_CODE" />
+		<result property="projectCode" column="project_code" />
+		<result property="sendDocTypeCode" column="SENDDOC_TYPE_CODE" />
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="isValid" column="IS_VALID" />
+		<result property="remark" column="remark" />
+		<result property="dattr1" column="D_ATTR1" />
+		<result property="dattr2" column="D_ATTR2" />
+		<result property="dattr3" column="D_ATTR3" />
+		<result property="dattr4" column="D_ATTR4" />
+		<result property="dattr5" column="D_ATTR5" />
+		<result property="isCounterSign" column="is_countersign" />
+		<result property="counterSigner" column="countersigner" />
+		<result property="pmAdjustCode" column="pm_adjust_code" />
+		<result property="astatusCode" column="a_status_code" />
+		<result property="isCarryup" column="is_carryup" />
+		<result property="processInstId" column="process_inst_id" />
+		<result property="batchInfo" column="batch_info" />
+		<result property="pmType" column="pm_type" />
+		<result property="sumPdId" column="sum_pd_id" />
+		<result property="season" column="season" nullValue="0" />
+		<result property="planAgentBillId" column="plan_agent_bill_id" />
+		<result property="planClearBillId" column="plan_clear_bill_id" />
+		<result property="planAgentDbillId" column="plan_agent_dbill_id" />
+		<result property="planCoBillId" column="plan_co_bill_id" />
+		<result property="isShbaExport" column="is_shba_export" />
+		<result property="oldMonth" column="old_month" nullValue="0" />
+		<result column="filename" property="fileName"
+			jdbcType="VARCHAR" />
+		<result column="filename_blobid" property="filenameBlobid"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<resultMap id="dpDetailResultWithBi" extends="dpDetailResult"
+		class="dpDetail">
+		<result property="biMoney" column="BI_MONEY" nullValue="0" />
+		<result property="biBalance" column="BI_BALANCE" nullValue="0" />
+		<result property="biPaySum" column="BI_PAYSUM" nullValue="0" />
+		<result property="inputGroupId" column="input_group_id" nullValue="0" />
+	</resultMap>
+
+	<resultMap id="dpDetailResultBase" class="dpDetail">
+		<result property="nd" column="nd" />
+		<result property="isBiControl" column="is_bi_control" />
+		<result property="dpDetailId" column="dp_detail_id" />
+		<result property="dpBalanceId" column="dp_balance_id" />
+		<result property="inputGroupId" column="input_group_id" />
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="month" column="month" />
+		<result property="inputorId" column="inputor_id" />
+		<result property="biBalanceId" column="bi_balance_id" />
+		<result property="remark" column="remark" />
+		<result property="counterSign" column="is_countersign" />
+		<result property="counterSigner" column="countersigner" />
+		<result property="pmAdjustCode" column="pm_adjust_code" />
+		<result property="astatusCode" column="a_status_code" />
+		<result property="processInstId" column="process_inst_id" />
+	</resultMap>
+
+
+	<resultMap id="dpDetailResultForAtzd" extends="dpDetailResult"
+		class="dpDetail">
+		<result property="biMoney" column="BI_MONEY" nullValue="0" />
+		<result property="biBalance" column="BI_BALANCE" nullValue="0" />
+		<result property="biPaySum" column="BI_PAYSUM" nullValue="0" />
+		<result property="clearAccCode"     column="CLEAR_ACC_CODE"/>
+		<result property="clearAccName"     column="CLEAR_ACC_NAME"/>
+		<result property="clearAccNo"       column="CLEAR_ACC_NO"/>
+		<result property="clearBankCode"    column="CLEAR_BANK_CODE"/>
+		<result property="clearBankName"    column="CLEAR_BANK_NAME"/>
+		<result property="clearBankNo"      column="CLEAR_BANK_NO"/>
+	</resultMap>
+
+
+	<sql id="pageSqlStart">
+		SELECT * FROM(SELECT T.*, ROWNUM RN FROM (
+	</sql>
+	<sql id="pageSqlEnd">
+		) T WHERE
+		<![CDATA[
+		 Rownum <= #endRow# ) WHERE RN >=#startRow#
+	    ]]>
+	</sql>
+
+	<sql id="dpDetailTableHead">
+		select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+	</sql>
+
+	<select id="getDpDetailPageData" resultMap="dpDetailResultWithBi"
+		parameterClass="map">
+		<include refid="dpDetailTableHead" />
+		from (
+		<include refid="pageSqlStart" />
+		Select * From dp_detail master where PM_ADJUST_CODE
+		in('101','201' ) order by month desc,dp_detail_id desc
+		<include refid="pageSqlEnd" />
+		) MASTER order by month desc,dp_detail_id desc
+	</select>
+
+
+	<resultMap id="dpDetailResultJJplan" class="dpDetail" extends="dpDetailResult">
+		<result property="receAccName" column="RECE_ACCNAME"/>
+		<result property="receBankNodeName" column="RECE_BANKNODENAME"/>
+		<result property="receBankAccCode" column="RECE_BANKACCCODE"/>
+		<result property="receAccCode" column="RECE_ACCCODE"/>
+		<result property="receBankNo" column="RECE_BANKNO"/>
+		<result property="receBankNodeCode" column="RECE_BANKNODECODE"/>
+		<result property="jjPlanDetailOid" column="jj_plan_detail_oid" />
+	</resultMap>
+
+	<select id="getDpDetailByPlanAgentBillId" resultMap="dpDetailResultJJplan" parameterClass="string">
+		select * from dp_detail
+		where pm_adjust_code in('101','201' )
+			and plan_agent_bill_id = #planAgentBillId:VARCHAR#
+			and is_effect='0'
+			and dp_balance_id is null
+	</select>
+
+	<select id="getDpDetailByBillId" resultMap="dpDetailResultJJplan" parameterClass="string">
+		select * from dp_detail
+		where  plan_agent_bill_id = #planAgentBillId:VARCHAR#
+	</select>
+
+	<select id="getDpDetailCount" resultClass="int"
+		parameterClass="map">
+		Select count(dp_detail_id) From dp_detail
+	</select>
+
+	<select id="getDpDetailForDpEdit" resultMap="dpDetailResultWithBi"
+		parameterClass="elementCondition">
+		<include refid="dpDetailTableHead" />
+		from ( Select * From dp_detail master where nd=#nd#
+		and PM_ADJUST_CODE ='101'
+		and is_bi_control='1' and is_sum_dp='0'
+		<include refid="ElementCondition.PM_TYPE" />
+		<include refid="ElementCondition.MONTH" />
+		<include refid="ElementCondition.SEASON" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.PAYOUT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter"/>
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.wfCommonEditStartAndEndDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+
+	</select>
+
+
+	<select id="getDpDetailForDpDetailQuery"
+		resultMap="dpDetailResultWithBi" parameterClass="elementCondition">
+		<include refid="dpDetailTableHead" />
+		From dp_detail MASTER where nd=#nd# and is_sum_dp='0'
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1_LIKE" />
+		<include refid="ElementCondition.D_ATTR2_LIKE" />
+		<include refid="ElementCondition.D_ATTR3_LIKE" />
+		<include refid="ElementCondition.D_ATTR4_LIKE" />
+		<include refid="ElementCondition.D_ATTR5_LIKE" />
+		<include refid="ElementCondition.MONTH" />
+		<isNotNull prepend="AND" property="inceptDocCode">
+			MASTER.INCEPTDOC_CODE = #inceptDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+			MASTER.SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+		<include refid="WfCommonEdit.wfCommonEditStartAndEndDate" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<isNotNull prepend="" property="status">
+			<isEqual prepend="AND" property="status" compareValue="draft">
+				MASTER.A_STATUS_CODE='0' AND MASTER.IS_VALID='1'
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="auditing">
+				(MASTER.A_STATUS_CODE='2' OR MASTER.A_STATUS_CODE='4')
+				AND MASTER.IS_VALID='1'
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="auditednogenbal">
+				MASTER.A_STATUS_CODE='3' AND MASTER.IS_VALID='1' AND
+				MASTER.DP_BALANCE_ID IS NULL
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="auditedgenbal">
+				MASTER.A_STATUS_CODE='5' AND MASTER.IS_VALID='1' AND
+				MASTER.DP_BALANCE_ID IS NOT NULL
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="auditedgenbill">
+				MASTER.IS_VALID='1' AND MASTER.PLAN_CLEAR_BILL_ID IS NOT
+				NULL AND MASTER.PLAN_AGENT_BILL_ID IS NOT NULL
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="invalid">
+				MASTER.IS_VALID='0'
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="auditedNoGenBill">
+				MASTER.IS_VALID='1' AND (MASTER.A_STATUS_CODE='5' OR
+				MASTER.A_STATUS_CODE='3') AND MASTER.PLAN_CLEAR_BILL_ID
+				IS NULL
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="genClearBill">
+				MASTER.IS_VALID='1' AND (MASTER.A_STATUS_CODE='5' OR MASTER.A_STATUS_CODE='3')
+				AND MASTER.PLAN_CLEAR_BILL_ID IS NOT NULL
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="all">
+				MASTER.IS_VALID != '9'
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		ORDER BY MONTH DESC ,DP_DETAIL_ID DESC
+	</select>
+
+	<select id="getDpDetailForDpDetailEffect"
+		resultMap="dpDetailResultWithBi" parameterClass="elementCondition">
+		<include refid="dpDetailTableHead" />
+		From dp_detail MASTER where nd=#nd# and is_sum_dp='0' AND MASTER.IS_VALID='1'
+		     and master.paytype_code like '02%' and master.pm_adjust_code in ('101','201')
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.D_ATTR1_LIKE" />
+		<include refid="ElementCondition.D_ATTR2_LIKE" />
+		<include refid="ElementCondition.D_ATTR3_LIKE" />
+		<include refid="ElementCondition.D_ATTR4_LIKE" />
+		<include refid="ElementCondition.D_ATTR5_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.MONTH" />
+		<include refid="WfCommonEdit.wfCommonEditStartAndEndDate"/>
+		<include refid="WfCommonEdit.WFCommonEditProcDate"/>
+		<isNotNull prepend="" property="status">
+			<isEqual prepend="AND" property="status" compareValue="effect">
+				MASTER.IS_SHBA_EXPORT='Y' and (master.a_status_code='3' or 	master.a_status_code='5')
+			</isEqual>
+			<isEqual prepend="AND" property="status" compareValue="uneffect">
+				MASTER.IS_SHBA_EXPORT='N' AND master.a_status_code='3'
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		ORDER BY MONTH DESC ,DP_DETAIL_ID DESC
+	</select>
+
+	<select id="getDpDetailForDpEditAudit"
+		resultMap="dpDetailResultWithBi" parameterClass="elementCondition">
+		<include refid="dpDetailTableHead" />
+		from ( Select * From dp_detail master where nd=#nd#
+		and	PM_ADJUST_CODE ='101'
+		and is_bi_control='1' and is_sum_dp='0'
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+	    <include refid="ElementCondition.PRINT_ESTATE" />
+	    <include refid="ElementCondition.MONTH" />
+		<include refid="WfCommonAudited.WfCommonAuditedForWfGrant" />
+		<include refid="WfCommonAudited.WfCommonAuditedStartAndEndDate" />
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<isNotNull prepend="" property="coTypeCode">
+		  <isEqual property="coTypeCode" compareValue="02">
+		     <include refid="BusiNumLim.BusiNumLimStr" />
+		  </isEqual>
+		</isNotNull>
+		<isNotNull prepend="" property="status">
+		  <isEqual property="status" compareValue="invalid">
+		     <include refid="BusiNumLim.BusiNumLimStr" />
+		  </isEqual>
+		  <isEqual property="status" compareValue="all">
+		     <include refid="BusiNumLim.BusiNumLimStr" />
+		  </isEqual>
+		  <isEqual property="status" compareValue="todo">
+			   <isEqual property="todoAddDateFilter" compareValue="1">
+					<isNotEqual prepend="AND" property="startMonth" compareValue="0">
+						<isNotEqual prepend="" property="endMonth" compareValue="0">
+							MASTER.MONTH <![CDATA[>=]]> #startMonth# and MASTER.MONTH <![CDATA[<=]]> #endMonth#
+						</isNotEqual>
+					</isNotEqual>
+					<isNotEqual prepend="AND" property="startMonth" compareValue="0">
+						<isEqual prepend="" property="endMonth" compareValue="0">
+							MASTER.MONTH <![CDATA[=]]> #startMonth#
+						</isEqual>
+					</isNotEqual>
+					<isEqual prepend="" property="startMonth" compareValue="0">
+						<isNotEqual prepend="AND" property="endMonth" compareValue="0">
+								MASTER.MONTH <![CDATA[=]]> #endMonth#
+						</isNotEqual>
+					</isEqual>
+			   </isEqual>
+		  </isEqual>
+		</isNotNull>
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getDpDetailForDpAdjustAudit"
+		resultMap="dpDetailResultWithBi" parameterClass="elementCondition">
+		select master.*,
+		<include refid="ElementName.BI_MONEY" />,
+		<include refid="ElementName.BI_BALANCE" />,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from (select * from dp_detail master where
+		PM_ADJUST_CODE in ('201','302','202','301') and is_sum_dp='0'
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MONTH" />
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="WfCommonAudited.WfCommonAudited" />
+		<isNotNull prepend="" property="status">
+		  <isEqual property="status" compareValue="todo">
+			   <isEqual property="todoAddDateFilter" compareValue="1">
+				<include refid="WfCommonAudited.WfCommonAuditedMonth" />
+					<isNotEqual prepend="AND" property="month" compareValue="0">
+						MASTER.MONTH = #month#
+					</isNotEqual>
+			   </isEqual>
+		  </isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getDpDetail" resultMap="dpDetailResult"
+		parameterClass="elementCondition">
+		Select * From dp_detail master where nd=#nd# AND IS_VALID='1'
+		AND SUM_PD_ID IS NULL
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.MONTH" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_DP= #isSum#
+		</isNotNull>
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getDpDetailBySumDpDetailId" resultMap="dpDetailResult"
+		parameterClass="Map">
+		Select * From dp_detail where sum_pd_id=#sumDpDetailId#
+	</select>
+
+
+	<resultMap class="dpDetail" id="dpDetailResultForPrint"
+		extends="dpDetailResult">
+		<result column="INCEPTDOC_NAME" property="inceptDocName" />
+		<result column="SENDDOC_NAME" property="sendDocName" />
+		<result column="PAYTYPE_NAME" property="paytypeName" />
+		<result column="ORG_NAME" property="orgName" />
+		<result column="CO_NAME" property="coName" />
+		<result column="B_ACC_NAME" property="baccName" />
+		<result column="OUTLAY_NAME" property="outlayName" />
+		<result column="PROJECT_NAME" property="projectName" />
+		<result column="FUND_NAME" property="fundName" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="PAYOUT_NAME" property="payoutName" />
+		<result column="MANAGE_NAME" property="manageName" />
+		<result column="D_ATTR1_NAME" property="dattr1Name" />
+		<result column="D_ATTR2_NAME" property="dattr2Name" />
+		<result column="D_ATTR3_NAME" property="dattr3Name" />
+		<result column="D_ATTR4_NAME" property="dattr4Name" />
+		<result column="D_ATTR5_NAME" property="dattr5Name" />
+	</resultMap>
+
+	<select id="getDpDetailBySumDpDetailIdForPrint"
+		resultMap="dpDetailResultForPrint" parameterClass="Map">
+		Select master.*,
+		<include refid="ElementName.INCEPTDOC_NAME" />
+		,
+		<include refid="ElementName.SENDDOC_NAME" />
+		,
+		<include refid="ElementName.CO_NAME" />
+		,
+		<include refid="ElementName.ORG_NAME" />
+		,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		<include refid="ElementName.B_ACC_NAME" />
+		,
+		<include refid="ElementName.OUTLAY_NAME" />
+		,
+		<include refid="ElementName.PROJECT_NAME" />
+		,
+		<include refid="ElementName.MANAGE_NAME" />
+		,
+		<include refid="ElementName.PAYOUT_NAME" />
+		,
+		<include refid="ElementName.PAYTYPE_NAME" />
+		,
+		<include refid="ElementName.ORIGIN_NAME" />
+		,
+		<include refid="ElementName.D_ATTR1_NAME" />
+		,
+		<include refid="ElementName.D_ATTR2_NAME" />
+		,
+		<include refid="ElementName.D_ATTR3_NAME" />
+		,
+		<include refid="ElementName.D_ATTR4_NAME" />
+		,
+		<include refid="ElementName.D_ATTR5_NAME" />
+		from dp_detail master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="sumDpDetailIdList" open="("
+				close=")" conjunction="OR">
+				sum_pd_id=#sumDpDetailIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<update id="updateSumPdId" parameterClass="dpDetail">
+		update dp_detail set sum_pd_id= #sumPdId:VARCHAR# where
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+
+	<update id="setSumPdIdNull" parameterClass="string">
+		update dp_detail set sum_pd_id= null where
+		sum_pd_id=#sumPdId:VARCHAR#
+	</update>
+
+	<insert id="insertDpDetail" parameterClass="dpDetail">
+		insert into dp_detail(
+		dp_detail_id,input_group_id,bi_balance_id,inputor_id,inputor_name,cdate,nd,proc_date,month,org_Money,cur_Money,
+		bi_target_code,co_code,b_acc_code,fund_code,inceptdoc_code,
+		manage_code,org_code,origin_code,outlay_code,payout_code,paytype_code,
+		project_type_code,project_code,senddoc_type_code,senddoc_code,remark,
+		d_attr1,d_attr2,d_attr3,d_attr4,d_attr5,dp_balance_id,process_inst_id,filename,filename_blobid
+		,is_countersign,countersigner,pm_adjust_code,is_bi_control,is_carryup,a_status_code,pm_type,
+		clear_acc_code, clear_acc_name, clear_acc_no, clear_bank_code,
+		clear_bank_name, clear_bank_no, season,is_sum_dp,is_shba_export,
+		RECE_CODE, RECE_ACCCODE, RECE_ACCNAME, RECE_BANKNODECODE,
+		RECE_BANKNO, RECE_BANKNODENAME, RECE_BANKACCCODE,JJ_PLAN_DETAIL_OID
+		,a_date,is_effect) values
+		(#dpDetailId:VARCHAR#,#inputGroupId:VARCHAR#,#biBalanceId:VARCHAR#,#inputorId:VARCHAR#,#inputorName:VARCHAR#,
+		#cdate:DATE#,#nd:INTEGER#,#procdate:DATE#,#month#,#orgMoney#,#curMoney#,
+		#biTargetCode:VARCHAR#,#coCode:VARCHAR#,#baccCode:VARCHAR#,#fundCode:VARCHAR#,
+		#inceptDocCode:VARCHAR#,#manageCode:VARCHAR#,#orgCode:VARCHAR#,#originCode:VARCHAR#,
+		#outlayCode:VARCHAR#,#payoutCode:VARCHAR#,#paytypeCode:VARCHAR#,
+		#projectTypeCode:VARCHAR#,#projectCode:VARCHAR#,#sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#,#remark:VARCHAR#,#dattr1:VARCHAR#,
+		#dattr2:VARCHAR#,#dattr3:VARCHAR#,#dattr4:VARCHAR#,#dattr5:VARCHAR#,#dpBalanceId:VARCHAR#,#processInstId:DECIMAL#,#fileName:VARCHAR#,#filenameBlobid:VARCHAR#,
+		#counterSign:VARCHAR#,#counterSigner:VARCHAR#,#pmAdjustCode:VARCHAR#,#isBiControl:CHAR#,#isCarryup:CHAR#,#astatusCode:CHAR#,#pmType:CHAR#,
+		#clearAccCode:VARCHAR#, #clearAccName:VARCHAR#,
+		#clearAccNo:VARCHAR#, #clearBankCode:VARCHAR#,
+		#clearBankName:VARCHAR#, #clearBankNo:VARCHAR#,
+		#season:INTEGER#,#isSumDp:VARCHAR#,#isShbaExport:VARCHAR#
+		,#receCode:VARCHAR#, #receAccCode:VARCHAR#,
+		#receAccName:VARCHAR#, #receBankNodeCode:VARCHAR#,
+		#receBankNo:VARCHAR#, #receBankNodeName:VARCHAR#,
+		#receBankAccCode:VARCHAR#,#jjPlanDetailOid:VARCHAR#,#auditDate:DATE#,#isEffect:VARCHAR#)
+	</insert>
+
+	<update id="updateDpDetail" parameterClass="dpDetail">
+		update dp_detail set input_group_id=#inputGroupId:VARCHAR#,
+		inputor_id=#inputorId:VARCHAR#, cdate=#cdate:DATE#,
+		nd=#nd:INTEGER#, proc_date=#procdate:DATE#, month=#month#,
+		org_Money=#orgMoney#, cur_Money=#curMoney#,
+		bi_target_code=#biTargetCode:VARCHAR#, co_code=#coCode:VARCHAR#,
+		b_acc_code=#baccCode:VARCHAR#, fund_code=#fundCode:VARCHAR#,
+		inceptdoc_code=#inceptDocCode:VARCHAR#,
+		manage_code=#manageCode:VARCHAR#, org_code=#orgCode:VARCHAR#,
+		origin_code=#originCode:VARCHAR#,
+		outlay_code=#outlayCode:VARCHAR#,
+		payout_code=#payoutCode:VARCHAR#, FILENAME = #fileName:VARCHAR#,
+		FILENAME_BLOBID = #filenameBlobid:VARCHAR#,
+		paytype_code=#paytypeCode:VARCHAR#,
+		project_type_code=#projectTypeCode:VARCHAR#,
+		project_code=#projectCode:VARCHAR#,
+		senddoc_type_code=#sendDocTypeCode:VARCHAR#,
+		senddoc_code=#sendDocCode:VARCHAR#, remark=#remark:VARCHAR#,
+		d_attr1=#dattr1:VARCHAR#, d_attr2=#dattr2:VARCHAR#,
+		d_attr3=#dattr3:VARCHAR#, d_attr4=#dattr4:VARCHAR#,
+		d_attr5=#dattr5:VARCHAR#, is_countersign=#counterSign:VARCHAR#,
+		countersigner=#counterSigner:VARCHAR# where
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailForJJ" parameterClass="dpDetail">
+		update dp_detail set remark=#remark:VARCHAR#,
+		RECE_CODE = #receCode:VARCHAR#,
+        RECE_ACCCODE = #receAccCode:VARCHAR#,
+        RECE_ACCNAME = #receAccName:VARCHAR#,
+        RECE_BANKNODECODE = #receBankNodeCode:VARCHAR#,
+        RECE_BANKNO = #receBankNo:VARCHAR#,
+        RECE_BANKNODENAME =  #receBankNodeName:VARCHAR#,
+        RECE_BANKACCCODE = #receBankAccCode:VARCHAR# where
+		JJ_PLAN_DETAIL_OID=#jjPlanDetailOid:VARCHAR#
+	</update>
+
+	<update id="dpAdjustUpdateDpDetail" parameterClass="dpDetail">
+		UPDATE dp_detail SET cur_money=#curMoney# WHERE
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<delete id="deleteDpDetailById" parameterClass="string">
+		delete from dp_detail where dp_detail_id=#dpDetailId:VARCHAR#
+	</delete>
+
+	<select id="getDpDetailForDpAdjust" resultMap="dpDetailResultWithBi"
+		parameterClass="elementCondition">
+		select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from (select * from dp_detail master where
+		PM_ADJUST_CODE in ('201','302','202','301')
+		and is_sum_dp='0'
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.FUND_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.PM_ADJUST_CODE" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.wfCommonEditMonth" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getDpDetailForUpdateById" resultMap="dpDetailResultBase"
+		parameterClass="String">
+		select * from dp_detail where dp_detail_id=#DpDetailId:VARCHAR#
+		for update
+	</select>
+
+	<select id="getDpDetailById" resultMap="dpDetailResultBase"
+		parameterClass="String">
+		select * from dp_detail where dp_detail_id=#DpDetailId:VARCHAR#
+	</select>
+
+	<select id="getDpDetailByOid" resultMap="dpDetailResultBase"
+		parameterClass="String">
+		select * from dp_detail where jj_plan_detail_oid=#jjPlanDetailOid:VARCHAR#
+	</select>
+
+	<select id="getDpDetailByIdList" resultMap="dpDetailResult"
+		parameterClass="map">
+		select master.* from dp_detail master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="dpDetailIdList" open="("
+				close=")" conjunction="OR">
+				dp_detail_id=#dpDetailIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getDpDetailByIdList2" resultMap="dpDetailResultForAtzd"
+		parameterClass="map">
+			SELECT master.* , 0 as BI_MONEY ,0 as BI_BALANCE ,0 as BI_PAYSUM
+		  from dp_detail master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="dpDetailIdList" open="("
+				close=")" conjunction="OR">
+				dp_detail_id=#dpDetailIdList[]#
+			</iterate>
+		</dynamic>
+		for update
+	</select>
+
+
+	<select id="getDpDetailInfo" resultMap="dpDetailResultWithBi"
+		parameterClass="Map">
+		select master.* ,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from (select * from dp_detail where IS_VALID=1 and nd=#nd# and
+		dp_balance_id=#dpBalanceId#) master
+	</select>
+
+	<select id="getDpDetailForBiBalanceId" resultMap="dpDetailResultWithBi"
+		parameterClass="Map">
+		select master.* ,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+		<include refid="ElementName.BI_PAY_SUM" />
+		from (select * from dp_detail where IS_VALID=1 and nd=#nd# and
+		bi_balance_id = #biBalanceId#) master
+	</select>
+
+
+	<select id="getBiBalanceIdForDpAdjust" resultClass="String"
+		parameterClass="Map">
+		SELECT $strmaxOrmin$(BI_BALANCE_ID) as BI_BALANCE_ID FROM
+		DP_DETAIL WHERE ND=#nd# AND DP_BALANCE_ID=#dpBalanceId# AND
+		PM_ADJUST_CODE IN ('101','201')
+	</select>
+
+	<update id="updateDpDetailBatchInfo" parameterClass="Map">
+		UPDATE DP_DETAIL SET BATCH_INFO=#batchInfo:VARCHAR# where DP_DETAIL_ID=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE DP_DETAIL SET print_times=print_times+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="dpDetailIdList" open="("
+				close=")" conjunction="OR">
+				DP_DETAIL_ID=#dpDetailIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<update id="updateDpDetailValid" parameterClass="Map">
+		UPDATE DP_DETAIL SET is_valid=#isValid# WHERE
+		DP_DETAIL_ID=#dpDetailId#
+	</update>
+
+	<update id="upDataDpDetailForDpAdjustAudit" parameterClass="Map">
+		UPDATE dp_detail SET
+		bi_balance_id=#biBalanceId#,is_effect='1',a_status_code='5',is_shba_export='Y',effect_id=#userId#
+		,effect_date=to_date(TO_char(SYSDATE,
+		'YYYY-MM-DD'),'YYYY-MM-DD') WHERE dp_detail_id=#dpDetailId#
+	</update>
+	<update id="updateDpDetailAstatusCode" parameterClass="String">
+		UPDATE DP_DETAIL SET A_STATUS_CODE='3' WHERE
+		DP_DETAIL_ID=#dpDetailId#
+	</update>
+
+	<update id="updateDpDetailMonth" parameterClass="Map">
+		UPDATE DP_DETAIL SET MONTH=#smonth# WHERE DP_DETAIL_ID =
+		#dpDetailId#
+	</update>
+
+	<update id="updateDpDetailMonthForDpAudit" parameterClass="Map">
+		UPDATE dp_detail SET month=#smonth#,old_month=#oldMonth# WHERE
+		dp_detail_id=#dpDetailId#
+	</update>
+
+	<update id="updateDpDetailForDpEditAudit" parameterClass="Map">
+		UPDATE DP_DETAIL SET
+		DP_BALANCE_ID=#dpBalanceId#,IS_EFFECT='1',A_STATUS_CODE='5',EFFECT_ID=#userId#
+		,EFFECT_DATE=to_date(TO_char(SYSDATE,
+		'YYYY-MM-DD'),'YYYY-MM-DD') WHERE DP_DETAIL_ID=#dpDetailId# AND
+		DP_BALANCE_ID IS NULL
+	</update>
+	<update id="updateDpDetailForDpDetailAdjust" parameterClass="Map">
+		UPDATE DP_DETAIL SET IS_EFFECT='1',A_STATUS_CODE='5',EFFECT_ID=#userId#
+		,EFFECT_DATE=to_date(TO_char(SYSDATE,
+		'YYYY-MM-DD'),'YYYY-MM-DD') WHERE DP_DETAIL_ID=#dpDetailId# AND
+		DP_BALANCE_ID IS NULL
+	</update>
+
+
+	<select id="getUnsumAuthPayList" resultMap="dpDetailResultForAtzd" parameterClass="elementCondition">
+		SELECT master.* , 0 as BI_MONEY ,0 as BI_BALANCE ,0 as BI_PAYSUM
+		  FROM dp_detail MASTER
+			 WHERE  master.a_status_code IN ('3', '5')
+			   AND master.dp_is_carrydown = '0'
+			   AND master.is_valid = '1'
+			   AND master.ND=#nd#
+			<include refid="ElementCondition.MONTH" />
+			<isNotNull prepend="AND" property="startDate">
+				<isNotNull property="endDate">
+					<!--MASTER.A_DATE BETWEEN #startDate:DATE# AND #endDate:DATE#-->
+					MASTER.A_DATE BETWEEN  trunc(#startDate:DATE#) AND trunc(#endDate:DATE#)
+				</isNotNull>
+			</isNotNull>
+			<isEqual prepend="AND" property="createTzdType"	compareValue="1">
+				master.PLAN_AGENT_BILL_ID IS NULL
+			</isEqual>
+			<isEqual prepend="AND" property="createTzdType"	compareValue="2">
+				master.PLAN_AGENT_BILL_ID IS NULL
+			</isEqual>
+			<isEqual prepend="AND" property="createTzdType"	compareValue="3">
+				master.PLAN_CLEAR_BILL_ID IS NULL
+			</isEqual>
+			<isEqual prepend="AND" property="billType" compareValue="1">
+				MASTER.PM_ADJUST_CODE !='501'
+			</isEqual>
+			<isEqual prepend="AND" property="billType" compareValue="2">
+				MASTER.PM_ADJUST_CODE ='501'
+			</isEqual>
+			<isNotNull prepend="AND" property="bankCode">
+				EXISTS (
+					SELECT 1 FROM ma_bank_acc t
+					WHERE t.acco_type='04'
+					AND t.co_code=master.Co_Code
+					AND t.bank_code = #bankCode#
+					<isNotNull prepend="AND" property="banknodeCode">
+						t.BANKNODE_CODE = #banknodeCode#
+					</isNotNull>
+				)
+			</isNotNull>
+			<include refid="ElementCondition.PAYTYPE_CODE" />
+			<include refid="ElementCondition.FUND_CODE_LIKE" />
+			<include refid="ElementCondition.ORG_CODE" />
+			<include refid="ElementCondition.CoCodeFilter" />
+			<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+			<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+			<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+			<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+	<parameterMap id="sumAtzdForDpMap" class="java.util.HashMap">
+		<parameter property="pCreateTzdType" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pBillType" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDpDetailId" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="pUserId" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pProcDate" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRemark" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+	</parameterMap>
+	<procedure id="sumAtzdForDp" parameterMap="sumAtzdForDpMap">
+		{call SP_CP_GEN_BILL_FORDPDETAIL(?,?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="cancelAtzdForDpMap" class="java.util.HashMap">
+		<parameter property="pCreateTzdType" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pPkName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pPkValue" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pNd" jdbcType="INTEGER"
+			javaType="java.lang.Integer" mode="IN" />
+		<parameter property="pRemark" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetInfo" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="cancelAtzdForDp" parameterMap="cancelAtzdForDpMap">
+		{call SP_CP_CANCEL_BILL_FORDPDETAIL(?,?,?,?,?,?)}
+	</procedure>
+
+	<update id="updateDpDetailForAudit" parameterClass="dpDetail">
+		UPDATE dp_detail SET auditor_id=#auditorId:VARCHAR#,
+		auditor_name=#auditorName:VARCHAR#, a_date=#auditDate:DATE#
+		WHERE dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailAstatusCodeForReWork"
+		parameterClass="dpDetail">
+		UPDATE dp_detail SET a_status_code=#astatusCode:VARCHAR# WHERE
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailAstatusCodeForUnAudit"
+		parameterClass="dpDetail">
+		UPDATE dp_detail SET is_effect='0',a_status_code='2',
+		effect_id=null, dp_balance_id=null,effect_date=null WHERE
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailForEffect"
+		parameterClass="dpDetail">
+		UPDATE dp_detail SET is_shba_export='Y' WHERE a_status_code='3' AND PLAN_AGENT_BILL_ID IS NULL AND PLAN_CLEAR_BILL_ID IS NULL and
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailForUnEffect"
+		parameterClass="dpDetail">
+		UPDATE dp_detail set is_shba_export='N' WHERE a_status_code='3' and is_effect='0' and PLAN_AGENT_BILL_ID IS NULL AND PLAN_CLEAR_BILL_ID IS NULL and
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailAstatusCodeForAdjustUnaudit"
+		parameterClass="dpDetail">
+		UPDATE dp_detail SET is_effect='0',a_status_code='2',
+		effect_id=null,effect_date=null WHERE
+		dp_detail_id=#dpDetailId:VARCHAR#
+	</update>
+
+	<update id="updateDpDetailIsValid" parameterClass="Map">
+		UPDATE dp_detail SET
+		is_valid=#isValid#,a_status_code=#astatusCode# WHERE
+		dp_detail_id=#dpDetailId# AND is_valid=1
+	</update>
+
+	<update id="updateDpDetailByPlanClearBillId" parameterClass="Map">
+		UPDATE dp_detail SET plan_clear_bill_id=#planClearBillId#,plan_clear_bill_no=#billNo#
+		WHERE dp_detail_id = #dpDetailId#
+	</update>
+
+	<select id="getDpDetailCountForUnAudit" resultClass="int"
+		parameterClass="String">
+		SELECT COUNT(*) FROM dp_detail WHERE dp_balance_id IS NOT NULL
+		AND dp_detail_id=#dpDetailId#
+	</select>
+
+	<select id="getDpDetailForLimitBiTimesCheck" resultClass="int"	parameterClass="elementCondition">
+		SELECT COUNT(*) FROM dp_detail master WHERE BI_BALANCE_ID =	#biBalanceId# AND is_valid=1 and PM_ADJUST_CODE='101'
+		<include refid="ElementCondition.MONTH" />
+		<include refid="ElementCondition.PM_TYPE" />
+	</select>
+
+	<parameterMap id="SP_CP_BILL_AUDIT_MAP" class="java.util.HashMap">
+		<parameter property="processInstId" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="action" jdbcType="VARCHAR"			javaType="java.lang.String" mode="IN" />
+		<parameter property="inputorId" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="inputorName" jdbcType="VARCHAR"	javaType="java.lang.String" mode="IN" />
+		<parameter property="inputorDate" jdbcType="DATE"		javaType="java.util.Date" mode="IN" />
+		<parameter property="compoId" jdbcType="VARCHAR"		javaType="java.lang.String" mode="IN" />
+		<parameter property="reoutvalue" jdbcType="VARCHAR"		javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="dpDetailCreateAmVoucher" parameterMap="SP_CP_BILL_AUDIT_MAP">
+		{call SP_CP_BILL_AUDIT(?,?,?,?,?,?,?)}
+	</procedure>
+
+	<select id="getDtztForDpUncollectedList" parameterClass="elementCondition" resultMap="dpDetailResultWithBi">
+		SELECT MASTER.*, 0 AS BI_MONEY, 0 AS BI_BALANCE, 0 AS BI_PAYSUM
+		FROM (SELECT MASTER.* FROM DP_DETAIL MASTER WHERE
+		MASTER.PAYTYPE_CODE = '0201' AND MASTER.IS_VALID = '1' AND
+		MASTER.ND = #nd# AND MASTER.PM_ADJUST_CODE !='501' AND
+		MASTER.PLAN_AGENT_BILL_ID IS NULL
+		<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+				MASTER.A_DATE BETWEEN #startDate:DATE# AND
+				#endDate:DATE#
+			</isNotNull>
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			EXISTS (
+				SELECT 1 FROM ma_bank_acc t
+				WHERE t.acco_type='04'
+				AND t.co_code=master.Co_Code
+				AND t.bank_code = #bankCode#
+			)
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.MONTH" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER ORDER BY DP_DETAIL_ID
+	</select>
+
+	 <select id="getDataForDP_BALANCE_CONTROL" resultMap="dpDetailResult">
+		select * from dp_detail master where nd=#nd# and master.is_valid='1' and is_sum_dp='0'
+			and master.paytype_code like '02%' and is_shba_export='Y' and MASTER.PM_ADJUST_CODE IN ('101','201')
+			<isNotNull prepend="AND" property="pmAdjustCode">
+            	MASTER.PM_ADJUST_CODE =#pmAdjustCode#
+            </isNotNull>
+            <isNotNull prepend="AND" property="status">
+            	<isEqual property="status" compareValue="all">
+            		(MASTER.A_STATUS_CODE = '3' or MASTER.A_STATUS_CODE = '5')
+            	</isEqual>
+        		<isEqual property="status" compareValue="updated">
+            		MASTER.A_STATUS_CODE = '5'
+            	</isEqual>
+        		<isEqual property="status" compareValue="unUpdate">
+            		MASTER.A_STATUS_CODE = '3'
+            	</isEqual>
+            </isNotNull>
+			<isNotEqual prepend="AND" property="month" compareValue="0">
+				MASTER.MONTH = #month#
+			</isNotEqual>
+			<isNotNull prepend="AND" property="startDate">
+				<isNotNull property="endDate">
+					<isNotEqual property="status" compareValue="todo">
+						MASTER.PROC_DATE BETWEEN #startDate:DATE# AND #endDate:DATE#
+					</isNotEqual>
+				</isNotNull>
+		  	</isNotNull>
+		  	<isNotNull prepend="AND" property="bankCode">
+				EXISTS (
+					SELECT 1 FROM ma_bank_acc t
+					WHERE t.acco_type='04'
+					AND t.co_code=master.co_code
+					AND t.bank_code = #bankCode#
+				)
+			</isNotNull>
+			<include refid="ElementCondition.ORG_CODE" />
+			<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+			<include refid="ElementCondition.PAYTYPE_CODE_LIKE" />
+			<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+			<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+			<include refid="ElementCondition.FUND_CODE_LIKE" />
+            <include refid="ElementCondition.CoCodeFilter" />
+            <include refid="ElementCondition.D_ATTR1" />
+			<include refid="ElementCondition.D_ATTR2" />
+			<include refid="ElementCondition.D_ATTR3" />
+			<include refid="ElementCondition.D_ATTR4" />
+			<include refid="ElementCondition.D_ATTR5" />
+			<include refid="BusiNumLim.BusiNumLimStr" />
+			<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+			order by dp_detail_id desc
+	</select>
+</sqlMap>

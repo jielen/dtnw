@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpPlanClearBill">
+	<typeAlias alias="cpPlanClearBill"
+		type="com.ufgov.zc.common.cp.model.CpPlanClearBill" />
+	<resultMap class="com.ufgov.zc.common.cp.model.CpPlanClearBill"
+		id="cpPlanClearBillResult">
+		<result column="PLAN_CLEAR_BILL_ID" jdbcType="VARCHAR"
+			property="planClearBillId" />
+		<result column="ND" jdbcType="DECIMAL" property="nd" />
+		<result column="BILL_NO" jdbcType="VARCHAR" property="billNo" />
+		<result column="BILL_TYPE" jdbcType="CHAR" property="billType" />
+		<result column="PROC_DATE" jdbcType="DATE" property="procDate" />
+		<result column="PLAN_MONTH" property="planMonth" />
+		<result column="INPUTOR_ID" jdbcType="VARCHAR" property="inputorId" />
+		<result column="CDATE" jdbcType="DATE" property="cdate" />
+		<result column="PAY_BANK_CODE" jdbcType="VARCHAR" property="payBankCode" />
+		<result column="PAY_BANK_NAME" jdbcType="VARCHAR" property="payBankName" />
+		<result column="RECE_BANK_CODE" jdbcType="VARCHAR" property="receBankCode" />
+		<result column="RECE_BANK_NAME" jdbcType="VARCHAR" property="receBankName" />
+		<result column="PRINT_TIMES" jdbcType="DECIMAL" property="printTimes" />
+		<result column="CP_ADJUST_CODE" jdbcType="VARCHAR" property="cpAdjustCode" />
+		<result column="FUND_CODE" jdbcType="VARCHAR" property="fundCode" />
+		<result column="FUND_NAME" jdbcType="VARCHAR" property="fundName" />
+		<result column="MANAGE_CODE" jdbcType="VARCHAR" property="manageCode" />
+		<result column="MANAGE_NAME" jdbcType="VARCHAR" property="manageName" />
+		<result column="PROCESS_INST_ID" jdbcType="DECIMAL" property="processInstId" />
+		<result column="AUDITOR_ID" jdbcType="VARCHAR" property="auditorId" />
+		<result column="A_DATE" jdbcType="DATE" property="adate" />
+		<result column="A_OPINION" jdbcType="VARCHAR" property="aopinion" />
+		<result column="A_STATUS_CODE" jdbcType="VARCHAR" property="astatusCode" />
+		<result column="AN_STATUS" jdbcType="VARCHAR" property="anStatus" />
+		<result column="IS_VALID" jdbcType="CHAR" property="isValid" />
+		<result column="CANCELER_ID" jdbcType="VARCHAR" property="cancelerId" />
+		<result column="CANCEL_DATE" jdbcType="DATE" property="cancelDate" />
+		<result column="CANCEL_OPINION" jdbcType="VARCHAR" property="cancelOpinion" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="FILENAME" jdbcType="VARCHAR" property="filename" />
+		<result column="FILENAME_BLOBID" jdbcType="VARCHAR" property="filenameBlobid" />
+		<result column="SUM_MONEY" jdbcType="DECIMAL" property="sumMoney" />
+		<result column="SUM_MONEY1" jdbcType="DECIMAL" property="sumMoney1" />
+		<result column="SUM_MONEY2" jdbcType="DECIMAL" property="sumMoney2" />
+		<result column="SUM_MONEY3" jdbcType="DECIMAL" property="sumMoney3" />
+		<result column="M_ATTR1" jdbcType="VARCHAR" property="mattr1" />
+		<result column="M_ATTR2" jdbcType="VARCHAR" property="mattr2" />
+		<result column="M_ATTR3" jdbcType="VARCHAR" property="mattr3" />
+		<result column="M_ATTR4" jdbcType="VARCHAR" property="mattr4" />
+		<result column="M_ATTR5" jdbcType="VARCHAR" property="mattr5" />
+		<result column="STAMP" jdbcType="DECIMAL" property="stamp" />
+		<result column="CO_TOP_CODE" jdbcType="VARCHAR" property="coTopCode" />
+		<result column="CO_TOP_NAME" jdbcType="VARCHAR" property="coTopName" />
+		<result column="CO_CODE" jdbcType="VARCHAR" property="coCode" />
+		<result column="CO_NAME" jdbcType="VARCHAR" property="coName" />
+		<result column="RECE_BANK_NO" jdbcType="VARCHAR" property="receBankNo" />
+		<result column="PAY_BANK_NO" jdbcType="VARCHAR" property="payBankNo" />
+		<result column="PAY_ACC_CODE" jdbcType="VARCHAR" property="payAccCode" />
+		<result column="PAY_ACC_NAME" jdbcType="VARCHAR" property="payAccName" />
+		<result column="PAY_ACC_NO" jdbcType="VARCHAR" property="payAccNo" />
+		<result column="D_ATTR1" jdbcType="VARCHAR" property="dattr1" />
+		<result column="D_ATTR2" jdbcType="VARCHAR" property="dattr2" />
+		<result column="D_ATTR3" jdbcType="VARCHAR" property="dattr3" />
+		<result column="D_ATTR4" jdbcType="VARCHAR" property="dattr4" />
+		<result column="D_ATTR5" jdbcType="VARCHAR" property="dattr5" />
+		<result column="EXP_TIMES" jdbcType="DECIMAL" property="expTimes" />
+		<result column="EXP_RECORD_ID" jdbcType="VARCHAR" property="expRecordId" />
+		<result column="AGENT_BANK_CODE" jdbcType="VARCHAR" property="agentBankCode" />
+		<result column="AGENT_BANK_NAME" jdbcType="VARCHAR" property="agentBankName" />
+		<result column="ORIGIN_CODE" property="originCode" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="PAYTYPE_CODE" property="paytypeCode" />
+		<result column="INPUT_GROUP_ID" property="inputGroupId" nullValue="0" />
+	</resultMap>
+
+	<insert id="insertCpPlanClearBill" parameterClass="cpPlanClearBill">
+		insert into
+		CP_PLAN_CLEAR_BILL (PLAN_CLEAR_BILL_ID,
+		ND,
+		BILL_NO,
+		BILL_TYPE,
+		PROC_DATE,
+		PLAN_MONTH,
+		INPUTOR_ID,
+		CDATE,
+		PAY_BANK_CODE,
+		PAY_BANK_NAME,
+		RECE_BANK_CODE,
+		RECE_BANK_NAME,
+		PRINT_TIMES,
+		CP_ADJUST_CODE,
+		FUND_CODE,
+		FUND_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		PROCESS_INST_ID,
+		AUDITOR_ID,
+		A_DATE,
+		A_OPINION,
+		A_STATUS_CODE,
+		AN_STATUS,
+		IS_VALID,
+		CANCELER_ID,
+		CANCEL_DATE,
+		CANCEL_OPINION,
+		REMARK,
+		FILENAME,
+		FILENAME_BLOBID,
+		SUM_MONEY,
+		SUM_MONEY1,
+		SUM_MONEY2,
+		SUM_MONEY3,
+		M_ATTR1,
+		M_ATTR2,
+		M_ATTR3,
+		M_ATTR4,
+		M_ATTR5,
+		STAMP,
+		CO_TOP_CODE,
+		CO_TOP_NAME,
+		CO_CODE,
+		CO_NAME,
+		RECE_BANK_NO,
+		PAY_BANK_NO,
+		PAY_ACC_CODE,
+		PAY_ACC_NAME,
+		PAY_ACC_NO,
+		D_ATTR1,
+		D_ATTR2,
+		D_ATTR3,
+		D_ATTR4,
+		D_ATTR5,
+		EXP_TIMES,
+		EXP_RECORD_ID,
+		AGENT_BANK_CODE,
+		AGENT_BANK_NAME,
+        ORIGIN_CODE,
+		ORIGIN_NAME,
+		PAYTYPE_CODE,INPUT_GROUP_ID) values
+		(#planClearBillId:VARCHAR#,
+		#nd:DECIMAL#,
+		#billNo:VARCHAR#,
+		#billType:VARCHAR#,
+		#procDate:DATE#,
+		#planMonth:DECIMAL#,
+		#inputorId:VARCHAR#,
+		#cdate:DATE#,
+		#payBankCode:VARCHAR#,
+		#payBankName:VARCHAR#,
+		#receBankCode:VARCHAR#,
+		#receBankName:VARCHAR#,
+		#printTimes:DECIMAL#,
+		#cpAdjustCode:VARCHAR#,
+		#fundCode:VARCHAR#,
+		(SELECT fund_name FROM ma_cp_fund WHERE
+		fund_code=#fundCode:VARCHAR# AND
+		ND=#nd:DECIMAL#),
+		#manageCode:VARCHAR#,
+		(SELECT manage_name FROM ma_cp_manage WHERE manage_code=#manageCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#processInstId:DECIMAL#,
+		#auditorId:VARCHAR#,
+		#adate:DATE#,
+		#aopinion:VARCHAR#,
+		#astatusCode:VARCHAR#,
+		#anStatus:VARCHAR#,
+		#isValid:CHAR#,
+		#cancelerId:VARCHAR#,
+		#cancelDate:DATE#,
+		#cancelOpinion:VARCHAR#,
+		#remark:VARCHAR#,
+		#filename:VARCHAR#,
+		#filenameBlobid:VARCHAR#,
+		#sumMoney:DECIMAL#,
+		#sumMoney1:DECIMAL#,
+		#sumMoney2:DECIMAL#,
+		#sumMoney3:DECIMAL#,
+		#mattr1:VARCHAR#,
+		#mattr2:VARCHAR#,
+		#mattr3:VARCHAR#,
+		#mattr4:VARCHAR#,
+		#mattr5:VARCHAR#,
+		#stamp:DECIMAL#,
+		#coTopCode:VARCHAR#,
+		#coTopName:VARCHAR#,
+		#coCode:VARCHAR#,
+		(SELECT
+		COMP.CO_NAME FROM MA_COMPANY COMP WHERE COMP.CO_CODE =
+		#coCode:VARCHAR# AND COMP.ND=#nd:DECIMAL#),
+		#receBankNo:VARCHAR#,
+		#payBankNo:VARCHAR#,
+		#payAccCode:VARCHAR#,
+		#payAccName:VARCHAR#,
+		#payAccNo:VARCHAR#,
+		#dattr1:VARCHAR#,
+		#dattr2:VARCHAR#,
+		#dattr3:VARCHAR#,
+		#dattr4:VARCHAR#,
+		#dattr5:VARCHAR#,
+        #expTimes:DECIMAL#,
+        #expRecordId:VARCHAR#,
+        #agentBankCode:VARCHAR#,
+		#agentBankName:VARCHAR#,
+        #originCode:VARCHAR#,
+		(SELECT Origin_name FROM ma_cp_origin WHERE
+		Origin_code=#originCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#paytypeCode:VARCHAR#,#inputGroupId:VARCHAR#)
+	</insert>
+
+	<select id="selectByPrimaryKey" parameterClass="com.ufgov.zc.common.cp.model.CpPlanClearBill"
+		resultMap="cpPlanClearBillResult">
+		select PLAN_CLEAR_BILL_ID, ND, BILL_NO, BILL_TYPE,
+		PROC_DATE, PLAN_MONTH,
+		INPUTOR_ID, CDATE,
+		PAY_BANK_CODE, PAY_BANK_NAME,
+		RECE_BANK_CODE, RECE_BANK_NAME, PRINT_TIMES,
+		CP_ADJUST_CODE,
+		FUND_CODE,
+		FUND_NAME, MANAGE_CODE, MANAGE_NAME, PROCESS_INST_ID, AUDITOR_ID,
+		A_DATE,
+		A_OPINION, A_STATUS_CODE, AN_STATUS, IS_VALID, CANCELER_ID,
+		CANCEL_DATE,
+		CANCEL_OPINION,
+		REMARK, FILENAME, FILENAME_BLOBID,
+		SUM_MONEY, SUM_MONEY1, SUM_MONEY2,
+		SUM_MONEY3, M_ATTR1,
+		M_ATTR2,
+		M_ATTR3, M_ATTR4, M_ATTR5, STAMP, CO_TOP_CODE, CO_TOP_NAME, CO_CODE,
+		CO_NAME,
+		RECE_BANK_NO, PAY_BANK_NO, PAY_ACC_CODE, PAY_ACC_NAME,
+		PAY_ACC_NO, D_ATTR1,
+		D_ATTR2, D_ATTR3,
+		D_ATTR4, D_ATTR5, EXP_TIMES,
+		EXP_RECORD_ID,ORIGIN_CODE,ORIGIN_NAME,INPUT_GROUP_ID
+		from CP_PLAN_CLEAR_BILL
+		where
+		PLAN_CLEAR_BILL_ID =
+		#planClearBillId:VARCHAR#
+  </select>
+
+	<select id="getCpPlanClearBill" parameterClass="map"
+		resultMap="cpPlanClearBillResult">
+		select * from CP_PLAN_CLEAR_BILL master
+		where ND=#nd#
+		<isNotNull prepend="AND" property="billType">
+			BILL_TYPE= #billType#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[ PROC_DATE >= #startDate# ]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+		    <![CDATA[ PROC_DATE <= #endDate# ]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isNotEqual property="status" compareValue="6">
+				A_STATUS_CODE=#status#
+			</isNotEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			AGENT_BANK_CODE=#bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="printTimes">
+			<isEqual property="printTimes" compareValue="1">
+				PRINT_TIMES	>=#printTimes#
+			</isEqual>
+			<isEqual property="printTimes" compareValue="0">
+				PRINT_TIMES	=#printTimes#
+			</isEqual>
+		</isNotNull>
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		order by BILL_NO DESC
+	</select>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE CP_PLAN_CLEAR_BILL SET
+		print_times=print_times+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="planClearBillIdList" open="("
+				close=")" conjunction="OR">
+				PLAN_CLEAR_BILL_ID=#planClearBillIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<update id="sendBankForCpPlanClearBill" parameterClass="Map">
+		UPDATE CP_PLAN_CLEAR_BILL SET A_STATUS_CODE=2
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpPlanClearBillList" open="("
+				close=")" conjunction="OR">
+				BILL_NO=#cpPlanClearBillList[]#
+          </iterate>
+		</dynamic>
+	</update>
+
+	<update id="cancelSendBankForCpPlanClearBill" parameterClass="Map">
+		UPDATE CP_PLAN_CLEAR_BILL SET A_STATUS_CODE=1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpPlanClearBillList" open="("
+				close=")" conjunction="OR">
+				BILL_NO=#cpPlanClearBillList[]#
+          </iterate>
+		</dynamic>
+	</update>
+	
+    <delete id="deleteCpPlanClearBillById" parameterClass="cpPlanClearBill">
+		DELETE FROM CP_PLAN_CLEAR_BILL T WHERE T.PLAN_CLEAR_BILL_ID = #planClearBillId#
+	</delete>
+
+	<delete id="deleteCpPlanClearListById" parameterClass="cpPlanClearBill">
+		DELETE FROM CP_PLAN_CLEAR_LIST T WHERE T.PLAN_CLEAR_BILL_ID = #planClearBillId#
+	</delete>
+
+	<delete id="deleteCpPlanClearRelationById" parameterClass="cpPlanClearBill">
+		DELETE FROM CP_PLAN_CLEAR_RELATION T WHERE T.PLAN_CLEAR_BILL_ID = #planClearBillId#
+	</delete>
+	
+	<update id="updateDpDetailByPlanClearBillIdForDel" parameterClass="cpPlanClearBill">
+		UPDATE DP_DETAIL SET PLAN_CLEAR_BILL_ID = null, PLAN_CLEAR_BILL_NO=null where  PLAN_CLEAR_BILL_ID=#planClearBillId#
+	</update>	
+	
+
+</sqlMap>

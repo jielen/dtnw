@@ -1,0 +1,2040 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpVoucher">
+	<typeAlias alias="cpVoucher"
+		type="com.ufgov.zc.common.cp.model.CpVoucher" />
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	<resultMap id="cpVoucherResult" class="cpVoucher">
+		<result property="nd" column="nd" />
+		<result property="cpVoucherId" column="cp_voucher_id" />
+		<result property="cpVouNo" column="vou_no" />
+		<result property="inputGroupId" column="input_group_id" />
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="inputorId" column="inputor_id" />
+		<result property="cdate" column="cdate" jdbcType="DATE" />
+		<result property="procdate" column="proc_date" jdbcType="DATE" />
+
+		<result property="coCode" column="co_code" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="fundCode" column="fund_code" />
+		<result property="inceptDocCode" column="inceptdoc_code" />
+		<result property="manageCode" column="manage_code" />
+		<result property="orgCode" column="org_code" />
+		<result property="originCode" column="origin_code" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="paytypeCode" column="paytype_code" />
+		<result property="projectTypeCode" column="PROJECT_TYPE_CODE" />
+		<result property="projectCode" column="project_code" />
+		<result property="sendDocTypeCode" column="SENDDOC_TYPE_CODE" />
+		<result property="sendDocCode" column="senddoc_code" />
+		<result property="balModeCode" column="BAL_MODE_CODE" />
+		<result property="operationTypeCode"
+			column="OPERATION_TYPE_CODE" />
+		<result property="dattr1" column="D_ATTR1" />
+		<result property="dattr2" column="D_ATTR2" />
+		<result property="dattr3" column="D_ATTR3" />
+		<result property="dattr4" column="D_ATTR4" />
+		<result property="dattr5" column="D_ATTR5" />
+		<result property="remark" column="remark" />
+		<result property="checkNo" column="CHECK_NO" />
+		<result property="dealState" column="DEAL_STATE" />
+		<result property="bankAuditorId" column="BANK_AUDITOR_ID" />
+		<result property="bankDate" column="BANK_DATE" />
+		<result property="clearAuditorId" column="CLEAR_AUDITOR_ID" />
+		<result property="clearDate" column="CLEAR_DATE" />
+		<result property="printTimes" column="PRINT_TIMES" />
+		<result property="isValid" column="IS_VALID" />
+		<result property="dpBalanceId" column="DP_BALANCE_ID" />
+		<result property="biBalanceId" column="BI_BALANCE_ID" />
+
+		<result property="adjustVoucherId" column="ADJUST_VOUCHER_ID" />
+		<result property="adjustVouNo" column="ADJUST_VOU_NO" />
+		<result property="anStatus" column="AN_STATUS" />
+		<result property="abStatusCode" column="A_STATUS_CODE" />
+		<result property="cmnPactCode" column="CMN_PACT_CODE" />
+		<result property="contractCode" column="CONTRACT_CODE" />
+		<result property="controlType" column="CONTROL_TYPE" />
+		<result property="cpAdjustCode" column="CP_ADJUST_CODE" />
+		<result property="createType" column="CREATE_TYPE" />
+		<result property="decType" column="DEC_TYPE" />
+		<result property="dpCdUseMoney" column="DP_CD_USE_MONEY" />
+		<result property="gbPactCode" column="GB_PACT_CODE" />
+		<result property="inputorName" column="INPUTOR_NAME" />
+		<result property="isSumCpVoucher" column="IS_SUM_CP_VOUCHER" />
+		<result property="payAccCode" column="PAY_ACCCODE" />
+		<result property="payAccName" column="PAY_ACCNAME" />
+		<result property="payBankAccCode" column="PAY_BANKACCCODE" />
+		<result property="payBankNo" column="PAY_BANKNO" />
+		<result property="payBankNodeCode" column="PAY_BANKNODECODE" />
+		<result property="payBankNodeName" column="PAY_BANKNODENAME" />
+		<result property="payBankCode" column="PAY_BANK_CODE" />
+		<result property="payBankName" column="PAY_BANK_NAME" />
+		<result property="payCode" column="PAY_CODE" />
+		<result property="processInstId" column="PROCESS_INST_ID" />
+		<result property="qpMoney" column="QP_MONEY" />
+		<result property="receAccName" column="RECE_ACCNAME" />
+		<result property="receBankNodeName" column="RECE_BANKNODENAME" />
+		<result property="receBankAccCode" column="RECE_BANKACCCODE" />
+		<result property="receAccCode" column="RECE_ACCCODE" />
+		<result property="receBankNo" column="RECE_BANKNO" />
+		<result property="receBankNodeCode" column="RECE_BANKNODECODE" />
+
+		<result property="clearAccCode" column="clear_acc_code" />
+		<result property="clearAccName" column="clear_acc_name" />
+		<result property="clearAccNo" column="clear_acc_no" />
+		<result property="clearBankCode" column="clear_bank_code" />
+		<result property="clearBankName" column="clear_bank_name" />
+		<result property="clearBankNo" column="clear_bank_no" />
+
+		<result property="receCode" column="RECE_CODE" />
+		<result property="vouType" column="VOU_TYPE" />
+		<result property="fileName" column="filename" />
+		<result property="filenameBlobid" column="filename_blobid" />
+		<result property="sumCpVoucherId" column="SUM_CP_VOUCHER_ID" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultSimply" class="cpVoucher">
+		<result property="nd" column="nd" />
+		<result property="cpVoucherId" column="cp_voucher_id" />
+		<result property="cpVouNo" column="vou_no" />
+		<result property="orgMoney" column="org_money" />
+		<result property="curMoney" column="cur_money" />
+		<result property="dpCdUseMoney" column="DP_CD_USE_MONEY" />
+		<result property="abStatusCode" column="A_STATUS_CODE" />
+		<result property="dealState" column="DEAL_STATE" />
+		<result property="procdate" column="proc_date" jdbcType="DATE" />
+		<result property="dpBalanceId" column="DP_BALANCE_ID" />
+		<result property="processInstId" column="PROCESS_INST_ID" />
+		<result property="sumCpVoucherId" column="SUM_CP_VOUCHER_ID" />
+		<result property="printTimes" column="PRINT_TIMES" />
+		<result property="cdate" column="cdate" jdbcType="DATE" />
+		<result property="bankDate" column="BANK_DATE" />
+        <result property="clearDate" column="CLEAR_DATE" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultAddDpMoney" class="cpVoucher"
+		extends="cpVoucherResult">
+		<result property="dpMoney" column="dp_money" nullValue="0" />
+		<result property="dpBalance" column="dp_balance" nullValue="0" />
+		<result property="dpPaySum" column="dp_paysum" nullValue="0" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultAddBiMoney" class="cpVoucher"
+		extends="cpVoucherResult">
+	    <result column="BI_MONEY" property="biMoney" jdbcType="DECIMAL"
+			nullValue="0" />
+		<result column="BI_PAYSUM" property="biPaySum"
+			jdbcType="DECIMAL" nullValue="0" />
+		<result column="BI_BALANCE" property="biBalance"
+			jdbcType="DECIMAL" nullValue="0" />
+
+	</resultMap>
+
+	<resultMap id="cpVoucherResultAvailableRefund" class="cpVoucher"
+		extends="cpVoucherResult">
+		<result property="availableRefund" column="available_refund" nullValue="0" />
+		<result property="originCurMoney" column="origin_cur_money" nullValue="0" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultCheckIn" class="cpVoucher"
+		extends="cpVoucherResult">
+		<result property="checkDate" column="check_date" />
+		<result property="checkInputor" column="check_inputor" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultWithPrintTimes" class="cpVoucher"
+		extends="cpVoucherResult">
+		<result property="printTimes" column="print_times"
+			nullValue="0" />
+	</resultMap>
+
+	<resultMap id="cpVoucherResultForPrint" class="cpVoucher"
+		extends="cpVoucherResult">
+		<result column="INCEPTDOC_NAME" property="inceptDocName" />
+		<result column="SENDDOC_NAME" property="sendDocName" />
+		<result column="OPERATION_TYPE_NAME"
+			property="operationTypeName" />
+		<result column="PAYTYPE_NAME" property="paytypeName" />
+		<result column="BAL_MODE_NAME" property="balModeName" />
+		<result column="ORG_NAME" property="orgName" />
+		<result column="CO_NAME" property="coName" />
+		<result column="B_ACC_NAME" property="baccName" />
+		<result column="OUTLAY_NAME" property="outlayName" />
+		<result column="PROJECT_NAME" property="projectName" />
+		<result column="FUND_NAME" property="fundName" />
+		<result column="ORIGIN_NAME" property="originName" />
+		<result column="PAYOUT_NAME" property="payoutName" />
+		<result column="MANAGE_NAME" property="manageName" />
+		<result column="D_ATTR1_NAME" property="dattr1Name" />
+		<result column="D_ATTR2_NAME" property="dattr2Name" />
+		<result column="D_ATTR3_NAME" property="dattr3Name" />
+		<result column="D_ATTR4_NAME" property="dattr4Name" />
+		<result column="D_ATTR5_NAME" property="dattr5Name" />
+	</resultMap>
+
+	<select id="getCpVoucherByIdList" resultMap="cpVoucherResult"
+		parameterClass="Map">
+		select * from cp_voucher
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				cp_voucher_id=#cpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+		for update
+	</select>
+
+	<select id="getSubCpVoucherForSumVouNo"
+		resultMap="cpVoucherResultCheckIn" parameterClass="Map">
+		select * from cp_voucher
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVouNoList" open="("
+				close=")" conjunction="OR">
+				sum_cp_voucher_id = #cpVouNoList[]#
+			</iterate>
+		</dynamic>
+		for update
+	</select>
+
+	<select id="getCpVoucherByIdListForSumDetail"
+		resultMap="cpVoucherResult" parameterClass="Map">
+		select * from cp_voucher
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				cp_voucher_id=#cpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+		and a_status_code not in('4','0')
+	</select>
+
+	<select id="getCpVoucherBySumCpVoucherId"
+		resultMap="cpVoucherResult" parameterClass="Map">
+		select * from cp_voucher where
+		sum_cp_voucher_id=#sumCpVoucherId#
+	</select>
+
+	<select id="getCpVoucherBySumCpVoucherIdForPrint"
+		resultMap="cpVoucherResultForPrint" parameterClass="Map">
+		select master.* ,
+		<include refid="ElementName.INCEPTDOC_NAME" />
+		,
+		<include refid="ElementName.SENDDOC_NAME" />
+		,
+		<include refid="ElementName.CO_NAME" />
+		,
+		<include refid="ElementName.ORG_NAME" />
+		,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		<include refid="ElementName.B_ACC_NAME" />
+		,
+		<include refid="ElementName.OUTLAY_NAME" />
+		,
+		<include refid="ElementName.PROJECT_NAME" />
+		,
+		<include refid="ElementName.MANAGE_NAME" />
+		,
+		<include refid="ElementName.PAYOUT_NAME" />
+		,
+		<include refid="ElementName.PAYTYPE_NAME" />
+		,
+		<include refid="ElementName.ORIGIN_NAME" />
+		,
+		<include refid="ElementName.OPERATION_TYPE_NAME" />
+		,
+		<include refid="ElementName.BAL_MODE_NAME" />
+		,
+		<include refid="ElementName.D_ATTR1_NAME" />
+		,
+		<include refid="ElementName.D_ATTR2_NAME" />
+		,
+		<include refid="ElementName.D_ATTR3_NAME" />
+		,
+		<include refid="ElementName.D_ATTR4_NAME" />
+		,
+		<include refid="ElementName.D_ATTR5_NAME" />
+		from cp_voucher master where sum_cp_voucher_id=#sumCpVoucherId#
+	</select>
+
+
+	<select id="getCpVoucherBySumCpVoucherIdListForPrint"
+		resultMap="cpVoucherResultForPrint" parameterClass="Map">
+		select master.* ,
+		<include refid="ElementName.INCEPTDOC_NAME" />
+		,
+		<include refid="ElementName.SENDDOC_NAME" />
+		,
+		<include refid="ElementName.CO_NAME" />
+		,
+		<include refid="ElementName.ORG_NAME" />
+		,
+		<include refid="ElementName.FUND_NAME" />
+		,
+		<include refid="ElementName.B_ACC_NAME" />
+		,
+		<include refid="ElementName.OUTLAY_NAME" />
+		,
+		<include refid="ElementName.PROJECT_NAME" />
+		,
+		<include refid="ElementName.MANAGE_NAME" />
+		,
+		<include refid="ElementName.PAYOUT_NAME" />
+		,
+		<include refid="ElementName.PAYTYPE_NAME" />
+		,
+		<include refid="ElementName.ORIGIN_NAME" />
+		,
+		<include refid="ElementName.OPERATION_TYPE_NAME" />
+		,
+		<include refid="ElementName.BAL_MODE_NAME" />
+		,
+		<include refid="ElementName.D_ATTR1_NAME" />
+		,
+		<include refid="ElementName.D_ATTR2_NAME" />
+		,
+		<include refid="ElementName.D_ATTR3_NAME" />
+		,
+		<include refid="ElementName.D_ATTR4_NAME" />
+		,
+		<include refid="ElementName.D_ATTR5_NAME" />
+		from cp_voucher master
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="sumCpVoucherIdList"
+				open="(" close=")" conjunction="OR">
+				sum_cp_voucher_id=#sumCpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getCpVoucherForCpAvSum" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher master where
+		a_status_code='3' and is_valid='1' and sum_cp_voucher_id is null
+		and nd= #nd# and paytype_code= #paytypeCode# and
+		co_code=#coCode#
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_CP_VOUCHER= #isSum#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankType">
+			substr(PAY_BANKNODECODE,0,3) in ($bankType$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_TYPE_CODE" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForCpAvNewSum" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher master where
+		a_status_code='3' and is_valid='1' and sum_cp_voucher_id is null
+		and nd= #nd# and deal_state='6' and paytype_code= #paytypeCode#
+		and co_code=#coCode#
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_CP_VOUCHER= #isSum#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankType">
+			substr(PAY_BANKNODECODE,0,3) in ($bankType$)
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_TYPE_CODE" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getCpVoucherForCpDvSum"
+		resultMap="cpVoucherResultWithPrintTimes"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher master where
+		a_status_code='3' and is_valid='1' and sum_cp_voucher_id is null
+		and nd= #nd# and paytype_code= #paytypeCode#
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_CP_VOUCHER= #isSum#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankType">
+			substr(PAY_BANKNODECODE,0,3) in ($bankType$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="payBankCode">
+			pay_bank_code =#payBankCode:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="AND" property="orgMoney">
+			org_money $orgMoneyOperator$ #orgMoney:DECIMAL#
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_TYPE_CODE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getCpVoucherForCpDvNewSum" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher master where
+		a_status_code='3' and is_valid='1' and sum_cp_voucher_id is null
+		and nd= #nd# and deal_state='6' and paytype_code= #paytypeCode#
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="isSum">
+			IS_SUM_CP_VOUCHER= #isSum#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankType">
+			substr(PAY_BANKNODECODE,0,3) in ($bankType$)
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_TYPE_CODE" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getCpVoucher" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select master.* from cp_voucher master where master.ND=#nd# and
+		clear_date is not null
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORIGIN_CODE" />
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.OUTLAY_CODE" />
+		<include refid="ElementCondition.MANAGE_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<isNotNull prepend="AND" property="dealState">
+			master.deal_state=#dealState#
+		</isNotNull>
+	</select>
+
+	<select id="getCpVoucherForCpAvEditList"
+		resultMap="cpVoucherResultAddDpMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		monthView.dp_money,monthView.dp_paysum,monthView.dp_balance from
+		cp_voucher master,$dpBalanceMonthView$ monthView where
+		master.ND=monthView.ND and master.nd=#nd:INTEGER# and
+		master.DP_BALANCE_ID=monthView.DP_BALANCE_ID and
+		master.PAYTYPE_CODE='0202' and master.IS_SUM_CP_VOUCHER='0' and
+		(master.CP_ADJUST_CODE='101' or master.CP_ADJUST_CODE='102')
+		<isNotNull prepend="AND" property="controlType">
+			master.CONTROL_TYPE=#controlType#
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<isNotNull prepend="" property="isNeedWorkFlow">
+			<isEqual property="isNeedWorkFlow" compareValue="Y">
+				<include refid="WfCommonEdit.wfCommonEdit" />
+				<include refid="WfCommonEdit.WFCommonEditProcDate" />
+				AND master.process_inst_id is not null
+			</isEqual>
+			<isEqual property="isNeedWorkFlow" compareValue="N">
+				<isNotNull prepend="" property="status">
+					<isEqual property="status"
+						compareValue="unSended">
+						and master.a_status_code!='3' and
+						master.a_status_code!='2'
+					</isEqual>
+					<isEqual property="status" compareValue="sended">
+						and master.a_status_code='2' and
+						master.deal_state='0'
+					</isEqual>
+					<isEqual property="status" compareValue="audited">
+						and master.a_status_code='3' and
+						master.deal_state='0'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="sendbank">
+						and master.a_status_code='3' and
+						master.deal_state='1'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankuntread">
+						and master.a_status_code='3' and
+						master.deal_state='2'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankconfirm">
+						and master.a_status_code='3' and
+						master.deal_state='3'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankclear">
+						and master.a_status_code='3' and
+						master.deal_state='4'
+					</isEqual>
+					<isNotEqual property="status"
+						compareValue="unSended">
+						<include refid="ElementCondition.StartDate" />
+						<include refid="ElementCondition.EndDate" />
+					</isNotEqual>
+				</isNotNull>
+				and master.process_inst_id is null
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+	<select id="getCpVoucherForCpAvBiEditList"
+		resultMap="cpVoucherResultAddBiMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+
+		<include refid="ElementName.BI_PAY_SUM" />
+		from cp_voucher master where
+		master.PAYTYPE_CODE='0202' and master.IS_SUM_CP_VOUCHER='0' and
+		(master.CP_ADJUST_CODE='101' or master.CP_ADJUST_CODE='102')
+		<isNotNull prepend="AND" property="controlType">
+			master.CONTROL_TYPE=#controlType#
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<isNotNull prepend="" property="isNeedWorkFlow">
+			<isEqual property="isNeedWorkFlow" compareValue="Y">
+				<include refid="WfCommonEdit.wfCommonEdit" />
+				<include refid="WfCommonEdit.WFCommonEditProcDate" />
+				AND master.process_inst_id is not null
+			</isEqual>
+			<isEqual property="isNeedWorkFlow" compareValue="N">
+				<isNotNull prepend="" property="status">
+					<isEqual property="status"
+						compareValue="unSended">
+						and master.a_status_code!='3' and
+						master.a_status_code!='2'
+					</isEqual>
+					<isEqual property="status" compareValue="sended">
+						and master.a_status_code='2' and
+						master.deal_state='0'
+					</isEqual>
+					<isEqual property="status" compareValue="audited">
+						and master.a_status_code='3' and
+						master.deal_state='0'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="sendbank">
+						and master.a_status_code='3' and
+						master.deal_state='1'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankuntread">
+						and master.a_status_code='3' and
+						master.deal_state='2'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankconfirm">
+						and master.a_status_code='3' and
+						master.deal_state='3'
+					</isEqual>
+					<isEqual property="status"
+						compareValue="bankclear">
+						and master.a_status_code='3' and
+						master.deal_state='4'
+					</isEqual>
+					<isNotEqual property="status"
+						compareValue="unSended">
+						<include refid="ElementCondition.StartDate" />
+						<include refid="ElementCondition.EndDate" />
+					</isNotEqual>
+				</isNotNull>
+				and master.process_inst_id is null
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+
+	<select id="getCpVoucherForCpDVouQueryList"
+		resultMap="cpVoucherResult" parameterClass="elementCondition">
+		select MASTER.* from cp_voucher MASTER where PAYTYPE_CODE='0201'
+		and IS_SUM_CP_VOUCHER='0' AND ND=#nd:INTEGER#
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="draft">
+				a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="auditing">
+				(a_status_code='2' or a_status_code= '4') and is_valid
+				='1'
+			</isEqual>
+
+			<isEqual property="status"
+				compareValue="auditednosendbank">
+				a_status_code='3' and is_valid='1' and deal_state='0'
+			</isEqual>
+			<isEqual property="status" compareValue="sendedbank">
+				a_status_code='3' and is_valid='1' and deal_state='1'
+			</isEqual>
+
+			<isEqual property="status" compareValue="bankconfirmed">
+				a_status_code='3' and is_valid='1' and deal_state='3'
+			</isEqual>
+			<isEqual property="status" compareValue="bankcleared">
+				a_status_code='3' and is_valid='1' and deal_state='4'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid='0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="payBankCode">
+			pay_bank_code = #payBankCode#
+		</isNotNull>
+		<include refid="ElementCondition.ClearDate" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherInfo" resultMap="cpVoucherResult"
+		parameterClass="map">
+		select MASTER.* from cp_voucher MASTER where
+		PAYTYPE_CODE=#paytypeCode# and IS_SUM_CP_VOUCHER='0' and
+		is_valid != '9' and nd=#nd# and dp_balance_id = #dpBalanceId#
+	</select>
+
+
+	<select id="getCpVoucherForCpAVouQueryList"
+		resultMap="cpVoucherResult" parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher where
+		PAYTYPE_CODE='0202' and IS_SUM_CP_VOUCHER='0'
+		AND ND=#nd:INTEGER#
+		<isNotNull prepend="AND" property="startDate">
+
+			PROC_DATE &gt;= #startDate#
+
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+
+			PROC_DATE &lt;= #endDate#
+
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE like #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectCode">
+			PROJECT_CODE = #projectCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="orgCode">
+			ORG_CODE = #orgCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="inceptDocCode">
+			INCEPTDOC_CODE = #inceptDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+			SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="baccCode">
+			B_ACC_CODE like #baccCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="outlayCode">
+			OUTLAY_CODE like #outlayCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="payoutCode">
+			PAYOUT_CODE like #payoutCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="manageCode">
+			MANAGE_CODE like #manageCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectTypeCode">
+			PROJECT_TYPE_CODE = #projectTypeCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="draft">
+				a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="auditing">
+				(a_status_code='2' or a_status_code= '4') and
+				is_valid='1'
+			</isEqual>
+
+			<isEqual property="status"
+				compareValue="auditednosendbank">
+				a_status_code='3' and is_valid='1' and deal_state='0'
+			</isEqual>
+			<isEqual property="status" compareValue="sendedbank">
+				a_status_code='3' and is_valid='1' and deal_state='1'
+			</isEqual>
+
+			<isEqual property="status" compareValue="bankconfirmed">
+				a_status_code='3' and is_valid='1' and deal_state='3'
+			</isEqual>
+			<isEqual property="status" compareValue="bankcleared">
+				a_status_code='3' and is_valid='1' and deal_state='4'
+			</isEqual>
+			<isEqual property="status" compareValue="invalid">
+				is_valid='0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="payBankCode">
+			pay_bank_code = #payBankCode#
+		</isNotNull>
+		<include refid="ElementCondition.ClearDate" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getAuditedForCpVoucherList" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from cp_voucher where
+		PAYTYPE_CODE='0201' and IS_SUM_CP_VOUCHER='0' and
+		a_status_code='3' and (is_valid='1' or is_valid='Y' or
+		is_valid='y') and deal_state='0'
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE like #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectCode">
+			PROJECT_CODE = #projectCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="orgCode">
+			ORG_CODE = #orgCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="inceptDocCode">
+			INCEPTDOC_CODE = #inceptDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="sendDocCode">
+			SENDDOC_CODE = #sendDocCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="baccCode">
+			B_ACC_CODE like #baccCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="outlayCode">
+			OUTLAY_CODE like #outlayCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="payoutCode">
+			PAYOUT_CODE like #payoutCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="manageCode">
+			MANAGE_CODE like #manageCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectTypeCode">
+			PROJECT_TYPE_CODE = #projectTypeCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="split">
+				is_split = 'N'
+			</isEqual>
+			<isEqual property="status" compareValue="splitted">
+				is_split = 'Y'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForCpDzCzBank" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from cp_voucher MASTER where MASTER.ND=#nd# and
+		(MASTER.BANK_DATE=#startDate#) and MASTER.is_valid='1' and
+		MASTER.deal_state='3' and MASTER.pay_banknodecode in (select
+		banknode_code from ma_banknode where nd=#nd# and
+		bank_code=#bankCode#)
+		<include refid="ElementCondition.PAYTYPE_CODE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.OUTLAY_CODE" />
+		order by vou_no
+	</select>
+
+	<select id="getCpVoucherForCpDtzd" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from CP_VOUCHER where
+		paytype_code='0201' and nd=#nd# and is_valid ='1' and
+		is_sum_cp_voucher='0' and is_gen_clear_bill='0'
+		<isNotNull prepend="AND" property="bankAccCode">
+			pay_bankacccode=#bankAccCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			fund_code like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<iterate prepend="AND" property="pmAdjustCodeList" open="("
+			close=")" conjunction="or">
+			cp_adjust_code=#pmAdjustCodeList[]#
+		</iterate>
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER order by cp_voucher_id desc
+	</select>
+
+	<select id="getCpVoucherForCpDtzdPrint" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from (select * from CP_VOUCHER where is_valid
+		='1' And a_status_code ='3' And paytype_code='0201' and nd=#nd#
+		and is_sum_cp_voucher='0'
+		<isNotNull prepend="AND" property="fundCode">
+			fund_code like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			pay_bank_code = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="printTimes">
+			<isEqual property="printTimes" compareValue="1">
+				PRINT_TIMES > 0
+			</isEqual>
+			<isEqual property="printTimes" compareValue="0">
+				PRINT_TIMES = 0
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="coCodeFilter">
+			$coCodeFilter$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForCpDtzdDealStateQuery"
+		resultMap="cpVoucherResult" parameterClass="elementCondition">
+		select MASTER.* from (select * from CP_VOUCHER where is_valid
+		='1' And a_status_code ='3' And paytype_code='0201' and nd=#nd#
+		and is_sum_cp_voucher='0'
+		<isNotNull prepend="AND" property="fundCode">
+			fund_code like #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="extField1">
+			<isEqual property="extField1" compareValue="1">
+				deal_state not in ('3','4')
+			</isEqual>
+			<isEqual property="extField1" compareValue="0">
+				<isNotNull prepend="" property="dealState">
+					deal_state =#dealState#
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			pay_bank_code = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			PROC_DATE &gt;= #startDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			PROC_DATE &lt;= #endDate#
+		</isNotNull>
+		<isNotNull prepend="AND" property="printTimes">
+			<isEqual property="printTimes" compareValue="1">
+				PRINT_TIMES > 0
+			</isEqual>
+			<isEqual property="printTimes" compareValue="0">
+				PRINT_TIMES = 0
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="coCodeFilter">
+			$coCodeFilter$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<insert id="insertCpVoucher" parameterClass="cpVoucher">
+		insert into
+		cp_voucher(nd,cp_voucher_id,vou_no,input_group_id,org_money,cur_money,
+		inputor_id,cdate,proc_date,co_code,b_acc_code,fund_code,
+		inceptdoc_code,manage_code,org_code,origin_code,outlay_code,
+		payout_code,paytype_code,project_type_code,project_code,senddoc_type_code,
+		senddoc_code,remark,d_attr1,d_attr2,d_attr3,
+		d_attr4,d_attr5,bal_mode_code,check_no,operation_type_code,
+		deal_state,bank_auditor_id,bank_date,clear_auditor_id,clear_date,
+		print_times,rece_accname,rece_banknodename,rece_bankacccode,is_valid,
+		dp_balance_id,bi_balance_id,adjust_voucher_id,adjust_vou_no,an_status,
+		a_status_code,cmn_pact_code,contract_code,control_type,cp_adjust_code,
+		create_type,dec_type,dp_cd_use_money,gb_pact_code,inputor_name,
+		is_sum_cp_voucher,pay_acccode,pay_accname,pay_bankacccode,pay_bankno,
+		pay_banknodecode,pay_banknodename,pay_bank_code,pay_bank_name,pay_code,
+		rece_acccode,rece_bankno,rece_banknodecode,rece_code,vou_type,
+		process_inst_id,qp_money,filename,filename_blobid,
+		clear_acc_code,clear_acc_name,clear_acc_no,clear_bank_code,clear_bank_name,clear_bank_no,sum_cp_voucher_vou_no
+		)values
+		(#nd:INTEGER#,#cpVoucherId:VARCHAR#,#cpVouNo:VARCHAR#,#inputGroupId:VARCHAR#,#orgMoney:DECIMAL#,#curMoney:DECIMAL#,
+		#inputorId:VARCHAR#,#cdate:DATE#,#procdate:DATE#,#coCode:VARCHAR#,#baccCode:VARCHAR#,#fundCode:VARCHAR#,
+		#inceptDocCode:VARCHAR#,#manageCode:VARCHAR#,#orgCode:VARCHAR#,#originCode:VARCHAR#,#outlayCode:VARCHAR#,
+		#payoutCode:VARCHAR#,#paytypeCode:VARCHAR#,#projectTypeCode:VARCHAR#,#projectCode:VARCHAR#,#sendDocTypeCode:VARCHAR#,
+		#sendDocCode:VARCHAR#,#remark:VARCHAR#,#dattr1:VARCHAR#,#dattr2:VARCHAR#,#dattr3:VARCHAR#,
+		#dattr4:VARCHAR#,#dattr5:VARCHAR#,#balModeCode:VARCHAR#,#checkNo:VARCHAR#,#operationTypeCode:VARCHAR#,
+		#dealState:VARCHAR#,#bankAuditorId:VARCHAR#,#bankDate:DATE#,#clearAuditorId:VARCHAR#,#clearDate:DATE#,
+		#printTimes:INTEGER#,#receAccName:VARCHAR#,#receBankNodeName:VARCHAR#,#receBankAccCode:VARCHAR#,#isValid:VARCHAR#,
+		#dpBalanceId:VARCHAR#,#biBalanceId:VARCHAR#,#adjustVoucherId:VARCHAR#,#adjustVouNo:VARCHAR#,#anStatus:VARCHAR#,
+		#abStatusCode:VARCHAR#,#cmnPactCode:VARCHAR#,#contractCode:VARCHAR#,#controlType:VARCHAR#,#cpAdjustCode:VARCHAR#,
+		#createType:VARCHAR#,#decType:VARCHAR#,#dpCdUseMoney:DECIMAL#,#gbPactCode:VARCHAR#,#inputorName:VARCHAR#,
+		#isSumCpVoucher:VARCHAR#,#payAccCode:VARCHAR#,#payAccName:VARCHAR#,#payBankAccCode:VARCHAR#,#payBankNo:VARCHAR#,
+		#payBankNodeCode:VARCHAR#,#payBankNodeName:VARCHAR#,#payBankCode:VARCHAR#,#payBankName:VARCHAR#,#payCode:VARCHAR#,
+		#receAccCode:VARCHAR#,#receBankNo:VARCHAR#,#receBankNodeCode:VARCHAR#,#receCode:VARCHAR#,#vouType:VARCHAR#,
+		#processInstId:INTEGER#,#qpMoney:DECIMAL#,#fileName:VARCHAR#,#filenameBlobid:VARCHAR#,
+		#clearAccCode:VARCHAR#,#clearAccName:VARCHAR#,#clearAccNo:VARCHAR#,#clearBankCode:VARCHAR#,
+		#clearBankName:VARCHAR#,#clearBankNo:VARCHAR#,#sumCpVoucherVouNo:VARCHAR#
+		)
+	</insert>
+	<update id="updateCpApply" parameterClass="Map">
+		update cp_apply set is_create_vou='1',
+		cp_voucher_id=#cpVoucherId:VARCHAR#, vou_no=#vouNo:VARCHAR#,
+		cp_voucher_id_bak=#cpVoucherId:VARCHAR#,
+		vou_no_bak=#vouNo:VARCHAR#, stamp=nvl(stamp,1)+1 where
+		cp_apply_id=#cpApplyId# and is_create_vou='0' and
+		a_status_code='3'
+	</update>
+	<select id="getCpVoucherById" resultMap="cpVoucherResultSimply"
+		parameterClass="Map">
+		select * from cp_voucher where cp_voucher_id=#cpVoucherId#
+	</select>
+
+	<update id="updateDpCdUseMoney" parameterClass="Map">
+		update cp_voucher set dp_cd_use_money= #dpCdUseMoney# where
+		cp_voucher_id=#cpVoucherId# and nd= #nd#
+	</update>
+
+	<update id="updateSumCpVoucherId" parameterClass="cpVoucher">
+		update cp_voucher set sum_cp_voucher_id=
+		#sumCpVoucherId:VARCHAR#,sum_cp_voucher_vou_no=#sumCpVoucherVouNo:VARCHAR#
+		where cp_voucher_id=#cpVoucherId:VARCHAR#
+	</update>
+
+	<update id="setSumCpVoucherIdNull" parameterClass="string">
+		update cp_voucher set sum_cp_voucher_id= null , print_times='0'
+		where sum_cp_voucher_id=#sumCpVoucherId:VARCHAR#
+	</update>
+
+	<select id="getCurMonthMoney" resultClass="java.math.BigDecimal"
+		parameterClass="Map">
+		select sum(cur_money) money from cp_voucher where is_valid='1'
+		and paytype_code='0202' and nd=#nd# and co_code=#coCode# and
+		extract(month from proc_date)=extract(month from #procDate#) and
+		bal_mode_code=#balModeCode#
+	</select>
+
+	<select id="getCurDayMoney" resultClass="java.math.BigDecimal"
+		parameterClass="Map">
+		select sum(cur_money) money from cp_voucher where is_valid='1'
+		and paytype_code='0202' and nd=#nd# and co_code=#coCode# and
+		proc_date=#procDate# and bal_mode_code=#balModeCode#
+	</select>
+
+	<update id="updateCpVoucherForCpAv"
+		parameterClass="com.ufgov.zc.common.cp.model.CpVoucher">
+		update cp_voucher set ND = #nd:DECIMAL#, BAL_MODE_CODE =
+		#balModeCode:VARCHAR#, OUTLAY_CODE = #outlayCode:VARCHAR#,
+		REMARK = #remark:VARCHAR#, ORG_MONEY = #orgMoney:DECIMAL#,
+		CUR_MONEY = #curMoney:DECIMAL#, DP_CD_USE_MONEY =
+		#dpCdUseMoney:DECIMAL#, RECE_CODE = #receCode:VARCHAR#,
+		RECE_ACCCODE = #receAccCode:VARCHAR#, RECE_ACCNAME =
+		#receAccName:VARCHAR#, RECE_BANKNODECODE =
+		#receBankNodeCode:VARCHAR#, RECE_BANKNO = #receBankNo:VARCHAR#,
+		RECE_BANKNODENAME = #receBankNodeName:VARCHAR#, RECE_BANKACCCODE
+		= #receBankAccCode:VARCHAR#, D_ATTR1 = #dattr1:VARCHAR#, D_ATTR2
+		= #dattr2:VARCHAR#, D_ATTR3 = #dattr3:VARCHAR#, D_ATTR4 =
+		#dattr4:VARCHAR#, D_ATTR5 = #dattr5:VARCHAR#, CONTRACT_CODE =
+		#contractCode:VARCHAR#, OPERATION_TYPE_CODE =
+		#operationTypeCode:VARCHAR#, CHECK_NO= #checkNo:VARCHAR#,
+		FILENAME = #fileName:VARCHAR#, FILENAME_BLOBID =
+		#filenameBlobid:VARCHAR# where cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateCpVoucherForCpDzCzBank"
+		parameterClass="cpVoucher">
+		update cp_voucher set bank_date=#bankDate# where
+		cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateCpVoucherPayInfo" parameterClass="cpVoucher">
+		update cp_voucher set PAY_CODE=#payCode:VARCHAR#,
+		PAY_ACCCODE=#payAccCode:VARCHAR#,
+		PAY_ACCNAME=#payAccName:VARCHAR#,
+		PAY_BANKACCCODE=#payBankAccCode:VARCHAR#,
+		PAY_BANKNO=#payBankNo:VARCHAR#,
+		PAY_BANKNODECODE=#payBankNodeCode:VARCHAR#,
+		PAY_BANKNODENAME=#payBankNodeName:VARCHAR#,
+		RECE_CODE=#receCode:VARCHAR#,
+		RECE_ACCCODE=#receAccCode:VARCHAR#,
+		RECE_ACCNAME=#receAccName:VARCHAR#,
+		RECE_BANKACCCODE=#receBankAccCode:VARCHAR#,
+		RECE_BANKNO=#receBankNo:VARCHAR#,
+		RECE_BANKNODECODE=#receBankNodeCode:VARCHAR#,
+		RECE_BANKNODENAME=#receBankNodeName:VARCHAR#, PAY_BANK_CODE =
+		#payBankCode:VARCHAR#, PAY_BANK_NAME = #payBankName:VARCHAR#
+		where cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateCpVoucherForCpAvtSend"
+		parameterClass="cpVoucher">
+		update cp_voucher set deal_state = '1' where
+		cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateCpVoucherForCpAvtCancelSend"
+		parameterClass="cpVoucher">
+		update cp_voucher set deal_state = '0' where
+		cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateAstatusCodeAndDealState" parameterClass="Map">
+		update cp_voucher set A_STATUS_CODE= #aStatueCode# where
+		cp_voucher_id=#cpVoucherId# and nd= #nd#
+	</update>
+
+	<update id="updateCpVoucherForCpAvEdit" parameterClass="Map">
+		update cp_voucher set A_STATUS_CODE= #aStatueCode# where
+		cp_voucher_id=#cpVoucherId# and nd= #nd#
+	</update>
+
+	<delete id="deleteCpVoucherById" parameterClass="string">
+		delete from cp_voucher where cp_voucher_id=#cpVoucherId:VARCHAR#
+	</delete>
+
+	<parameterMap id="SP_CPAPPLY_CREATE_CPVOUCHER_MAP"
+		class="java.util.HashMap">
+		<parameter property="cpApplyIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="cpVoucherIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="vouNos" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="inputGroupIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="userId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="userName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="aStatusCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payAcccode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payAccname" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankacccode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankno" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBanknodecode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBanknodeName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankcode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payBankname" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="payDate" jdbcType="DATE"
+			javaType="java.util.Date" mode="IN" />
+		<parameter property="rtnStr" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="SP_CPAPPLY_CREATE_CPVOUCHER"
+		parameterMap="SP_CPAPPLY_CREATE_CPVOUCHER_MAP">
+		{call
+		SP_CPAPPLY_CREATE_CPVOUCHER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+	<parameterMap id="SP_CP_REVO_CPVOUCHER_MAP"
+		class="java.util.HashMap">
+		<parameter property="cpVoucherIds" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="rtnStr" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="SP_CP_REVO_CPVOUCHER"
+		parameterMap="SP_CP_REVO_CPVOUCHER_MAP">
+		{call SP_CP_REVO_CPVOUCHER(?,?)}
+	</procedure>
+
+	<select id="getCpVoucherForCpDvList" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from cp_voucher MASTER where MASTER.ND=#nd# and
+		MASTER.control_type='3'
+		<isNotNull prepend="AND" property="coCode">
+			MASTER.CO_CODE = #coCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="projectCode">
+			MASTER.PROJECT_CODE = #projectCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="paytypeCode">
+			MASTER.PAYTYPE_CODE = #paytypeCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="todo">
+				a_status_code='0' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="done">
+				a_status_code='3'and (deal_state='0' or deal_state='2')
+				and is_valid ='1'
+			</isEqual>
+			<isEqual property="status" compareValue="sendedbank">
+				a_status_code='3' and deal_state='1' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="bankconfirmed">
+				a_status_code='3' and deal_state='3' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="bankcleared">
+				a_status_code='3' and deal_state='4' and is_valid='1'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid='1'
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<isNotNull property="endDate">
+				MASTER.PROC_DATE BETWEEN #startDate:DATE# AND
+				#endDate:DATE#
+			</isNotNull>
+		</isNotNull>
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE CP_VOUCHER SET print_times=print_times+1
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				CP_VOUCHER_ID=#cpVoucherIdList[]#
+			</iterate>
+			<iterate prepend="OR" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				SUM_CP_VOUCHER_ID=#cpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+		<update id="updatePrintTimes" parameterClass="Map">
+		UPDATE CP_VOUCHER SET print_times=#printTimes:INTEGER#
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				CP_VOUCHER_ID=#cpVoucherIdList[]#
+			</iterate>
+			<iterate prepend="OR" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				SUM_CP_VOUCHER_ID=#cpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<!-- add by liubo -->
+	<select id="getCpVoucherForBbBalDtzd" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from ( SELECT * FROM CP_VOUCHER WHERE
+		PAY_BAL_BILL_ID IS NULL AND PAYTYPE_CODE = '0201' AND IS_VALID =
+		'1' AND IS_SUM_CP_VOUCHER = '0'
+		<isNotNull property="cpBalDayVouState">
+			<isEqual property="cpBalDayVouState" compareValue="0">
+				<isNotNull prepend="AND" property="transDate">
+					TO_DATE(TO_CHAR(CDATE,'YYYY-MM-DD'), 'YYYY-MM-DD') =
+					to_date(#transDate#,'YYYY-MM-DD')
+				</isNotNull>
+			</isEqual>
+			<isEqual property="cpBalDayVouState" compareValue="1">
+				<isNotNull prepend="AND" property="transDate">
+					TO_DATE(TO_CHAR(BANK_DATE,'YYYY-MM-DD'),
+					'YYYY-MM-DD') = to_date(#transDate#,'YYYY-MM-DD')
+				</isNotNull>
+			</isEqual>
+			<isEqual property="cpBalDayVouState" compareValue="2">
+				<isNotNull prepend="AND" property="transDate">
+					TO_DATE(TO_CHAR(CLEAR_DATE,'YYYY-MM-DD'),
+					'YYYY-MM-DD') = to_date(#transDate#,'YYYY-MM-DD')
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			PAY_BANK_CODE = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="operationTypeCode">
+			OPERATION_TYPE_CODE LIKE #operationTypeCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE LIKE #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="adjustCode">
+			CP_ADJUST_CODE IN ($adjustCode$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dataRuleCondiStr">
+			$dataRuleCondiStr$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForBbAdrDtzd" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from ( SELECT * FROM CP_VOUCHER WHERE
+		PAY_DAY_BILL_ID IS NULL AND PAYTYPE_CODE = '0202' AND IS_VALID =
+		'1' AND IS_SUM_CP_VOUCHER = '0' AND A_STATUS_CODE='3'
+		<isNotNull property="cpBalDayVouState">
+			<isNotNull prepend="AND" property="startDate">
+				<isNotNull property="endDate">
+					<isEqual property="cpBalDayVouState"
+						compareValue="0">
+						CDATE BETWEEN #startDate:DATE# AND
+						#endDate:DATE#
+					</isEqual>
+					<isEqual property="cpBalDayVouState"
+						compareValue="1">
+						BANK_DATE BETWEEN #startDate:DATE# AND
+						#endDate:DATE#
+					</isEqual>
+					<isEqual property="cpBalDayVouState"
+						compareValue="2">
+						CLEAR_DATE BETWEEN #startDate:DATE# AND
+						#endDate:DATE#
+					</isEqual>
+				</isNotNull>
+			</isNotNull>
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			PAY_BANK_CODE = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="operationTypeCode">
+			OPERATION_TYPE_CODE LIKE #operationTypeCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE LIKE #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="adjustCode">
+			CP_ADJUST_CODE IN ($adjustCode$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dataRuleCondiStr">
+			$dataRuleCondiStr$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+	<!-- end -->
+	<select id="getCpVoucherForBbAmveDtzd" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from ( SELECT * FROM CP_VOUCHER WHERE
+		PAY_TRANSFER_VOU_ID IS NULL AND PAYTYPE_CODE = '0202' AND
+		IS_VALID = '1' AND IS_SUM_CP_VOUCHER = '0' AND A_STATUS_CODE='3'
+		<isNotNull prepend="AND" property="transDate">
+			TO_DATE(TO_CHAR(BANK_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') &lt;=
+			to_date(#transDate#,'YYYY-MM-DD')
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			PAY_BANK_CODE = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="operationTypeCode">
+			OPERATION_TYPE_CODE LIKE #operationTypeCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE LIKE #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE LIKE #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="adjustCode">
+			CP_ADJUST_CODE IN ($adjustCode$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dataRuleCondiStr">
+			$dataRuleCondiStr$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForBbDmveDtzd" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select MASTER.* from ( SELECT * FROM CP_VOUCHER WHERE
+		PAY_TRANSFER_VOU_ID IS NULL AND PAYTYPE_CODE = '0201' AND
+		IS_VALID = '1' AND IS_SUM_CP_VOUCHER = '0' AND A_STATUS_CODE='3'
+		<isNotNull prepend="AND" property="transDate">
+			TO_DATE(TO_CHAR(BANK_DATE,'YYYY-MM-DD'),'YYYY-MM-DD') &lt;=
+			to_date(#transDate#,'YYYY-MM-DD')
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankCode">
+			PAY_BANK_CODE = #bankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="operationTypeCode">
+			OPERATION_TYPE_CODE LIKE #operationTypeCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="fundCode">
+			FUND_CODE LIKE #fundCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="originCode">
+			ORIGIN_CODE LIKE #originCode#||'%'
+		</isNotNull>
+		<isNotNull prepend="AND" property="adjustCode">
+			CP_ADJUST_CODE IN ($adjustCode$)
+		</isNotNull>
+		<isNotNull prepend="AND" property="dataRuleCondiStr">
+			$dataRuleCondiStr$
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		) MASTER
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+	<!-- zhaolh add -->
+
+	<update id="updateIsValid" parameterClass="Map">
+		update cp_voucher set IS_VALID= #isValid#,A_STATUS_CODE='9'
+		where cp_voucher_id=#cpVoucherId# and nd= #nd# AND IS_VALID='1'
+	</update>
+
+
+	<select id="getCpVoucherForRefundAudit"
+		resultMap="cpVoucherResultAddDpMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		monthView.dp_money,monthView.dp_paysum,monthView.dp_balance from
+		cp_voucher master,$dpBalanceMonthView$ monthView where
+		master.ND=monthView.ND and
+		master.DP_BALANCE_ID=monthView.DP_BALANCE_ID and
+		master.PAYTYPE_CODE = #paytypeCode#
+		and master.IS_SUM_CP_VOUCHER='0' and master.CP_ADJUST_CODE='202'
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<include refid="WfCommonAudited.WfCommonAudited" />
+		<include refid="WfCommonAudited.WFCommonAuditedProcDate" />
+		<isNotNull prepend="" property="status">
+			<isEqual property="status" compareValue="audited">
+				<isNotNull prepend="AND" property="dealState">
+					deal_state = #dealState#
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForCpAvAuditList"
+		resultMap="cpVoucherResultAddDpMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		monthView.dp_money,monthView.dp_paysum,monthView.dp_balance from
+		cp_voucher master,$dpBalanceMonthView$ monthView where
+		master.ND=monthView.ND   and
+		master.DP_BALANCE_ID=monthView.DP_BALANCE_ID and
+		master.PAYTYPE_CODE = #paytypeCode# and master.CONTROL_TYPE='1'
+		and master.IS_SUM_CP_VOUCHER='0' and  master.nd=#nd:INTEGER# and
+		(master.CP_ADJUST_CODE='101' or master.CP_ADJUST_CODE='102')
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<isNotNull prepend="" property="isNeedWorkFlow">
+			<isEqual property="isNeedWorkFlow" compareValue="Y">
+				<include refid="WfCommonAudited.WfCommonAudited" />
+				<include
+					refid="WfCommonAudited.WFCommonAuditedProcDate" />
+				and master.process_inst_id is not null
+			</isEqual>
+			<isEqual property="isNeedWorkFlow" compareValue="N">
+				<isNotNull prepend="" property="status">
+					<isEqual property="status" compareValue="todo">
+						and master.a_status_code='2'
+					</isEqual>
+					<isEqual property="status" compareValue="done">
+						and master.a_status_code='2'
+					</isEqual>
+					<isEqual property="status" compareValue="audited">
+						and master.a_status_code ='3'
+					</isEqual>
+					<isEqual property="status" compareValue="invalid">
+						and master.is_valid = '0'
+					</isEqual>
+					<isEqual property="status" compareValue="all">
+						and master.is_valid != '9'
+					</isEqual>
+					<isNotEqual property="status" compareValue="todo">
+						<include refid="ElementCondition.StartDate" />
+						<include refid="ElementCondition.EndDate" />
+					</isNotEqual>
+				</isNotNull>
+				and master.process_inst_id is null
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="" property="status">
+			<isEqual property="status" compareValue="audited">
+				<isNotNull prepend="AND" property="dealState">
+					deal_state = #dealState#
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="sumCpVoucherId">
+			<isEqual property="sumCpVoucherId" compareValue="0">
+				master.SUM_CP_VOUCHER_ID is null
+			</isEqual>
+			<isEqual property="sumCpVoucherId" compareValue="1">
+				master.SUM_CP_VOUCHER_ID is not null
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+
+	<select id="getCpVoucherForCpAvBiAudit"
+		resultMap="cpVoucherResultAddBiMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		<include refid="ElementName.BI_MONEY" />
+		,
+		<include refid="ElementName.BI_BALANCE" />
+		,
+
+		<include refid="ElementName.BI_PAY_SUM" />
+		from cp_voucher master where
+		master.PAYTYPE_CODE='0202' and master.IS_SUM_CP_VOUCHER='0' and
+		(master.CP_ADJUST_CODE='101' or master.CP_ADJUST_CODE='102')
+		and master.CONTROL_TYPE='1' and  master.nd=#nd:INTEGER#
+
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<isNotNull prepend="" property="isNeedWorkFlow">
+			<isEqual property="isNeedWorkFlow" compareValue="Y">
+				<include refid="WfCommonAudited.WfCommonAudited" />
+				<include
+					refid="WfCommonAudited.WFCommonAuditedProcDate" />
+				and master.process_inst_id is not null
+			</isEqual>
+			<isEqual property="isNeedWorkFlow" compareValue="N">
+				<isNotNull prepend="" property="status">
+					<isEqual property="status" compareValue="todo">
+						and master.a_status_code='2'
+					</isEqual>
+					<isEqual property="status" compareValue="done">
+						and master.a_status_code='2'
+					</isEqual>
+					<isEqual property="status" compareValue="audited">
+						and master.a_status_code ='3'
+					</isEqual>
+					<isEqual property="status" compareValue="invalid">
+						and master.is_valid = '0'
+					</isEqual>
+					<isEqual property="status" compareValue="all">
+						and master.is_valid != '9'
+					</isEqual>
+					<isNotEqual property="status" compareValue="todo">
+						<include refid="ElementCondition.StartDate" />
+						<include refid="ElementCondition.EndDate" />
+					</isNotEqual>
+				</isNotNull>
+				and master.process_inst_id is null
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="" property="status">
+			<isEqual property="status" compareValue="audited">
+				<isNotNull prepend="AND" property="dealState">
+					deal_state = #dealState#
+				</isNotNull>
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="sumCpVoucherId">
+			<isEqual property="sumCpVoucherId" compareValue="0">
+				master.SUM_CP_VOUCHER_ID is null
+			</isEqual>
+			<isEqual property="sumCpVoucherId" compareValue="1">
+				master.SUM_CP_VOUCHER_ID is not null
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+
+
+	<select id="getCpVoucherForCpAvtList" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		select master.* from cp_voucher master where
+		master.sum_cp_voucher_id is null and
+		master.paytype_code=#paytypeCode# and master.a_status_code='3'
+		and master.is_valid='1'
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.RECE_ACCCODE" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.D_ATTR1" />
+		<include refid="ElementCondition.D_ATTR2" />
+		<include refid="ElementCondition.D_ATTR3" />
+		<include refid="ElementCondition.D_ATTR4" />
+		<include refid="ElementCondition.D_ATTR5" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PRINT_ESTATE" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="GkGetDataRuleCondi.GkGetDataRuleCondiStr" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="noprint">
+				print_times=0
+			</isEqual>
+			<isEqual property="status" compareValue="printed">
+				print_times>0
+			</isEqual>
+			<isEqual property="status" compareValue="sended">
+				deal_state='1'
+			</isEqual>
+			<isEqual property="status" compareValue="unSended">
+				deal_state='0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<!-- zhaolh add -->
+
+	<select id="getCpVoucherForBbAvcList" resultMap="cpVoucherResult"
+		parameterClass="Map">
+		SELECT master.* FROM cp_voucher master WHERE deal_state in
+		('1','3','4')
+		<isNotNull prepend="AND" property="cpVouNo">
+			vou_no = #cpVouNo#
+		</isNotNull>
+		<isNotNull prepend="AND" property="checkNo">
+			check_no = #checkNo#
+		</isNotNull>
+		<isNotNull prepend="AND" property="curMoney">
+			cur_money = #curMoney#
+		</isNotNull>
+		<isNotNull prepend="AND" property="paytypeCode">
+			paytype_code = #paytypeCode#
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+
+	<select id="getCpVoucherForBbReturnList" resultMap="cpVoucherResult"
+		parameterClass="elementCondition">
+		SELECT master.* FROM cp_voucher master WHERE deal_state in
+		('1','3','4')
+		<dynamic prepend="">
+			<isNotNull prepend="AND" property="cpVouNo">
+				vou_no = #cpVouNo#
+			</isNotNull>
+			<isNotNull prepend="AND" property="paytypeCode">
+				paytype_code = #paytypeCode#
+			</isNotNull>
+		</dynamic>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+	<parameterMap id="cpVoucherConfirmParameter"
+		class="java.util.HashMap">
+		<parameter property="pVouNo" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pCheckNo" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pCurMoney" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pPayTypeCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pUserId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRemark" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr1" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr2" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr3" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="updateCpVoucherForBbAvc"
+		parameterMap="cpVoucherConfirmParameter">
+		{call SP_BB_CONFIRMVOUCHER(?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+
+
+	<parameterMap id="cpVoucherReturnParameter"
+		class="java.util.HashMap">
+		<parameter property="pVouNo" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pCurMoney" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pPayTypeCode" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pDattr1" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+
+		<parameter property="pCpVoucherId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pInputGroupId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pVouNoNew" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+
+		<parameter property="pCdate" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pBankAuditorId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pBankDate" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pInputorId" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pInputorName" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+
+		<parameter property="remark" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="IN" />
+		<parameter property="pRetMessage" jdbcType="VARCHAR"
+			javaType="java.lang.String" mode="OUT" />
+	</parameterMap>
+	<procedure id="updateCpVoucherForBbReturn"
+		parameterMap="cpVoucherReturnParameter">
+		{call SP_BB_VOUCHERRETURN(?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+
+
+	<update id="sendBankForBb" parameterClass="Map">
+		UPDATE cp_voucher SET deal_state=#dealState#
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="cpVoucherList" open="("
+				close=")" conjunction="OR">
+				cp_voucher_id=#cpVoucherList[]#
+			</iterate>
+		</dynamic>
+	</update>
+
+	<parameterMap id="SP_BA_CP_SEND_TMP_VT_PARAMETER"
+		class="java.util.HashMap">
+		<parameter property="VoucherIds" javaType="java.lang.String"
+			mode="IN" />
+		<parameter property="Sender" javaType="java.lang.String"
+			mode="IN" />
+		<parameter property="Fiscal" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="Fisperd" javaType="java.lang.Integer"
+			mode="IN" />
+		<parameter property="Transtype" javaType="java.lang.String"
+			mode="IN" />
+		<parameter property="info" javaType="java.lang.String"
+			mode="OUT" />
+	</parameterMap>
+	<procedure id="sendBankForBa"
+		parameterMap="SP_BA_CP_SEND_TMP_VT_PARAMETER">
+		{call SP_BA_CP_SEND_TMP_VT(?,?,?,?,?,?)}
+	</procedure>
+
+	<update id="cancelSplit" parameterClass="cpVoucher">
+		update cp_voucher set is_split = 'N' where cp_voucher_id =
+		#cpVoucherId:VARCHAR#
+
+	</update>
+
+	<delete id="deleteCpVoucherSplitForCancel"
+		parameterClass="cpVoucher">
+		delete from cp_voucher_split where cp_voucher_id =
+		#cpVoucherId:VARCHAR#
+	</delete>
+
+	<select id="getRequestSeri" resultClass="java.math.BigDecimal"
+		parameterClass="map">
+		SELECT SEQ_TX_REQUEST_SERIAL.NEXTVAL FROM dual
+	</select>
+
+	<update id="updateVoucherGroupDealState" parameterClass="Map">
+		UPDATE CP_VOUCHER T SET T.Deal_State = #dealState#,
+		T.bank_date=sysdate WHERE T.paytype_code = #payTypeCode# and
+		(T.VOU_NO=#voucherNo# OR T.SUM_CP_VOUCHER_ID = (SELECT
+		CP_VOUCHER_ID FROM CP_VOUCHER WHERE VOU_NO=#voucherNo# and
+		paytype_code = #payTypeCode#))
+	</update>
+
+	<update id="updateCpVoucherByPayClearBillId" parameterClass="Map">
+		UPDATE cp_voucher SET
+		pay_clear_bill_id=#payClearBillId#,is_gen_clear_bill='1',pay_clear_bill_no=#billNo#
+		WHERE cp_voucher_id = #cpVoucherId#
+
+	</update>
+
+	<update id="editRemarkForCpVoucher" parameterClass="Map">
+		UPDATE cp_voucher SET REMARK = #remark# WHERE cp_voucher_id =
+		#cpVoucherId#
+
+	</update>
+
+	<select id="getUnHXCpVoucher" resultClass="int"
+		parameterClass="map">
+		select count(*) from cp_voucher t where t.dec_type='4' and
+		t.control_type='4' and t.co_code=#coCode:VARCHAR# and
+		t.paytype_code='0202' and t.is_valid = '1'
+	</select>
+
+	<select id="getVoucherIsSum" resultClass="int"
+		parameterClass="map">
+		select count(*) from cp_voucher t where sum_cp_voucher_id is not
+		null
+		<dynamic prepend="">
+			<iterate prepend="AND" property="cpVoucherIdList" open="("
+				close=")" conjunction="OR">
+				cp_voucher_id =#cpVoucherIdList[]#
+			</iterate>
+		</dynamic>
+	</select>
+
+	<select id="getCpVoucherForCpDvEdit"
+		resultMap="cpVoucherResultAddDpMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		monthView.dp_money,monthView.dp_paysum,monthView.dp_balance from
+		cp_voucher master,$dpBalanceMonthView$ monthView where
+		master.ND=monthView.ND  AND MASTER.ND=#nd:INTEGER# and
+		master.DP_BALANCE_ID=monthView.DP_BALANCE_ID and
+		master.PAYTYPE_CODE='0201' and master.CONTROL_TYPE='1' and
+		master.IS_SUM_CP_VOUCHER='0' and (master.CP_ADJUST_CODE='101' or
+		master.CP_ADJUST_CODE='102')
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<select id="getCpVoucherForCpDvtList"
+		resultMap="cpVoucherResultCheckIn"
+		parameterClass="elementCondition">
+		select master.* from cp_voucher master where
+		master.sum_cp_voucher_id is null and master.paytype_code='0201'
+		and master.is_valid='1' and(master.deal_state='3' or
+		master.deal_state='4')
+		<include refid="ElementCondition.StartDate" />
+		<include refid="ElementCondition.EndDate" />
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="ElementCondition.ORG_CODE" />
+		<include refid="ElementCondition.B_ACC_CODE_LIKE" />
+		<include refid="ElementCondition.OUTLAY_CODE_LIKE" />
+		<include refid="ElementCondition.PAYOUT_CODE_LIKE" />
+		<include refid="ElementCondition.MANAGE_CODE_LIKE" />
+		<include refid="ElementCondition.INCEPTDOC_CODE" />
+		<include refid="ElementCondition.SENDDOC_CODE" />
+		<include refid="ElementCondition.CoCodeFilter" />
+		<include refid="ElementCondition.CP_ADJUST_CODE" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="checked">
+				is_check = '1'
+			</isEqual>
+			<isEqual property="status" compareValue="unChecked">
+				is_check = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="all">
+				is_valid != '9'
+			</isEqual>
+		</isNotNull>
+		<isNotNull prepend="AND" property="dealState">
+			deal_state = #dealState#
+		</isNotNull>
+		<isNotNull prepend="AND" property="payBankCode">
+			pay_bank_code = #payBankCode#
+		</isNotNull>
+		<isNotNull prepend="AND" property="bankDate">
+			TO_DATE(TO_CHAR(BANK_DATE,'YYYY-MM-DD'), 'YYYY-MM-DD') =
+			#bankDate#
+		</isNotNull>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="updateCpVoucherForCpDvtCheckIn"
+		parameterClass="cpVoucher">
+		update cp_voucher set is_check = '1', check_date = #checkDate#,
+		check_inputor=#checkInputor# where cp_voucher_id=#cpVoucherId#
+	</update>
+
+	<update id="updateCpVoucherForCpDvtCancelCheckIn"
+		parameterClass="cpVoucher">
+		update cp_voucher set is_check = '0', check_date = null,
+		check_inputor=null where cp_voucher_id=#cpVoucherId#
+	</update>
+
+
+
+	<select id="getAvCpVoucherByVouNoList" resultMap="cpVoucherResultAvailableRefund"
+		parameterClass="Map">
+		select t.* ,
+		t.cur_money as origin_cur_money,
+		t.cur_money- (select decode(SUM(-cur_money),null,0,SUM(-cur_money))  FROM cp_voucher
+		WHERE adjust_vou_no=#cpVoucherVouNo#  and is_valid='1'  )  available_refund
+	    from cp_voucher t where is_valid='1'  and is_sum_cp_voucher='0' and cp_adjust_code!='202'
+		and paytype_code='0202'
+		and co_code=#coCode:VARCHAR#  and vou_no=#cpVoucherVouNo#
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+
+	<select id="getDvCpVoucherByVouNoList" resultMap="cpVoucherResultAvailableRefund"
+		parameterClass="Map">
+		select t.* ,
+	    t.cur_money as origin_cur_money,
+		t.cur_money- (select decode(SUM(-cur_money),null,0,SUM(-cur_money))  FROM cp_voucher
+		WHERE adjust_vou_no=#cpVoucherVouNo# and is_valid='1'  )  available_refund
+		from cp_voucher t where is_valid='1' and is_sum_cp_voucher='0' and cp_adjust_code!='202'
+		and paytype_code='0201' and vou_no=#cpVoucherVouNo#
+		<include refid="BusiNumLim.BusiNumLimStr" />
+	</select>
+
+
+	<select id="getCpVoucherForRefund"
+		resultMap="cpVoucherResultAddDpMoney"
+		parameterClass="elementCondition">
+		select master.*,
+		monthView.dp_money,monthView.dp_paysum,monthView.dp_balance from
+		cp_voucher master,$dpBalanceMonthView$ monthView where
+		master.ND=monthView.ND and
+		master.DP_BALANCE_ID=monthView.DP_BALANCE_ID and
+		master.PAYTYPE_CODE=#paytypeCode:VARCHAR# and
+		master.IS_SUM_CP_VOUCHER='0' and (master.CP_ADJUST_CODE='202')
+		<isNotNull prepend="AND" property="controlType">
+			master.CONTROL_TYPE=#controlType#
+		</isNotNull>
+		<include refid="ElementCondition.FUND_CODE_LIKE" />
+		<include refid="ElementCondition.ORIGIN_CODE_LIKE" />
+		<include refid="ElementCondition.CO_CODE" />
+		<include refid="ElementCondition.OPERATION_TYPE_CODE" />
+		<include refid="ElementCondition.BAL_MODE_CODE_LIKE" />
+		<include refid="ElementCondition.PROJECT_CODE" />
+		<include refid="WfCommonEdit.wfCommonEdit" />
+		<include refid="WfCommonEdit.WFCommonEditProcDate" />
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<include refid="ElementCondition.OrderColumns" />
+	</select>
+
+	<update id="updateCpAdjustCodeForRefund" parameterClass="Map">
+		update cp_voucher set cp_adjust_code= #cpAdjustCode:VARCHAR#
+		where cp_voucher_id=#cpVoucherId# and cur_money >=(select
+		SUM(-cur_money) FROM cp_voucher WHERE
+		adjust_voucher_id=#cpVoucherId#)
+	</update>
+
+	<select id="getCurMoneyAvailableForRefund0"
+		resultClass="java.math.BigDecimal" parameterClass="string">
+		select t.cur_money  from cp_voucher t
+		where t.cp_voucher_id=#cpVoucherId:VARCHAR#
+	</select>
+
+	<select id="getCurMoneyAvailableForRefund1"
+		resultClass="java.math.BigDecimal" parameterClass="string">
+        select SUM(-cur_money) FROM cp_voucher
+		WHERE adjust_voucher_id=#cpVoucherId:VARCHAR#  and is_valid='1'
+	</select>
+
+</sqlMap>

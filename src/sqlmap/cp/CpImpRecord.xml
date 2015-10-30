@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpImpRecord">
+	<typeAlias alias="cpImpRecord"
+		type="com.ufgov.zc.common.cp.model.CpImpRecord" />
+		<typeAlias alias="ecDto"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+	<resultMap id="cpImpRecordResult" class="cpImpRecord">
+		<result property="nd" column="nd" />
+		<result property="orgMoney" column="org_money" />
+		<result property="billDate" column="bill_date"  />
+        <result property="coCode" column="co_code" />
+		<result property="coName" column="co_name" />
+		<result property="orgCode" column="org_code" />
+		<result property="orgName" column="org_Name" />
+		<result property="fundCode" column="fund_code" />
+		<result property="fundName" column="fund_name" />
+		<result property="baccCode" column="b_acc_code" />
+		<result property="baccName" column="b_acc_name" />
+		<result property="outlayCode" column="outlay_code" />
+		<result property="outlayName" column="outlay_name" />
+		<result property="payoutCode" column="payout_code" />
+		<result property="payoutName" column="payout_name" />
+		<result property="manageCode" column="manage_code" />
+		<result property="manageName" column="manage_name" />
+		<result property="balModeCode" column="BAL_MODE_CODE" />
+		<result property="balModeName" column="BAL_MODE_NAME" />
+		<result property="originCode" column="origin_code" />
+		<result property="originName" column="origin_name" />
+		<result property="projectCode" column="project_code" />
+		<result property="projectName" column="project_name" />
+
+		<result property="payAccCode" column="PAY_ACCCODE" />
+		<result property="payAccName" column="PAY_ACCNAME" />
+		<result property="payBankAccCode" column="PAY_BANKACCCODE" />
+		<result property="payBankNo" column="PAY_BANKNO" />
+		<result property="payBankNodeCode" column="PAY_BANKNODECODE" />
+		<result property="payBankNodeName" column="PAY_BANKNODENAME" />
+		<result property="payBankCode" column="PAY_BANK_CODE" />
+		<result property="payBankName" column="PAY_BANK_NAME" />
+
+		<result property="receAccName" column="RECE_ACCNAME" />
+		<result property="receBankNodeName" column="RECE_BANKNODENAME" />
+		<result property="receBankAccCode" column="RECE_BANKACCCODE" />
+		<result property="receAccCode" column="RECE_ACCCODE" />
+		<result property="receBankNo" column="RECE_BANKNO" />
+		<result property="receBankNodeCode" column="RECE_BANKNODECODE" />
+
+		<result property="impPerson" column="imp_person" />
+		<result property="remark" column="remark" />
+		<result property="impDate" column="imp_date" jdbcType="DATE"/>
+		<result property="createPerson" column="create_person" />
+		<result property="createType" column="create_type" />
+		<result property="docType" column="doc_type" />
+		<result property="vouNo" column="vou_no" />
+		<result property="isCreate" column="is_create" />
+	</resultMap>
+
+
+   <insert id="insertCpImpRecord" parameterClass="cpImpRecord">
+		insert into
+		cp_imp_record(cp_imp_record_id,nd,org_money,bill_date,
+		co_code,co_name,org_code,
+		org_Name,fund_code,fund_name,
+		b_acc_code,b_acc_name,outlay_code,outlay_name,
+		payout_code,payout_name,manage_code,manage_name,
+		BAL_MODE_CODE,BAL_MODE_NAME,origin_code,origin_name,
+		project_code,project_name,PAY_ACCCODE,PAY_ACCNAME,
+		PAY_BANKACCCODE,PAY_BANKNO,PAY_BANKNODECODE,PAY_BANKNODENAME,
+		PAY_BANK_CODE,PAY_BANK_NAME,RECE_ACCNAME,RECE_BANKNODENAME,
+		RECE_BANKACCCODE,RECE_ACCCODE,RECE_BANKNO,RECE_BANKNODECODE,
+		imp_person,remark,imp_date,create_person,
+		create_type,doc_type,vou_no,is_create
+		)values
+		(#cpImpRecordId:VARCHAR#,#nd:INTEGER#,#orgMoney:DECIMAL#,#billDate:VARCHAR#,
+		#coCode:VARCHAR#,#coName:VARCHAR#,#orgCode:VARCHAR#,
+		#orgName:VARCHAR#,#fundCode:VARCHAR#,#fundName:VARCHAR#,
+		#baccCode:VARCHAR#,#baccName:VARCHAR#,#outlayCode:VARCHAR#,#outlayName:VARCHAR#,
+		#payoutCode:VARCHAR#,#payoutName:VARCHAR#,#manageCode:VARCHAR#,#manageName:VARCHAR#,
+		#balModeCode:VARCHAR#,#balModeName:VARCHAR#,#originCode:VARCHAR#,#originName:VARCHAR#,
+		#projectCode:VARCHAR#,#projectName:VARCHAR#,#payAccCode:VARCHAR#,#payAccName:VARCHAR#,
+		#payBankAccCode:VARCHAR#,#payBankNo:VARCHAR#,#payBankNodeCode:VARCHAR#,#payBankNodeName:VARCHAR#,
+		#payBankCode:VARCHAR#,#payBankName:VARCHAR#,#receAccName:VARCHAR#,#receBankNodeName:VARCHAR#,
+		#receBankAccCode:VARCHAR#,#receAccCode:VARCHAR#,#receBankNo:VARCHAR#,#receBankNodeCode:VARCHAR#,
+		#impPerson:VARCHAR#,#remark:VARCHAR#,#impDate:DATE#,#createPerson:VARCHAR#,
+		#createType:VARCHAR#,#docType:VARCHAR#,#vouNo:VARCHAR#,#isCreate:VARCHAR#)
+	</insert>
+
+
+    <select id="getCpImpRecordList" resultMap="cpImpRecordResult"
+		parameterClass="ecDto">
+		select *  FROM
+		cp_imp_record
+		<dynamic prepend="WHERE">
+	      <isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="unCreated">
+				is_create = '0'
+			</isEqual>
+			<isEqual property="status" compareValue="created">
+				is_create = '1'
+			</isEqual>
+			<isEqual property="status" compareValue="unImport">
+				is_create = ''
+			</isEqual>
+
+		 </isNotNull>
+		</dynamic>
+
+	</select>
+
+
+</sqlMap>

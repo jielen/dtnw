@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.ztb.util;public class EventPropertyName {  public static final String MOUSE_CLICK_PROPERTY_NAME = "mouseClick";  public static final String MOUSE_DBCLICK_PROPERTY_NAME = "mouseDbClick";}

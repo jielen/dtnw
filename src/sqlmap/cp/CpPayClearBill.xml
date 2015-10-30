@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CpPayClearBill">
+
+	<typeAlias alias="cpPayClearBill" type="com.ufgov.zc.common.cp.model.CpPayClearBill"/>
+
+	<resultMap id="cpPayClearBillResult" class="cpPayClearBill">
+		<result column="PAY_CLEAR_BILL_ID" property="payClearBillId" jdbcType="VARCHAR"/>
+		<result column="ND" property="nd" jdbcType="DECIMAL"/>
+		<result column="BILL_NO" property="billNo" jdbcType="VARCHAR"/>
+		<result column="PROC_DATE" property="procDate" jdbcType="DATE"/>
+		<result column="INPUTOR_ID" property="inputorId" jdbcType="VARCHAR"/>
+		<result column="CDATE" property="cdate" jdbcType="DATE"/>
+		<result column="OPERATION_TYPE_CODE" property="operationTypeCode" jdbcType="VARCHAR"/>
+		<result column="PRINT_TIMES" property="printTimes" jdbcType="DECIMAL"/>
+		<result column="CP_ADJUST_CODE" property="cpAdjustCode" jdbcType="VARCHAR"/>
+		<result column="PAY_CODE" property="payCode" jdbcType="VARCHAR"/>
+		<result column="PAY_NAME" property="payName" jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_CODE" property="payBankCode" jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NO" property="payBankNo" jdbcType="VARCHAR"/>
+		<result column="PAY_BANK_NAME" property="payBankName" jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_CODE" property="payAccCode" jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NAME" property="payAccName" jdbcType="VARCHAR"/>
+		<result column="PAY_ACC_NO" property="payAccNo" jdbcType="VARCHAR"/>
+		<result column="RECE_CODE" property="receCode" jdbcType="VARCHAR"/>
+		<result column="RECE_NAME" property="receName" jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_CODE" property="receBankCode" jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_NAME" property="receBankName" jdbcType="VARCHAR"/>
+		<result column="RECE_BANK_NO" property="receBankNo" jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_CODE" property="receAccCode" jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_NAME" property="receAccName" jdbcType="VARCHAR"/>
+		<result column="RECE_ACC_NO" property="receAccNo" jdbcType="VARCHAR"/>
+		<result column="FUND_CODE" property="fundCode" jdbcType="VARCHAR"/>
+		<result column="FUND_NAME" property="fundName" jdbcType="VARCHAR"/>
+		<result column="MANAGE_CODE" property="manageCode" jdbcType="VARCHAR"/>
+		<result column="MANAGE_NAME" property="manageName" jdbcType="VARCHAR"/>
+		<result column="PROCESS_INST_ID" property="processInstId" jdbcType="DECIMAL"/>
+		<result column="AUDITOR_ID" property="auditorId" jdbcType="VARCHAR"/>
+		<result column="A_DATE" property="adate" jdbcType="DATE"/>
+		<result column="A_OPINION" property="aopinion" jdbcType="VARCHAR"/>
+		<result column="A_STATUS_CODE" property="astatusCode" jdbcType="VARCHAR"/>
+		<result column="AN_STATUS" property="anStatus" jdbcType="VARCHAR"/>
+		<result column="IS_VALID" property="isValid" jdbcType="CHAR"/>
+		<result column="CANCELER_ID" property="cancelerId" jdbcType="VARCHAR"/>
+		<result column="CANCEL_DATE" property="cancelDate" jdbcType="DATE"/>
+		<result column="CANCEL_OPINION" property="cancelOpinion" jdbcType="VARCHAR"/>
+		<result column="PAY_VOU_NO_LIST" property="payVouNoList" jdbcType="VARCHAR"/>
+		<result column="REMARK" property="remark" jdbcType="VARCHAR"/>
+		<result column="FILENAME" property="filename" jdbcType="VARCHAR"/>
+		<result column="FILENAME_BLOBID" property="filenameBlobid" jdbcType="VARCHAR"/>
+		<result column="SUM_MONEY" property="sumMoney" jdbcType="DECIMAL"/>
+		<result column="SUM_MONEY1" property="sumMoney1" jdbcType="DECIMAL"/>
+		<result column="SUM_MONEY2" property="sumMoney2" jdbcType="DECIMAL"/>
+		<result column="SUM_MONEY3" property="sumMoney3" jdbcType="DECIMAL"/>
+		<result column="M_ATTR1" property="mattr1" jdbcType="VARCHAR"/>
+		<result column="M_ATTR2" property="mattr2" jdbcType="VARCHAR"/>
+		<result column="M_ATTR3" property="mattr3" jdbcType="VARCHAR"/>
+		<result column="M_ATTR4" property="mattr4" jdbcType="VARCHAR"/>
+		<result column="M_ATTR5" property="mattr5" jdbcType="VARCHAR"/>
+		<result column="STAMP" property="stamp" jdbcType="DECIMAL"/>
+		<result column="EXP_TIMES" property="expTimes" jdbcType="DECIMAL"/>
+		<result column="EXP_RECORD_ID" property="expRecordId" jdbcType="VARCHAR"/>
+		<result column="CO_CODE" property="coCode" />
+		<result column="CO_NAME" property="coName" />
+		<result column="ORIGIN_CODE" property="originCode" />
+		<result column="ORIGIN_NAME" property="originName" />
+	</resultMap>
+
+	<select id="getCpPayClearBill" resultMap="cpPayClearBillResult" parameterClass="map">
+		select PAY_CLEAR_BILL_ID, ND, BILL_NO, PROC_DATE, INPUTOR_ID, CDATE,
+		OPERATION_TYPE_CODE, PRINT_TIMES, CP_ADJUST_CODE, PAY_CODE, PAY_NAME,
+		PAY_BANK_CODE, PAY_BANK_NO, PAY_BANK_NAME, PAY_ACC_CODE, PAY_ACC_NAME,
+		PAY_ACC_NO, RECE_CODE, RECE_NAME, RECE_BANK_CODE, RECE_BANK_NAME,
+		RECE_BANK_NO, RECE_ACC_CODE, RECE_ACC_NAME, RECE_ACC_NO, FUND_CODE,
+		FUND_NAME, MANAGE_CODE, MANAGE_NAME, PROCESS_INST_ID, AUDITOR_ID, A_DATE,
+		A_OPINION, A_STATUS_CODE, AN_STATUS, IS_VALID, CANCELER_ID, CANCEL_DATE,
+		CANCEL_OPINION, PAY_VOU_NO_LIST, REMARK, FILENAME, FILENAME_BLOBID,
+		SUM_MONEY, SUM_MONEY1, SUM_MONEY2, SUM_MONEY3, M_ATTR1, M_ATTR2, M_ATTR3,
+		M_ATTR4, M_ATTR5, STAMP, EXP_TIMES, EXP_RECORD_ID,CO_CODE,CO_NAME,ORIGIN_CODE,ORIGIN_NAME
+		from CP_PAY_CLEAR_BILL
+		where ND=#nd#
+		<isNotNull property="printTimes" prepend="AND">
+			<isEqual property="printTimes" compareValue="0">
+				print_times=0
+			</isEqual>
+			<isGreaterThan property="printTimes" compareValue="0">
+				<![CDATA[
+				print_times>0
+				]]>
+			</isGreaterThan>
+		</isNotNull>
+		<isNotNull prepend="AND" property="startDate">
+			<![CDATA[
+			PROC_DATE >= #startDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="endDate">
+			<![CDATA[
+			PROC_DATE <= #endDate#
+			]]>
+		</isNotNull>
+		<isNotNull prepend="AND" property="astatusCode">
+			a_status_code = #astatusCode#
+		</isNotNull>
+		order by BILL_NO desc
+	</select>
+
+	<select id="getCpPayClearBillById" resultMap="cpPayClearBillResult" parameterClass="string">
+		select PAY_CLEAR_BILL_ID, ND, BILL_NO, PROC_DATE, INPUTOR_ID, CDATE,
+		OPERATION_TYPE_CODE, PRINT_TIMES, CP_ADJUST_CODE, PAY_CODE, PAY_NAME,
+		PAY_BANK_CODE, PAY_BANK_NO, PAY_BANK_NAME, PAY_ACC_CODE, PAY_ACC_NAME,
+		PAY_ACC_NO, RECE_CODE, RECE_NAME, RECE_BANK_CODE, RECE_BANK_NAME,
+		RECE_BANK_NO, RECE_ACC_CODE, RECE_ACC_NAME, RECE_ACC_NO, FUND_CODE,
+		FUND_NAME, MANAGE_CODE, MANAGE_NAME, PROCESS_INST_ID, AUDITOR_ID, A_DATE,
+		A_OPINION, A_STATUS_CODE, AN_STATUS, IS_VALID, CANCELER_ID, CANCEL_DATE,
+		CANCEL_OPINION, PAY_VOU_NO_LIST, REMARK, FILENAME, FILENAME_BLOBID,
+		SUM_MONEY, SUM_MONEY1, SUM_MONEY2, SUM_MONEY3, M_ATTR1, M_ATTR2, M_ATTR3,
+		M_ATTR4, M_ATTR5, STAMP, EXP_TIMES, EXP_RECORD_ID ,CO_CODE,CO_NAME,ORIGIN_CODE,ORIGIN_NAME
+		from CP_PAY_CLEAR_BILL
+		where PAY_CLEAR_BILL_ID = #payClearBillId:VARCHAR#
+	</select>
+
+	<delete id="deleteCpPayClearBillById" parameterClass="string">
+		delete from CP_PAY_CLEAR_BILL where PAY_CLEAR_BILL_ID = #payClearBillId:VARCHAR#
+	</delete>
+
+	<insert id="insertCpPayClearBill" parameterClass="cpPayClearBill">
+		insert into CP_PAY_CLEAR_BILL (PAY_CLEAR_BILL_ID, ND, BILL_NO,
+		PROC_DATE, INPUTOR_ID, CDATE, OPERATION_TYPE_CODE, PRINT_TIMES,
+		CP_ADJUST_CODE, PAY_CODE, PAY_NAME, PAY_BANK_CODE, PAY_BANK_NO,
+		PAY_BANK_NAME, PAY_ACC_CODE, PAY_ACC_NAME, PAY_ACC_NO, RECE_CODE, RECE_NAME,
+		RECE_BANK_CODE, RECE_BANK_NAME, RECE_BANK_NO, RECE_ACC_CODE, RECE_ACC_NAME,
+		RECE_ACC_NO, FUND_CODE,CO_CODE,ORIGIN_CODE,
+		MANAGE_CODE, MANAGE_NAME,PROCESS_INST_ID,AUDITOR_ID, A_DATE, A_OPINION, A_STATUS_CODE, AN_STATUS, IS_VALID,
+		CANCELER_ID, CANCEL_DATE, CANCEL_OPINION,  REMARK, FILENAME,
+		FILENAME_BLOBID, SUM_MONEY, SUM_MONEY1, SUM_MONEY2, SUM_MONEY3, M_ATTR1,
+		M_ATTR2, M_ATTR3, M_ATTR4, M_ATTR5, STAMP, EXP_TIMES, EXP_RECORD_ID, PAY_VOU_NO_LIST) values
+		(#payClearBillId:VARCHAR#, #nd:DECIMAL#, #billNo:VARCHAR#, #procDate:DATE#,
+		#inputorId:VARCHAR#, #cdate:DATE#, #operationTypeCode:VARCHAR#,
+		#printTimes:DECIMAL#, #cpAdjustCode:VARCHAR#, #payCode:VARCHAR#,
+		#payName:VARCHAR#, #payBankCode:VARCHAR#, #payBankNo:VARCHAR#,
+		#payBankName:VARCHAR#, #payAccCode:VARCHAR#, #payAccName:VARCHAR#,
+		#payAccNo:VARCHAR#, #receCode:VARCHAR#, #receName:VARCHAR#,
+		#receBankCode:VARCHAR#, #receBankName:VARCHAR#, #receBankNo:VARCHAR#,
+		#receAccCode:VARCHAR#, #receAccName:VARCHAR#, #receAccNo:VARCHAR#,
+		#fundCode:VARCHAR#,
+		#coCode:VARCHAR#,
+		#originCode:VARCHAR#,
+		#manageCode:VARCHAR#,
+		#manageName:VARCHAR#, #processInstId:DECIMAL#, #auditorId:VARCHAR#,
+		#adate:DATE#, #aopinion:VARCHAR#, #astatusCode:VARCHAR#,
+		#anStatus:VARCHAR#, #isValid:CHAR#, #cancelerId:VARCHAR#,
+		#cancelDate:DATE#, #cancelOpinion:VARCHAR#,
+		#remark:VARCHAR#, #filename:VARCHAR#, #filenameBlobid:VARCHAR#,
+		#sumMoney:DECIMAL#, #sumMoney1:DECIMAL#, #sumMoney2:DECIMAL#,
+		#sumMoney3:DECIMAL#, #mattr1:VARCHAR#, #mattr2:VARCHAR#, #mattr3:VARCHAR#,
+		#mattr4:VARCHAR#, #mattr5:VARCHAR#, #stamp:DECIMAL#, #expTimes:DECIMAL#,
+		#expRecordId:VARCHAR#,#payVouNoList:VARCHAR#)
+	</insert>
+	
+	  <update id="updateCoCodeName"  parameterClass="Map">
+		UPDATE CP_PAY_CLEAR_BILL t SET t.co_name=(SELECT co_name FROM ma_company WHERE co_code = #coCode:VARCHAR#  AND nd = #nd:DECIMAL#)
+		where ND = #nd:DECIMAL#	and PAY_CLEAR_BILL_ID =#payClearBillId:VARCHAR#
+	  </update>
+	  
+	  <update id="updateFundName"  parameterClass="Map">
+			UPDATE CP_PAY_CLEAR_BILL t SET t.fund_name=(SELECT fund_name FROM ma_cp_fund  WHERE fund_code = #fundCode:VARCHAR# AND nd = #nd:DECIMAL#)
+	  		where ND = #nd:DECIMAL#	and PAY_CLEAR_BILL_ID =#payClearBillId:VARCHAR#
+	  </update>
+	   
+	  <update id="updateOriginName"  parameterClass="Map">
+			UPDATE CP_PAY_CLEAR_BILL t SET t.origin_name=(SELECT origin_name  FROM ma_cp_origin WHERE origin_code = #originCode:VARCHAR#  AND nd = #nd:DECIMAL#)
+			where ND = #nd:DECIMAL#	and PAY_CLEAR_BILL_ID =#payClearBillId:VARCHAR#
+	  </update>
+
+	<parameterMap id="SP_CP_GEN_CLEAR_FORCPVOUCHER_MAP" class="java.util.HashMap">
+    	<parameter property="cpVoucherIds" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="nd" jdbcType="DECIMAL" javaType="int" mode="IN"/>
+    	<parameter property="procDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="userId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="cpAdjustCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="payAccNo" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_GEN_CLEAR_FORCPVOUCHER" parameterMap="SP_CP_GEN_CLEAR_FORCPVOUCHER_MAP">
+		{call SP_CP_GEN_CLEAR_FORCPVOUCHER(?,?,?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="SP_CP_GEN_CLEAR_FORVOUCHER_AUTO_MATCH_ACCOUNT_MAP" class="java.util.HashMap">
+    	<parameter property="cpVoucherIds" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="nd" jdbcType="DECIMAL" javaType="int" mode="IN"/>
+    	<parameter property="procDate" jdbcType="DATE" javaType="java.util.Date" mode="IN"/>
+    	<parameter property="userId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="cpAdjustCode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_GEN_CLEAR_FORVOUCHER_AUTO_MATCH_ACCOUNT" parameterMap="SP_CP_GEN_CLEAR_FORVOUCHER_AUTO_MATCH_ACCOUNT_MAP">
+		{call SP_CP_GEN_CLEAR_FORVOUCHER_ZD(?,?,?,?,?,?)}
+	</procedure>
+
+	<parameterMap id="SP_CP_DEL_CLEAR_FORCPVOUCHER_MAP" class="java.util.HashMap">
+    	<parameter property="payBillId" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="rtnStr" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	<procedure id="SP_CP_DEL_CLEAR_FORCPVOUCHER" parameterMap="SP_CP_DEL_CLEAR_FORCPVOUCHER_MAP">
+		{call SP_CP_DEL_CLEAR_FORCPVOUCHER(?,?)}
+	</procedure>
+
+	<update id="increasePrintTimes" parameterClass="Map">
+		UPDATE CP_PAY_CLEAR_BILL SET print_times=print_times+1
+		<dynamic prepend="WHERE">
+		  <iterate prepend="AND" property="billIdList"
+           open="(" close=")" conjunction="OR">
+           PAY_CLEAR_BILL_ID=#billIdList[]#
+          </iterate>
+       </dynamic>
+	</update>
+
+	<update id="sendBankForBb" parameterClass="Map">
+		UPDATE cp_pay_clear_bill SET a_status_code=#statusCode#
+		<dynamic prepend="WHERE">
+		  <iterate prepend="AND" property="CpPayClearBillList"  open="(" close=")" conjunction="OR">
+           		pay_clear_bill_id=#CpPayClearBillList[]#
+          </iterate>
+       </dynamic>
+	</update>
+
+
+	<parameterMap id="cpSendPayClearBillParameter" class="java.util.HashMap">
+    	<parameter property="P_PKEYVALUE" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="P_TRANSTYPE" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="P_DATTR1" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="P_DATTR2" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+    	<parameter property="P_DATTR3" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="P_RET_MESSAGE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+
+	<procedure id="sendBankForBa" parameterMap="cpSendPayClearBillParameter">
+		{call SP_CP_SENDCLEARBILL(?,?,?,?,?,?)}
+	</procedure>
+
+</sqlMap>

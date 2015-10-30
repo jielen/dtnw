@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="CpPlanAgentList">
+	<resultMap class="com.ufgov.zc.common.cp.model.CpPlanAgentList"
+		id="cpPlanAgentListResult">
+		<result column="PLAN_AGENT_LIST_ID" jdbcType="VARCHAR"
+			property="planAgentListId" />
+		<result column="PLAN_AGENT_BILL_ID" jdbcType="VARCHAR"
+			property="planAgentBillId" />
+		<result column="SEQU" jdbcType="DECIMAL" property="sequ" />
+		<result column="ORG_CODE" jdbcType="VARCHAR" property="orgCode" />
+		<result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+		<result column="CO_CODE" jdbcType="VARCHAR" property="coCode" />
+		<result column="CO_NAME" jdbcType="VARCHAR" property="coName" />
+		<result column="B_ACC_CODE" jdbcType="VARCHAR"
+			property="baccCode" />
+		<result column="B_ACC_NAME" jdbcType="VARCHAR"
+			property="baccName" />
+		<result column="OUTLAY_CODE" jdbcType="VARCHAR"
+			property="outlayCode" />
+		<result column="OUTLAY_NAME" jdbcType="VARCHAR"
+			property="outlayName" />
+		<result column="PROJECT_TYPE_CODE" jdbcType="VARCHAR"
+			property="projectTypeCode" />
+		<result column="PROJECT_TYPE_NAME" jdbcType="VARCHAR"
+			property="projectTypeName" />
+		<result column="PROJECT_CODE" jdbcType="VARCHAR"
+			property="projectCode" />
+		<result column="PROJECT_NAME" jdbcType="VARCHAR"
+			property="projectName" />
+		<result column="FUND_CODE" jdbcType="VARCHAR"
+			property="fundCode" />
+		<result column="FUND_NAME" jdbcType="VARCHAR"
+			property="fundName" />
+		<result column="ORIGIN_CODE" jdbcType="VARCHAR"
+			property="originCode" />
+		<result column="ORIGIN_NAME" jdbcType="VARCHAR"
+			property="originName" />
+		<result column="PAYOUT_CODE" jdbcType="VARCHAR"
+			property="payoutCode" />
+		<result column="PAYOUT_NAME" jdbcType="VARCHAR"
+			property="payoutName" />
+		<result column="MANAGE_CODE" jdbcType="VARCHAR"
+			property="manageCode" />
+		<result column="MANAGE_NAME" jdbcType="VARCHAR"
+			property="manageName" />
+		<result column="REMARK" jdbcType="VARCHAR" property="remark" />
+		<result column="MONEY" jdbcType="DECIMAL" property="money" />
+		<result column="MONEY1" jdbcType="DECIMAL" property="money1" />
+		<result column="MONEY2" jdbcType="DECIMAL" property="money2" />
+		<result column="MONEY3" jdbcType="DECIMAL" property="money3" />
+		<result column="D_ATTR1" jdbcType="VARCHAR" property="dattr1" />
+		<result column="D_ATTR2" jdbcType="VARCHAR" property="dattr2" />
+		<result column="D_ATTR3" jdbcType="VARCHAR" property="dattr3" />
+		<result column="D_ATTR4" jdbcType="VARCHAR" property="dattr4" />
+		<result column="D_ATTR5" jdbcType="VARCHAR" property="dattr5" />
+		<result column="STAMP" jdbcType="DECIMAL" property="stamp" />
+		<result column="D_ATTR1_NAME" jdbcType="VARCHAR"
+			property="dattr1Name" />
+		<result column="D_ATTR2_NAME" jdbcType="VARCHAR"
+			property="dattr2Name" />
+		<result column="D_ATTR3_NAME" jdbcType="VARCHAR"
+			property="dattr3Name" />
+		<result column="D_ATTR4_NAME" jdbcType="VARCHAR"
+			property="dattr4Name" />
+		<result column="D_ATTR5_NAME" jdbcType="VARCHAR"
+			property="dattr5Name" />
+		<result column="ND" jdbcType="DECIMAL" property="nd" />
+		<result column="BI_BALANCE_ID" jdbcType="VARCHAR"
+			property="biBalanceId" />
+		<result column="INCEPTDOC_CODE" jdbcType="VARCHAR"
+			property="inceptDocCode" />
+		<result column="INCEPTDOC_NAME" jdbcType="VARCHAR"
+			property="inceptDocName" />
+		<result column="SENDDOC_CODE" jdbcType="VARCHAR"
+			property="sendDocCode" />
+		<result column="SENDDOC_NAME" jdbcType="VARCHAR"
+			property="sendDocName" />
+		<result column="BILL_NO" jdbcType="VARCHAR" property="billNo" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey"
+		parameterClass="com.ufgov.zc.common.cp.model.CpPlanAgentList"
+		resultMap="cpPlanAgentListResult">
+		select PLAN_AGENT_LIST_ID, PLAN_AGENT_BILL_ID, SEQU, ORG_CODE,
+		ORG_NAME, CO_CODE, CO_NAME, B_ACC_CODE, B_ACC_NAME, OUTLAY_CODE,
+		OUTLAY_NAME, PROJECT_TYPE_CODE, PROJECT_TYPE_NAME, PROJECT_CODE,
+		PROJECT_NAME, FUND_CODE, FUND_NAME, ORIGIN_CODE, ORIGIN_NAME,
+		PAYOUT_CODE, PAYOUT_NAME, MANAGE_CODE, MANAGE_NAME, REMARK,
+		MONEY, MONEY1, MONEY2, MONEY3, D_ATTR1, D_ATTR2, D_ATTR3,
+		D_ATTR4, D_ATTR5, STAMP, D_ATTR1_NAME, D_ATTR2_NAME,
+		D_ATTR3_NAME, D_ATTR4_NAME, D_ATTR5_NAME, ND from
+		CP_PLAN_AGENT_LIST where PLAN_AGENT_LIST_ID =
+		#planAgentListId:VARCHAR#
+	</select>
+
+
+	<select id="getCpPlanAgentList" resultMap="cpPlanAgentListResult"
+		parameterClass="string">
+		select t.*, (select bill_no from cp_plan_agent_bill bill where
+		t.plan_agent_bill_id=bill.plan_agent_bill_id and t.nd=bill.nd )
+		bill_no from CP_PLAN_AGENT_LIST t where PLAN_AGENT_BILL_ID
+		=#planAgentBillId# order by BILL_NO DESC
+	</select>
+
+	<select id="getCpPlanAgentList2" resultMap="cpPlanAgentListResult"
+		parameterClass="elementCondition">
+		select t.*, (select bill_no from cp_plan_agent_bill bill where
+		t.plan_agent_bill_id=bill.plan_agent_bill_id and t.nd=bill.nd )
+		bill_no from CP_PLAN_AGENT_LIST t where PLAN_AGENT_BILL_ID
+		 in ( select PLAN_AGENT_BILL_ID from CP_PLAN_AGENT_BILL master
+		<include refid="CpPlanAgentBill.getCpPlanAgentBill1Condition" />
+		 )
+		order by BILL_NO DESC
+	</select>
+
+	<select id="getCpPlanAgentListForList"
+		resultMap="cpPlanAgentListResult" parameterClass="map">
+		select t.*, (select bill_no from cp_plan_agent_bill bill where
+		t.plan_agent_bill_id=bill.plan_agent_bill_id and t.nd=bill.nd )
+		bill_no from CP_PLAN_AGENT_LIST t
+		<dynamic prepend="WHERE">
+			<iterate prepend="AND" property="planAgentBillIdList"
+				open="(" close=")" conjunction="OR">
+				PLAN_AGENT_BILL_ID=#planAgentBillIdList[]#
+			</iterate>
+		</dynamic>
+		order by BILL_NO DESC
+	</select>
+
+	<insert id="insert"
+		parameterClass="com.ufgov.zc.common.cp.model.CpPlanAgentList">
+		insert into CP_PLAN_AGENT_LIST (PLAN_AGENT_LIST_ID,
+		PLAN_AGENT_BILL_ID,
+		SEQU,
+		ORG_CODE,
+		ORG_NAME,
+		CO_CODE,
+		CO_NAME,
+		B_ACC_CODE,
+		B_ACC_NAME,
+		OUTLAY_CODE,
+		OUTLAY_NAME,
+		PROJECT_TYPE_CODE,
+		PROJECT_TYPE_NAME,
+		PROJECT_CODE,
+		PROJECT_NAME,
+		FUND_CODE,
+		FUND_NAME,
+		ORIGIN_CODE,
+		ORIGIN_NAME,
+		PAYOUT_CODE,
+		PAYOUT_NAME,
+		MANAGE_CODE,
+		MANAGE_NAME,
+		REMARK,
+		MONEY, MONEY1, MONEY2, MONEY3,
+		D_ATTR1, D_ATTR2, D_ATTR3,
+		D_ATTR4, D_ATTR5, STAMP, D_ATTR1_NAME, D_ATTR2_NAME,
+		D_ATTR3_NAME, D_ATTR4_NAME, D_ATTR5_NAME,
+		ND,
+		BI_BALANCE_ID,
+		INCEPTDOC_CODE,
+		INCEPTDOC_NAME,
+		SENDDOC_CODE,
+		SENDDOC_NAME,
+		DP_DETAIL_ID)
+		values (#planAgentListId:VARCHAR#,
+		#planAgentBillId:VARCHAR#,
+		#sequ:DECIMAL#,
+		#orgCode:VARCHAR#,
+		(SELECT org_name FROM v_cp_org WHERE org_code=#orgCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#coCode:VARCHAR#,
+		(SELECT CO_NAME FROM MA_COMPANY WHERE CO_CODE = #coCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#baccCode:VARCHAR#,
+		(SELECT b_acc_name FROM ma_bacc WHERE b_acc_code=#baccCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#outlayCode:VARCHAR#,
+		(SELECT outlay_name FROM ma_outlaytype WHERE outlay_code=#outlayCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#projectTypeCode:VARCHAR#,
+		(SELECT project_type_name FROM ma_project_type WHERE project_type_code=#projectTypeCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#projectCode:VARCHAR#,
+		(SELECT pd_project_name FROM v_cp_project WHERE pd_project_code=#projectCode:VARCHAR#),
+		#fundCode:VARCHAR#,
+		(SELECT fund_name FROM ma_cp_fund WHERE fund_code=#fundCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#originCode:VARCHAR#,
+		(SELECT Origin_name FROM ma_cp_origin WHERE Origin_code=#originCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#payoutCode:VARCHAR#,
+		(SELECT payout_name FROM ma_cp_payout WHERE payout_code=#payoutCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#manageCode:VARCHAR#,
+		(SELECT manage_name FROM ma_cp_manage WHERE manage_code=#manageCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#remark:VARCHAR#,
+		#money:DECIMAL#,
+		#money1:DECIMAL#,
+		#money2:DECIMAL#,
+		#money3:DECIMAL#,
+		#dattr1:VARCHAR#,
+		#dattr2:VARCHAR#,
+		#dattr3:VARCHAR#,
+		#dattr4:VARCHAR#,
+		#dattr5:VARCHAR#,
+		#stamp:DECIMAL#,
+		#dattr1Name:VARCHAR#,
+		#dattr2Name:VARCHAR#,
+		#dattr3Name:VARCHAR#,
+		#dattr4Name:VARCHAR#,
+		#dattr5Name:VARCHAR#,
+		#nd:DECIMAL#,
+		#biBalanceId:VARCHAR#,
+		#inceptDocCode:VARCHAR#,
+		(SELECT inceptdoc_name FROM ma_cp_inceptDoc WHERE inceptdoc_code=#inceptDocCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#sendDocCode:VARCHAR#,
+		(SELECT senddoc_name FROM ma_cp_senddoc WHERE senddoc_code=#sendDocCode:VARCHAR# AND ND=#nd:DECIMAL#),
+		#dpDetailId:VARCHAR#)
+	</insert>
+
+</sqlMap>

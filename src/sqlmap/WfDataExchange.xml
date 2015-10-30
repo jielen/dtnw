@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="WfDataExchange">
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+	
+	<!-- 运行时用 -->
+	<resultMap class="com.ufgov.zc.common.zc.model.WfDraftModel" id="draftmap">
+		<result property="draftId" 				column="WF_DRAFT_ID" />
+		<result property="draftName" 			column="WF_DRAFT_NAME" />		
+		<result property="compoId" 				column="COMPO_ID" />	
+		<result property="masteTableId" 		column="MASTER_TAB_ID" />			
+		<result property="userId" 				column="USER_ID" />	
+		<result property="userName" 			column="USER_NAME" />		
+		<result property="saveTime" 			column="SAVE_TIME" />		
+		<result property="status" 				column="STATUS" />		
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfInstanceModel" id="instancemap">
+		<result property="instanceId"			column="INSTANCE_ID" />		
+		<result property="name" 				column="NAME" />		
+		<result property="description" 			column="DESCRIPTION" />		
+		<result property="templateId" 			column="TEMPLATE_ID" />			
+		<result property="owner" 				column="OWNER" />			
+		<result property="startTime" 			column="START_TIME" />		
+		<result property="endTime" 				column="END_TIME" />		
+		<result property="status" 				column="STATUS" />		
+		<result property="parentInstanceId" 	column="PARENT_INSTANCE_ID" />		
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfCurrentTaskModel" id="currenttaskmap">
+		<result property="currentTaskId" 		column="CURRENT_TASK_ID" />			
+		<result property="instanceId" 			column="INSTANCE_ID" />		
+		<result property="nodeId" 				column="NODE_ID" />	
+		<result property="executor" 			column="EXECUTOR" />	
+		<result property="delegationId" 		column="DELEGATION_ID" />		
+		<result property="owner" 				column="OWNER" />
+		<result property="creator" 				column="CREATOR" />		
+		<result property="createTime" 			column="CREATE_TIME" />	
+		<result property="limitExecuteTime" 	column="LIMIT_EXECUTE_TIME" />		
+		<result property="responsibility" 		column="RESPONSIBILITY" />	
+		<result property="parentTaskId" 		column="PARENT_TASK_ID" />
+		<result property="granterInfo" 			column="GRANTER_INFO" />
+		<result property="granterId" 			column="GRANTER_ID" />
+		<result property="gkSendStatus" 		column="GK_SEND_STATUS" />
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfTaskExecutorModel" id="taskexecutormap">
+		<result property="taskExecutorOrderId" 	column="TASK_EXECUTOR_ORDER_ID" />		
+		<result property="instanceId" 			column="INSTANCE_ID" />
+		<result property="nodeId" 				column="NODE_ID" />
+		<result property="executor" 			column="EXECUTOR" />	
+		<result property="executorOrder" 		column="EXECUTOR_ORDER" />
+		<result property="responsibility" 		column="RESPONSIBILITY" />
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfActionModel" id="actionmap">
+		<result property="actionId" 			column="ACTION_ID" />	
+		<result property="instanceId" 			column="INSTANCE_ID" />
+		<result property="nodeId" 				column="NODE_ID" />	
+		<result property="actionName" 			column="ACTION_NAME" />		
+		<result property="executor" 			column="EXECUTOR" />
+		<result property="executeTime" 			column="EXECUTE_TIME" />
+		<result property="description" 			column="DESCRIPTION" />
+		<result property="owner" 				column="OWNER" />
+		<result property="limitExecuteTime" 	column="LIMIT_EXECUTE_TIME" />
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfActionHistoryModel" id="actionhistorymap">
+		<result property="actionHistoryId" 		column="ACTION_HISTORY_ID" />	
+		<result property="instanceId" 			column="INSTANCE_ID" />
+		<result property="nodeId" 				column="NODE_ID" />
+		<result property="actionName" 			column="ACTION_NAME" />
+		<result property="executor" 			column="EXECUTOR" />
+		<result property="executeTime" 			column="EXECUTE_TIME" />
+		<result property="description" 			column="DESCRIPTION" />
+		<result property="owner" 				column="OWNER" />
+		<result property="limitExecuteTime" 	column="LIMIT_EXECUTE_TIME" />
+	</resultMap>
+	
+	<resultMap class="com.ufgov.zc.common.zc.model.WfStateValueModel" id="statevaluemap">
+		<result property="stateValueId" 		column="STATE_VALUE_ID" />
+		<result property="instanceId" 			column="INSTANCE_ID" />
+		<result property="stateId" 				column="STATE_ID" />
+		<result property="value" 				column="VALUE" />
+	</resultMap>
+	<!-- 草稿 -->
+	<insert id="data_exchange_insert_Draft" parameterClass="com.ufgov.zc.common.zc.model.WfDraftModel">
+		INSERT INTO AS_WF_DRAFT
+		  (WF_DRAFT_ID,
+		   WF_DRAFT_NAME,
+		   COMPO_ID,
+		   MASTER_TAB_ID,
+		   USER_ID,
+		   USER_NAME,
+		   SAVE_TIME,
+		   STATUS)
+		VALUES
+		  (#draftId#,
+		   #draftName#,
+		   #compoId#,
+		   #masteTableId#,
+		   #userId#,
+		   #userName#,
+		   #saveTime#,
+		   #status#)
+	</insert>
+	<delete id="data_exchange_remove_Draft_byIdLst" parameterClass="elementCondition">
+		DELETE FROM as_wf_draft t 
+		WHERE t.wf_draft_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>	
+	<select id="data_exchange_get_Draft_byIdLst" parameterClass="elementCondition" resultMap="draftmap">
+		SELECT * FROM as_wf_draft t 
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.wf_draft_id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+        </isNotEmpty>	
+	</select>
+	
+	<!-- 实例 -->
+	<insert id="data_exchange_insert_Instance" parameterClass="com.ufgov.zc.common.zc.model.WfInstanceModel">
+		INSERT INTO WF_INSTANCE
+		  (INSTANCE_ID,
+		   NAME,
+		   DESCRIPTION,
+		   TEMPLATE_ID,
+		   OWNER,
+		   START_TIME,
+		   END_TIME,
+		   STATUS,
+		   PARENT_INSTANCE_ID)
+		VALUES
+		  (#instanceId#,
+		   #name#,
+		   #description:VARCHAR#,
+		   #templateId#,
+		   #owner#,
+		   #startTime#,
+		   #endTime#,
+		   #status#,
+		   #parentInstanceId#)
+	</insert>
+	<delete id="data_exchange_remove_Instance_byIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_instance t 
+		WHERE 
+			t.instance_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	<select id="data_exchange_get_Instance_byIdLst" parameterClass="elementCondition" resultMap="instancemap">
+		SELECT * FROM wf_instance t 
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+        </isNotEmpty>	
+	</select>
+	
+	<!-- current task -->
+	<insert id="data_exchange_insert_CurrentTask" parameterClass="com.ufgov.zc.common.zc.model.WfCurrentTaskModel">
+		INSERT INTO WF_CURRENT_TASK
+		  (CURRENT_TASK_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   EXECUTOR,
+		   DELEGATION_ID,
+		   OWNER,
+		   CREATOR,
+		   CREATE_TIME,
+		   LIMIT_EXECUTE_TIME,
+		   RESPONSIBILITY,
+		   PARENT_TASK_ID,
+		   GRANTER_ID,
+		   GRANTER_INFO)
+		VALUES
+		  (#currentTaskId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #executor#,
+		   #delegationId#,
+		   #owner#,
+		   #creator#,
+		   #createTime#,
+		   #limitExecuteTime:VARCHAR#,
+		   #responsibility#,
+		   #parentTaskId#,
+		   #granterId#,
+		   #granterInfo#)
+	</insert>
+	<delete id="data_exchange_remove_currentTaskByIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_current_task t 
+				where t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	<select id="data_exchange_get_currentTaskByIdLst" parameterClass="elementCondition" resultMap="currenttaskmap">
+		SELECT t.*
+		  FROM wf_current_task t
+		 INNER JOIN WF_INSTANCE i ON t.INSTANCE_ID = i.INSTANCE_ID
+		                         AND i.STATUS = 1		                          
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+    </isNotEmpty>	
+	</select>
+	
+	<!-- taskexecutor -->
+	<insert id="data_exchange_insert_TaskExecutor" parameterClass="com.ufgov.zc.common.zc.model.WfTaskExecutorModel">
+		INSERT INTO WF_TASK_EXECUTOR
+		  (TASK_EXECUTOR_ORDER_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   EXECUTOR,
+		   EXECUTOR_ORDER,
+		   RESPONSIBILITY
+		   )
+		VALUES
+		  (#taskExecutorOrderId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #executor#,
+		   #executorOrder#,
+		   #responsibility#
+		   )	
+	</insert>
+	<select id="data_exchange_get_TaskExecutorByIdLst" parameterClass="elementCondition" resultMap="taskexecutormap">
+  		SELECT t.* FROM wf_task_executor t		                          
+		<isNotEmpty property="pmAdjustCodeList" prepend="where">
+            t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+    </isNotEmpty>	
+	</select>
+	<delete id="data_exchange_remove_TaskExecutorByIdLst" parameterClass="elementCondition">
+		DELETE FROM WF_TASK_EXECUTOR t where t.Instance_Id in
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	
+	<!-- action -->
+	<insert id="data_exchange_insert_Action" parameterClass="com.ufgov.zc.common.zc.model.WfActionModel">
+		INSERT INTO WF_ACTION
+		  (ACTION_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   ACTION_NAME,
+		   EXECUTOR,
+		   EXECUTE_TIME,
+		   DESCRIPTION,
+		   OWNER,
+		   LIMIT_EXECUTE_TIME)
+		VALUES
+		  (#actionId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #actionName:VARCHAR#,
+		   #executor#,
+		   #executeTime#,
+		   #description:VARCHAR#,
+		   #owner#,
+		   #limitExecuteTime:VARCHAR#)		
+	</insert>
+	
+	<delete id="data_exchange_remove_ActionByIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_action t where t.instance_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	
+	<select id="data_exchange_get_ActionByIdLst" parameterClass="elementCondition" resultMap="actionmap">
+		SELECT * FROM wf_action t where t.instance_id in  
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</select>
+	
+	<!-- actionhistory -->
+	<insert id="data_exchange_insert_ActionHistory" parameterClass="com.ufgov.zc.common.zc.model.WfActionHistoryModel">
+		INSERT INTO WF_ACTION_HISTORY
+		  (ACTION_HISTORY_ID,
+		   INSTANCE_ID,
+		   NODE_ID,
+		   ACTION_NAME,
+		   EXECUTOR,
+		   EXECUTE_TIME,
+		   DESCRIPTION,
+		   OWNER,
+		   LIMIT_EXECUTE_TIME)
+		VALUES
+		  (#actionHistoryId#,
+		   #instanceId#,
+		   #nodeId#,
+		   #actionName:VARCHAR#,
+		   #executor#,
+		   #executeTime#,
+		   #description:VARCHAR#,
+		   #owner#,
+		   #limitExecuteTime:VARCHAR#)
+	</insert>
+	<select id="data_exchange_get_ActionHistoryByIdLst" parameterClass="elementCondition" resultMap="actionhistorymap">
+		SELECT * FROM wf_action_history t, wf_instance i WHERE t.Instance_Id=i.Instance_Id AND i.status>-9
+		and t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>		
+	</select>	
+	<delete id="data_exchange_remove_ActionHistoryByIdLst" parameterClass="elementCondition">
+		DELETE FROM wf_action_history t where t.instance_id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+	
+	<!-- statevalue -->
+	<insert id="data_exchange_insert_StateValue" parameterClass="com.ufgov.zc.common.zc.model.WfStateValueModel">
+		INSERT INTO WF_STATE_VALUE
+		  (STATE_VALUE_ID, INSTANCE_ID, STATE_ID, VALUE)
+		VALUES
+		  (#stateValueId#,
+		   #instanceId#,
+		   #stateId#,
+		   #value#)
+	</insert>
+	
+	<select id="data_exchange_get_StateValueByIdLst" parameterClass="elementCondition" resultMap="statevaluemap">
+		SELECT * FROM wf_state_value t WHERE t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</select>
+		
+	<delete id="data_exchange_remove_StateValueByIdLst" parameterClass="elementCondition">
+		DELETE FROM WF_STATE_VALUE t WHERE t.Instance_Id in 
+            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">
+                #pmAdjustCodeList[]#
+            </iterate>
+	</delete>
+</sqlMap>
+

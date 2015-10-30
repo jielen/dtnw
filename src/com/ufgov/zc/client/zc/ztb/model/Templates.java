@@ -1,0 +1,1 @@
+package com.ufgov.zc.client.zc.ztb.model;import java.util.List;public class Templates implements Cloneable {  private List<Object> templateList;  public List<Object> getTemplateList() {    return templateList;  }  public void setTemplateList(List<Object> templateList) {    this.templateList = templateList;  }}
