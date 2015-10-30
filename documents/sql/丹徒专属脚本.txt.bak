@@ -1,0 +1,2 @@
+
+delete  from zc_role_search_condition r where r.role_id='CSZGY' and r.condition_id='ZcXmcgHt_entrustTab' and r.condition_field_code='draft';
