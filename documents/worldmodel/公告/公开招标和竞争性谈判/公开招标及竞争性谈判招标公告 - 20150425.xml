@@ -1,0 +1,2696 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?mso-application progid="Word.Document"?>
+<w:wordDocument xmlns:aml="http://schemas.microsoft.com/aml/2001/core" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.microsoft.com/office/word/2003/wordml" xmlns:wx="http://schemas.microsoft.com/office/word/2003/auxHint" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wsp="http://schemas.microsoft.com/office/word/2003/wordml/sp2" xmlns:sl="http://schemas.microsoft.com/schemaLibrary/2003/core" w:macrosPresent="no" w:embeddedObjPresent="no" w:ocxPresent="no" xml:space="preserve">
+	<w:ignoreSubtree w:val="http://schemas.microsoft.com/office/word/2003/wordml/sp2"/>
+	<o:DocumentProperties>
+		<o:Author>*</o:Author>
+		<o:LastAuthor>*</o:LastAuthor>
+		<o:Revision>8</o:Revision>
+		<o:TotalTime>95</o:TotalTime>
+		<o:Created>2014-05-30T02:36:00Z</o:Created>
+		<o:LastSaved>2015-04-25T06:49:00Z</o:LastSaved>
+		<o:Pages>2</o:Pages>
+		<o:Words>202</o:Words>
+		<o:Characters>1153</o:Characters>
+		<o:Lines>9</o:Lines>
+		<o:Paragraphs>2</o:Paragraphs>
+		<o:CharactersWithSpaces>1353</o:CharactersWithSpaces>
+		<o:Version>14</o:Version>
+	</o:DocumentProperties>
+	<w:fonts>
+		<w:defaultFonts w:ascii="Calibri" w:fareast="宋体" w:h-ansi="Calibri" w:cs="Times New Roman"/>
+		<w:font w:name="Times New Roman">
+			<w:panose-1 w:val="02020603050405020304"/>
+			<w:charset w:val="00"/>
+			<w:family w:val="Roman"/>
+			<w:pitch w:val="variable"/>
+			<w:sig w:usb-0="E0002AFF" w:usb-1="C0007841" w:usb-2="00000009" w:usb-3="00000000" w:csb-0="000001FF" w:csb-1="00000000"/>
+		</w:font>
+		<w:font w:name="宋体">
+			<w:altName w:val="SimSun"/>
+			<w:panose-1 w:val="02010600030101010101"/>
+			<w:charset w:val="86"/>
+			<w:family w:val="auto"/>
+			<w:pitch w:val="variable"/>
+			<w:sig w:usb-0="00000003" w:usb-1="288F0000" w:usb-2="00000016" w:usb-3="00000000" w:csb-0="00040001" w:csb-1="00000000"/>
+		</w:font>
+		<w:font w:name="Cambria Math">
+			<w:panose-1 w:val="02040503050406030204"/>
+			<w:charset w:val="01"/>
+			<w:family w:val="Roman"/>
+			<w:notTrueType/>
+			<w:pitch w:val="variable"/>
+		</w:font>
+		<w:font w:name="Calibri">
+			<w:panose-1 w:val="020F0502020204030204"/>
+			<w:charset w:val="00"/>
+			<w:family w:val="Swiss"/>
+			<w:pitch w:val="variable"/>
+			<w:sig w:usb-0="E00002FF" w:usb-1="4000ACFF" w:usb-2="00000001" w:usb-3="00000000" w:csb-0="0000019F" w:csb-1="00000000"/>
+		</w:font>
+		<w:font w:name="@宋体">
+			<w:panose-1 w:val="02010600030101010101"/>
+			<w:charset w:val="86"/>
+			<w:family w:val="auto"/>
+			<w:pitch w:val="variable"/>
+			<w:sig w:usb-0="00000003" w:usb-1="288F0000" w:usb-2="00000016" w:usb-3="00000000" w:csb-0="00040001" w:csb-1="00000000"/>
+		</w:font>
+	</w:fonts>
+	<w:styles>
+		<w:versionOfBuiltInStylenames w:val="7"/>
+		<w:latentStyles w:defLockedState="off" w:latentStyleCount="267">
+			<w:lsdException w:name="Normal"/>
+			<w:lsdException w:name="heading 1"/>
+			<w:lsdException w:name="heading 2"/>
+			<w:lsdException w:name="heading 3"/>
+			<w:lsdException w:name="heading 4"/>
+			<w:lsdException w:name="heading 5"/>
+			<w:lsdException w:name="heading 6"/>
+			<w:lsdException w:name="heading 7"/>
+			<w:lsdException w:name="heading 8"/>
+			<w:lsdException w:name="heading 9"/>
+			<w:lsdException w:name="caption"/>
+			<w:lsdException w:name="Title"/>
+			<w:lsdException w:name="Subtitle"/>
+			<w:lsdException w:name="Strong"/>
+			<w:lsdException w:name="Emphasis"/>
+			<w:lsdException w:name="No Spacing"/>
+			<w:lsdException w:name="List Paragraph"/>
+			<w:lsdException w:name="Quote"/>
+			<w:lsdException w:name="Intense Quote"/>
+			<w:lsdException w:name="Subtle Emphasis"/>
+			<w:lsdException w:name="Intense Emphasis"/>
+			<w:lsdException w:name="Subtle Reference"/>
+			<w:lsdException w:name="Intense Reference"/>
+			<w:lsdException w:name="Book Title"/>
+			<w:lsdException w:name="TOC Heading"/>
+		</w:latentStyles>
+		<w:style w:type="paragraph" w:default="on" w:styleId="a">
+			<w:name w:val="Normal"/>
+			<wx:uiName wx:val="正文"/>
+			<w:rsid w:val="004B3C34"/>
+			<w:pPr>
+				<w:widowControl w:val="off"/>
+				<w:jc w:val="both"/>
+			</w:pPr>
+			<w:rPr>
+				<wx:font wx:val="Calibri"/>
+				<w:kern w:val="2"/>
+				<w:sz w:val="21"/>
+				<w:sz-cs w:val="22"/>
+				<w:lang w:val="EN-US" w:fareast="ZH-CN" w:bidi="AR-SA"/>
+			</w:rPr>
+		</w:style>
+		<w:style w:type="character" w:default="on" w:styleId="a0">
+			<w:name w:val="Default Paragraph Font"/>
+			<wx:uiName wx:val="默认段落字体"/>
+		</w:style>
+		<w:style w:type="table" w:default="on" w:styleId="a1">
+			<w:name w:val="Normal Table"/>
+			<wx:uiName wx:val="普通表格"/>
+			<w:rPr>
+				<wx:font wx:val="Calibri"/>
+				<w:lang w:val="EN-US" w:fareast="ZH-CN" w:bidi="AR-SA"/>
+			</w:rPr>
+			<w:tblPr>
+				<w:tblInd w:w="0" w:type="dxa"/>
+				<w:tblCellMar>
+					<w:top w:w="0" w:type="dxa"/>
+					<w:left w:w="108" w:type="dxa"/>
+					<w:bottom w:w="0" w:type="dxa"/>
+					<w:right w:w="108" w:type="dxa"/>
+				</w:tblCellMar>
+			</w:tblPr>
+		</w:style>
+		<w:style w:type="list" w:default="on" w:styleId="a2">
+			<w:name w:val="No List"/>
+			<wx:uiName wx:val="无列表"/>
+		</w:style>
+		<w:style w:type="table" w:styleId="a3">
+			<w:name w:val="Table Grid"/>
+			<wx:uiName wx:val="网格型"/>
+			<w:basedOn w:val="a1"/>
+			<w:rsid w:val="004B3C34"/>
+			<w:rPr>
+				<wx:font wx:val="Calibri"/>
+			</w:rPr>
+			<w:tblPr>
+				<w:tblInd w:w="0" w:type="dxa"/>
+				<w:tblBorders>
+					<w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					<w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					<w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					<w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					<w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					<w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+				</w:tblBorders>
+				<w:tblCellMar>
+					<w:top w:w="0" w:type="dxa"/>
+					<w:left w:w="108" w:type="dxa"/>
+					<w:bottom w:w="0" w:type="dxa"/>
+					<w:right w:w="108" w:type="dxa"/>
+				</w:tblCellMar>
+			</w:tblPr>
+		</w:style>
+		<w:style w:type="paragraph" w:styleId="a4">
+			<w:name w:val="header"/>
+			<wx:uiName wx:val="页眉"/>
+			<w:basedOn w:val="a"/>
+			<w:link w:val="Char"/>
+			<w:rsid w:val="00DB3FFA"/>
+			<w:pPr>
+				<w:pBdr>
+					<w:bottom w:val="single" w:sz="6" wx:bdrwidth="15" w:space="1" w:color="auto"/>
+				</w:pBdr>
+				<w:tabs>
+					<w:tab w:val="center" w:pos="4153"/>
+					<w:tab w:val="right" w:pos="8306"/>
+				</w:tabs>
+				<w:snapToGrid w:val="off"/>
+				<w:jc w:val="center"/>
+			</w:pPr>
+			<w:rPr>
+				<wx:font wx:val="Calibri"/>
+				<w:kern w:val="0"/>
+				<w:sz w:val="18"/>
+				<w:sz-cs w:val="18"/>
+			</w:rPr>
+		</w:style>
+		<w:style w:type="character" w:styleId="Char">
+			<w:name w:val="页眉 Char"/>
+			<w:link w:val="a4"/>
+			<w:rsid w:val="00DB3FFA"/>
+			<w:rPr>
+				<w:sz w:val="18"/>
+				<w:sz-cs w:val="18"/>
+			</w:rPr>
+		</w:style>
+		<w:style w:type="paragraph" w:styleId="a5">
+			<w:name w:val="footer"/>
+			<wx:uiName wx:val="页脚"/>
+			<w:basedOn w:val="a"/>
+			<w:link w:val="Char0"/>
+			<w:rsid w:val="00DB3FFA"/>
+			<w:pPr>
+				<w:tabs>
+					<w:tab w:val="center" w:pos="4153"/>
+					<w:tab w:val="right" w:pos="8306"/>
+				</w:tabs>
+				<w:snapToGrid w:val="off"/>
+				<w:jc w:val="left"/>
+			</w:pPr>
+			<w:rPr>
+				<wx:font wx:val="Calibri"/>
+				<w:kern w:val="0"/>
+				<w:sz w:val="18"/>
+				<w:sz-cs w:val="18"/>
+			</w:rPr>
+		</w:style>
+		<w:style w:type="character" w:styleId="Char0">
+			<w:name w:val="页脚 Char"/>
+			<w:link w:val="a5"/>
+			<w:rsid w:val="00DB3FFA"/>
+			<w:rPr>
+				<w:sz w:val="18"/>
+				<w:sz-cs w:val="18"/>
+			</w:rPr>
+		</w:style>
+		<w:style w:type="character" w:styleId="a6">
+			<w:name w:val="Hyperlink"/>
+			<wx:uiName wx:val="超链接"/>
+			<w:rsid w:val="002E7237"/>
+			<w:rPr>
+				<w:color w:val="0000FF"/>
+				<w:u w:val="single"/>
+			</w:rPr>
+		</w:style>
+	</w:styles>
+	<w:shapeDefaults>
+		<o:shapedefaults v:ext="edit" spidmax="2049"/>
+		<o:shapelayout v:ext="edit">
+			<o:idmap v:ext="edit" data="1"/>
+		</o:shapelayout>
+	</w:shapeDefaults>
+	<w:docPr>
+		<w:view w:val="print"/>
+		<w:zoom w:percent="100"/>
+		<w:doNotEmbedSystemFonts/>
+		<w:bordersDontSurroundHeader/>
+		<w:bordersDontSurroundFooter/>
+		<w:proofState w:spelling="clean" w:grammar="clean"/>
+		<w:defaultTabStop w:val="420"/>
+		<w:drawingGridVerticalSpacing w:val="156"/>
+		<w:displayHorizontalDrawingGridEvery w:val="0"/>
+		<w:displayVerticalDrawingGridEvery w:val="2"/>
+		<w:punctuationKerning/>
+		<w:characterSpacingControl w:val="CompressPunctuation"/>
+		<w:optimizeForBrowser/>
+		<w:allowPNG/>
+		<w:validateAgainstSchema/>
+		<w:saveInvalidXML w:val="off"/>
+		<w:ignoreMixedContent w:val="off"/>
+		<w:alwaysShowPlaceholderText w:val="off"/>
+		<w:hdrShapeDefaults>
+			<o:shapedefaults v:ext="edit" spidmax="2049"/>
+		</w:hdrShapeDefaults>
+		<w:footnotePr>
+			<w:footnote w:type="separator">
+				<w:p wsp:rsidR="00C34859" wsp:rsidRDefault="00C34859" wsp:rsidP="00DB3FFA">
+					<w:r>
+						<w:separator/>
+					</w:r>
+				</w:p>
+			</w:footnote>
+			<w:footnote w:type="continuation-separator">
+				<w:p wsp:rsidR="00C34859" wsp:rsidRDefault="00C34859" wsp:rsidP="00DB3FFA">
+					<w:r>
+						<w:continuationSeparator/>
+					</w:r>
+				</w:p>
+			</w:footnote>
+		</w:footnotePr>
+		<w:endnotePr>
+			<w:endnote w:type="separator">
+				<w:p wsp:rsidR="00C34859" wsp:rsidRDefault="00C34859" wsp:rsidP="00DB3FFA">
+					<w:r>
+						<w:separator/>
+					</w:r>
+				</w:p>
+			</w:endnote>
+			<w:endnote w:type="continuation-separator">
+				<w:p wsp:rsidR="00C34859" wsp:rsidRDefault="00C34859" wsp:rsidP="00DB3FFA">
+					<w:r>
+						<w:continuationSeparator/>
+					</w:r>
+				</w:p>
+			</w:endnote>
+		</w:endnotePr>
+		<w:compat>
+			<w:spaceForUL/>
+			<w:balanceSingleByteDoubleByteWidth/>
+			<w:doNotLeaveBackslashAlone/>
+			<w:ulTrailSpace/>
+			<w:doNotExpandShiftReturn/>
+			<w:adjustLineHeightInTable/>
+			<w:breakWrappedTables/>
+			<w:snapToGridInCell/>
+			<w:wrapTextWithPunct/>
+			<w:useAsianBreakRules/>
+			<w:dontGrowAutofit/>
+			<w:useFELayout/>
+		</w:compat>
+		<wsp:rsids>
+			<wsp:rsidRoot wsp:val="004B3C34"/>
+			<wsp:rsid wsp:val="0004081A"/>
+			<wsp:rsid wsp:val="000441E4"/>
+			<wsp:rsid wsp:val="00063C21"/>
+			<wsp:rsid wsp:val="001330B3"/>
+			<wsp:rsid wsp:val="0014772F"/>
+			<wsp:rsid wsp:val="00160393"/>
+			<wsp:rsid wsp:val="001D5DAC"/>
+			<wsp:rsid wsp:val="002129C8"/>
+			<wsp:rsid wsp:val="00220516"/>
+			<wsp:rsid wsp:val="00254876"/>
+			<wsp:rsid wsp:val="00293E83"/>
+			<wsp:rsid wsp:val="002E7237"/>
+			<wsp:rsid wsp:val="003455B1"/>
+			<wsp:rsid wsp:val="00381F0B"/>
+			<wsp:rsid wsp:val="003B274C"/>
+			<wsp:rsid wsp:val="003E4789"/>
+			<wsp:rsid wsp:val="004B3C34"/>
+			<wsp:rsid wsp:val="005A245E"/>
+			<wsp:rsid wsp:val="006964FC"/>
+			<wsp:rsid wsp:val="00706DFC"/>
+			<wsp:rsid wsp:val="007454D0"/>
+			<wsp:rsid wsp:val="007E0815"/>
+			<wsp:rsid wsp:val="008A23DA"/>
+			<wsp:rsid wsp:val="008C0182"/>
+			<wsp:rsid wsp:val="00925250"/>
+			<wsp:rsid wsp:val="009D5D73"/>
+			<wsp:rsid wsp:val="00AB0956"/>
+			<wsp:rsid wsp:val="00C06716"/>
+			<wsp:rsid wsp:val="00C34859"/>
+			<wsp:rsid wsp:val="00C5143B"/>
+			<wsp:rsid wsp:val="00D14C07"/>
+			<wsp:rsid wsp:val="00DB3FFA"/>
+			<wsp:rsid wsp:val="00EC7F7C"/>
+			<wsp:rsid wsp:val="00F21FF0"/>
+			<wsp:rsid wsp:val="00FD2094"/>
+			<wsp:rsid wsp:val="00FE1C0E"/>
+			<wsp:rsid wsp:val="00FE5E11"/>
+		</wsp:rsids>
+	</w:docPr>
+	<w:body>
+		<wx:sect>
+			<w:p wsp:rsidR="002129C8" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:jc w:val="center"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:sz w:val="30"/>
+						<w:sz-cs w:val="30"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="008C0182">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="30"/>
+						<w:sz-cs w:val="30"/>
+					</w:rPr>
+					<w:t>丹徒区</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00C06716">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="30"/>
+						<w:sz-cs w:val="30"/>
+					</w:rPr>
+					<w:t>${projName}</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="30"/>
+						<w:sz-cs w:val="30"/>
+					</w:rPr>
+					<w:t>招标公告</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>各供应商</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>:</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>丹徒区政府采购中心受</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00C06716">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${coNames}</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>的委托，对</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00C06716" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${projName}</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>采购项目进行</w:t>
+				</w:r>
+				<w:r wsp:rsidR="0004081A" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>招标</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>采购，欢迎符合资格条件的供应商投标。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>一、项目编号</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="007E0815">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${projCode}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>二、项目名称</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="007E0815">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${projName}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="00063C21" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00063C21" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>三、采购方式</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="007E0815">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${purType}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00C5143B" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>四</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、采购内容及</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>概况</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>(详细内容</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>见招标文件</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>)</w:t>
+				</w:r>
+			</w:p>
+repeatstart
+			<w:p wsp:rsidR="00293E83" wsp:rsidRPr="00A7376A" wsp:rsidRDefault="00293E83" wsp:rsidP="00293E83">
+				<w:r wsp:rsidRPr="00495597">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>标段：</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00495597">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t> </w:t>
+				</w:r>
+				<w:r wsp:rsidR="007E0815">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t>${packName} </w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t>    </w:t>
+				</w:r>
+				<w:r wsp:rsidR="0014772F" wsp:rsidRPr="00FD2094">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>标段预算</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00FE1C0E">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>(</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00FE1C0E">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>元</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00FE1C0E">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>)</w:t>
+				</w:r>
+				<w:r wsp:rsidR="0014772F" wsp:rsidRPr="00FD2094">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="0014772F">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t>${packSum}</w:t>
+				</w:r>				
+				<w:r wsp:rsidR="00FE1C0E">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t>  </w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00495597">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+					</w:rPr>
+					<w:t>采购单位：</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t> </w:t>
+				</w:r>
+				<w:r wsp:rsidR="007E0815">
+					<w:rPr>
+						<w:rFonts w:hint="fareast"/>
+					</w:rPr>
+					<w:t>${coName}</w:t>
+				</w:r>
+			</w:p>
+			<w:tbl>
+				<w:tblPr>
+					<w:tblW w:w="0" w:type="auto"/>
+					<w:tblBorders>
+						<w:top w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+						<w:left w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+						<w:bottom w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+						<w:right w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+						<w:insideH w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+						<w:insideV w:val="single" w:sz="4" wx:bdrwidth="10" w:space="0" w:color="auto"/>
+					</w:tblBorders>
+					<w:tblLook w:val="04A0"/>
+				</w:tblPr>
+				<w:tblGrid>
+					<w:gridCol w:w="1562"/>
+					<w:gridCol w:w="2448"/>
+					<w:gridCol w:w="2595"/>
+					<w:gridCol w:w="1213"/>
+					<w:gridCol w:w="704"/>
+				</w:tblGrid>
+				<w:tr wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidTr="008C0182">
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="771" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+								<w:rPr>
+									<w:b/>
+								</w:rPr>
+							</w:pPr>
+							<w:r wsp:rsidRPr="00DB3FFA">
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+									<wx:font wx:val="宋体"/>
+									<w:b/>
+								</w:rPr>
+								<w:t>序号</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="2919" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+								<w:rPr>
+									<w:b/>
+								</w:rPr>
+							</w:pPr>
+							<w:r wsp:rsidRPr="00DB3FFA">
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+									<wx:font wx:val="宋体"/>
+									<w:b/>
+								</w:rPr>
+								<w:t>采购内容</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="3169" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+								<w:rPr>
+									<w:b/>
+								</w:rPr>
+							</w:pPr>
+							<w:r wsp:rsidRPr="00DB3FFA">
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+									<wx:font wx:val="宋体"/>
+									<w:b/>
+								</w:rPr>
+								<w:t>基本技术参数</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="844" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+								<w:rPr>
+									<w:b/>
+								</w:rPr>
+							</w:pPr>
+							<w:r wsp:rsidRPr="00DB3FFA">
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+									<wx:font wx:val="宋体"/>
+									<w:b/>
+								</w:rPr>
+								<w:t>数量</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="819" w:type="dxa"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="008C0182" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+								<w:rPr>
+									<w:b/>
+								</w:rPr>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+									<wx:font wx:val="宋体"/>
+									<w:b/>
+								</w:rPr>
+								<w:t>附件</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+				</w:tr>
+<#list reqs as row>
+				<w:tr wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidTr="008C0182">
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="771" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="002E7237" wsp:rsidP="0061790B">
+							<w:pPr>
+								<w:jc w:val="center"/>
+							</w:pPr>
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+								</w:rPr>
+								<w:t>${row_index+1}</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="2919" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="002E7237" wsp:rsidP="0061790B">
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+								</w:rPr>
+								<w:t>${row.name}</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="3169" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="002E7237" wsp:rsidP="0061790B">
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+								</w:rPr>
+								<w:t>${row.desc}</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="844" w:type="dxa"/>
+							<w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="002E7237" wsp:rsidP="0061790B">
+							<w:r>
+								<w:rPr>
+									<w:rFonts w:hint="fareast"/>
+								</w:rPr>
+								<w:t>${row.num}</w:t>
+							</w:r>
+						</w:p>
+					</w:tc>
+					<w:tc>
+						<w:tcPr>
+							<w:tcW w:w="819" w:type="dxa"/>
+						</w:tcPr>
+						<w:p wsp:rsidR="008C0182" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00EC7F7C" wsp:rsidP="008C0182">
+							<w:pPr>
+								<w:jc w:val="center"/>
+							</w:pPr>
+<#if row.hasAttach="1">
+							<w:hlink w:dest="${row.attachFileUrl}">
+								<w:r wsp:rsidR="008C0182" wsp:rsidRPr="001330B3">
+									<w:rPr>
+										<w:rStyle w:val="a6"/>
+										<w:rFonts w:hint="fareast"/>
+										<wx:font wx:val="宋体"/>
+									</w:rPr>
+									<w:t>附件</w:t>
+								</w:r>
+							</w:hlink>
+</#if>
+						</w:p>
+					</w:tc>
+				</w:tr>
+</#list>
+			</w:tbl>
+repeatend
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00C5143B" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<aml:annotation aml:id="0" w:type="Word.Bookmark.Start" w:name="OLE_LINK3"/>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>五</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、供应商资格条件</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>供应商应符合的基本资格条件（供应商应具备《政府采购法》第二十二条规定的条件）</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>:</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>1</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）具有独立承担民事责任的能力；</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>2</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）具有良好的商业信誉和健全的财务会计制度；</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>3</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）具有履行合同所需的设备和专业技术能力；</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>4</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）有依法缴纳税收和社会保障资金的良好记录；</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>5</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）参加本次政府采购活动前三年内，在经营活动中没有重大违法记录；</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="00F21FF0">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>6</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）法律、行政法规规定的其他条件。</w:t>
+				</w:r>
+				<aml:annotation aml:id="0" w:type="Word.Bookmark.End"/>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00F21FF0" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>六</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、根据《政府采购进口产品管理办法》的相关规定，本次采购项目的供应商所提供的产品不得为进口产品（进口产品是指通过中国海关报关验放进入中国境内且产自关境外的产品），否则承担由此带来的一切后果。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00F21FF0" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>七</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:color w:val="000000"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、确定成交供应商的数量</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:color w:val="000000"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>： 1名。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00F21FF0" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>八</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、报名方式</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、标书获取途径</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、时间</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="00F21FF0" wsp:rsidRDefault="00F21FF0" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>1.未在丹徒区政府采购</w:t>
+				</w:r>
+				<w:proofErr w:type="gramStart"/>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>网注册</w:t>
+				</w:r>
+				<w:proofErr w:type="gramEnd"/>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>的供应商请先进行注册</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>，注册成功后</w:t>
+				</w:r>
+				<w:proofErr w:type="gramStart"/>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>需前往</w:t>
+				</w:r>
+				<w:proofErr w:type="gramEnd"/>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>丹徒区政府采购中心进行现场审核，并办理CA证书。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00254876" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>2</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>.</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>公开招标</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>报名方式：</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>使用</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>CA</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>证书</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>登陆丹徒区政府采购网（</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>www.dtzfcg.gov.cn</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00293E83" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>，</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>在线</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>进行网上报名</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>，由采购中心审核通过后即可下载</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>标书</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="150" w:first-line="360"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>2.</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>网上报名</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>截止</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>时间：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${sellEndTime}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00254876" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>九</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、投标保证金</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>供应商在投标时，需交纳投标保证金（具体金额见报名时要求），否则其投标响应无效。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="00254876" wsp:rsidRPr="00254876" wsp:rsidRDefault="00254876" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>交付方式：现金/汇票/支票/银行转账</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>开户名称：</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>镇江市丹徒区财政局</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>开户行：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="008A23DA" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>  </w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>江苏银行丹徒新区支行</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:first-line-chars="200" w:first-line="480"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:proofErr w:type="gramStart"/>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>账</w:t>
+				</w:r>
+				<w:proofErr w:type="gramEnd"/>
+				<w:r wsp:rsidR="008A23DA" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>  </w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>号：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="008A23DA" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>  </w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>70180188000002338</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="00254876" wsp:rsidP="00254876">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十</w:t>
+				</w:r>
+				<w:r wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、投标截止时间</w:t>
+				</w:r>
+				<w:r>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${endDate}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="00254876">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十一、投标地点</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${bidAddress}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>二</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、开标时间</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${endDate}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>三</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、开标地点</w:t>
+				</w:r>
+				<w:r wsp:rsidR="000441E4">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>：</w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${bidAddress}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十</w:t>
+				</w:r>
+				<w:r wsp:rsidR="00254876">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>四</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、联系方式</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:left-chars="200" w:left="420"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>采购中心联系人：</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t> </w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${projLinkMan}</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t> </w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="000441E4">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:left-chars="200" w:left="420"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>电 话： </w:t>
+				</w:r>
+				<w:r wsp:rsidR="002E7237">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>${projLinkPhone}</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="004B3C34">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:b/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>十五、备注</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="003E4789">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:left-chars="200" w:left="420"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>1</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、在投标截止前，请关注丹徒区政府采购网站（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>www.dtzfcg.gov.cn</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）有无变更公告。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="003E4789">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:left-chars="200" w:left="420"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>2</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、凡参加报名的投标单位，不得无故放弃投标，若有特殊原因放弃投标的，须在投标截止日前两天（不含开标当日）以书面形式致函丹徒区政府采购中心。如投标单位无故放弃投标的，诚信考核一次，连续两次报名无故放弃投标的，除不可抗力情况外，招标投标行政监督部门将在网上予以公告</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>3</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>个月。在公告期间，其它政府投资项目的招标人可以</w:t>
+				</w:r>
+				<w:proofErr w:type="gramStart"/>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>据此不</w:t>
+				</w:r>
+				<w:proofErr w:type="gramEnd"/>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>接受其投标。</w:t>
+				</w:r>
+			</w:p>
+			<w:p wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidRDefault="004B3C34" wsp:rsidP="003E4789">
+				<w:pPr>
+					<w:spacing w:line="360" w:line-rule="auto"/>
+					<w:ind w:left-chars="200" w:left="420"/>
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+				</w:pPr>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>3</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>、网上报名具体操作</w:t>
+				</w:r>
+				<w:r wsp:rsidR="000441E4">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>步骤</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>可登录丹徒区政府采购网站（</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>www.dtzfcg.gov.cn</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>）首页【</w:t>
+				</w:r>
+				<w:r wsp:rsidR="000441E4">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>办事流程</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>】中</w:t>
+				</w:r>
+				<w:r wsp:rsidR="000441E4">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>查看</w:t>
+				</w:r>
+				<w:r wsp:rsidRPr="00DB3FFA">
+					<w:rPr>
+						<w:rFonts w:ascii="宋体" w:h-ansi="宋体" w:cs="宋体" w:hint="fareast"/>
+						<wx:font wx:val="宋体"/>
+						<w:kern w:val="0"/>
+						<w:sz w:val="24"/>
+						<w:sz-cs w:val="24"/>
+					</w:rPr>
+					<w:t>。</w:t>
+				</w:r>
+			</w:p>
+			<w:sectPr wsp:rsidR="004B3C34" wsp:rsidRPr="00DB3FFA" wsp:rsidSect="003455B1">
+				<w:pgSz w:w="11906" w:h="16838"/>
+				<w:pgMar w:top="1440" w:right="1800" w:bottom="1440" w:left="1800" w:header="851" w:footer="992" w:gutter="0"/>
+				<w:cols w:space="425"/>
+				<w:docGrid w:type="lines" w:line-pitch="312"/>
+			</w:sectPr>
+		</wx:sect>
+	</w:body>
+</w:wordDocument>
