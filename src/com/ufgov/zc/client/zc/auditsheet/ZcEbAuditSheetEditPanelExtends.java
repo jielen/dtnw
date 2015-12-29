@@ -42,7 +42,7 @@ public class ZcEbAuditSheetEditPanelExtends extends ZcEbAuditSheetEditPanel {
 
   public ZcEbAuditSheetEditPanelExtends(GkBaseDialog dialog, ListCursor listCursor, String tabStatus, ZcEbAuditSheetListPanel listPanel) {
     super(dialog, listCursor, tabStatus, listPanel);
-    // TODO Auto-generated constructor stub
+    // TCJLODO Auto-generated constructor stub
   }
 
   public List<AbstractFieldEditor> createFieldEditors() {
@@ -312,7 +312,7 @@ public class ZcEbAuditSheetEditPanelExtends extends ZcEbAuditSheetEditPanel {
           @Override
           public void valueChanged(ValueChangeEvent e) {
 
-            // TODO Auto-generated method stub
+            // TCJLODO Auto-generated method stub
 
             ZcEbAuditSheet sheet = (ZcEbAuditSheet) listCursor.getCurrentObject();
 
@@ -365,7 +365,7 @@ public class ZcEbAuditSheetEditPanelExtends extends ZcEbAuditSheetEditPanel {
       @Override
       public void valueChanged(ValueChangeEvent event) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         if (fzrEditor.getField().getValue() == null) {
 

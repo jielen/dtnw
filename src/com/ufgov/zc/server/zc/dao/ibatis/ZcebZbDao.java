@@ -30,7 +30,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
    * @see com.ufgov.zc.server.zc.dao.IZcEbZbDao#deleteByPrimaryKey(java.lang.String)
    */
   public void deleteByPrimaryKey(String zbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().delete("ZcebZb.deleteZcebZb", zbCode);
     this.getSqlMapClientTemplate().delete("ZcebZb.deleteZcebZbItem", zbCode);
   }
@@ -39,7 +39,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
    * @see com.ufgov.zc.server.zc.dao.IZcEbZbDao#getZcebZb(com.ufgov.zc.common.system.dto.ElementConditionDto)
    */
   public List getZcebZb(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     dto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(dto.getWfcompoId(), NumLimConstants.FWATCH));
     List list = this.getSqlMapClientTemplate().queryForList("ZcebZb.getZcebZb", dto);
     for (int i = 0; i < list.size(); i++) {
@@ -50,7 +50,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
   }
 
   public List getZcebZbItem(String zbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.getSqlMapClientTemplate().queryForList("ZcebZb.getZcebZbItem", zbCode);
 
   }
@@ -59,7 +59,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
    * @see com.ufgov.zc.server.zc.dao.IZcEbZbDao#insertZcebZb(com.ufgov.zc.common.zc.model.ZcebZb)
    */
   public void insertZcebZb(final ZcebZb zcebZb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().insert("ZcebZb.insertZcebZb", zcebZb);
     for (int i = 0; i < zcebZb.getItems().size(); i++) {
       ZcebZbItem p = (ZcebZbItem) zcebZb.getItems().get(i);
@@ -71,7 +71,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
    * @see com.ufgov.zc.server.zc.dao.IZcEbZbDao#selectByPrimaryKey(java.lang.String)
    */
   public ZcebZb selectByPrimaryKey(String zbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List items = this.getSqlMapClientTemplate().queryForList("ZcebZb.getZcebZbItem", zbCode);
     ZcebZb zcebZb = (ZcebZb) this.getSqlMapClientTemplate().queryForObject("ZcebZb.getZcebZbById", zbCode);
     if (zcebZb != null)
@@ -83,7 +83,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
    * @see com.ufgov.zc.server.zc.dao.IZcEbZbDao#updateZcebZb(com.ufgov.zc.common.zc.model.ZcebZb)
    */
   public ZcebZb updateZcebZb(final ZcebZb zcebZb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().update("ZcebZb.updateZcebZb", zcebZb);
     this.getSqlMapClientTemplate().delete("ZcebZb.deleteZcebZbItem", zcebZb.getBidCode());
 
@@ -96,7 +96,7 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
   }
 
   public ZcebZb getZcebZbById(String bidCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (ZcebZb) this.getSqlMapClientTemplate().queryForObject("ZcebZb.getZcebZbById", bidCode);
   }
 
@@ -106,17 +106,17 @@ public class ZcebZbDao extends SqlMapClientDaoSupport implements IZcEbZbDao {
   }
 
   public BigDecimal getOtherBidSums1(ZcebZb zb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (BigDecimal) this.getSqlMapClientTemplate().queryForObject("ZcebZb.getOtherBidSums1", zb);
   }
 
   public BigDecimal getOtherBidSums2(ZcebZb zb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (BigDecimal) this.getSqlMapClientTemplate().queryForObject("ZcebZb.getOtherBidSums2", zb);
   }
 
   public List getZcebZbHavingHt(String bidCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.getSqlMapClientTemplate().queryForList("ZcebZb.getZcebZbHavingHt", bidCode);
   }
 

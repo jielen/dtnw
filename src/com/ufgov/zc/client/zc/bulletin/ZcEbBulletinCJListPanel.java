@@ -60,7 +60,7 @@ public class ZcEbBulletinCJListPanel extends AbstractZcEbBulletinBaseListPanel {
 
   public String getBulletinType() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return ZcEbBulletinConstants.TYPE_BULLETIN_CJ;
 
@@ -90,7 +90,7 @@ public class ZcEbBulletinCJListPanel extends AbstractZcEbBulletinBaseListPanel {
    * @param args
    */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     SwingUtilities.invokeLater(new Runnable() {
 

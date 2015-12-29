@@ -96,7 +96,7 @@ public class AnimationMetaViewer extends JPanel {
       repeatCountF.commitEdit();
 
     } catch (ParseException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     }
     _meta.setIndex(Integer.parseInt(indexF.getText().toString()));

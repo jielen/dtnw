@@ -85,13 +85,13 @@ public class ZcEbEntrustCancelListPanel extends AbstractEditListBill implements 
 
   @Override
   public void setParentWindow(Window window) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     parentWindow = window;
   }
 
   @Override
   public Window getParentWindow() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return parentWindow;
   }
 
@@ -279,7 +279,7 @@ public class ZcEbEntrustCancelListPanel extends AbstractEditListBill implements 
   }
   @Override
   protected void addToolBarComponent(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     toolBar.setModuleCode("ZC");
 

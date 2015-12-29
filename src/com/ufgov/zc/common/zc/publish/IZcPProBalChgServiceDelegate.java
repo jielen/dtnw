@@ -5,6 +5,7 @@ import java.util.List;
 import com.ufgov.zc.common.system.Publishable;
 import com.ufgov.zc.common.system.RequestMeta;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
+import com.ufgov.zc.common.system.exception.BusinessException;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
 
 public interface IZcPProBalChgServiceDelegate extends Publishable {
@@ -16,5 +17,8 @@ public interface IZcPProBalChgServiceDelegate extends Publishable {
   public ZcPProBalChg updateZcPProBalChgFN(ZcPProBalChg zcPProBalChg, String serverAdd, boolean flag, RequestMeta meta) throws Exception;
 
   public ZcPProBalChg selectByPrimaryKey(String balChgId, RequestMeta requestMeta);
+  
+  public ZcPProBalChg auditFN(ZcPProBalChg cur, RequestMeta requestMeta) throws BusinessException;
 
 }
+ 

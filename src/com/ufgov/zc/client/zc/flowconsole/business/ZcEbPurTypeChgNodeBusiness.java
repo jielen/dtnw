@@ -26,7 +26,7 @@ public class ZcEbPurTypeChgNodeBusiness implements INodeBusiness {
   @Override
   public void showAddWindow() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     new ZcEbProjectChangeEditDialog(new ZcEbProjectChangeListPanel(), new ArrayList(1), -1, "0", "采购方式变更");
 

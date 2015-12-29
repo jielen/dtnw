@@ -52,7 +52,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
   @SuppressWarnings("unchecked")
   @Override
   public int doExportData(ElementConditionDto dto, RequestMeta meta, String saveRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     int rtn=0;
     this.getDataList().clear();    
@@ -110,7 +110,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
         downFile(makeFileDirName, f.getZcImpFileBlobid(), f.getZcImpFile(), null, path, meta);
         downFile(makeFileDirName, f.getZcConTextBlobid(), f.getZcConText(), null, path, meta);
       } catch (IOException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
         DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取采购合同附件出错...\n" + e.getMessage());
       }
@@ -119,7 +119,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
   }
 
   private List getHtDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     DataExchangeListPanel.setProgressText(this.getDataTypeName() + "正在查询需要导出的记录...");
     List<String> idLst = new ArrayList<String>();
@@ -138,7 +138,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
   }
 
   private void createExportLog(List<String> idLst, List<ZcXmcgHt> billLst,RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(billLst==null || billLst.size()==0){
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "业务数据中没有查到对应的业务数据...");
     }else{
@@ -193,7 +193,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
    */
   @Override
   public int doImportData(ElementConditionDto dto, RequestMeta meta, String readRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     String info = null;
     DataExchangeLog log = null;
@@ -208,7 +208,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" + e.getMessage());
     }
@@ -267,7 +267,7 @@ public class ZcXmcgHtDataExchangeExecutor extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

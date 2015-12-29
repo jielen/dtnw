@@ -82,13 +82,13 @@ public class ZcFaCardDeprStylePanel extends JPanel {
 }
   
   private void refreshData() {
-  // TODO Auto-generated method stub
+  // TCJLODO Auto-generated method stub
   setDefaultValue();
   setEditingObject(card);
 }
 
   private void setDefaultValue() {
-    // TODO Auto-generated method stub    
+    // TCJLODO Auto-generated method stub    
     card.setNew(true);
     card.setIsDept("A");
   }
@@ -110,7 +110,7 @@ public class ZcFaCardDeprStylePanel extends JPanel {
   }
 
   private JPanel createCenterPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(centerPanel==null){
       centerPanel=new JPanel();
       FlowLayout fl=new  FlowLayout(FlowLayout.CENTER, 40, 60);
@@ -139,7 +139,7 @@ public class ZcFaCardDeprStylePanel extends JPanel {
   }
 
   private Component createCardNode(final ZcFaCardStyle zcFaCardStyle) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String imageUrl=url+"/"+zcFaCardStyle.getStylImages();
     
     ImageIcon nodeImage=UfidaUtil.getIcon(imageUrl);
@@ -155,7 +155,7 @@ public class ZcFaCardDeprStylePanel extends JPanel {
       
       @Override
       public void actionPerformed(ActionEvent arg0) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doCreateCard(zcFaCardStyle);
       }
     });
@@ -174,31 +174,31 @@ public class ZcFaCardDeprStylePanel extends JPanel {
       
       @Override
       public void mouseReleased(MouseEvent arg0) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         
       }
       
       @Override
       public void mousePressed(MouseEvent arg0) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         
       }
       
       @Override
       public void mouseExited(MouseEvent arg0) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         setCursor(Cursor.getDefaultCursor());
       }
       
       @Override
       public void mouseEntered(MouseEvent arg0) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
       }
       
       @Override
       public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if (e.getClickCount() == 2 && SwingUtilities.isLeftMouseButton(e)) { 
           if(cardTypeHst.containsKey(e.getComponent())){
             if(card.getCaigouHt().getZcHtCode()==null){
@@ -231,17 +231,17 @@ public class ZcFaCardDeprStylePanel extends JPanel {
   }
 
   protected void doCreateCard(ZcFaCardStyle zcFaCardStyle) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 
   private List<ZcFaCardStyle> getCardStyle() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbBaseServiceDelegate.queryDataForList("ZcFaCard.getCardStyle", card.getIsDept(), WorkEnv.getInstance().getRequestMeta());    
   }
 
   private JPanel createHeadPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     fieldEditors = new ArrayList<AbstractFieldEditor>();
     
@@ -285,7 +285,7 @@ public class ZcFaCardDeprStylePanel extends JPanel {
     return util.createPanel(fieldEditors, 2);
   }
   protected void doCardStyleChange() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     createCenterPanel();
     this.validate();
     this.repaint();
@@ -335,7 +335,7 @@ public class ZcFaCardDeprStylePanel extends JPanel {
     }
   }
   public void setEditingObject(ZcFaCard card) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (AbstractFieldEditor editor : fieldEditors) {
       editor.setEditObject(card);
     }

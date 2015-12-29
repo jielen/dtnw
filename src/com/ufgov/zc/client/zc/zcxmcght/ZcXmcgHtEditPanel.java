@@ -638,7 +638,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   public boolean isCgzx() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcUtil.isCgzx();
   }
 
@@ -830,7 +830,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     }
   //start of change --20141223 chenjl
 //原来是直接获取资金信息，后来因有结转项目到来年，再签订合同的情况，因此这里隐藏，换成下面预算单位才获取指标情况
-//也就是说，供应商填报合同时，选择也该分包，不会带入资金信息
+//也就是说，供应商填报合同时，选择一个分包，不会带入资金信息
 /*    List<ZcXmcgHtBi> biHtList = this.getBiList(zcXmcgHt);
     zcXmcgHt.setBiList(biHtList);
     //采购计划如果已经做了补充资金了，再次获取一次
@@ -855,7 +855,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   private void buildHtItems(ZcXmcgHt zcXmcgHt) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     // get the project
     if(zcXmcgHt.getProjCode()==null)return;
     ZcEbProj proj=projService.getZcEbProjByProjCode(zcXmcgHt.getProjCode(), requestMeta);
@@ -911,7 +911,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   private void setBjDetail(ZcTBchtItem htItem, BigDecimal detailCode, List xjbjLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i=0;i<xjbjLst.size();i++) {
       HashMap map=(HashMap) xjbjLst.get(i);
       String xjCode=(String) map.get("XJ_CODE");      
@@ -928,7 +928,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   private BigDecimal getBigDecimal(Object object) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     BigDecimal t=new BigDecimal(0);
     if(object==null) return null;
     try {
@@ -946,13 +946,19 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
         return null;
       }
     } catch (Exception e) {
-      // TODO: handle exception
+      // TCJLODO: handle exception
       logger.error(e.getMessage(),e);
       return null;
     }
     return t;
   }
 
+  /**
+   * 获取合同的资金信息
+   * 当合同是供应商编报，采购单位审核时，带入资金信息，此时合同已经存在了，需要采购单位获取采购计划的资金信息，填入合同中
+   * @param zcXmcgHt
+   * @return
+   */
   private List<ZcXmcgHtBi> getBiList(ZcXmcgHt zcXmcgHt) {
 
     if (!isSubHt()) {
@@ -1207,7 +1213,13 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   }
 
-  public static void buildZcXmcgHtBi(List<ZcPProMitemBi> biMakeList, List<ZcXmcgHtBi> biHtList, String zcMakeCode) {
+  /**
+   * 将采购计划的资金信息转换为合同资金信息
+   * @param biMakeList
+   * @param biHtList
+   * @param zcMakeCode
+   */
+  private static void buildZcXmcgHtBi(List<ZcPProMitemBi> biMakeList, List<ZcXmcgHtBi> biHtList, String zcMakeCode) {
 
     for (ZcPProMitemBi bi : biMakeList) {
 
@@ -2006,7 +2018,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
  * 目前只支持调整待配套资金，指标和自筹资金不能调整
  */
   protected void doReSetZijin() {
-    // TODO Auto-generated method stub 
+    // TCJLODO Auto-generated method stub 
     if(isResetZijin){
       itemTabPane.setSelectedComponent(resetZiJinTablePanel);      
       return;
@@ -2077,7 +2089,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 }
 
   private void refreshResetZijinTable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcXmcgHt ht = (ZcXmcgHt) this.listCursor.getCurrentObject();  
     List<ZcPProMitem> itemMakeList = ZcPProMakeServiceDelegate.getZcPProMitem(ht.getZcMakeCode(), requestMeta);
@@ -2131,7 +2143,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   private boolean isOldBi(ZcXmcgHtBi bi) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcXmcgHt ht= (ZcXmcgHt) listCursor.getCurrentObject();
     for(int i=0;i<ht.getBiList().size();i++){
       ZcXmcgHtBi htbi = (ZcXmcgHtBi)ht.getBiList().get(i);
@@ -2391,7 +2403,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
     } catch (RuntimeException e) {
 
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
 
       e.printStackTrace();
 
@@ -2478,7 +2490,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   protected boolean isCar() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcXmcgHt bean = (ZcXmcgHt) this.listCursor.getCurrentObject();
     if(bean!=null && bean.getZcPProMake()!=null && "Y".equalsIgnoreCase(bean.getZcPProMake().getIsCar())){
@@ -2586,7 +2598,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
  * @return
  */
   private boolean notSameCoBudget() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(ZcUtil.isYsdw() || ZcUtil.isCgdb()){
       ZcXmcgHt bean = (ZcXmcgHt) this.listCursor.getCurrentObject();
       if(bean.getBiList()==null || bean.getBiList().size()==0)return false;
@@ -4419,7 +4431,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ZcXmcgHtListPanel getListPanel() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listPanel;
 
@@ -4427,7 +4439,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public RequestMeta getRequestMeta() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.requestMeta;
 
@@ -4435,7 +4447,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ListCursor getListCursor() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listCursor;
 
@@ -4443,7 +4455,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ElementConditionDto getDtoForBidWinner() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.dtoForBidWinner;
 
@@ -4608,6 +4620,10 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     return false;
   }
 
+  /**
+   * 整理合同的资金信息，主要是将计划资金字段信息转换为合同资金上对应的字段
+   * @param ht
+   */
   protected void makeToHtBi(ZcXmcgHt ht) {
     List<ZcXmcgHtBi> htbi = ht.getBiList();
     for (int i = 0; i < htbi.size(); i++) {
@@ -4889,7 +4905,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   @Override
   public boolean isGys() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcUtil.isGys();
   }
 
@@ -4898,7 +4914,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
    * //用于代编代报里，置换requestmeta里的信息
    */
     private void resetRequestMeta() {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       
       ZcXmcgHt ht = (ZcXmcgHt) listCursor.getCurrentObject();
       if(ht.getCoCode()!=null && ht.getZcHtCode()!=null && !ht.getZcHtCode().equals("自动编号")){        

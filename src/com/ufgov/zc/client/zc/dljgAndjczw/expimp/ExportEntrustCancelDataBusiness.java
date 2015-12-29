@@ -15,7 +15,7 @@ public class ExportEntrustCancelDataBusiness extends AbstractExpDataBusiness imp
   private List<String> keyList = null;
 
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     busName = "任务取消";
     this.log = log;
     this.path = path;
@@ -24,18 +24,18 @@ public class ExportEntrustCancelDataBusiness extends AbstractExpDataBusiness imp
 
 
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
   public List<ZcBaseBill> getBusinessData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return businessData;
   }
 
 
   public void exportData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (keyList == null || keyList.size() == 0) {
       return;
     }
@@ -51,7 +51,7 @@ public class ExportEntrustCancelDataBusiness extends AbstractExpDataBusiness imp
 
 
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_ENTRUST_CANCEL;
   }
 

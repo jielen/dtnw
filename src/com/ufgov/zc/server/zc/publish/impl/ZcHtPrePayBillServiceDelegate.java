@@ -28,7 +28,7 @@ public class ZcHtPrePayBillServiceDelegate implements IZcHtPrePayBillServiceDele
   }
 
   public List getZcHtPrePayBillList(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcHtPrePayBillService.getZcHtPrePayBillList(dto, meta);
   }
 
@@ -37,12 +37,12 @@ public class ZcHtPrePayBillServiceDelegate implements IZcHtPrePayBillServiceDele
   }
 
   public ZcHtPrePayBill updateZcHtPrePayBillFN(ZcHtPrePayBill zcHtPrePayBill, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcHtPrePayBillService.updateZcHtPrePayBillFN(zcHtPrePayBill, meta);
   }
 
   public ZcHtPrePayBill selectByPrimaryKey(String BillCode, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcHtPrePayBillService.selectByPrimaryKey(BillCode, requestMeta);
   }
 
@@ -57,7 +57,7 @@ public class ZcHtPrePayBillServiceDelegate implements IZcHtPrePayBillServiceDele
 
 
 public List getZcHtPrePayBillListByHtCode(ZcHtPrePayBill bean, RequestMeta meta) {
-	// TODO Auto-generated method stub
+	// TCJLODO Auto-generated method stub
 	return zcHtPrePayBillService.getZcHtPrePayBillListByHtCode(bean, meta);
 }
 

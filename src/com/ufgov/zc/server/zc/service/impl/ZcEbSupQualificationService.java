@@ -25,12 +25,12 @@ public class ZcEbSupQualificationService implements
 	}
 
 	public List selectSupQualifications(ElementConditionDto dto) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return baseDao.query("ZC_EB_SUP_QUALIFICATION.selectForList", dto);
 	}
 
 	public ZcEbSupQualification selectById(String id) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		List list = baseDao.query("ZC_EB_SUP_QUALIFICATION.selectById", id);
 		if (list == null || list.size() == 0) {
 			return new ZcEbSupQualification();
@@ -46,7 +46,7 @@ public class ZcEbSupQualificationService implements
 
 	public ZcEbSupQualification save(ZcEbSupQualification bean,
 			RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		if (bean.getQualifId() != null && !"".equals(bean.getQualifId())) {
 			baseDao.update(
 					"ZC_EB_SUP_QUALIFICATION.ibatorgenerated_updateById", bean);
@@ -81,17 +81,17 @@ public class ZcEbSupQualificationService implements
 	}
 
 	public void enableById(String id) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		baseDao.update("ZC_EB_SUP_QUALIFICATION.enableById", id);
 	}
 
 	public void freezeById(String id) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		baseDao.update("ZC_EB_SUP_QUALIFICATION.freezeById", id);
 	}
 
 	public void deleteById(String id) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		baseDao.delete("ZC_EB_SUP_QUALIFICATION.deleteById", id);
 		baseDao.delete("ZC_EB_SUP_QUALIFICATION.deleteLevsByQId", id);
 	}

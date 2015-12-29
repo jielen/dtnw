@@ -30,7 +30,7 @@ public class ZcBAgencyAptdTableModel extends AbstractObjectTableModel {
 
   @Override
   public void save() throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcBAgencyListAptd agency = null;
     for (int i = 0; i < this.deleteList.size(); i++) {
         agency = (ZcBAgencyListAptd) this.deleteList.get(i);
@@ -55,13 +55,13 @@ public class ZcBAgencyAptdTableModel extends AbstractObjectTableModel {
 
   @Override
   public void insertRecord() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.insertRecord(new ZcBAgencyListAptd());
   }
 
   @Override
   public void insertRecord(int index) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.insertRecord(index, new ZcBAgencyListAptd());
   }
 

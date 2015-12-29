@@ -60,7 +60,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public List getZcXmcgHtChg(ElementConditionDto dto, RequestMeta meta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     dto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(dto.getWfcompoId(), NumLimConstants.FWATCH));
     return baseDao.query("ZC_XMCG_HT_CHG.selectHtChgListByExample", dto);
   }
@@ -73,11 +73,11 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
       String compoId = requestMeta.getCompoId();
 
-      String code = NumUtil.getInstance().getNo(compoId, "ZC_HT_CHG_ID", zcXmcgHtChg);
+      String chgId = NumUtil.getInstance().getNo(compoId, "ZC_HT_CHG_ID", zcXmcgHtChg);
 
       Long draftid = workflowDao.createDraftId();
 
-      zcXmcgHtChg.setZcHtChgId(code);
+      zcXmcgHtChg.setZcHtChgId(chgId);
 
       zcXmcgHtChg.setZcInputCode(userId);
 
@@ -93,7 +93,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
       asWfDraft.setCompoId(compoId);
 
-      asWfDraft.setWfDraftName(code);
+      asWfDraft.setWfDraftName(chgId);
 
       asWfDraft.setUserId(userId);
 
@@ -109,7 +109,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
         ZcXmcgHtBiChg bi = (ZcXmcgHtBiChg) biList.get(i);
 
-        bi.setZcHtChgId(code);
+        bi.setChgId(chgId);
 
         bi.setZcMakeCode(zcXmcgHtChg.getZcMakeCode());
 
@@ -123,7 +123,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
         ZcTBchtItemChg item = (ZcTBchtItemChg) itemList.get(i);
 
-        item.setZcHtChgId(code);
+        item.setZcHtChgId(chgId);
 
         item.setZcCtgryId(new BigDecimal(i));
 
@@ -135,7 +135,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
       for (int i = 0; i < payList.size(); i++) {
         ZcHtPrePayBillItemChg bi = (ZcHtPrePayBillItemChg) payList.get(i);
-        bi.setZcHtChgId(code);
+        bi.setZcHtChgId(chgId);
         bi.setBillCode(zcXmcgHtChg.getZcHtCode());
         SimpleDateFormat s = new SimpleDateFormat("yyyyMMdd");
 
@@ -177,7 +177,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
         ZcXmcgHtBiChg bi = (ZcXmcgHtBiChg) biList.get(i);
 
-        bi.setZcHtChgId(zcHtChgId);
+        bi.setChgId(zcHtChgId);
 
         bi.setZcMakeCode(zcXmcgHtChg.getZcMakeCode());
 
@@ -222,7 +222,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHtChg selectByPrimaryKey(String zcHtChgId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcXmcgHtChg chg = (ZcXmcgHtChg) baseDao.read("ZC_XMCG_HT_CHG.selectHtChgByPrimaryKey", zcHtChgId);
     chg.setBiList(baseDao.query("ZC_XMCG_HT_CHG.selectBiChgByChgId", zcHtChgId));
 
@@ -263,7 +263,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public void deleteByPrimaryKeyFN(String zcHtChgId, boolean flag, String serverAdd, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.delete("ZC_XMCG_HT_CHG.deleteHtChgByPrimaryKey", zcHtChgId);
     baseDao.delete("ZC_XMCG_HT_CHG.deletebiChgByChgId", zcHtChgId);
     baseDao.delete("ZC_XMCG_HT_CHG.deleteItemChgByPrimaryKey", zcHtChgId);
@@ -276,7 +276,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHt selectZcXmcgHtByPrimaryKey(String zcHtChgId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcXmcgHt ht = (ZcXmcgHt) baseDao.read("ZC_XMCG_HT_CHG.selectHtHistoryByPrimaryKey", zcHtChgId);
     ht.setBiList(baseDao.query("ZC_XMCG_HT_CHG.selectBiHistoryByChgId", zcHtChgId));
 
@@ -303,7 +303,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHtChg newCommitFN(ZcXmcgHtChg ht, boolean flag, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ht.setZcMakeCode(ht.getZcPProMake().getZcMakeCode());
 
@@ -313,7 +313,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHtChg callbackFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     WorkflowContext workflowContext = wfEngineAdapter.genCommonWFC(ht.getComment(), ht, requestMeta);
     wfEngineAdapter.callback(workflowContext);
@@ -321,7 +321,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHtChg untreadFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untread(ht.getComment(), ht, requestMeta);
     return ht;
   }
@@ -334,7 +334,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
   }
 
   public ZcXmcgHtChg auditFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     if ("3".equals(ht.getZcHtStatus()) || "exec".equals(ht.getZcHtStatus())) {
       resetHt(ht.getZcHtCode(), ht.getZcHtChgId());
@@ -357,7 +357,7 @@ public class ZcXmcgHtChgService implements IZcXmcgHtChgService {
 
    
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return baseDao.query("ZC_XMCG_HT_CHG.queryExportsDatas", dto);
   }
 

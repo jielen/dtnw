@@ -133,7 +133,7 @@ public class ZcHtPrePayBillService implements IZcHtPrePayBillService {
   }
 
   public List getZcHtPrePayBillListByHtCode(ZcHtPrePayBill bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List list = baseDao.query("ZC_HT_PRE_PAY_BILL.selectAddQrByBillCode", bean.getZcHtCode());
     List l = new ArrayList();
     if (list != null && list.size() > 0) {

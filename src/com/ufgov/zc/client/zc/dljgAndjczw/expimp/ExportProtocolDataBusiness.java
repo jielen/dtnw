@@ -24,7 +24,7 @@ public class ExportProtocolDataBusiness extends AbstractExpDataBusiness implemen
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.protocolIds = list;
     this.path = path;
     busName = "委托协议";
@@ -70,7 +70,7 @@ public class ExportProtocolDataBusiness extends AbstractExpDataBusiness implemen
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -81,7 +81,7 @@ public class ExportProtocolDataBusiness extends AbstractExpDataBusiness implemen
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_PROTOCOL;
   }
 

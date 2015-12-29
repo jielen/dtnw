@@ -79,7 +79,7 @@ public class ZBPanel extends MainPanel {
   }
 
   public ZBPanel(Window parent, ZcEbProjectEditPanel_dt editPanel,boolean isDt) {
-	// TODO Auto-generated constructor stub
+	// TCJLODO Auto-generated constructor stub
 	    WHO_I_AM = GV.DIS_ZHAOBIAO_ONLY;
 	    parentEntity = parent;
 	    panel_dt = editPanel;

@@ -114,7 +114,7 @@ public class ZcQbToTableModelConverter {
 
   }
   public static TableModel convertToTableModel(List qbLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     MyTableModel tableModel = null;
 
@@ -193,7 +193,7 @@ public class ZcQbToTableModelConverter {
   }
 
   public  TableModel convertSubBiTableData(List biList, boolean b) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     BeanTableModel<ZcQbBi> tm = new BeanTableModel<ZcQbBi>() {
 
@@ -279,7 +279,7 @@ public class ZcQbToTableModelConverter {
   }
 
   public TableModel convertSubItemTableData(List itemList,boolean isGys,final boolean isYsdw) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     BeanTableModel<ZcQbItem> tm = new BeanTableModel<ZcQbItem>() {
       /**
@@ -393,12 +393,12 @@ public class ZcQbToTableModelConverter {
   }
 
   public static List<ColumnBeanPropertyPair> getBiInfo() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return biInfo;
   }
 
   public static List<ColumnBeanPropertyPair> getItemInfo() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return itemInfo;
   }
 

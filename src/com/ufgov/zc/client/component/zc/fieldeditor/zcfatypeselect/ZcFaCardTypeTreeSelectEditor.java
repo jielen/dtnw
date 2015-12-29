@@ -48,7 +48,7 @@ public class ZcFaCardTypeTreeSelectEditor extends AbstractFieldEditor {
    */
   @Override
   public void setValue(Object value) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     coField.setValueByCode((String) BeanUtil.get(fieldName, value));
   }
 
@@ -57,7 +57,7 @@ public class ZcFaCardTypeTreeSelectEditor extends AbstractFieldEditor {
    */
   @Override
   public Object getValue() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return coField.getZcFaCardType();
   }
 
@@ -66,7 +66,7 @@ public class ZcFaCardTypeTreeSelectEditor extends AbstractFieldEditor {
    */
   @Override
   protected JComponent createEditorComponent() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     coField=new ZcFaCardTypeTreeSelectField(this.selectedTailFlag, this.selectConditonDto,this.handler);
     coField.addValueChangeListener(new ValueChangeListener() {
 

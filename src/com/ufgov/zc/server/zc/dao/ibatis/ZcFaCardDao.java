@@ -26,7 +26,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int countByExample(ZcFaCardExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -35,7 +35,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int deleteByExample(ZcFaCardExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -44,7 +44,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int insert(ZcFaCard record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 //    System.out.println("dao.insert  cocode"+record.getCoCode()+record.getCoName());
     this.getSqlMapClientTemplate().insert("ZcFaCard.insert", record);
    return 1; 
@@ -55,7 +55,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int insertSelective(ZcFaCard record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -64,7 +64,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public List selectByExample(ZcFaCardExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
@@ -73,7 +73,7 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int updateByExampleSelective(ZcFaCard record, ZcFaCardExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -82,13 +82,13 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
    */
   
   public int updateByExample(ZcFaCard record, ZcFaCardExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public List getCardLst(ElementConditionDto dto) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     dto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(dto.getWfcompoId(), NumLimConstants.FWATCH));
     List list = this.getSqlMapClientTemplate().queryForList("ZcFaCard.getCardLst", dto);
     return list;
@@ -96,19 +96,19 @@ public class ZcFaCardDao extends SqlMapClientDaoSupport implements IZcFaCardDao 
 
   
   public ZcFaCard selectByCardId(String cardId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (ZcFaCard) this.getSqlMapClientTemplate().queryForObject("ZcFaCard.selectByCardId", cardId);
   }
 
   
   public void update(ZcFaCard card) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().update("ZcFaCard.updateByExample", card);
   }
 
    
   public void deleteByCardIdFN(String cardId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getSqlMapClientTemplate().delete("ZcFaCard.deleteByCardId", cardId);   
   }
 

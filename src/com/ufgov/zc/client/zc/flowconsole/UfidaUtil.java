@@ -44,10 +44,10 @@ public class UfidaUtil {
         return localImageIcon;
       }
     } catch (MalformedURLException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     }
     return null;
@@ -61,12 +61,12 @@ public class UfidaUtil {
         localByteArrayOutputStream.write(i);
       return localByteArrayOutputStream.toByteArray();
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       try {
         paramInputStream.close();
       } catch (IOException e1) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e1.printStackTrace();
       }
     }
@@ -287,13 +287,13 @@ public class UfidaUtil {
     try {
       compo = (Component) StringToModel.stringToInstance(str);
     } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } catch (IllegalAccessException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } catch (InstantiationException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     }
     return compo;

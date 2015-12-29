@@ -204,7 +204,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
   }
 
   private void getXunJiaInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<ZcEbProj> projLst = (List<ZcEbProj>) dataMap.get(this.PRJOECT);
     if (projLst == null || projLst.size() == 0)
       return;
@@ -226,7 +226,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
         try {
           downFile(makeFileDirName, xj.getSpTechFileId(), xj.getSpTechFileName(), "" + xj.getXjCode(), path, meta);
         } catch (IOException e) {
-          // TODO Auto-generated catch block
+          // TCJLODO Auto-generated catch block
           e.printStackTrace();
           DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取询价单附件出错...\n" + e.getMessage());
         }        
@@ -236,7 +236,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
   }
 
   private void getFormula(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub    List<ZcEbProj> projLst=(List<ZcEbProj>) dataMap.get(this.PRJOECT);
+    // TCJLODO Auto-generated method stub    List<ZcEbProj> projLst=(List<ZcEbProj>) dataMap.get(this.PRJOECT);
     List<ZcEbProj> projLst = (List<ZcEbProj>) dataMap.get(this.PRJOECT);
     if (projLst == null || projLst.size() == 0)
       return;
@@ -251,7 +251,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
   }
 
   private void getProjectInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<String> idLst = new ArrayList<String>();
 
@@ -285,7 +285,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
           downFile(makeFileDirName, f.getFileId(), f.getFileName(), f.getProjCode(), path, meta);
           downFile(makeFileDirName, f.getWordFileId(), f.getWordFileId(), f.getProjCode() + f.getWordFileId(), path, meta);
         } catch (IOException e) {
-          // TODO Auto-generated catch block
+          // TCJLODO Auto-generated catch block
           e.printStackTrace();
           DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取招标文件附件出错...\n" + e.getMessage());
         }
@@ -298,7 +298,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
 
   //获取采购需求
   private void getRequirementLst(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<ZcEbProj> projLst = (List<ZcEbProj>) dataMap.get(this.PRJOECT);
     if (projLst == null || projLst.size() == 0)
       return;
@@ -321,7 +321,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
           try {
             downFile(makeFileDirName, rd.getRequirementDetail().getItemAttachBlobid(), rd.getRequirementDetail().getItemAttach(), "" + rd.getDetailCode(), path, meta);
           } catch (IOException e) {
-            // TODO Auto-generated catch block
+            // TCJLODO Auto-generated catch block
             e.printStackTrace();
             DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取需求文件附件出错...\n" + e.getMessage());
           }
@@ -332,7 +332,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
 
   //获取任务单
   private void getEntrustLst(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<ZcEbProj> projLst = (List<ZcEbProj>) dataMap.get(this.PRJOECT);
     if (projLst == null || projLst.size() == 0)
       return;
@@ -355,7 +355,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
 
   //获取批办单
   private void getDutySheetLst(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub List<ZcEbProj> projLst=(List<ZcEbProj>) dataMap.get(this.PRJOECT);
+    // TCJLODO Auto-generated method stub List<ZcEbProj> projLst=(List<ZcEbProj>) dataMap.get(this.PRJOECT);
     List<ZcEbProj> projLst = (List<ZcEbProj>) dataMap.get(this.PRJOECT);
     if (projLst == null || projLst.size() == 0)
       return;
@@ -378,7 +378,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
   }
 
   private void getAttachFile(ZcEbProj proj, String saveRootPath, RequestMeta meta) throws IOException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //    String parentDirectory = new File(saveRootPath).getParentFile().getParentFile().getAbsolutePath();
 
     String makeFileDirName = saveRootPath.substring(saveRootPath.lastIndexOf(File.separator)) + File.separator + "attach_files";
@@ -426,7 +426,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" + e.getMessage());
     }
@@ -525,7 +525,7 @@ public class ZcEbProjectDataExchanger extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

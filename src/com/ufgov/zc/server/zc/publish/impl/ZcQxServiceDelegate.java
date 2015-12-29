@@ -20,79 +20,79 @@ public class ZcQxServiceDelegate implements IZcQxServiceDelegate {
   private IZcQxService zcQxService;
   
   public List getQxLst(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.getQxLst(elementConditionDto, requestMeta);
   }
 
   
   public void cancelFn(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcQxService.cancelFn(qx, requestMeta);
   }
 
   
   public ZcQx unAuditFN(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.unAuditFN(qx, requestMeta);
   }
 
   
   public ZcQx untreadFN(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.untreadFN(qx, requestMeta);
   }
 
   
   public ZcQx auditFN(ZcQx qx, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
    return  zcQxService.auditFN(qx, requestMeta);
   }
 
   
   public ZcQx updateFN(ZcQx qx, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.updateFN(qx, requestMeta);
   }
 
   
   public void commitFN(List beanList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcQxService.commitFN(beanList, requestMeta);
   }
 
   
   public void deleteListFN(List beanList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcQxService.deleteListFN(beanList, requestMeta);
   }
 
   
   public void deleteFN(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcQxService.deleteFN(qx, requestMeta);
   }
 
   
   public ZcQx selectByPrimaryKey(String qxCode, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.selectByPrimaryKey(qxCode, requestMeta);
   }
 
   
   public ZcQx callbackFN(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.callbackFN(qx, requestMeta);
   }
 
   
   public void deleteByPrimaryKeyFN(String qxCode, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcQxService.deleteByPrimaryKeyFN(qxCode, requestMeta);
   }
 
   
   public ZcQx newCommitFN(ZcQx qx, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.newCommitFN(qx, requestMeta);
   }
 
@@ -109,28 +109,28 @@ public class ZcQxServiceDelegate implements IZcQxServiceDelegate {
 
   
   public ZcQx sendPayFN(ZcQx qx, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.zcQxService.sendPayFN(qx,requestMeta);
   }
 
 
    
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.queryExportsDatas(dto, meta);
   }
 
 
    
   public String importTransDatasFN(ZcQx bill, RequestMeta meta) throws DataExchangeException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.importTransDatasFN(bill, meta);
   }
 
 
    
   public String importDelDataFN(String id, RequestMeta meta) throws DataExchangeException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcQxService.importDelDataFN(id, meta) ;
   }
 

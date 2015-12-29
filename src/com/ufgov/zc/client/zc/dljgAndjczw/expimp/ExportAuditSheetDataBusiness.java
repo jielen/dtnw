@@ -20,7 +20,7 @@ public class ExportAuditSheetDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.sheetIds = list;
     this.path = path;
     this.busName = "批办单";
@@ -42,7 +42,7 @@ public class ExportAuditSheetDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -53,7 +53,7 @@ public class ExportAuditSheetDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_AUDIT_SHEET;
   }
 

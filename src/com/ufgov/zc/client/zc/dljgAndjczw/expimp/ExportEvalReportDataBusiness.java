@@ -35,7 +35,7 @@ public class ExportEvalReportDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.zcEbEvalReportIds = list;
     busName = "评审报告";
     this.path = path;
@@ -90,7 +90,7 @@ public class ExportEvalReportDataBusiness extends AbstractExpDataBusiness implem
 
   private List getZcEbBulletinAsFile() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<String> fileIds = new ArrayList<String>();
 
@@ -185,7 +185,7 @@ public class ExportEvalReportDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -196,7 +196,7 @@ public class ExportEvalReportDataBusiness extends AbstractExpDataBusiness implem
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_EVAL_REPORT;
   }
 

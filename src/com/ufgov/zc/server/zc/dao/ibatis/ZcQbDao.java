@@ -24,7 +24,7 @@ public class ZcQbDao extends SqlMapClientDaoSupport  implements IZcQbDao {
 
  
   public List getQbLst(ElementConditionDto elementConditionDto) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     elementConditionDto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(elementConditionDto.getWfcompoId(), NumLimConstants.FWATCH));
 
@@ -36,45 +36,45 @@ public class ZcQbDao extends SqlMapClientDaoSupport  implements IZcQbDao {
 
  
   public ZcQb selectByPrimaryKey(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return  (ZcQb) getSqlMapClientTemplate().queryForObject("ZC_QB.selectByPrimaryKey", qbCode);
   }
 
 
  
   public List getQbBiLst(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return getSqlMapClientTemplate().queryForList("ZC_QB.getQbBiLstByQbcode", qbCode);
   }
 
 
  
   public List getItemLst(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return getSqlMapClientTemplate().queryForList("ZC_QB.getQbItemLstByQbcode", qbCode);
   }
 
 
   public List selectBiByQbCode(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return getQbBiLst(qbCode);
   }
 
 
   
   public void insert(ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getSqlMapClientTemplate().insert("ZC_QB.insert", qb);
   }
 
 
   public String getMaxVouId(String vouId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (String) getSqlMapClientTemplate().queryForObject("ZC_QB.getMaxVouId", vouId);
   }
   
   public void insertBiLst(final List biList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (biList == null || biList.size()==0)
 
       return;
@@ -107,7 +107,7 @@ public class ZcQbDao extends SqlMapClientDaoSupport  implements IZcQbDao {
 
   
   public void insertItemLst(final List itemList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (itemList == null || itemList.size()==0)
       return;
 
@@ -129,7 +129,7 @@ public class ZcQbDao extends SqlMapClientDaoSupport  implements IZcQbDao {
 
   
   public void update(ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     delete(qb);
     insert(qb);
   }
@@ -137,21 +137,21 @@ public class ZcQbDao extends SqlMapClientDaoSupport  implements IZcQbDao {
 
   
   public void deleteBiByQbCode(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getSqlMapClientTemplate().delete("ZC_QB.deleteBiByQbCode", qbCode);
   }
 
 
   
   public void deleteItemByQbCode(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getSqlMapClientTemplate().delete("ZC_QB.deleteItemByQbCode", qbCode);    
   }
 
 
   
   public void delete(ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getSqlMapClientTemplate().delete("ZC_QB.delete", qb.getQbCode());        
   }
 

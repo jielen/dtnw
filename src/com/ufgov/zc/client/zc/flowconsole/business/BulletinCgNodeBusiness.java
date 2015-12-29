@@ -26,7 +26,7 @@ public class BulletinCgNodeBusiness implements INodeBusiness {
   @Override
   public void showAddWindow() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     new ZcEbBulletinCGEditDialog(new ZcEbBulletinCGListPanel(), new ArrayList(1), -1, "0");
 

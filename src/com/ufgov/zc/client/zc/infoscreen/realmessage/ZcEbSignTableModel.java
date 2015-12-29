@@ -11,13 +11,13 @@ public class ZcEbSignTableModel extends AbstractBeanTableModel {
 
   @Override
   protected String[] initPropNames(Class clazz) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return new String[] { "projCode", "projName", "providerName" };
   }
 
   @Override
   protected String[] initColumnNames(Class clazz) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return new String[] { "项目编号", "采购项目", "供应商" };
   }
 

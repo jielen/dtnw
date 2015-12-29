@@ -145,7 +145,7 @@ public class ZcEbRfqSummaryPanel extends AbstractMainSubEditPanel implements Par
    * 这里的废标，用于生产评标报告以后，有可能已经发了中标公告、通知书等，所以要将这些都删除，如果已经有了合同，则提示先作废合同，再进行作废
    */
   protected void doRejectBid() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     JTextField reason = new JTextField();
 

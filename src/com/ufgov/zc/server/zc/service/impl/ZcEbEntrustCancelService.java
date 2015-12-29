@@ -54,13 +54,13 @@ public class ZcEbEntrustCancelService implements IZcEbEntrustCancelService {
   }
 
   public List selectZcEbEntrustCancel(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     elementConditionDto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(elementConditionDto.getWfcompoId(), NumLimConstants.FWATCH));
     return baseDao.query("ZcEbEntrustCancel.getZcEbEntrustCancel", elementConditionDto);
   }
 
   public ZcEbEntrustCancel selectByKey(String code) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List list = (List) baseDao.query("ZcEbEntrustCancel.getZcEbEntrustCancelByKey", code);
     if (list == null || list.size() == 0) {
       return new ZcEbEntrustCancel();
@@ -71,14 +71,14 @@ public class ZcEbEntrustCancelService implements IZcEbEntrustCancelService {
   }
 
   public void deleteZcEbEntrustCancelFN(ZcEbEntrustCancel bean) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.delete("ZcEbEntrustCancel.deleteByKey", bean.getEntrustCancelId());
     baseDao.delete("ZcEbEntrustCancel.deleteDetailByKey", bean.getEntrustCancelId());
 
   }
 
   public void deleteZcEbEntrustCancelListFN(List list) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i = 0; i < list.size(); i++) {
       ZcEbEntrustCancel bean = (ZcEbEntrustCancel) list.get(i);
       baseDao.delete("ZcEbEntrustCancel.deleteByKey", bean.getEntrustCancelId());
@@ -87,25 +87,25 @@ public class ZcEbEntrustCancelService implements IZcEbEntrustCancelService {
   }
 
   public ZcEbEntrustCancel newCommitFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.newCommit(bean.getComment(), bean, requestMeta);
     return selectByKey(bean.getEntrustCancelId());
   }
 
   public ZcEbEntrustCancel untreadFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untread(bean.getComment(), bean, requestMeta);
     return bean;
   }
 
   public ZcEbEntrustCancel unAuditFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.unAudit(bean.getComment(), bean, requestMeta);
     return bean;
   }
 
   public ZcEbEntrustCancel auditFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String roleCode = (String) baseDao.read("AsRole.getRoleCodeById", bean.getRoleId());
     boolean isEnd = ("3".equals(bean.getStatus()) && "CG_CGZX_FZR".equals(roleCode)) || ("5".equals(bean.getStatus()) && "CG_CGCZ".equals(roleCode));
     try {
@@ -124,13 +124,13 @@ public class ZcEbEntrustCancelService implements IZcEbEntrustCancelService {
   }
 
   public ZcEbEntrustCancel callbackFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.callback(bean.getComment(), bean, requestMeta);
     return bean;
   }
 
   public ZcEbEntrustCancel saveZcEbEntrustCancelFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     if (bean.getEntrustCancelId() == null || "".equals(bean.getEntrustCancelId())) {
 

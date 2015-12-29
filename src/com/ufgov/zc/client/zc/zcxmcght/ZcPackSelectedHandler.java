@@ -48,7 +48,7 @@ public class ZcPackSelectedHandler implements IForeignEntityHandler {
 	 */
 	@Override
 	public void excute(List selectedDatas) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		for (Object object : selectedDatas) {
 
 			ZcEbEvalReport temp = (ZcEbEvalReport)object;
@@ -105,7 +105,7 @@ public class ZcPackSelectedHandler implements IForeignEntityHandler {
 	 */
 	@Override
 	public boolean isMultipleSelect() {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return false;
 	}
 

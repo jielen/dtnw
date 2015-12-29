@@ -150,7 +150,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
   
   private void refreshData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcYearPlan yp = (ZcYearPlan) this.listCursor.getCurrentObject();
     if (null != yp) {
@@ -165,7 +165,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
           this.pageStatus = ZcSettingConstants.PAGE_STATUS_EDIT;          
         }
       } catch (Exception e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
         logger.error(e.getMessage(), e);
         JOptionPane.showMessageDialog(this,  e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
@@ -219,7 +219,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
 
   }
   private void setTableEditor() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     setNewMakeBiEditor();
   }
   
@@ -238,7 +238,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
       }    
   }
   private void setNewMakeBiEditor() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     JPageableFixedTable table=newBiTablePanel.getTable();
     table.setDefaultEditor(String.class, new TextCellEditor());
     if (ZcUtil.useBudget()) {
@@ -294,7 +294,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   private void updateTableEditable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     oldBiTablePanel.getTable().setEnabled(false);    
     oldHtBiTablePanel.getTable().setEnabled(false);
     if(pageStatus.equals(ZcSettingConstants.PAGE_STATUS_EDIT)){
@@ -307,7 +307,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   private void tranlateTableColumn() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcUtil.translateColName(oldBiTablePanel.getTable(), ZcPProMakeToTableModelConverter.biInfoWihtBudget);
     ZcUtil.translateColName(newBiTablePanel.getTable(), ZcPProMakeToTableModelConverter.biInfoWihtBudget);
@@ -345,7 +345,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
     addHtTableListener();
   }
   private void addHtTableListener() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     htTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         if (!e.getValueIsAdjusting()) {
@@ -364,12 +364,12 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   protected void refreshHtNewBiTable(ZcXmcgHt newHt) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     newHtBiTablePanel.setTableModel(ZcXmcgHtToTableModelConverter.convertSubBiTableData(newHt.getBiList()==null?new ArrayList():newHt.getBiList(), false));
   }
 
   protected void refreshHtOldBiTable(ZcXmcgHt newHt) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(newHt.getZcHtCode()==null){
       oldHtBiTablePanel.setTableModel(ZcXmcgHtToTableModelConverter.convertSubBiTableData(new ArrayList(), false));
       return;
@@ -396,7 +396,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   private List buildHtBiLst(ZcXmcgHt zcXmcgHt) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<ZcXmcgHtBi> tempList = new ArrayList<ZcXmcgHtBi>();
 
@@ -429,7 +429,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   public void setButtonStatusWithoutWf() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(pageStatus.equals(ZcSettingConstants.PAGE_STATUS_EDIT)){
       editButton.setEnabled(false);
       saveButton.setEnabled(true);
@@ -466,7 +466,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
       
       @Override
       public void stateChanged(ChangeEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         JTabbedPane tabbedPane = (JTabbedPane) e.getSource();
         int selectedIndex = tabbedPane.getSelectedIndex();
         switch (selectedIndex) {
@@ -486,7 +486,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
    * 根据采购计划选择的资金情况，同步合同的资金情况
    */
   private void setMakeBiToHtBi() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     updateMakeBiToHtBi();
     removeHtBi();
     
@@ -497,7 +497,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
  * 刷新合同新资金表
  */
   private void refreshNewHtBiTable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcYearPlan yearPlan = (ZcYearPlan) this.listCursor.getCurrentObject();
     if(yearPlan.getNewHtList()==null || yearPlan.getNewHtList().size()==0)return;
 
@@ -551,7 +551,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
    * 将结转后的计划上配置的资金同步给结转后的合同
    */
   private void updateMakeBiToHtBi() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcYearPlan yearPlan = (ZcYearPlan) this.listCursor.getCurrentObject();
     if(yearPlan.getNewHtList()==null || yearPlan.getNewHtList().size()==0)return;
     if(yearPlan.getNewMake().getBiList()==null || yearPlan.getNewMake().getBiList().size()==0)return;
@@ -600,7 +600,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   private JComponent createMakeBiPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     JPanel p=new JPanel();
     p.setLayout(new BorderLayout());
     p.add(createOldBiTable(),BorderLayout.NORTH);
@@ -609,7 +609,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
 
   private JPanel createHtPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     JPanel p=new JPanel();
     p.setLayout(new BorderLayout());
@@ -688,7 +688,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
   }
   
   private JComponent createNewHtBiTable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     newHtBiTablePanel = new JTablePanel();
 
@@ -783,7 +783,7 @@ public class ZcProOrYearEndEditPanelDt extends AbstractMainSubEditPanel{
     return htBiTabPane;
   }
 protected void setHtBiDefaultValue(ZcXmcgHtBi htBi) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 
@@ -809,7 +809,7 @@ private JComponent createOldBiTable(){
 }
   
   private JComponent createNewBiTable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     newBiTablePanel = new JTablePanel(null, AsOptionMeta.getOptVal(ZcSettingConstants.ZC_OPTON_JIHUA_ZIJIN_HELP_MSG));
 
@@ -1054,7 +1054,7 @@ private JComponent createOldBiTable(){
     return util.createPanel(fieldEditors, 3);
   }
   private void initTitle() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     this.workPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "结转项目资金管理-采购计划", TitledBorder.CENTER,
       TitledBorder.TOP, new Font("宋体", Font.BOLD, 15), Color.BLUE));
@@ -1064,7 +1064,7 @@ private JComponent createOldBiTable(){
   }
   @Override
   public void initToolBar(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     toolBar.setModuleCode("ZC");
 
@@ -1097,11 +1097,11 @@ private JComponent createOldBiTable(){
   }
 
   protected void doExit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.parent.dispose();
   }
   protected void doEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(isCanEdit()){
       this.pageStatus=ZcSettingConstants.PAGE_STATUS_EDIT;
       updateTableEditable();
@@ -1115,7 +1115,7 @@ private JComponent createOldBiTable(){
    * 检查当前单据是否已经有了结算单，如果有了结算单了，不能修改当前单据的资金，因为结转时不结转资金支付单，当前有支付单，说明挂配的资金已经进入到支付环节了，不能调整资金了。这种适用于资金挂配保存后的在修改
    */
   private boolean isCanEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcYearPlan yp = (ZcYearPlan) this.listCursor.getCurrentObject();
     
     List balLst=zcEbBaseServiceDelegate.queryDataForList("ZC_P_PRO_BAL.selectByMakeCode", yp.getNewMake().getZcMakeCode(), requestMeta);
@@ -1125,7 +1125,7 @@ private JComponent createOldBiTable(){
     return true;
   }
   protected void doSave() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //同步计划的资金构成到合同上面去
     setMakeBiToHtBi();
     //检查金额关系
@@ -1163,7 +1163,7 @@ private JComponent createOldBiTable(){
     }    
   }
   private boolean checkBeforeSave() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcYearPlan yp = (ZcYearPlan) this.listCursor.getCurrentObject();
     StringBuffer errorMsg=new StringBuffer();
@@ -1252,7 +1252,7 @@ private JComponent createOldBiTable(){
 
   @Override
   public List<AbstractFieldEditor> createFieldEditors() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     fieldEditors = new ArrayList<AbstractFieldEditor>();
 
@@ -1307,7 +1307,7 @@ private JComponent createOldBiTable(){
 
   @Override
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 

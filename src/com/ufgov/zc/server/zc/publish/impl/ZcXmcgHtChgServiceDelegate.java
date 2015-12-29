@@ -26,7 +26,7 @@ public class ZcXmcgHtChgServiceDelegate implements IZcXmcgHtChgServiceDelegate {
 
 	public List getZcXmcgHtChg(ElementConditionDto dto, RequestMeta meta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.getZcXmcgHtChg(dto, meta);
 	}
 
@@ -34,21 +34,21 @@ public class ZcXmcgHtChgServiceDelegate implements IZcXmcgHtChgServiceDelegate {
 	public ZcXmcgHtChg updateZcXmcgHtChgFN(ZcXmcgHtChg zcXmcgHtChg,
 			boolean flag, String serverAdd, RequestMeta requestMeta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.updateZcXmcgHtChgFN(zcXmcgHtChg, flag, serverAdd, requestMeta);
 	}
 
 
 	public ZcXmcgHtChg selectByPrimaryKey(String zcHtChgId,
 			RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.selectByPrimaryKey(zcHtChgId, requestMeta);
 	}
 
 
 	public void deleteByPrimaryKeyFN(String zcHtChgId, boolean flag,
 			String serverAdd, RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcXmcgHtChgService.deleteByPrimaryKeyFN(zcHtChgId, flag, serverAdd, requestMeta);
 	}
 
@@ -62,42 +62,42 @@ public class ZcXmcgHtChgServiceDelegate implements IZcXmcgHtChgServiceDelegate {
 
 	public ZcXmcgHtChg newCommitFN(ZcXmcgHtChg ht, boolean flag,
 			RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.newCommitFN(ht, flag, requestMeta);
 	}
 
 
 
 	public ZcXmcgHtChg callbackFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.callbackFN(ht, requestMeta);
 	}
 
 
 
 	public ZcXmcgHtChg untreadFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.untreadFN(ht, requestMeta);
 	}
 
 
 
 	public ZcXmcgHtChg unAuditFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.unAuditFN(ht, requestMeta);
 	}
 
 
 
 	public ZcXmcgHtChg auditFN(ZcXmcgHtChg ht, RequestMeta requestMeta) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcXmcgHtChgService.auditFN(ht, requestMeta);
 	}
 
 
   
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcXmcgHtChgService.queryExportsDatas(dto, meta);
   }
 

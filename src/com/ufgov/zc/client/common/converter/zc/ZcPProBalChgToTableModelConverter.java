@@ -25,9 +25,8 @@ import com.ufgov.zc.common.system.constants.ZcPProBalConstants;
 import com.ufgov.zc.common.system.constants.ZcSettingConstants;
 import com.ufgov.zc.common.system.model.AsFile;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
-import com.ufgov.zc.common.zc.model.ZcPProBalChgBi;
+import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
-import com.ufgov.zc.common.zc.model.ZcPProMitemBiHistory;
 import com.ufgov.zc.common.zc.model.ZcXmcgHt;
 
 public class ZcPProBalChgToTableModelConverter {
@@ -144,20 +143,20 @@ public class ZcPProBalChgToTableModelConverter {
     biInfo.add(new ColumnBeanPropertyPair("ZC_BI_YJJS_SUM", "zcBiYjjsSum", "已经结算金额"));
   }
 
-  public static TableModel convertSubBiTableData(List<ZcPProBalChgBi> biList, final List<ZcPProMitemBiHistory> oldBiList, Map wfCanEditFieldMap) {
+  public static TableModel convertSubBiTableData(List<ZcPProMitemBiChg> biList, final List<ZcPProMitemBiChg> oldBiList, Map wfCanEditFieldMap) {
 
-    BeanTableModel<ZcPProBalChgBi> tm = new BeanTableModel<ZcPProBalChgBi>() {
+    BeanTableModel<ZcPProMitemBiChg> tm = new BeanTableModel<ZcPProMitemBiChg>() {
 
       @Override
       public boolean isCellEditable(int row, int column) {
 
         String columnId = this.getColumnIdentifier(column);
-        ZcPProBalChgBi rowData=this.getBean(row);
+        ZcPProMitemBiChg rowData=this.getBean(row);
         if(isOldBi(rowData,oldBiList)){
           return false;
         }
         //增加自筹资金校验，自筹资金也不能调整，只能调整待配套资金
-        if(ZcPProBalChgBi.ZCZJ.equals(rowData.getFundCode())){
+        if(ZcPProMitemBiChg.ZCZJ.equals(rowData.getFundCode())){
           return false;
         }
         if (ZcElementConstants.FIELD_TRANS_ORIGIN_CODE.equals(columnId) 
@@ -189,10 +188,10 @@ public class ZcPProBalChgToTableModelConverter {
        * @param oldBiList
        * @return
        */
-      private boolean isOldBi(ZcPProBalChgBi rowData, List<ZcPProMitemBiHistory> oldBiList) {
-        // TODO Auto-generated method stub
+      private boolean isOldBi(ZcPProMitemBiChg rowData, List<ZcPProMitemBiChg> oldBiList) {
+        // TCJLODO Auto-generated method stub
         if(rowData!=null && oldBiList!=null){
-          for (ZcPProMitemBiHistory oldBi : oldBiList) {
+          for (ZcPProMitemBiChg oldBi : oldBiList) {
             if(oldBi.getZcBiNo()!=null && oldBi.getZcBiNo().equals(rowData.getZcBiNo())){
               return true;
             }
@@ -204,7 +203,7 @@ public class ZcPProBalChgToTableModelConverter {
       @Override
       public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-        ZcPProBalChgBi bean = dataBeanList.get(rowIndex);
+        ZcPProMitemBiChg bean = dataBeanList.get(rowIndex);
 
         if ("ZC_FUND_FILE".equals(this.getColumnIdentifier(columnIndex))) {
 
@@ -322,10 +321,10 @@ public class ZcPProBalChgToTableModelConverter {
 
   }
 
-  public static TableModel convertSubBiTableDataWithOutBudget(List<ZcPProBalChgBi> zcPProChgBiList, Map wfCanEditFieldMap) {
-    // TODO Auto-generated method stub
+  public static TableModel convertSubBiTableDataWithOutBudget(List<ZcPProMitemBiChg> zcPProChgBiList, Map wfCanEditFieldMap) {
+    // TCJLODO Auto-generated method stub
 
-    BeanTableModel<ZcPProBalChgBi> tm = new BeanTableModel<ZcPProBalChgBi>() {
+    BeanTableModel<ZcPProMitemBiChg> tm = new BeanTableModel<ZcPProMitemBiChg>() {
 
       @Override
       public boolean isCellEditable(int row, int column) {
@@ -364,7 +363,7 @@ public class ZcPProBalChgToTableModelConverter {
       @Override
       public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-        ZcPProBalChgBi bean = dataBeanList.get(rowIndex);
+        ZcPProMitemBiChg bean = dataBeanList.get(rowIndex);
 
         if ("ZC_FUND_FILE".equals(this.getColumnIdentifier(columnIndex))) {
 
@@ -402,7 +401,7 @@ public class ZcPProBalChgToTableModelConverter {
 
     tm.setOidFieldName("tempId");
 
-    for (ZcPProBalChgBi o : zcPProChgBiList) {
+    for (ZcPProMitemBiChg o : zcPProChgBiList) {
 
       o.setTempId(Guid.genID());
 
@@ -449,9 +448,9 @@ public class ZcPProBalChgToTableModelConverter {
 }
 
 
-  public static TableModel convertOldBiTableData(List<ZcPProMitemBiHistory> biList, final Map wfCanEditFieldMap) {
+  public static TableModel convertOldBiTableData(List<ZcPProMitemBiChg> biList, final Map wfCanEditFieldMap) {
 
-    BeanTableModel<ZcPProMitemBiHistory> tm = new BeanTableModel<ZcPProMitemBiHistory>() {
+    BeanTableModel<ZcPProMitemBiChg> tm = new BeanTableModel<ZcPProMitemBiChg>() {
 
       private static final long serialVersionUID = 6888363838628062064L;
 
@@ -463,7 +462,7 @@ public class ZcPProBalChgToTableModelConverter {
       @Override
       public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-        ZcPProMitemBiHistory bean = dataBeanList.get(rowIndex);
+        ZcPProMitemBiChg bean = dataBeanList.get(rowIndex);
 
         if ("ZC_FUND_FILE".equals(this.getColumnIdentifier(columnIndex))) {
 
@@ -515,10 +514,10 @@ public class ZcPProBalChgToTableModelConverter {
 
   }
 
-  public static TableModel convertOldBiTableDataWithOutBudget(List<ZcPProMitemBiHistory> zcPProChgBiList, Map wfCanEditFieldMap) {
-    // TODO Auto-generated method stub
+  public static TableModel convertOldBiTableDataWithOutBudget(List<ZcPProMitemBiChg> zcPProChgBiList, Map wfCanEditFieldMap) {
+    // TCJLODO Auto-generated method stub
 
-    BeanTableModel<ZcPProMitemBiHistory> tm = new BeanTableModel<ZcPProMitemBiHistory>() {
+    BeanTableModel<ZcPProMitemBiChg> tm = new BeanTableModel<ZcPProMitemBiChg>() {
 
       @Override
       public boolean isCellEditable(int row, int column) {
@@ -530,7 +529,7 @@ public class ZcPProBalChgToTableModelConverter {
       @Override
       public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
 
-        ZcPProMitemBiHistory bean = dataBeanList.get(rowIndex);
+        ZcPProMitemBiChg bean = dataBeanList.get(rowIndex);
 
         if ("ZC_FUND_FILE".equals(this.getColumnIdentifier(columnIndex))) {
 
@@ -568,7 +567,7 @@ public class ZcPProBalChgToTableModelConverter {
 
     tm.setOidFieldName("tempId");
 
-    for (ZcPProMitemBiHistory o : zcPProChgBiList) {
+    for (ZcPProMitemBiChg o : zcPProChgBiList) {
 
       o.setTempId(Guid.genID());
 

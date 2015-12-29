@@ -140,7 +140,7 @@ public class ZcQuaTypeEditPanel extends AbstractMainSubEditPanel {
   }
 
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 

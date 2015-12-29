@@ -136,7 +136,7 @@ public class ZcEbPackSearchConditionItem extends AbstractSearchConditionItem {
 
     public void excute(List selectedDatas) {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       for (Object object : selectedDatas) {
 
@@ -196,7 +196,7 @@ public class ZcEbPackSearchConditionItem extends AbstractSearchConditionItem {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 

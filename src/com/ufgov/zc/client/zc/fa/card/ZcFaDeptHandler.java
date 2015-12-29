@@ -23,7 +23,7 @@ public class ZcFaDeptHandler  implements IForeignEntityHandler {
    */
   @Override
   public void excute(List selectedDatas) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
@@ -32,7 +32,7 @@ public class ZcFaDeptHandler  implements IForeignEntityHandler {
    */
   @Override
   public boolean isMultipleSelect() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return false;
   }
 
@@ -41,7 +41,7 @@ public class ZcFaDeptHandler  implements IForeignEntityHandler {
    */
   @Override
   public TableModel createTableModel(List showDatas) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
   public void afterClear() {}

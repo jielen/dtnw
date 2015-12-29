@@ -84,12 +84,12 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
   }
 
   public void setParentWindow(Window window) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     parentWindow = window;
   }
 
   public Window getParentWindow() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return parentWindow;
   }
 
@@ -258,7 +258,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
   }
 
   protected void addToolBarComponent(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     toolBar.setCompoId(getCompoId());
     toolBar.add(this.addButton);
     toolBar.add(this.sendButton);
@@ -268,7 +268,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
     addButton.addActionListener(new ActionListener(){
 
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doAdd();
       }
 
@@ -277,7 +277,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
     sendButton.addActionListener(new ActionListener(){
 
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doSend();
       }
 
@@ -286,7 +286,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
     deleteButton.addActionListener(new ActionListener(){
 
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doDelete();
       }
 
@@ -295,7 +295,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
     traceButton.addActionListener(new ActionListener(){
 
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doTrace();
       }
 
@@ -484,7 +484,7 @@ public class ZcEbConsultListPanel extends AbstractEditListBill implements Parent
   }
 
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     SwingUtilities.invokeLater(new Runnable() {
 

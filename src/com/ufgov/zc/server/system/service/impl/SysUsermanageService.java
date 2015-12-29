@@ -118,12 +118,12 @@ public class SysUsermanageService implements ISysUsermanageService {
 
 	public void updateAsEmpLogin(String userId, boolean isAllowLogin)
 			throws BusinessException {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 
 	}
 
 	public List getUserByCaSerial(String userId) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return baseDao.query("User.getUserByCAId", userId);
 	}
 

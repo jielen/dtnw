@@ -488,7 +488,7 @@ public class WorkEnv {
     field.addItemListener(new ItemListener() {
       @Override
       public void itemStateChanged(ItemEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if (e.getStateChange() == ItemEvent.SELECTED) {
           JComboBox jcb = (JComboBox) e.getSource();
           String userId = (String) (jcb.getSelectedItem());
@@ -508,7 +508,7 @@ public class WorkEnv {
 
       @Override
       public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         String userId = (String) (field.getEditor().getItem());
         String userName = getUserName(userId);
         userNameLabel.setText(userName == null ? "" : userName);
@@ -516,7 +516,7 @@ public class WorkEnv {
 
       @Override
       public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
       }
     });

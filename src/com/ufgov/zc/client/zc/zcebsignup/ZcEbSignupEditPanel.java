@@ -201,7 +201,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
 
   public ZcEbSignupEditPanel(ZcEbSignupDialog parent, ListCursor listCursor, String tabStatus, ZcEbSignupListPanel listPanel) {
 
-    // TODO Auto-generated constructor stub
+    // TCJLODO Auto-generated constructor stub
 
     super(ZcEbSignup.class, BillElementMeta.getBillElementMetaWithoutNd("ZC_EB_SIGNUP"));
 
@@ -455,7 +455,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
 
   private void refreshData() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbSignup signup = (ZcEbSignup) listCursor.getCurrentObject();
 
@@ -595,7 +595,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void refreshZiZhiPanel(List deList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (ziZhiTabPanel.getTabCount() > 0) {//已经初始化好了，不需要在初始化      
       return;
     }
@@ -982,7 +982,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
   @Override
   public List<AbstractFieldEditor> createFieldEditors() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<AbstractFieldEditor> editorList = new ArrayList<AbstractFieldEditor>();
 
@@ -1326,7 +1326,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
 
     public void excute(List selectedDatas) {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       for (Object object : selectedDatas) {
 
@@ -1407,7 +1407,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 
@@ -1643,7 +1643,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
 
   private boolean checkProj() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbSignup s = (ZcEbSignup) listCursor.getCurrentObject();
 
@@ -1761,7 +1761,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         doDelete();
 
@@ -1774,7 +1774,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         doSave();
 
@@ -1787,7 +1787,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
     //      @Override
     //      public void actionPerformed(ActionEvent e) {
     //
-    //        // TODO Auto-generated method stub
+    //        // TCJLODO Auto-generated method stub
     //
     //        doAudit();
     //
@@ -1800,7 +1800,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
     //      @Override
     //      public void actionPerformed(ActionEvent e) {
     //
-    //        // TODO Auto-generated method stub
+    //        // TCJLODO Auto-generated method stub
     //
     //        doUnAudit();
     //
@@ -2357,7 +2357,7 @@ public class ZcEbSignupEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private boolean checkSignupAudited(ZcEbSignup signup) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List packs = signup.getSignupPacks();
     for (int i = 0; i < packs.size(); i++) {

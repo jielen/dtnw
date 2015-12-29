@@ -43,7 +43,7 @@ public class GkInterfaceTest {
    * @param args
    */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     GkInterfaceTest t=new GkInterfaceTest();
     
     t.testPay();

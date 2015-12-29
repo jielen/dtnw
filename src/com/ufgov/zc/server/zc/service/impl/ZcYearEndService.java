@@ -76,7 +76,7 @@ public class ZcYearEndService implements IZcYearEndService {
 
 	public List getZcPProMake(ElementConditionDto dto, RequestMeta meta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 	  //获取计划列表
 	  List makeLst=_getMakeList(dto,meta);
 	  if(makeLst==null) return null;
@@ -94,7 +94,7 @@ public class ZcYearEndService implements IZcYearEndService {
 	}
 
 	private List _createYearEndList(List makeLst, List htLst, List balLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 	  List rtn= new ArrayList();
 	  makeLst=makeLst==null?new ArrayList():makeLst;
 	  htLst=htLst==null?new ArrayList():htLst;
@@ -124,7 +124,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   private List _getBalList(List mkCodeLst, RequestMeta meta,ElementConditionDto dtooo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ElementConditionDto dto =new ElementConditionDto();
     dto.setWfcompoId("ZC_P_PRO_BAL");
     dto.setExecutor(meta.getSvUserID());
@@ -140,7 +140,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   private List _getHtList(List mkCodeLst, RequestMeta meta,ElementConditionDto dtooo) throws SQLException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ElementConditionDto dto =new ElementConditionDto();
     dto.setWfcompoId("ZC_XMCG_HT");
     dto.setExecutor(meta.getSvUserID());
@@ -166,7 +166,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   private List _getMakeList(ElementConditionDto dtooo,RequestMeta meta) throws SQLException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ElementConditionDto dto=new ElementConditionDto();
     dto.setExecutor(meta.getSvUserID());
     if(ZcYearPlan.END_TYPE_JIE_ZHUAN_ZHONG_NEW.equals(dtooo.getStatus())//在结转后年度里，挂接资金时，环境变量里的年度已经是新年了，要显示这些计划，则要将年度-1
@@ -183,7 +183,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   public void updateProEndFn(String zcMakeCodes, boolean useBugdet, RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		// 如果使用了指标接口，则释放占用的指标
 	  if(useBugdet){
 	    BudgetUtil b=new BudgetUtil();
@@ -275,7 +275,7 @@ public class ZcYearEndService implements IZcYearEndService {
    */
 	
   public void jiexiangFn(ZcYearPlan zcYearPlan, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //获取计划的资金信息
     List makeBiLst=getZcPProMakeService().getZcPProMitemBi(zcYearPlan.getMake().getZcMakeCode(),ZcSUtil.isUseBi());    
 
@@ -318,7 +318,7 @@ public class ZcYearEndService implements IZcYearEndService {
 
   
   public void batchJiexiangFn(List jieXiangLst, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(jieXiangLst==null)return;
     for(int i=0;i<jieXiangLst.size();i++){
       ZcYearPlan p=(ZcYearPlan)jieXiangLst.get(i);
@@ -328,7 +328,7 @@ public class ZcYearEndService implements IZcYearEndService {
 
    
   public ZcYearPlan getZcYearPlanByMakeCode(RequestMeta requestMeta, ZcYearPlan yearPlan) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //获取结转前的采购计划
     yearPlan.setMake(getZcPProMakeService().selectByPrimaryKey(yearPlan.getZcMakeCode()));
     
@@ -415,7 +415,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
  
   public ZcYearPlan saveJieZhuanZiJinFN(ZcYearPlan yp, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcPProMakeService.updateZcPProMake(yp.getNewMake(), null, ZcSUtil.isUseBi(), requestMeta);
     ZcPProMake make=zcPProMakeService.selectByPrimaryKey(yp.getNewMake().getZcMakeCode());
     
@@ -449,13 +449,13 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   private void _tongbu(ZcYearPlan yp, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     _tongbuMake(yp,requestMeta);
     _tongbuHt(yp,requestMeta);
   }
 
   private void _tongbuHt(ZcYearPlan yp, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(yp.getNewHtList()!=null){
       for(int i=0;i<yp.getNewHtList().size();i++){
         ZcXmcgHt ht=(ZcXmcgHt) yp.getNewHtList().get(i);
@@ -476,7 +476,7 @@ public class ZcYearEndService implements IZcYearEndService {
   }
 
   private void _tongbuMake(ZcYearPlan yp, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     DataExchangeRedo redo = new DataExchangeRedo();
 

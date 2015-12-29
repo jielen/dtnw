@@ -213,7 +213,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void refreshData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcFaCard card = listCursor.getCurrentObject();
 
@@ -258,7 +258,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setCandidateSum(ZcFaCard card) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(card==null || card.getCaigouHt()==null || card.getCaigouHt().getZcHtCode()==null)return;
     
     HashMap ds=(HashMap) zcEbBaseServiceDelegate.queryObject("ZcFaCard.getCandidateHtSum", card.getCaigouHt().getZcHtCode(), requestMeta);
@@ -297,12 +297,12 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setOldObject() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     oldCard = (ZcFaCard) ObjectUtil.deepCopy(listCursor.getCurrentObject());
   }
 
   private void refreshSubData(ZcFaCard card) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     cardSubTablePanel.setTableModel(new ZcFaCardToTableModelConverter().convertCardSubToTableData(card.getZcFaCardSubList()));
 
     cardDocTablePanel.setTableModel(new ZcFaCardToTableModelConverter().convertCardDocToTableData(card.getZcFaCardDocList()));
@@ -318,7 +318,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setTablePorperty() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     SwingUtil.setTableCellEditor(cardSubTablePanel.getTable(), "FA_SUB_NUM", new MoneyCellEditor());
     SwingUtil.setTableCellRenderer(cardSubTablePanel.getTable(), "FA_SUB_NUM", new NumberCellRenderer());
     SwingUtil.setTableCellEditor(cardSubTablePanel.getTable(), "FA_SUB_PRICE", new MoneyCellEditor());
@@ -334,7 +334,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setDefaultValue(ZcFaCard card) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     card.setCurrentDate(requestMeta.getSysDate());
     //采购组织形式:政府集中机构采购
     card.setFaItemC22("01");
@@ -355,7 +355,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
    */
   @Override
   public void initToolBar(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     toolBar.setModuleCode("ZC");
 
@@ -561,7 +561,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   protected void doPrintButton() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
@@ -668,7 +668,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   protected void doTrace() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcBaseBill bean = (ZcBaseBill) this.listCursor.getCurrentObject();
     if (bean == null) {
       return;
@@ -709,7 +709,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   protected void doSave() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (!checkBeforSave()) {
       return;
     }
@@ -739,7 +739,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 
   private boolean checkBeforSave() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcFaCard card = listCursor.getCurrentObject();
     StringBuffer errorInfo = new StringBuffer();
@@ -755,7 +755,7 @@ public class ZcFaCardEditPanel extends AbstractMainSubEditPanel {
   }
 //检查卡片金额与未纳入资产的合同金额，卡片金额不能超
 private boolean _checkHtCandidateSum(StringBuffer errorInfo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
   StringBuffer errorMsg=new StringBuffer();
   ZcFaCard card = listCursor.getCurrentObject();
   BigDecimal t=new BigDecimal(0);
@@ -788,7 +788,7 @@ private boolean _checkHtCandidateSum(StringBuffer errorInfo) {
 
 //检查卡片金额是否相等,原值必须等于财政拨款+事业收入+其他资金之和,原值不能为<=0
 private boolean _checkCardSum(StringBuffer errorInfo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
   StringBuffer errorMsg=new StringBuffer();
   ZcFaCard card = listCursor.getCurrentObject();
   BigDecimal t=new BigDecimal(0);
@@ -838,7 +838,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
 
   //使用状态为“在用”时，必须填写使用部门
   private boolean _checkUsing(StringBuffer errorInfo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     StringBuffer errorMsg=new StringBuffer();
     ZcFaCard card = listCursor.getCurrentObject();
     //VS_USING_STATU_NAME
@@ -880,15 +880,15 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
           errorMsg.append(" ").append(fieldTrans).append(",");
         }
       } catch (NoSuchMethodException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         log.error(e.getMessage(), e);
         errorMsg.append(e.getMessage());
       } catch (IllegalAccessException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         log.error(e.getMessage(), e);
         errorMsg.append(e.getMessage());
       } catch (InvocationTargetException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         log.error(e.getMessage(), e);
         errorMsg.append(e.getMessage());
       }
@@ -904,12 +904,12 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
     return true;
   }
   protected void doNext() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   protected void doPrevious() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
@@ -959,7 +959,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   protected void doEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     pageStatus = ZcSettingConstants.PAGE_STATUS_EDIT;
     updateFieldEditorsEditable();
     setButtonStatus();
@@ -970,7 +970,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
    */
   @Override
   public List<AbstractFieldEditor> createFieldEditors() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
@@ -979,12 +979,12 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
    */
   @Override
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   public void doExit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.parent.dispose();
   }
 
@@ -1033,8 +1033,8 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   protected void tabChangeAction() {
-    // TODO Auto-generated method stub
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //        System.out.println(itemsTablePanel.getDataList().size());
     int index = cardAndHtTab.getSelectedIndex();
     if (index == 1 && !(htPanel instanceof AbstractMainSubEditPanel)) {
@@ -1053,7 +1053,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private void initTitle() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     StringBuffer title = new StringBuffer(LangTransMeta.translate(listPanel.getcompoId()));
     title.append("(");
     ZcFaCard card = listCursor.getCurrentObject();
@@ -1075,7 +1075,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
    * 根据卡片样式获取非空字段和不可编辑字段
    */
   private void initNotNullAndModifyFields() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcFaCard card = listCursor.getCurrentObject();
     List fields = zcEbBaseServiceDelegate.queryDataForList("ZcFaCard.getNotNullAndModifyField", card.getStyleCode(), requestMeta);
     if (fields == null)
@@ -1113,7 +1113,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private void addMustItem(List<String> fieldLst, String[] existsFields) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i = 0; i < existsFields.length; i++) {
       if (!fieldLst.contains(existsFields[i])) {
         fieldLst.add(existsFields[i]);
@@ -1145,12 +1145,12 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private Component createCardUsingPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   private Component createCardDocPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     cardDocTablePanel.init();
     cardDocTablePanel.setPanelId(this.getClass().getName() + "_docPanel");
@@ -1191,7 +1191,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private Component createCardSubPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     cardSubTablePanel.init();
     cardSubTablePanel.setPanelId(this.getClass().getName() + "_subPanel");
@@ -1232,9 +1232,9 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private JPanel _createCenterPanel(List<AbstractFieldEditor> editorList, int cols) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     JPanel panel = new JPanel();
 
@@ -1348,7 +1348,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private List<AbstractFieldEditor> createMainPanelEditors(List<ZcFaCardField> fieldLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<AbstractFieldEditor> rtn = new ArrayList<AbstractFieldEditor>();
     AbstractFieldEditor editor = null;
     String fieldName, boxType, fieldNameTrans = "";
@@ -1378,7 +1378,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private AbstractFieldEditor createForeignEntityFieldEditor(ZcFaCardField zcFaCardField) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     AbstractFieldEditor rtn = null;
     IForeignEntityHandler handler = null;
     ElementConditionDto dto = null;
@@ -1410,7 +1410,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
   }
 
   private String getFieldName(String fieldColumName) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //    System.out.println(fieldColumName+"==="+FieldMapRegister.get(ZcFaCard.class).get(fieldColumName));
     return (String) FieldMapRegister.get(ZcFaCard.class).get(fieldColumName);
   }
@@ -1570,7 +1570,7 @@ private boolean _checkCardSum(StringBuffer errorInfo) {
    * 子类重写该方法，用于非工作流控制状态下按钮的编辑性
    */
   public void setButtonStatusWithoutWf() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     if (this.btnStatusList.size() == 0) {
 

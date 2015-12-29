@@ -18,7 +18,7 @@ public class DateTest {
    * @param args
    */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     DateTest t=new DateTest();
     t.before();
   }
@@ -31,7 +31,7 @@ public class DateTest {
       Date dd=c.getTime();
       System.out.println(dd.before(d));
     } catch (ParseException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     }
     

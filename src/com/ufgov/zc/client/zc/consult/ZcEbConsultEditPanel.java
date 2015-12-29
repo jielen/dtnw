@@ -183,7 +183,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public void initToolBar(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     toolBar.setModuleCode("ZC");
 
@@ -213,7 +213,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doEdit();
       }
 
@@ -223,7 +223,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doSave();
       }
 
@@ -233,7 +233,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doSend();
       }
 
@@ -243,7 +243,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doDelete();
       }
 
@@ -253,7 +253,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doAudit();
       }
 
@@ -263,7 +263,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doCallBack();
       }
 
@@ -273,7 +273,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doUnAudit();
       }
 
@@ -283,7 +283,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doUnTread();
       }
 
@@ -293,7 +293,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doTrace();
       }
 
@@ -303,7 +303,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         doExit();
       }
 
@@ -333,7 +333,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void doTrace() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcEbConsult bean = (ZcEbConsult) listCursor.getCurrentObject();
     ZcUtil.showTraceDialog(bean, compoId);
   }
@@ -581,7 +581,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void doEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.pageStatus = ZcSettingConstants.PAGE_STATUS_EDIT;
     updateFieldEditorsEditable();
     setButtonStatus();
@@ -589,7 +589,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public List<AbstractFieldEditor> createFieldEditors() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<AbstractFieldEditor> fieldEditors = new ArrayList<AbstractFieldEditor>();
 
     TextFieldEditor title = new TextFieldEditor("标题", "title");
@@ -632,7 +632,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   protected void updateFieldEditorsEditable() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     super.updateFieldEditors();
     if (ZcSettingConstants.PAGE_STATUS_NEW.equals(this.pageStatus)) {
 
@@ -670,7 +670,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
@@ -764,7 +764,7 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
     }
 
     public void excute(List selectedDatas) {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       if (selectedDatas.size() > 0) {
         Map emp = (Map) selectedDatas.get(0);
         ZcEbConsult bean = listCursor.getCurrentObject();
@@ -775,12 +775,12 @@ public class ZcEbConsultEditPanel extends AbstractMainSubEditPanel {
     }
 
     public boolean isMultipleSelect() {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       return false;
     }
 
     public TableModel createTableModel(List showDatas) {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       Object data[][] = new Object[showDatas.size()][columNames.length];
       for (int i = 0; i < showDatas.size(); i++) {

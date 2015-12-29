@@ -24,7 +24,7 @@ public class ExportBidBulletinDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.bidBulletinIdIds = list;
     this.path = path;
     busName = "招标公告";
@@ -50,7 +50,7 @@ public class ExportBidBulletinDataBusiness extends AbstractExpDataBusiness imple
 
   private List getZcEbBulletinAsFile() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<String> fileIds = new ArrayList<String>();
 
@@ -71,7 +71,7 @@ public class ExportBidBulletinDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -82,7 +82,7 @@ public class ExportBidBulletinDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_BULLETIN_BID;
   }
 

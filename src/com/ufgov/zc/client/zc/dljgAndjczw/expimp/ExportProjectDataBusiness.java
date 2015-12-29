@@ -49,7 +49,7 @@ public class ExportProjectDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.projCodes = list;
     this.path = path;
     busName = "立项分包";
@@ -236,7 +236,7 @@ public class ExportProjectDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -247,7 +247,7 @@ public class ExportProjectDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_PROJ;
   }
 

@@ -19,19 +19,19 @@ public class MessageDelegate implements IMessageDelegate {
 
   
   public boolean isCgzxGroup(String userId, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return messageService.isCgzxGroup(userId);
   }
 
   
   public List getMessage(String userId, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return messageService.getMessage(userId);
   }
 
   
   public void logout(String userId, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     messageService.logout(userId);
   }
 

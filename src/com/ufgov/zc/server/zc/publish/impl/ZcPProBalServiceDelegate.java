@@ -108,25 +108,25 @@ public class ZcPProBalServiceDelegate implements IZcPProBalServiceDelegate {
 
   
   public ZcPProBal untreadToFirstFN(ZcPProBal zcPProBal, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcPProBalService.untreadToFirstFN(zcPProBal, requestMeta);
   }
 
    
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcPProBalService.queryExportsDatas(dto, meta);
   }
 
    
   public String importTransDatasFN(ZcPProBal bill, RequestMeta meta) throws DataExchangeException{
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcPProBalService.importTransDatasFN(bill, meta);
   }
 
  
   public String importDelDataFN(String id, RequestMeta meta) throws DataExchangeException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcPProBalService.importDelDataFN(id, meta);
   }
 

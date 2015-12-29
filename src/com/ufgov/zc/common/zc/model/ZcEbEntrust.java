@@ -295,7 +295,7 @@ public class ZcEbEntrust extends ZcBaseBill implements Serializable {
   }
 
   public void caculateAllItemSum() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (this.detailList == null)
       return;
     this.zcMoneyBiSum = new BigDecimal(0);

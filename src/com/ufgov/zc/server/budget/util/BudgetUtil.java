@@ -5,7 +5,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -26,11 +25,10 @@ import com.ufgov.zc.common.system.model.AsOption;
 import com.ufgov.zc.common.zc.exception.ZcBudgetInterfaceException;
 import com.ufgov.zc.common.zc.model.ZcPProBalBi;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
-import com.ufgov.zc.common.zc.model.ZcPProBalChgBi;
+import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
 import com.ufgov.zc.common.zc.model.ZcPProMake;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBiExample;
-import com.ufgov.zc.common.zc.model.ZcPProMitemBiHistory;
 import com.ufgov.zc.common.zc.model.ZcQb;
 import com.ufgov.zc.common.zc.model.ZcQbBi;
 import com.ufgov.zc.common.zc.model.ZcQx;
@@ -333,7 +331,7 @@ public class BudgetUtil {
   }
 
   private static Object qxbiToMap(ZcQxBi bi) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (bi == null) {
       return null;
     }
@@ -593,7 +591,7 @@ public class BudgetUtil {
 
     StringBuffer ids = new StringBuffer("''");
     for (int i = 0; i < existsBiLst.size(); i++) {
-      ZcPProBalChgBi mbi = (ZcPProBalChgBi) existsBiLst.get(i);
+      ZcPProMitemBiChg mbi = (ZcPProMitemBiChg) existsBiLst.get(i);
       if (mbi.getZcBiNo() != null && mbi.getZcBiNo().trim().length() > 0) {
         ids.append(",'").append(mbi.getZcBiNo()).append("'");
       }
@@ -610,7 +608,7 @@ public class BudgetUtil {
     List allBiNoLst = baseDao.query("VwBudgetGp.getExistsBudget", ids.toString());
     
     for (int i = 0; i < zcPProBalChg.getZcPProChgBiList().size(); i++) {
-      ZcPProBalChgBi curBi = (ZcPProBalChgBi) zcPProBalChg.getZcPProChgBiList().get(i);
+      ZcPProMitemBiChg curBi = (ZcPProMitemBiChg) zcPProBalChg.getZcPProChgBiList().get(i);
       if (curBi.getZcBiNo() == null || "".equals(curBi.getZcBiNo())) {
         if (curBi.getZcUseBiId() == null || "".equals(curBi.getZcUseBiId())) {
           curBi.setZcUseBiId(getVoucherId());
@@ -622,7 +620,7 @@ public class BudgetUtil {
       }
       isUpd = false;
       for (int j = existsBiLst.size() - 1; j >= 0; j--) {
-        ZcPProBalChgBi existsBi = (ZcPProBalChgBi) existsBiLst.get(j);
+        ZcPProMitemBiChg existsBi = (ZcPProMitemBiChg) existsBiLst.get(j);
         if(isOldPlanBi(existsBi,zcPProBalChg.getOldBiList())){//是否是原计划带的资金，如果是，则不进行处理，因为不能调整原计划里的指标和自筹资金
           existsBiLst.remove(j);
           continue;
@@ -645,7 +643,7 @@ public class BudgetUtil {
       }
     }
     for (int i = 0; i < existsBiLst.size(); i++) {
-      ZcPProBalChgBi mbi = (ZcPProBalChgBi) existsBiLst.get(i);
+      ZcPProMitemBiChg mbi = (ZcPProMitemBiChg) existsBiLst.get(i);
       if (!(mbi.getZcBiNo() == null || "".equals(mbi.getZcBiNo())) && allBiNoLst.contains(mbi.getZcBiNo())) {
         dels.add(biToMap(mbi));
       }
@@ -665,11 +663,11 @@ public class BudgetUtil {
     return result;
   }
 
-  private boolean isOldPlanBi(ZcPProBalChgBi cbi, List oldBiList) {
-    // TODO Auto-generated method stub
+  private boolean isOldPlanBi(ZcPProMitemBiChg cbi, List oldBiList) {
+    // TCJLODO Auto-generated method stub
     if(oldBiList!=null){
       for(int i=0;i<oldBiList.size();i++){
-        ZcPProMitemBiHistory bi=(ZcPProMitemBiHistory) oldBiList.get(i);
+        ZcPProMitemBiChg bi=(ZcPProMitemBiChg) oldBiList.get(i);
         if(bi.getZcProBiSeq().equals(cbi.getZcProBiSeq())){
           return true;
         }
@@ -704,7 +702,7 @@ public class BudgetUtil {
     }
 
     for (int i = 0; i < bis.size(); i++) {
-      ZcPProBalChgBi mbi = (ZcPProBalChgBi) bis.get(i);
+      ZcPProMitemBiChg mbi = (ZcPProMitemBiChg) bis.get(i);
       if (!(mbi.getZcBiNo() == null || "".equals(mbi.getZcBiNo())) && !isOldPlanBi(mbi, zcPProBalChg.getOldBiList())) {
         dels.add(biToMap(mbi));
       }
@@ -1146,7 +1144,7 @@ public class BudgetUtil {
   }
 
   private void callService(Map map) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //
     if(!ZcSUtil.isUseBi()){
       return;
@@ -1180,16 +1178,16 @@ public class BudgetUtil {
       System.out.println("指标传参==>" + map.toString());
       throw new ZcBudgetInterfaceException("调用指标接口时出错:" + e.getMessage(), e);
     } catch (MalformedURLException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       throw new ZcBudgetInterfaceException("调用指标接口时出错:" + e.getMessage(), e);
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       throw new ZcBudgetInterfaceException("调用指标接口时出错:" + e.getMessage(), e);
     }
   }
 
   public Map getSaveBudgetByZcQb(IZcQbDao qbDao, IBaseDao baseDao, boolean useBi, ZcQb qb, List biList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (!useBi) {
       return null;
     }
@@ -1278,7 +1276,7 @@ public class BudgetUtil {
   }
 
   public Map getQbShiFangBudget(IBaseDao baseDao, boolean flag, ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (!flag) {
       return null;
     }
@@ -1316,7 +1314,7 @@ public class BudgetUtil {
   }
 
   public void callService(Map map, int year) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(!ZcSUtil.isUseBi()){
       return;
     }
@@ -1335,7 +1333,7 @@ public class BudgetUtil {
     zhanYongBudget(zhanYongStr, year);
   }
   public void callShifangService(Map map, int year) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (map == null || map.size() == 0)
       return;
     //释放指标
@@ -1344,7 +1342,7 @@ public class BudgetUtil {
   }
   
   private void delBudget(String delStr, int year) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (delStr == null || delStr.trim().length() == 0)
       return;
     Map budgetMap = new HashMap();
@@ -1358,7 +1356,7 @@ public class BudgetUtil {
 
   }
   private void zhanYongBudget(String zhanYongStr, int year) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (zhanYongStr == null || zhanYongStr.trim().length() == 0)
       return;
     Map budgetMap = new HashMap();
@@ -1373,7 +1371,7 @@ public class BudgetUtil {
   }
 
   private void updateBudget(String shifangStr, int year) throws ZcBudgetInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (shifangStr == null || shifangStr.trim().length() == 0)
       return;
 

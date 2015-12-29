@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ufgov.zc.common.system.RequestMeta;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
+import com.ufgov.zc.common.system.exception.BusinessException;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
 import com.ufgov.zc.common.zc.publish.IZcPProBalChgServiceDelegate;
 import com.ufgov.zc.server.zc.service.IZcPProBalChgService;
@@ -40,6 +41,10 @@ public class ZcPProBalChgServiceDelegate implements IZcPProBalChgServiceDelegate
 
   public ZcPProBalChg selectByPrimaryKey(String balChgId, RequestMeta requestMeta) {
     return zcPProBalChgService.selectByPrimaryKey(balChgId, requestMeta);
+  }
+ 
+  public ZcPProBalChg auditFN(ZcPProBalChg cur, RequestMeta requestMeta) throws BusinessException {
+    return zcPProBalChgService.auditFN(cur, requestMeta);
   }
 
 }

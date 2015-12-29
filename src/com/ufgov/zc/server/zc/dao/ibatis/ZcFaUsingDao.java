@@ -16,49 +16,49 @@ public class ZcFaUsingDao extends SqlMapClientDaoSupport implements IZcFaUsingDa
 
   
   public int countByExample(ZcFaUsingExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int deleteByExample(ZcFaUsingExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int insert(ZcFaUsing record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int insertSelective(ZcFaUsing record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public List selectByExample(ZcFaUsingExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   
   public int updateByExampleSelective(ZcFaUsing record, ZcFaUsingExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int updateByExample(ZcFaUsing record, ZcFaUsingExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
    
   public void deleteByCardId(String cardId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().delete("ZcFaUsing.deleteByCardId", cardId);
   }
 

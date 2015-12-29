@@ -26,7 +26,7 @@ public class BulletinXunJiaNodeBusiness implements INodeBusiness {
   @Override
   public void showAddWindow() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     new ZcEbBulletinXunJiaBidEditDialog(new ZcEbBulletinXunJiaBidListPanel(), new ArrayList(1), -1, "0");
 

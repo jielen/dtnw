@@ -63,7 +63,7 @@ public class ZcXmcgHtOldEditPanel extends ZcXmcgHtEditPanel {
 		super(parent, listCursor, tabStatus, null,getCompoId());
 		this.editPanel = editPanel;
 		editPanel.setOldObject();
-		// TODO Auto-generated constructor stub
+		// TCJLODO Auto-generated constructor stub
 	}
 
 	protected void loadCommonEditors(List<AbstractFieldEditor> editorList) {

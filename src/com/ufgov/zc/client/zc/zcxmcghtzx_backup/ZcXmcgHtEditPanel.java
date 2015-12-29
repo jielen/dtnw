@@ -1796,7 +1796,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
   }
 
   protected void doAdd() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.listCursor.setCurrentObject(null);
     refreshData();
   }
@@ -2001,7 +2001,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
     } catch (RuntimeException e) {
 
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
 
       e.printStackTrace();
 
@@ -2660,7 +2660,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
       template.process(mod, writer);
       writer.flush();
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } finally {
       try {
@@ -3678,7 +3678,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ZcXmcgHtListPanel getListPanel() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listPanel;
 
@@ -3686,7 +3686,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public RequestMeta getRequestMeta() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.requestMeta;
 
@@ -3694,7 +3694,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ListCursor getListCursor() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listCursor;
 
@@ -3702,7 +3702,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
 
   public ElementConditionDto getDtoForBidWinner() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.dtoForBidWinner;
 

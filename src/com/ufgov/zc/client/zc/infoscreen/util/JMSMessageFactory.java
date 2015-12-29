@@ -6,19 +6,19 @@ public class JMSMessageFactory implements MessageFactory {
 
   @Override
   public boolean hasMessage() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return false;
   }
 
   @Override
   public List getTextMessage() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   @Override
   public void init() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 

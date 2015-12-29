@@ -20,7 +20,7 @@ public class ZcPProService implements IZcPProService {
 	}
 
 	public void deleteZcPPro(String id) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 	  if(zcPProDao.checkUsed(id) > 0){
 	    throw new Exception("改预算项目已经被使用，不能删除");
 	  }
@@ -28,24 +28,24 @@ public class ZcPProService implements IZcPProService {
 	}
 
 	public void updateZcPPro(ZcPPro zcPPro) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcPProDao.updateZcPPro(zcPPro);
 	}
 
 	public void saveZcPPro(ZcPPro zcPPro) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcPProDao.saveZcPPro(zcPPro);
 	}
 
 	public List getZcPPro(ElementConditionDto elementConditionDto)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcPProDao.getZcPPro(elementConditionDto);
 	}
 
 
 	public ZcPPro getZcPProById(String id) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcPProDao.getZcPProById(id);
 	}
 

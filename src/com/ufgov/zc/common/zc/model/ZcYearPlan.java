@@ -201,24 +201,24 @@ public class ZcYearPlan extends ZcBaseBill {
 
    
   public String getCoCode() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return make.getCoCode();
   }
  
   
   public String getCoName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 //    ZcSUtil.
     return make.getCoName();
   }
 
   public Integer getNd() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return make.getNd();
   }
 
   public void setCoCode(String coCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     super.setCoCode(coCode);
   }
 

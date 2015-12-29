@@ -39,7 +39,7 @@ public class ZcBMerchandiseServiceDelegate implements IZcBMerchandiseServiceDele
 
   
   public void deleteMerchandise(ZcBMerchandise merchandise, RequestMeta meta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcBMerchandiseService.deleteMerchandise(merchandise, meta);
   }
 

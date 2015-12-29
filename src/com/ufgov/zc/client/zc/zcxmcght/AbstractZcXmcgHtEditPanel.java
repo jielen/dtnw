@@ -38,7 +38,7 @@ public abstract class AbstractZcXmcgHtEditPanel extends AbstractMainSubEditPanel
   public abstract boolean isGys();
 
   public void setIsCar(boolean b) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 

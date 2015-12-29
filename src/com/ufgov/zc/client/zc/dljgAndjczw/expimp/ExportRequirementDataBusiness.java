@@ -24,7 +24,7 @@ public class ExportRequirementDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.requirementIds = list;
     this.path = path;
     busName = "需求确认";
@@ -50,7 +50,7 @@ public class ExportRequirementDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -61,7 +61,7 @@ public class ExportRequirementDataBusiness extends AbstractExpDataBusiness imple
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_REQUIREMENT;
   }
 

@@ -964,7 +964,7 @@ void showFunc(int index){
           @Override
           public void valueChanged(ValueChangeEvent e) {
 
-            // TODO Auto-generated method stub
+            // TCJLODO Auto-generated method stub
 
             ZcEbJieXiang sheet = (ZcEbJieXiang) listCursor.getCurrentObject();
 
@@ -1016,7 +1016,7 @@ void showFunc(int index){
       @Override
       public void valueChanged(ValueChangeEvent event) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         if (fzrEditor.getField().getValue() == null) {
 
@@ -1614,7 +1614,7 @@ void showFunc(int index){
   }
 
   protected void doCancelCaiGou() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcEbJieXiang jiexiang = (ZcEbJieXiang) this.listCursor.getCurrentObject();
     if(jiexiang.getEntrustCancel().getRemark()==null){
       JOptionPane.showMessageDialog(this, "请输入取消采购原因", "错误", JOptionPane.ERROR_MESSAGE);
@@ -1679,7 +1679,7 @@ void showFunc(int index){
   }
 
   protected void doUnfinishCaiGou() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbJieXiang jiexiang = (ZcEbJieXiang) this.listCursor.getCurrentObject();
     int num = JOptionPane.showConfirmDialog(this, "注意，如果采购计划已经进行了结项，并返回了多余指标，则不能进行取消结项操作.\n " +
@@ -1737,7 +1737,7 @@ void showFunc(int index){
   }
 
   protected void doFinishCaiGou() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbJieXiang jiexiang = (ZcEbJieXiang) this.listCursor.getCurrentObject();
     int num = JOptionPane.showConfirmDialog(this, "确认对当前采购进行结项吗？", "结项确认", 0);
@@ -2309,7 +2309,7 @@ void showFunc(int index){
   }
 
   public static String getCompoId() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return "ZC_EB_JIE_XIANG";
   }
 

@@ -22,18 +22,18 @@ public class ZcYearEndServiceDelegate implements IZcYearEndServiceDelegate {
 
 	public List getZcPProMake(ElementConditionDto dto, RequestMeta meta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcYearEndService.getZcPProMake(dto, meta);
 	}
 
 	public void updateProEndFn(String zcMakeCodes, boolean flag,	RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcYearEndService.updateProEndFn(zcMakeCodes, flag, requestMeta);
 	}
 
 	public void updateYearEnd(String zcMakeCode, RequestMeta requestMeta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcYearEndService.updateYearEnd(zcMakeCode, requestMeta);
 	}
 
@@ -62,25 +62,25 @@ public class ZcYearEndServiceDelegate implements IZcYearEndServiceDelegate {
 
    
   public void jiexiangFn(ZcYearPlan zcYearPlan, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcYearEndService.jiexiangFn(zcYearPlan,requestMeta);
   }
 
    
   public void batchJiexiangFn(List  jieXiangLst, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcYearEndService.batchJiexiangFn(jieXiangLst,  requestMeta);
   }
 
    
   public ZcYearPlan getZcYearPlanByMakeCode(RequestMeta requestMeta, ZcYearPlan yearPlan) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcYearEndService.getZcYearPlanByMakeCode(requestMeta, yearPlan);
   }
 
   
   public ZcYearPlan saveJieZhuanZiJinFN(ZcYearPlan yp, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcYearEndService.saveJieZhuanZiJinFN(yp, requestMeta) ;
   }
 

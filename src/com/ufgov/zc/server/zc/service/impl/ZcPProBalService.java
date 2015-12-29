@@ -199,7 +199,7 @@ public class ZcPProBalService implements IZcPProBalService {
   }
 
   private void insertDeleteInfoToDataExchage(String zcBalId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //同步到另一个网端        
       DataExchangeRedo redo = new DataExchangeRedo();
       redo.setDataTypeID("ZC_P_PRO_BAL");
@@ -373,7 +373,7 @@ public class ZcPProBalService implements IZcPProBalService {
    * @param requestMeta
    */
   private void _savePayVouId(String vouIds, ZcPProBal zcPProBal,RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(vouIds==null)return;
     baseDao.delete("ZC_PAY_GK_INFO.deleteByZcBillId", zcPProBal.getZcBalId());
     StringTokenizer st=new StringTokenizer(vouIds, PayForZcUtil.RTN_DATA_SPLIT);
@@ -408,7 +408,7 @@ public class ZcPProBalService implements IZcPProBalService {
   }
 
   public ZcPProBal untreadToFirstFN(ZcPProBal zcPProBal, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untreadToFirst(zcPProBal.getComment(), zcPProBal, requestMeta);
     return selectByPrimaryKey(zcPProBal.getZcBalId(), "N");
   }
@@ -431,7 +431,7 @@ public class ZcPProBalService implements IZcPProBalService {
 
   
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List idLst=dto.getPmAdjustCodeList();
     if(idLst==null)return null;
     List rtn=new ArrayList();
@@ -444,8 +444,8 @@ public class ZcPProBalService implements IZcPProBalService {
 
    
   public String importTransDatasFN(ZcPProBal zcPProBal, RequestMeta meta) throws DataExchangeException{
-    // TODO Auto-generated method stub
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   //先检查是否已经送国库支付了，如果已经送国库支付，则提示不能删除，
     ZcPProBal bal=selectByPrimaryKey(zcPProBal.getZcBalId(), null);
@@ -478,7 +478,7 @@ public class ZcPProBalService implements IZcPProBalService {
          }
        }
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       rtn=zcPProBal.getZcBalId()+"导入异常：\n"+e.getMessage();
     }
@@ -487,7 +487,7 @@ public class ZcPProBalService implements IZcPProBalService {
 
  
   public String importDelDataFN(String  id, RequestMeta meta) throws DataExchangeException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
      ZcPProBal bal=selectByPrimaryKey(id, null);
      if(bal==null) return "资金支付单"+id+"同步删除成功！";
      if(bal!=null && ("exec".equalsIgnoreCase(bal.getZcBalStatus()) || "sendGk".equalsIgnoreCase(bal.getZcBalStatus()))){

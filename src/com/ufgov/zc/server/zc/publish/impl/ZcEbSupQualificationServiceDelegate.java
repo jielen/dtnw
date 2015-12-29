@@ -21,37 +21,37 @@ public class ZcEbSupQualificationServiceDelegate implements IZcEbSupQualificatio
 
   
   public List selectSupQualifications(ElementConditionDto dto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbSupQualificationService.selectSupQualifications(dto);
   }
 
   
   public ZcEbSupQualification selectById(String id, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbSupQualificationService.selectById(id);
   }
 
   
   public ZcEbSupQualification save(ZcEbSupQualification bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbSupQualificationService.save(bean, requestMeta);
   }
 
   
   public void enableById(String id, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbSupQualificationService.enableById(id);
   }
 
   
   public void freezeById(String id, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbSupQualificationService.freezeById(id);
   }
 
   
   public void deleteById(String id, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbSupQualificationService.deleteById(id);
   }
 

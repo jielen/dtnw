@@ -111,7 +111,7 @@ public class ZcPProMakeXYJJItemEditPanel extends AbstractMainSubEditPanel {
   }
 
   public void refreshData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     setEditingObject(this.item);
     refreshSubBill();
     //updateFieldEditorsEditable();
@@ -140,7 +140,7 @@ public class ZcPProMakeXYJJItemEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public List<AbstractFieldEditor> createFieldEditors() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<AbstractFieldEditor> editorList = new ArrayList<AbstractFieldEditor>();
 
     String[] catalogueColumNames = { "品目编码", "品目名称", "品目限额" };
@@ -172,7 +172,7 @@ public class ZcPProMakeXYJJItemEditPanel extends AbstractMainSubEditPanel {
    * 更新子表数据
    */
   private void refreshSubBill() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     jinjiaItemTablepanel.setTableModel(ZcPProMakeToTableModelConverter.convertJingJiaItemTableData(this.item.getMerList()));
 
     // 翻译表头列
@@ -212,7 +212,7 @@ public class ZcPProMakeXYJJItemEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     jinjiaItemTablepanel = new JTablePanel();
     jinjiaItemTablepanel.init();
     jinjiaItemTablepanel.getSearchBar().setVisible(false);
@@ -256,7 +256,7 @@ public class ZcPProMakeXYJJItemEditPanel extends AbstractMainSubEditPanel {
 
   @Override
   public void initToolBar(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 

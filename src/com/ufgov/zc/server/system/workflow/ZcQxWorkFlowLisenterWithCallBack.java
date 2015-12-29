@@ -27,7 +27,7 @@ public class ZcQxWorkFlowLisenterWithCallBack extends ZcQxWorkFlowLisenter {
    * 
    */
   public void afterCallback(WorkflowContext context) throws WorkflowException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     Long processId=context.getInstanceId();
     ZcQx qx=(ZcQx)zcEbBaseServiceDao.queryObject("ZC_QX.selectByProcessinstid", ""+processId.longValue());
     DataExchangeRedo redo=new DataExchangeRedo();
@@ -41,7 +41,7 @@ public class ZcQxWorkFlowLisenterWithCallBack extends ZcQxWorkFlowLisenter {
     * 采购单位和供应商在内外网进行处理，供应商收回时，如果数据已经导入到内网，则不能收回，如果没有导入，则可以收回
     */
   public void beforeCallback(WorkflowContext context) throws WorkflowException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     Long processId=context.getInstanceId();
     ZcQx qx=(ZcQx)zcEbBaseServiceDao.queryObject("ZC_QX.selectByProcessinstid", ""+processId.longValue());
     ElementConditionDto dto=new ElementConditionDto();

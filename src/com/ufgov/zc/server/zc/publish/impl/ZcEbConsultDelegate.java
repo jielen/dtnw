@@ -21,52 +21,52 @@ public class ZcEbConsultDelegate implements IZcEbConsultDelegate {
   }
 
   public List findConsultList(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.findConsultList(dto, meta);
   }
 
   public ZcEbConsult findConsultById(String id, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.findConsultById(id, meta);
   }
 
   public void deleteConsultById(String id, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbConsultService.deleteConsultById(id, meta);
   }
 
   public void deleteConsultByIds(List ids, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbConsultService.deleteConsultByIds(ids, meta);
   }
 
   public ZcEbConsult updateConsult(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.updateConsult(bean, meta);
   }
 
   public ZcEbConsult newCommitFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.newCommitFN(bean, meta);
   }
 
   public ZcEbConsult auditFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.auditFN(bean, meta);
   }
 
   public ZcEbConsult untreadFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.untreadFN(bean, meta);
   }
 
   public ZcEbConsult callbackFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.callbackFN(bean, meta);
   }
 
   public ZcEbConsult unAuditFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbConsultService.unAuditFN(bean, meta);
   }
 

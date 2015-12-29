@@ -420,7 +420,7 @@ public class ZcEbReqDividePackPanel extends JPanel {
 
       @Override
       public void focusGained(FocusEvent event) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if (!event.isTemporary()) {
           lastValue = packBudget.getField().getText();
         }
@@ -428,7 +428,7 @@ public class ZcEbReqDividePackPanel extends JPanel {
 
       @Override
       public void focusLost(FocusEvent event) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if (event.isTemporary()) {
           return;
         }
@@ -679,7 +679,7 @@ public class ZcEbReqDividePackPanel extends JPanel {
 //
 //    @Override
 //    public boolean isMultipleSelect() {
-//      // TODO Auto-generated method stub
+//      // TCJLODO Auto-generated method stub
 //      return false;
 //    }
 //

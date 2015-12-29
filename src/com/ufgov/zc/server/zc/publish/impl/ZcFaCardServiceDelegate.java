@@ -23,7 +23,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public List getCardLst(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.getCardLst(elementConditionDto, requestMeta);
   }
 
@@ -32,7 +32,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public ZcFaCard unAuditFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.unAuditFN(card, requestMeta);
   }
 
@@ -41,7 +41,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public ZcFaCard untreadFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.untreadFN(card, requestMeta);
   }
 
@@ -50,7 +50,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public ZcFaCard auditFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.auditFN(card, requestMeta);
   }
 
@@ -59,7 +59,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public ZcFaCard updateFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.updateFN(card, requestMeta);
   }
 
@@ -68,7 +68,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public void commitListFN(List cardList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     cardService.commitListFN(cardList, requestMeta);
   }
 
@@ -77,7 +77,7 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
    */
   
   public void deleteListFN(List cardList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     cardService.deleteListFN(cardList, requestMeta);
   }
 
@@ -91,25 +91,25 @@ public class ZcFaCardServiceDelegate implements IZcFaCardServiceDelegate {
 
    
   public ZcFaCard selectByPrimaryKey(String cardId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.selectByPrimaryKey(cardId, requestMeta);
   }
 
    
   public ZcFaCard newCommitFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.newCommitFN(card, requestMeta);
   }
 
    
   public ZcFaCard callbackFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardService.callbackFN(card, requestMeta);
   }
 
    
   public void deleteByCardIdFN(String cardId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     cardService.deleteByCardIdFN(cardId, requestMeta);
   }
 

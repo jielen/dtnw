@@ -92,7 +92,7 @@ public class ZcXmcgHtChgEditPanel extends ZcXmcgHtEditPanel {
     super(parent, listCursor, tabStatus, null,listPanel.getCompoId());
     this.editPanel = editPanel;
     this.clistPanel = listPanel;
-    // TODO Auto-generated constructor stub
+    // TCJLODO Auto-generated constructor stub
   }
 
   protected void refreshData() {
@@ -891,7 +891,7 @@ public class ZcXmcgHtChgEditPanel extends ZcXmcgHtEditPanel {
 
     public void excute(List selectedDatas) {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       if (selectedDatas != null && selectedDatas.size() > 0) {
 
@@ -961,7 +961,7 @@ public class ZcXmcgHtChgEditPanel extends ZcXmcgHtEditPanel {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 

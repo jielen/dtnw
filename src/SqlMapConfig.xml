@@ -154,7 +154,6 @@
     <sqlMap resource="sqlmap/zc/ZC_P_PRO_MITEM.xml" />
     <sqlMap resource="sqlmap/zc/ZC_T_BCHT_ITEM.xml" />
     <sqlMap resource="sqlmap/zc/ZC_XMCG_HT_BI.xml" />
-	<sqlMap resource="sqlmap/zc/ZC_XMCG_HT_BI_HISTORY.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_XMCG_HT.xml" />
     <sqlMap resource="sqlmap/zc/ZC_B_CATALOGUE.xml" />
     <sqlMap resource="sqlmap/zc/ZC_B_AGENCY.xml" />
@@ -258,17 +257,15 @@
 	<sqlMap resource="sqlmap/zc/EmExpertAbilityHistory.xml"/>
 	<sqlMap resource="sqlmap/zc/VW_BUDGET_GP.xml"/>
 	<sqlMap resource="sqlmap/zc/PAY_VOUCHER.xml"/>
-	<sqlMap resource="sqlmap/zc/ZC_P_PRO_BAL_CHG.xml"/>
-	<sqlMap resource="sqlmap/zc/ZC_P_PRO_BAL_CHG_BI.xml"/>
+	<sqlMap resource="sqlmap/zc/ZC_P_PRO_BAL_CHG.xml"/> 
 	<sqlMap resource="sqlmap/zc/ZC_P_PRO_MITEM_BI_HISTORY.xml"/>
-	<sqlMap resource="sqlmap/zc/ZC_HT_PRE_PAY_BILL.xml"/>
-	<sqlMap resource="sqlmap/zc/ZC_BAL_CHG_HT_BI.xml"/>
+	<sqlMap resource="sqlmap/zc/ZC_XMCG_HT_BI_HISTORY.xml"/>
+	<sqlMap resource="sqlmap/zc/ZC_HT_PRE_PAY_BILL.xml"/> 
 	<sqlMap resource="sqlmap/zc/ZC_P_PRO.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_P_PRO_RETURN_BI.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_EB_REQUIREMENT_CONFIRM.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_WCMS_CONTENT.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_YEAR_END.xml"/>
-    <sqlMap resource="sqlmap/zc/ZC_XMCG_HT_CHG.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_NOTEPAD_SqlMap.xml"/>
     
     <sqlMap resource="sqlmap/zc/ZcEbEntrustBull.xml" />

@@ -69,11 +69,7 @@
 				(master.STATUS ='exec')
 			</isEqual>
 			<isEqual property="status" compareValue="draft">
-				exists (select
-				WF_DRAFT_NAME from as_wf_draft where user_id=#executor# and
-				compo_id=#wfcompoId# and WF_DRAFT_ID=master.process_inst_id)
-				or
-				master.process_inst_id = -1
+				master.STATUS='0'
 			</isEqual>
 			<isEqual property="status" compareValue="all">
 				1=1

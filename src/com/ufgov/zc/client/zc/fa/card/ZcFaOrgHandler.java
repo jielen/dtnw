@@ -29,7 +29,7 @@ public class ZcFaOrgHandler implements IForeignEntityHandler {
    */
   @Override
   public void excute(List selectedDatas) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcFaCard card=mainPanel.getCurrentEditingObject();
     if(selectedDatas!=null && selectedDatas.size()>0){
       HashMap map=(HashMap) selectedDatas.get(0);
@@ -47,7 +47,7 @@ public class ZcFaOrgHandler implements IForeignEntityHandler {
    */
   @Override
   public boolean isMultipleSelect() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return false;
   }
 
@@ -56,7 +56,7 @@ public class ZcFaOrgHandler implements IForeignEntityHandler {
    */
   @Override
   public TableModel createTableModel(List showDatas) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     Object data[][] = new Object[showDatas.size()][columNames.length];
     for (int i = 0; i < showDatas.size(); i++) {

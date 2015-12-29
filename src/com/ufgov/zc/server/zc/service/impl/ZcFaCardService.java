@@ -86,7 +86,7 @@ public class ZcFaCardService implements IZcFaCardService {
   }
 
   public List getCardLst(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardDao.getCardLst(elementConditionDto);
   }
 
@@ -95,7 +95,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public ZcFaCard unAuditFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
@@ -104,7 +104,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public ZcFaCard untreadFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untread(card.getComment(), card, requestMeta);
 
     return card;
@@ -115,7 +115,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public ZcFaCard auditFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     card=updateFN(card, requestMeta);
     wfEngineAdapter.commit(card.getComment(), card, requestMeta);
     card=selectByPrimaryKey(card.getCardId(), requestMeta);
@@ -127,7 +127,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public ZcFaCard updateFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String code = "";
     List docList = card.getZcFaCardDocList();
     List subList = card.getZcFaCardSubList();
@@ -238,7 +238,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public void commitListFN(List cardList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 
@@ -247,7 +247,7 @@ public class ZcFaCardService implements IZcFaCardService {
    */
   
   public void deleteListFN(List cardList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for(int i=0;i<cardList.size();i++){
       ZcFaCard card=(ZcFaCard) cardList.get(i);
       deleteByCardIdFN(card.getCardId(), requestMeta);
@@ -280,7 +280,7 @@ public class ZcFaCardService implements IZcFaCardService {
 
   
   public ZcFaCard selectByPrimaryKey(String cardId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcFaCard rtn=cardDao.selectByCardId(cardId);
     rtn.setZcFaCardDocList(baseDao.query("ZcFaCardDoc.selectByCardId", cardId));
     rtn.setZcFaCardSubList(baseDao.query("ZcFaCardSub.selectByCardId", cardId));
@@ -297,14 +297,14 @@ public class ZcFaCardService implements IZcFaCardService {
 
    
   public ZcFaCard callbackFN(ZcFaCard card, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.callback(card.getComment(), card, requestMeta);
     return card;
   }
 
    
   public void deleteByCardIdFN(String cardId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     cardDao.deleteByCardIdFN(cardId);
     cardSubDao.deleteByCardId(cardId);
     cardDocDao.deleteByCardId(cardId);

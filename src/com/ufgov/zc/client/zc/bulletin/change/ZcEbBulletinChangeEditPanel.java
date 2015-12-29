@@ -905,7 +905,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
   }
 
   protected void doAdd() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.listCursor.setCurrentObject(null);
     refreshData();
   }
@@ -1004,7 +1004,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
 
     } catch (RuntimeException e) {
 
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
 
       e.printStackTrace();
 
@@ -1528,7 +1528,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void deleteOldFile(String oldFileId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (oldFileId == null || oldFileId.trim().length() == 0) {
       return;
     }
@@ -2025,7 +2025,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
 
   protected String checkBeforePublish() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return null;
 
@@ -2429,7 +2429,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
   }
 
   private String getBulletinType(String purType) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
    /* String rtn = null;
     if (ZcSettingConstants.PITEM_OPIWAY_GKZB.equals(purType)) {
       rtn = ZcEbBulletin.ZHAOBIAO_GKZB;
@@ -2449,7 +2449,7 @@ public class ZcEbBulletinChangeEditPanel extends AbstractMainSubEditPanel {
   }
 
   private List getBulletinPack(ZcEbBulletin bulletin) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ArrayList rtn = new ArrayList();
     if (bulletin.getZcEbProj().getPackList() == null) {
       return rtn;

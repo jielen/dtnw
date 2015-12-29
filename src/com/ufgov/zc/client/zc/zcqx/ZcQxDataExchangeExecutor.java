@@ -43,7 +43,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
   @SuppressWarnings("unchecked")
   @Override
   public int doExportData(ElementConditionDto dto, RequestMeta meta, String saveRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     int rtn=0;
     this.getDataList().clear();    
@@ -93,7 +93,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
   }
 
   private List getQxDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     DataExchangeListPanel.setProgressText(this.getDataTypeName() + "正在查询需要导出的记录...");
     List<String> idLst = new ArrayList<String>();
@@ -119,7 +119,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
   }
 
   private void createExportLog(List<String> idLst, List<ZcQx> billLst,RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(billLst==null || billLst.size()==0){
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "业务数据中没有查到对应的业务数据...");
     }else{
@@ -174,7 +174,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
    */
   @Override
   public int doImportData(ElementConditionDto dto, RequestMeta meta, String readRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     String info = null;
     DataExchangeLog log = null;
@@ -189,7 +189,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" + e.getMessage());
     }
@@ -218,7 +218,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
 
 //同步删除数据
   private void importDelData(RequestMeta meta,List delDataLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String info=null;
     DataExchangeLog log;
     List<DataExchangeLog> importDataList = new ArrayList<DataExchangeLog>();
@@ -237,7 +237,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
         try {
           info = htService.importDelDataFN(id, meta);
         } catch (DataExchangeException e) {
-          // TODO: handle exception
+          // TCJLODO: handle exception
           info=e.getMessage();
           this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删除汽车维修数据失败", "", info, IMPORT, qx);
           qx=htService.selectByPrimaryKey(id, meta);
@@ -278,7 +278,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
         try {
           info = htService.importTransDatasFN(bill, meta);
         } catch (DataExchangeException e) {
-          // TODO: handle exception
+          // TCJLODO: handle exception
           info=e.getMessage();
           this.makeDataExchangeLog(log, meta.getSvUserID(), "同步汽车维修数据失败", "", info, IMPORT, bill);
           continue;
@@ -299,7 +299,7 @@ public class ZcQxDataExchangeExecutor extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

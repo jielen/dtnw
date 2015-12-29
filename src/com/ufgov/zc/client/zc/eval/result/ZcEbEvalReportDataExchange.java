@@ -85,7 +85,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
    */
   @Override
   public int doExportData(ElementConditionDto dto, RequestMeta meta, String saveRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     // 准备附件列表
     if (this.attachmentDataMap == null) {
 
@@ -169,7 +169,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
 
 
   private void getProjInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-  // TODO Auto-generated method stub
+  // TCJLODO Auto-generated method stub
     List<ZcEbEvalReport> reportLst = (List<ZcEbEvalReport>) dataMap.get(this.REPORT);
     if (reportLst == null || reportLst.size() == 0)
       return;
@@ -193,7 +193,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
 
 
   private void getSignupInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-  // TODO Auto-generated method stub
+  // TCJLODO Auto-generated method stub
     List<ZcEbEvalReport> reportLst = (List<ZcEbEvalReport>) dataMap.get(this.REPORT);
     if (reportLst == null || reportLst.size() == 0)
       return;
@@ -219,7 +219,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
 
 
   private void getEvalInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-  // TODO Auto-generated method stub
+  // TCJLODO Auto-generated method stub
     List<ZcEbEvalReport> reportLst = (List<ZcEbEvalReport>) dataMap.get(this.REPORT);
     if (reportLst == null || reportLst.size() == 0)
       return;
@@ -276,7 +276,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
 
 
   private void getXunJiaOpenInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<ZcEbEvalReport> reportLst = (List<ZcEbEvalReport>) dataMap.get(this.REPORT);
     if (reportLst == null || reportLst.size() == 0)
       return;
@@ -296,7 +296,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
   }
 
   private void getXunJiaBaoJiaInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<ZcEbEvalReport> reportLst = (List<ZcEbEvalReport>) dataMap.get(this.REPORT);
     if (reportLst == null || reportLst.size() == 0)
       return;
@@ -316,7 +316,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
   }
 
   private void getEvalReportInfo(ElementConditionDto dto, RequestMeta meta, String saveRootPath, HashMap dataMap) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List<String> idLst = new ArrayList<String>();
     if (this.getNeedExportDataRedoList() != null && this.getNeedExportDataRedoList().size() > 0) {
       for (DataExchangeRedo redo : getNeedExportDataRedoList()) {
@@ -338,7 +338,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
         try {
           getAttachFile(report, saveRootPath, meta);
         } catch (IOException e) {
-          // TODO Auto-generated catch block
+          // TCJLODO Auto-generated catch block
           e.printStackTrace();
           exceptionMsg=e.getMessage();
           successInfo="评标报告"+report.getReportCode()+"导出附件失败:";
@@ -349,7 +349,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
 
   }
   private void getAttachFile(ZcEbEvalReport report, String saveRootPath, RequestMeta meta) throws IOException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 //    String parentDirectory = new File(saveRootPath).getParentFile().getParentFile().getAbsolutePath();
 
     String makeFileDirName = saveRootPath.substring(saveRootPath.lastIndexOf(File.separator))+File.separator+"attach_files";
@@ -368,7 +368,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
    */
   @Override
   public int doImportData(ElementConditionDto dto, RequestMeta meta, String readRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     String info = null;
 
@@ -386,7 +386,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" + e.getMessage());
     }
@@ -525,7 +525,7 @@ public class ZcEbEvalReportDataExchange extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

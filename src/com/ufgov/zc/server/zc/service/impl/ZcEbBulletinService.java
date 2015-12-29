@@ -202,7 +202,7 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
   }
 
   private void createExchangeDataForJingjia(ZcEbBulletin zcEbBulletin, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String title = zcEbBulletin.getProjCode() + ".ztb";
     String href = AsOptionUtil.getInstance().getOptionVal("OPT_ZC_PORTAL_HREF_PATH") + zcEbBulletin.getFileID() + ZcSettingConstants.HTML_FILE_SUFFIX;
     String pletIDs = AsOptionUtil.getInstance().getOptionVal("OPT_ZC_PLET_BID");
@@ -576,7 +576,7 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
   }
 
   private String getZxjbr(ZcEbBulletin bulletin) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     // ZcEbProtocol p = (ZcEbProtocol)
     // this.baseDao.read("ZcEbProtocol.getZcEbProtocolByProtCode",
     // protCode);
@@ -585,13 +585,13 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
   }
 
   public List getZcEbBulletinList(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     elementConditionDto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(elementConditionDto.getWfcompoId(), NumLimConstants.FWATCH));
     return zcEbBulletinDao.getZcEbBulletinList(elementConditionDto);
   }
 
   public List getZcEbBulletinProjList(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     // elementConditionDto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(
     // elementConditionDto.getWfcompoId(), NumLimConstants.FWATCH));
     return zcEbBulletinDao.getZcEbBulletinProjList(elementConditionDto);
@@ -772,7 +772,7 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
   }
 
   private void addOut(ZcEbBulletin zcEbBulletin, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 //    System.out.println("公告开始更新外网开始11");
     DeclarationContent dc = new DeclarationContent();
     dc.setID(zcEbBulletin.getBulletinID());
@@ -876,7 +876,7 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
     return str;
   }
   public ZcEbBulletin getZcEbBulletinByKey(String key, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     Map map = new HashMap();
     map.put("BULLETIN_ID", key);
     List list = baseDao.query("ZcEbBulletin.readBulletinById", map);
@@ -919,17 +919,17 @@ public class ZcEbBulletinService implements IZcEbBulletinService {
   }
 
   public void updateIsExtrac(ZcEbBulletin bulletin) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.update("ZcEbBulletin.updateIsExtrac", bulletin);
   }
 
   public String getRoleCodeById(String id) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (String) baseDao.read("AsRole.getRoleCodeById", id);
   }
 
   public ZcJingJiaModel getZcJingJiaModel(String projCode, String fileId, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcJingJiaModel model = (ZcJingJiaModel) baseDao.read("ZcEbBulletin.getJingjiaModelsByProjCode", projCode);
     if (model == null) {

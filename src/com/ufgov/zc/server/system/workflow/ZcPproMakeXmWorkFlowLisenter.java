@@ -26,7 +26,7 @@ public class ZcPproMakeXmWorkFlowLisenter extends TaskAdapter {
 
 
   public void afterExecution(WorkflowContext context) throws WorkflowException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //丹徒使用，采购计划在内网审批完成后，需要将计划导出到外网，采购中心在外网执行任务
     Long processId=context.getInstanceId();
     

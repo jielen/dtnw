@@ -240,7 +240,7 @@ public class ZcEbEvalReportOffLineEditPanel extends AbstractMainSubEditPanel imp
   private ZcEbEvalReportEditPanel self;
 
   protected static String getCompoId() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return "ZC_EB_EVAL_REPORT_OFF_LINE";
   }
 
@@ -1725,7 +1725,7 @@ public class ZcEbEvalReportOffLineEditPanel extends AbstractMainSubEditPanel imp
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         doPrevious();
 
@@ -1738,7 +1738,7 @@ public class ZcEbEvalReportOffLineEditPanel extends AbstractMainSubEditPanel imp
       @Override
       public void actionPerformed(ActionEvent e) {
 
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
         doNext();
 

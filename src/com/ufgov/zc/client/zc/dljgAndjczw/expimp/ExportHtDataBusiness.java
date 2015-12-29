@@ -22,7 +22,7 @@ public class ExportHtDataBusiness extends AbstractExpDataBusiness implements IEx
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     busName = "合同备案";
     this.log = log;
     this.path = path;
@@ -31,19 +31,19 @@ public class ExportHtDataBusiness extends AbstractExpDataBusiness implements IEx
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
   @Override
   public List<ZcBaseBill> getBusinessData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return businessData;
   }
 
   @Override
   public void exportData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (keyList == null || keyList.size() == 0) {
       return;
     }
@@ -69,7 +69,7 @@ public class ExportHtDataBusiness extends AbstractExpDataBusiness implements IEx
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_XMCG_HT;
   }
 

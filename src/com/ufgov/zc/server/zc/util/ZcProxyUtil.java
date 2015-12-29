@@ -13,7 +13,7 @@ public class ZcProxyUtil implements ApplicationContextAware {
 
 	public void setApplicationContext(ApplicationContext arg0)
 			throws BeansException {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		this.context = arg0;
 	}
 

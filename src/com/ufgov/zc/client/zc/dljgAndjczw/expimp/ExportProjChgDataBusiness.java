@@ -26,7 +26,7 @@ public class ExportProjChgDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public void init(List<String> list, String path, StringBuffer log) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     busName = "采购变更";
     this.log = log;
     this.path = path;
@@ -35,19 +35,19 @@ public class ExportProjChgDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
   @Override
   public List<ZcBaseBill> getBusinessData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return businessData;
   }
 
   @Override
   public void exportData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (keyList == null || keyList.size() == 0)
 
       return;
@@ -61,7 +61,7 @@ public class ExportProjChgDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_PORJ_CHG;
   }
 

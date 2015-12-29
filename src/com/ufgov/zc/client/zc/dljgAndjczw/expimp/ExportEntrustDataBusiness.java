@@ -117,7 +117,7 @@ public class ExportEntrustDataBusiness extends AbstractExpDataBusiness implement
 
   private List getZcEbEntrustAsFile(List zcEbEntrustDetailList) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List<String> fileIds = new ArrayList<String>();
 
@@ -151,7 +151,7 @@ public class ExportEntrustDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getBusName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return busName;
   }
 
@@ -162,7 +162,7 @@ public class ExportEntrustDataBusiness extends AbstractExpDataBusiness implement
 
   @Override
   public String getDataType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcDelegJczwDataExchange.DATA_TYPE_ZC_EB_ENTRUST;
   }
 

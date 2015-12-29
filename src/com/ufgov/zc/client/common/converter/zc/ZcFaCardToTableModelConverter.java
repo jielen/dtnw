@@ -48,7 +48,7 @@ static {
   cardDocInfo.add(new ColumnBeanPropertyPair("CARD_DOC", "cardDoc", LangTransMeta.translate("CARD_DOC")));
 }
   public static TableModel convertToTableModel(List cardLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     MyTableModel tableModel = null;
 
@@ -136,7 +136,7 @@ static {
   }
 
   public TableModel convertCardSubToTableData(List zcFaCardSubList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     BeanTableModel<ZcFaCardSub> tm = new BeanTableModel<ZcFaCardSub>() {
 
@@ -243,12 +243,12 @@ static {
   }
 
   public static List<ColumnBeanPropertyPair> getSubInfo() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardSubInfo;
   }
 
   public static List<ColumnBeanPropertyPair> getDocInfo() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return cardDocInfo;
   }
 

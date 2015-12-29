@@ -26,7 +26,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int countByExample(ZcFaCardSubExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -35,7 +35,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int deleteByExample(ZcFaCardSubExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -44,7 +44,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int insert(ZcFaCardSub record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -53,7 +53,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int insertSelective(ZcFaCardSub record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -62,7 +62,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public List selectByExample(ZcFaCardSubExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
@@ -71,7 +71,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int updateByExampleSelective(ZcFaCardSub record, ZcFaCardSubExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
@@ -80,13 +80,13 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
    */
   
   public int updateByExample(ZcFaCardSub record, ZcFaCardSubExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
    
   public void insertList(final List subList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
       public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
         executor.startBatch();
@@ -102,7 +102,7 @@ public class ZcFaCardSubDao extends SqlMapClientDaoSupport implements IZcFaCardS
 
    
   public void deleteByCardId(String cardId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().delete("ZcFaCardSub.deleteByCardId", cardId);    
   }
 

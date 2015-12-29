@@ -25,7 +25,7 @@ public class ZcEbJieXiangServiceDelegate extends ZcEbAuditSheetServiceDelegate i
    */
   
   public List getList(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbJieXiangService.getList(elementConditionDto, requestMeta);
   }
 
@@ -39,7 +39,7 @@ public class ZcEbJieXiangServiceDelegate extends ZcEbAuditSheetServiceDelegate i
 
   
   public ZcEbJieXiang readJieXiang(Map para, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbJieXiangService.readJieXiang(para, requestMeta);
   }
 
@@ -47,20 +47,20 @@ public class ZcEbJieXiangServiceDelegate extends ZcEbAuditSheetServiceDelegate i
 
   
   public void cancelCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbJieXiangService.cancelCaiGou(jiexiang, requestMeta);
   }
 
   
   public void unFinishCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbJieXiangService.unFinishCaiGou(jiexiang, requestMeta);
     
   }
 
   
   public void finishCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbJieXiangService.finishCaiGou(jiexiang, requestMeta);
     
   }

@@ -36,12 +36,12 @@ public class ZcNotePadServiceImp implements IZcNotePadService {
   }
 
   public ZcNotepad getZcNotepadById(int notepadId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcNotepadDAO.selectByPrimaryKey(notepadId);
   }
 
   public ZcNotepad doSave(ZcNotepad notepad, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     notepad.setEditUserId(requestMeta.getSvUserID());
     notepad.setEditUserName(requestMeta.getSvUserName());
     notepad.setCoCode(requestMeta.getSvCoCode());
@@ -57,7 +57,7 @@ public class ZcNotePadServiceImp implements IZcNotePadService {
   }
 
   public void doDelete(int notepadId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcNotepadDAO.deleteByPrimaryKey(notepadId);
   }
 

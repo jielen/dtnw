@@ -97,13 +97,13 @@ public class ZcFaCardTypeTreeSelectField extends JButtonTextField {
       
       @Override
       public boolean isMultipleSelect() {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         return false;
       }
       
       @Override
       public void excute(List selectedDatas) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if(selectedDatas.size()>0){
         ZcFaCardType type=(ZcFaCardType) selectedDatas.get(0);        
         System.out.println(type.getFatypeCode()+type.getFatypeName());
@@ -114,7 +114,7 @@ public class ZcFaCardTypeTreeSelectField extends JButtonTextField {
       
       @Override
       public TableModel createTableModel(List showDatas) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         return null;
       }
     };

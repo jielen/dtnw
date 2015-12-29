@@ -12,13 +12,13 @@ public class VwBudgetGpDaoImpl extends SqlMapClientDaoSupport implements
 		IVwBudgetGpDao {
 
 	public List findBudgetGp(ElementConditionDto dto) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return (List) this.getSqlMapClientTemplate().queryForList(
 				"VwBudgetGp.getVwBudgetGp", dto);
 	}
 
 	public VwBudgetGp findBudgetGpById(String id) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return (VwBudgetGp) this.getSqlMapClientTemplate().queryForObject(
 				"VwBudgetGp.getVwBudgetGpById", id);
 	}

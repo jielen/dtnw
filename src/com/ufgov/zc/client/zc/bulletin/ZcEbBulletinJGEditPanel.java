@@ -23,17 +23,17 @@ public class ZcEbBulletinJGEditPanel extends AbstractZcEbBulletinEditPanel {
   }
 
   protected String getModelName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.TITLE_ZC_EB_BULLETIN_JG;
   }
 
   protected String getCompId() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.COMPO_ZC_EB_BULLETIN_JG;
   }
 
   protected String getBulletinType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.TYPE_BULLETIN_JG;
   }
 

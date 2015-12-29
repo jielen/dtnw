@@ -17,50 +17,50 @@ public class ZcFaCardDocDao extends SqlMapClientDaoSupport implements IZcFaCardD
 
   
   public int countByExample(ZcFaCardDocExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int deleteByExample(ZcFaCardDocExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int insert(ZcFaCardDoc record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int insertSelective(ZcFaCardDoc record) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public List selectByExample(ZcFaCardDocExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   
   public int updateByExampleSelective(ZcFaCardDoc record, ZcFaCardDocExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
   
   public int updateByExample(ZcFaCardDoc record, ZcFaCardDocExample example) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return 0;
   }
 
 
    
   public void insertList(final List docList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().execute(new SqlMapClientCallback() {
       public Object doInSqlMapClient(SqlMapExecutor executor) throws SQLException {
         executor.startBatch();
@@ -77,7 +77,7 @@ public class ZcFaCardDocDao extends SqlMapClientDaoSupport implements IZcFaCardD
 
    
   public void deleteByCardId(String cardId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.getSqlMapClientTemplate().delete("ZcFaCardDoc.deleteByCardId", cardId);
   }
 

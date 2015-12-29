@@ -43,7 +43,7 @@ import com.ufgov.zc.common.system.dto.ElementConditionDto;
 import com.ufgov.zc.common.system.util.BeanUtil;
 import com.ufgov.zc.common.zc.foreignentity.IForeignEntityHandler;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
-import com.ufgov.zc.common.zc.model.ZcPProBalChgBi;
+import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
 import com.ufgov.zc.common.zc.model.ZcXmcgHt;
 import com.ufgov.zc.common.zc.model.ZcXmcgHtBi;
@@ -245,7 +245,7 @@ public class ZcHtChangePanel extends AbstractMainSubEditPanel {
         ZcXmcgHtBi htBi = (ZcXmcgHtBi) model.getBean(k2);
         if (selectedDatas.size() > 0) {
 
-          ZcPProBalChgBi chgBi = (ZcPProBalChgBi) selectedDatas.get(0);
+          ZcPProMitemBiChg chgBi = (ZcPProMitemBiChg) selectedDatas.get(0);
           fillHtBi(htBi, chgBi);
         }
         model.fireTableRowsUpdated(k, k);
@@ -271,7 +271,7 @@ public class ZcHtChangePanel extends AbstractMainSubEditPanel {
       public TableModel createTableModel(List showDatas) {
         Object data[][] = new Object[showDatas.size()][columNames.length];
         for (int i = 0; i < showDatas.size(); i++) {
-          ZcPProBalChgBi chgBi = (ZcPProBalChgBi) showDatas.get(i);
+          ZcPProMitemBiChg chgBi = (ZcPProMitemBiChg) showDatas.get(i);
           int col = 0;
           data[i][col++] = AsValDataCache.getName("ZC_VS_ORIGIN_NAME", chgBi.getOriginCode());
           data[i][col++] = chgBi.getZcBiNo();
@@ -311,7 +311,7 @@ public class ZcHtChangePanel extends AbstractMainSubEditPanel {
   /**
    * 创建合同中选择资金的弹出框，弹出款的内容是新变更采购资金构成中的资金。
    */
-  private void fillHtBi(ZcXmcgHtBi htbi, ZcPProBalChgBi chgBi) {
+  private void fillHtBi(ZcXmcgHtBi htbi, ZcPProMitemBiChg chgBi) {
     BeanUtil.commonFieldsCopy(chgBi, htbi);
 
     htbi.setZcBiNo(chgBi.getZcBiNo());

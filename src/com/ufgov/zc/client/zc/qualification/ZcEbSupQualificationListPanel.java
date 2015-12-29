@@ -232,17 +232,17 @@ public class ZcEbSupQualificationListPanel extends AbstractEditListBill implemen
   }
 
   protected void doDelete() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   protected void doEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   protected void doAdd() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     new ZcEbSupQualificationEditDialog(self, new ArrayList(), this.topDataDisplay.getActiveTableDisplay().getTable().getRowCount(), topDataDisplay
       .getActiveTableDisplay().getStatus());
 

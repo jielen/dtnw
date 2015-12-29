@@ -214,7 +214,7 @@ public class ZcEbProjControlSubEditPanelService {
   }*/
 
   private List createExpertEvalLst(List expertEvalLst1, List expertTeamMenberList,ZcEbSupplierPack spack) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(expertTeamMenberList==null)return expertEvalLst1;
     ElementConditionDto dto=new ElementConditionDto();
     dto.setProjCode(spack.getProjCode());
@@ -428,7 +428,7 @@ public class ZcEbProjControlSubEditPanelService {
   }
 
   private void setButtonStatus() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     saveOffLineBidScoreBtn.setEnabled(isEditStatus());
   }
 

@@ -22,67 +22,67 @@ public class ZcAnimationServiceDelegate implements IZcAnimationServiceDelegate {
 
   
   public List select(AnimationMeta meta, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.select(meta);
   }
 
   
   public void delete(AnimationMeta meta, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationSerivce.delete(meta);
   }
 
   
   public void insert(AnimationMeta meta, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationSerivce.insert(meta);
   }
 
   
   public void updateByKey(AnimationMeta meta, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationSerivce.updateByKey(meta);
   }
 
   
   public List getCurrentDayBidding(Map param, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.getCurrentDayBidding(param);
   }
 
   
   public List getCurrentWeekBidding(Map param, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.getCurrentWeekBidding(param);
   }
 
   
   public List getLastWeekBidding(Map param, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.getLastWeekBidding(param);
   }
 
   
   public List getPurchaseInfo(Map param, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.getPurchaseInfo(param);
   }
 
   
   public List selectRealMessage(RealMessage mess, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationSerivce.selectRealMessage(mess);
   }
 
   
   public void insertRealMessage(RealMessage mess, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationSerivce.insertRealMessage(mess);
   }
 
   
   public void deleteRealMessage(String ids, RequestMeta rm) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationSerivce.deleteRealMessage(ids);
   }
 

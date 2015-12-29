@@ -61,14 +61,14 @@ public abstract class FlowConsoleCanvas extends JPanel implements ICanvas {
     this.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         panelMouseClicked(e);
       }
     });
     this.addMouseMotionListener(new MouseMotionAdapter() {
       @Override
       public void mouseMoved(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         panelMouseMoving(e);
       }
     });
@@ -246,13 +246,13 @@ public abstract class FlowConsoleCanvas extends JPanel implements ICanvas {
 
   @Override
   public void addElement(Node node) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     nodeMap.put(node.getId(), node);
   }
 
   @Override
   public void addElement(Link arrow) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     arrowList.add(arrow);
   }
 

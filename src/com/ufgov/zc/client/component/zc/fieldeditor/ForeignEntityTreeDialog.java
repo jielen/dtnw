@@ -47,7 +47,7 @@ public class ForeignEntityTreeDialog extends JTreeSelectDialog {
     //    System.out.println("the title is "+title);
     this.handler = handler;
     this.title = title;
-    // TODO Auto-generated constructor stub
+    // TCJLODO Auto-generated constructor stub
   }
 
   @Override
@@ -158,7 +158,7 @@ public class ForeignEntityTreeDialog extends JTreeSelectDialog {
    */
   @Override
   protected boolean isNumLimContain(BaseElement element) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return true;
   }
 

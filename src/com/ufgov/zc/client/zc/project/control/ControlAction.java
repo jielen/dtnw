@@ -263,7 +263,7 @@ public class ControlAction extends AbstractAction implements ActionListener {
       final ZcProjectLivingChangeUIFrame frame = new ZcProjectLivingChangeUIFrame(pack) {
         @Override
         public void afterChange() {
-          // TODO Auto-generated method stub
+          // TCJLODO Auto-generated method stub
           super.afterChange();
           editPanel.currVO.setZcEbPack(pack);
           editPanel.setEditingObject(editPanel.currVO);

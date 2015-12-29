@@ -93,7 +93,7 @@ public class DdcgPriceDetailEditPanel extends JPanel implements ActionListener {
 
   public DdcgPriceDetailEditPanel(GkBaseDialog parentDialog) {
     super();
-    // TODO:
+    // TCJLODO:
     meta.setCompoId("ZC_EB_SUP_PRICE");
     this.setLayout(new BorderLayout());
     this.add(createToolBar(), BorderLayout.NORTH);
@@ -103,7 +103,7 @@ public class DdcgPriceDetailEditPanel extends JPanel implements ActionListener {
 
   public DdcgPriceDetailEditPanel(GkBaseDialog parentDialog, SignupListPanel listPanel) {
     super();
-    // TODO:
+    // TCJLODO:
     meta.setCompoId("ZC_EB_SUP_PRICE");
     this.setLayout(new BorderLayout());
     this.add(createToolBar(), BorderLayout.NORTH);

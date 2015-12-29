@@ -673,7 +673,7 @@ public class ZcEbRequirementEditPanel extends AbstractMainSubEditPanel {
     try {
       Desktop.getDesktop().open(util.outWordFilePath());
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       JOptionPane.showMessageDialog(this, "创建打印文件失败 ！" + e.getMessage(), "错误", JOptionPane.ERROR_MESSAGE);
     }

@@ -263,7 +263,7 @@ public class ZcEbSupplierToTableModelConverter {
   }
 
   protected static boolean getQualityTableEditable(boolean isEditable) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(isEditable){
       return true;
     }
@@ -477,7 +477,7 @@ public class ZcEbSupplierToTableModelConverter {
     gysTypeTableColumnInfo.add(new ColumnBeanPropertyPair("isSelected", "isSelected", "选中"));
   }
   public static TableModel convertGysTypeToTableModel(List gysTypeList) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     
     BeanTableModel<ZcEbSupplierType> tm = new BeanTableModel<ZcEbSupplierType>() {

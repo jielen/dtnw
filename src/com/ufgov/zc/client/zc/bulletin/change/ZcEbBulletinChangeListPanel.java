@@ -342,7 +342,7 @@ public class ZcEbBulletinChangeListPanel extends AbstractEditListBill implements
 
   public String getBulletinType() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return ZcEbBulletin.BIANGENG;
 

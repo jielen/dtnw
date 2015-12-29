@@ -41,43 +41,43 @@ public class ZcAnimationService implements IZcAnimationService {
 
   
   public List getCurrentDayBidding(Map param) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationDao.getCurrentDayBidding(param);
   }
 
   
   public List getCurrentWeekBidding(Map param) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationDao.getCurrentWeekBidding(param);
   }
 
   
   public List getLastWeekBidding(Map param) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationDao.getLastWeekBidding(param);
   }
 
   
   public List getPurchaseInfo(Map param) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationDao.getPurchaseInfo(param);
   }
 
   
   public List selectRealMessage(RealMessage mess) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return animationDao.selectRealMessage(mess);
   }
 
   
   public void insertRealMessage(RealMessage mess) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationDao.insertRealMessage(mess);
   }
 
   
   public void deleteRealMessage(String ids) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     animationDao.deleteRealMessage(ids);
   }
 

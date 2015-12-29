@@ -22,31 +22,31 @@ public class ZcPProDelegate implements IZcPProDelegate {
 
 	public void deleteZcPPro(String id, RequestMeta requestMeta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcPProService.deleteZcPPro(id);
 	}
 
 	public void updateZcPPro(ZcPPro zcPPro, RequestMeta requestMeta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcPProService.updateZcPPro(zcPPro);
 	}
 
 	public void saveZcPPro(ZcPPro zcPPro, RequestMeta requestMeta)
 			throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		zcPProService.saveZcPPro(zcPPro);
 	}
 
 	public List getZcPPro(ElementConditionDto elementConditionDto,
 			RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcPProService.getZcPPro(elementConditionDto);
 	}
 
 
 	public ZcPPro getZcPProById(String id, RequestMeta requestMeta) throws Exception {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		return zcPProService.getZcPProById(id);
 	}
 

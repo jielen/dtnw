@@ -48,30 +48,30 @@ public class ZcEbConsultService implements IZcEbConsultService {
   }
 
   public List findConsultList(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     dto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(meta.getCompoId(), "fwatch"));
     return baseDao.query("ZcEbConsult.findList", dto);
   }
 
   public ZcEbConsult findConsultById(String id, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return (ZcEbConsult) baseDao.read("ZcEbConsult.findConsultById", id);
   }
 
   public void deleteConsultById(String id, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.delete("ZcEbConsult.deleteById", id);
   }
 
   public void deleteConsultByIds(List ids, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i = 0; i < ids.size(); i++) {
       deleteConsultById(ids.get(i).toString(), meta);
     }
   }
 
   public ZcEbConsult updateConsult(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (bean.getId() == null || bean.getId().length() == 0) {
       Long draftid = workflowDao.createDraftId();
 
@@ -99,13 +99,13 @@ public class ZcEbConsultService implements IZcEbConsultService {
   }
 
   public ZcEbConsult newCommitFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.newCommit(bean.getComment(), bean, meta);
     return bean;
   }
 
   public ZcEbConsult auditFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.commit(bean.getComment(), bean, meta);
     bean = findConsultById(bean.getId(), meta);
     if ("exec".equals(bean.getStatus())) {
@@ -116,19 +116,19 @@ public class ZcEbConsultService implements IZcEbConsultService {
   }
 
   public ZcEbConsult untreadFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untread(bean.getComment(), bean, meta);
     return bean;
   }
 
   public ZcEbConsult callbackFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.callback(bean.getComment(), bean, meta);
     return bean;
   }
 
   public ZcEbConsult unAuditFN(ZcEbConsult bean, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.unAudit(bean.getComment(), bean, meta);
     return bean;
   }

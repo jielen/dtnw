@@ -188,7 +188,7 @@ public class ZcPProMakeChgBiListPanel extends AbstractEditListBill implements Pa
       @Override
       public List<SearchCondition> execute() throws Exception {
         List<SearchCondition> needDisplaySearchConditonList = SearchConditionUtil.getNeedDisplaySearchConditonList(WorkEnv.getInstance()
-          .getCurrUserId(), ZcPProBalChgConstants.TAB_ID_ZC_P_PRO_BAL_CHG);
+          .getCurrUserId(), "ZC_P_PRO_MAKE_CHG_BI_Tab");
         return needDisplaySearchConditonList;
       }
 
@@ -222,12 +222,12 @@ public class ZcPProMakeChgBiListPanel extends AbstractEditListBill implements Pa
     toolBar.setModuleCode("ZC");
     toolBar.setCompoId(compoId);
     toolBar.add(addButton);
-    toolBar.add(sendButton);
-    toolBar.add(suggestPassButton);
-    toolBar.add(callbackButton);//收回
-    toolBar.add(deleteButton);
-    toolBar.add(traceButton);
-    toolBar.add(helpButton);
+//    toolBar.add(sendButton);
+//    toolBar.add(suggestPassButton);
+//    toolBar.add(callbackButton);//收回
+//    toolBar.add(deleteButton);
+//    toolBar.add(traceButton);
+//    toolBar.add(helpButton);
 
     // 初始化按钮的action事件
 

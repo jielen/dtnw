@@ -32,7 +32,7 @@ public class HelpMsgPanel extends JPanel {
    * Jul 9, 2013
    */
   public static void main(String[] args) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
@@ -43,7 +43,7 @@ public class HelpMsgPanel extends JPanel {
   }
 
   private void init() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.setLayout(new FlowLayout(FlowLayout.LEFT, 2, 2));
 
     msgLb.setText(msg);
@@ -52,7 +52,7 @@ public class HelpMsgPanel extends JPanel {
   }
 
   private void setMsgLbSizt() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 

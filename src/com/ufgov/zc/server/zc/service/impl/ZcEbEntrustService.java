@@ -358,7 +358,7 @@ public class ZcEbEntrustService implements IZcEbEntrustService {
 	}
 
 	public List getTodoListByUser(List compId, String userId) {
-		// TODO Auto-generated method stub
+		// TCJLODO Auto-generated method stub
 		List todo = new ArrayList();
 		Map para = new HashMap();
 		para.put("userId", userId);
@@ -381,7 +381,7 @@ public class ZcEbEntrustService implements IZcEbEntrustService {
 
    
   public List getZcEbEntrustExportData(List entrustIdLst, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List list = new ArrayList();
     
     for(int i=0;i<entrustIdLst.size();i++){
@@ -396,7 +396,7 @@ public class ZcEbEntrustService implements IZcEbEntrustService {
 
   
   public String importTransDatasFN(ZcEbEntrust bill, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.delete("ZcEbEntrust.deleteBySn", bill.getSn());
     baseDao.delete("ZcEbEntrust.deleteZcEbEntrustDetail", bill.getSn());
     

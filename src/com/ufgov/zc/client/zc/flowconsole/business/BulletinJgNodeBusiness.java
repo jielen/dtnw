@@ -26,7 +26,7 @@ public class BulletinJgNodeBusiness implements INodeBusiness {
   @Override
   public void showAddWindow() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     new ZcEbBulletinJGEditDialog(new ZcEbBulletinJGListPanel(), new ArrayList(1), -1, "0");
 

@@ -72,19 +72,19 @@ public class ZcEbBulletinCGEditPanel extends AbstractZcEbBulletinEditPanel {
 
   @Override
   protected String getModelName() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.TITLE_ZC_EB_BULLETIN_CG;
   }
 
   @Override
   protected String getCompId() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.COMPO_ZC_EB_BULLETIN_CG;
   }
 
   @Override
   protected String getBulletinType() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcEbBulletinConstants.TYPE_BULLETIN_CG;
   }
 

@@ -339,7 +339,7 @@ public class ZcPProBalListPanel extends AbstractEditListBill implements ParentWi
  * 
  */
   protected void doCloseFaCardCheck() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     AsOption asOption = baseDataServiceDelegate.getAsOption("OPT_ZC_HT_FA_EQUAL_SUM", requestMeta);
     if(asOption==null)return;
     boolean check=(asOption.getOptVal()==null || asOption.getOptVal().equalsIgnoreCase("N"))?false:true;
@@ -368,7 +368,7 @@ public class ZcPProBalListPanel extends AbstractEditListBill implements ParentWi
   }
 
   private void setFaCardCheckButton() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     AsOption asOption = baseDataServiceDelegate.getAsOption("OPT_ZC_HT_FA_EQUAL_SUM", requestMeta);
     if(asOption==null)return;
     boolean check=(asOption.getOptVal()==null || asOption.getOptVal().equalsIgnoreCase("N"))?false:true;

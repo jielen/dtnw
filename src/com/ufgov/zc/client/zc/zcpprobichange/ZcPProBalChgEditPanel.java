@@ -101,7 +101,7 @@ import com.ufgov.zc.common.system.util.ObjectUtil;
 import com.ufgov.zc.common.zc.foreignentity.IForeignEntityHandler;
 import com.ufgov.zc.common.zc.model.ZcBaseBill;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
-import com.ufgov.zc.common.zc.model.ZcPProBalChgBi;
+import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
 import com.ufgov.zc.common.zc.model.ZcPProMake;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
 import com.ufgov.zc.common.zc.model.ZcTBchtItem;
@@ -307,7 +307,7 @@ public class ZcPProBalChgEditPanel extends AbstractMainSubEditPanel {
     return editorList;
   }
 
-  private void buildZcPProBalChgBi(List<ZcXmcgHtBi> biHTBiList, List<ZcPProBalChgBi> biBalList, String htCode, ZcTBchtItem item) {
+  private void buildZcPProBalChgBi(List<ZcXmcgHtBi> biHTBiList, List<ZcPProMitemBiChg> biBalList, String htCode, ZcTBchtItem item) {
 
   }
 
@@ -337,7 +337,7 @@ public class ZcPProBalChgEditPanel extends AbstractMainSubEditPanel {
     addBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         // 添加分包明细
-        ZcPProBalChgBi bi = new ZcPProBalChgBi();
+        ZcPProMitemBiChg bi = new ZcPProMitemBiChg();
         int rowNum = addSub(biTablePanel, bi);
         //设置默认值
         biTablePanel.getTable().setRowSelectionInterval(rowNum, rowNum);
@@ -346,7 +346,7 @@ public class ZcPProBalChgEditPanel extends AbstractMainSubEditPanel {
     insertBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
         // 插入分包明细
-        ZcPProBalChgBi bi = new ZcPProBalChgBi();
+        ZcPProMitemBiChg bi = new ZcPProMitemBiChg();
         int rowNum = insertSub(biTablePanel, bi);
         biTablePanel.getTable().setRowSelectionInterval(rowNum, rowNum);
       }
@@ -361,7 +361,7 @@ public class ZcPProBalChgEditPanel extends AbstractMainSubEditPanel {
         List dataList = tableModel.getDataBeanList();
         for (Integer checkedRow : selectedRows) {
           int accordDataRow = table.convertRowIndexToModel(checkedRow);
-          ZcPProBalChgBi bi = (ZcPProBalChgBi) dataList.get(accordDataRow);
+          ZcPProMitemBiChg bi = (ZcPProMitemBiChg) dataList.get(accordDataRow);
           if (bi.getZcBiYjjsSum() != null && bi.getZcBiYjjsSum().intValue() > 0) {
             JOptionPane.showMessageDialog(self, "该指标存在已经支付的金额，允许修改，不允许删除!", "提示", JOptionPane.INFORMATION_MESSAGE);
             return;
@@ -1183,14 +1183,14 @@ public class ZcPProBalChgEditPanel extends AbstractMainSubEditPanel {
         List<ZcPProMitemBi> biList = zcEbBaseServiceDelegate.getForeignEntitySelectedData("ZC_P_PRO_MITEM_BI.getForeignBiDetail",
           htElementCondtiontDto, requestMeta);
         //获取已经支付的指标
-        List<ZcPProBalChgBi> yjjs = new ArrayList<ZcPProBalChgBi>();
+        List<ZcPProMitemBiChg> yjjs = new ArrayList<ZcPProMitemBiChg>();
         if (biList == null) {
           throw new NullPointerException();
         } else {
           bean.setOldBiList(biList);
           String sumId = "";
           for (ZcPProMitemBi bi : biList) {
-            ZcPProBalChgBi chgBi = new ZcPProBalChgBi();
+            ZcPProMitemBiChg chgBi = new ZcPProMitemBiChg();
             BeanUtil.commonFieldsCopy(bi, chgBi);
             if (bi.getZcBiUsedSum() != null && bi.getZcBiUsedSum().intValue() > 0) {
               chgBi.setZcBiYjjsSum(bi.getZcBiUsedSum());//已经使用金额

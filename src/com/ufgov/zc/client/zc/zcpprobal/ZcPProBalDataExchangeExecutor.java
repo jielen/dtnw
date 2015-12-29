@@ -44,9 +44,9 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
    */
   @Override
   public int doExportData(ElementConditionDto dto, RequestMeta meta, String saveRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     int rtn=0;
     this.getDataList().clear();    
@@ -109,7 +109,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
         downFile(makeFileDirName, f.getZcConTextBlobId(), f.getZcConText(), null, path, meta);
         downFile(makeFileDirName, f.getZcImpFileBlobId(), f.getZcImpFile(), null, path, meta);
       } catch (IOException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
         DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取资金支付附件出错...\n" + e.getMessage());
       }
@@ -117,7 +117,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
     }
   }
   private List getBalDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     DataExchangeListPanel.setProgressText(this.getDataTypeName() + "正在查询需要导出的记录...");
     List<String> idLst = new ArrayList<String>();
@@ -143,7 +143,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
   }
 
   private void createExportLog(List<String> idLst, List<ZcPProBal> billLst,RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(billLst==null || billLst.size()==0){
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "业务数据中没有查到对应的业务数据...");
     }else{
@@ -198,7 +198,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
    */
   @Override
   public int doImportData(ElementConditionDto dto, RequestMeta meta, String readRootPath) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     String info = null;
     DataExchangeLog log = null;
@@ -213,7 +213,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" + e.getMessage());
     }
@@ -246,7 +246,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
    * @param cantDelIds 删除异常的时候出现异常的id集合
    */
   private void importDelData(RequestMeta meta,List delDataLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String info=null;
     DataExchangeLog log;
     List<DataExchangeLog> importDataList = new ArrayList<DataExchangeLog>();
@@ -266,7 +266,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
         try {
           info = balService.importDelDataFN(id, meta);
         } catch (DataExchangeException e) {
-          // TODO: handle exception
+          // TCJLODO: handle exception
           info=e.getMessage();
           DataExchangeListPanel.setProgressText(getDataTypeName() + "同步删除资金支付数据失败," + info);
           this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删除资金支付数据失败", "", info, IMPORT, bal);
@@ -312,7 +312,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
         try {
           info = balService.importTransDatasFN(bill, meta);
         } catch (DataExchangeException e) {
-          // TODO: handle exception
+          // TCJLODO: handle exception
           info=e.getMessage();
           DataExchangeListPanel.setProgressText(getDataTypeName() + "导入资金支付数据失败," + info);
           this.makeDataExchangeLog(log, meta.getSvUserID(), "导入资金支付数据失败", "", info, IMPORT, bill);
@@ -335,7 +335,7 @@ public class ZcPProBalDataExchangeExecutor extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

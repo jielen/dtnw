@@ -701,7 +701,7 @@ public class ZcEbCatalogueEditPanel extends AbstractMainSubEditPanel {
 
     @Override
     public void excute(List selectedDatas) {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       ZcBCatalogue catalogue = (ZcBCatalogue) listCursor.getCurrentObject();
       for (Object obj : selectedDatas) {
         TreeNodeValueObject td = (TreeNodeValueObject) obj;
@@ -714,13 +714,13 @@ public class ZcEbCatalogueEditPanel extends AbstractMainSubEditPanel {
 
     @Override
     public boolean isMultipleSelect() {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       return false;
     }
 
     @Override
     public boolean isSelectLeaf() {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
     }

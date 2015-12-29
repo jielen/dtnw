@@ -12,22 +12,22 @@ public class ZcNotepadDelegate implements IZcNotepadDelegate {
   private IZcNotePadService zcNotePadService = null;
 
   public List getZcNotepads(ElementConditionDto dto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcNotePadService.getZcNotepads(dto, requestMeta);
   }
 
   public ZcNotepad getZcNotepadById(int notepadId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcNotePadService.getZcNotepadById(notepadId);
   }
 
   public ZcNotepad doSave(ZcNotepad notepad, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcNotePadService.doSave(notepad, requestMeta);
   }
 
   public void doDelete(int notepadId, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcNotePadService.doDelete(notepadId);
   }
 
@@ -40,7 +40,7 @@ public class ZcNotepadDelegate implements IZcNotepadDelegate {
   }
 
   public void doDelete(String[] ids, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i = 0; i < ids.length; i++) {
       this.zcNotePadService.doDelete(Integer.parseInt(ids[i]));
     }

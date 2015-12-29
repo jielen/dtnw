@@ -742,7 +742,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
   }
 
   private BigDecimal _getYjjsSum(String zcHtCode, String zcUseBiId) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     HashMap map = new HashMap();
     map.put("zcHtCode", zcHtCode);
     map.put("zcHtBiNo", zcUseBiId);
@@ -756,7 +756,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
   private ZcPProMake zcPProMake = null;
 
   private String getOldOutLayCode(String zcBiNo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (oldOutLayCodeMap.get(zcBiNo) != null) {
       return oldOutLayCodeMap.get(zcBiNo);
     }
@@ -988,7 +988,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
 
     }
     try {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       requestMeta.setFuncId(this.unAuditButton.getFuncId());
       ZcPProBal bal = (ZcPProBal) ObjectUtil.deepCopy(this.listCursor.getCurrentObject());
       bal.setAuditorId(WorkEnv.getInstance().getCurrUserId());
@@ -1128,7 +1128,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private boolean notSameCoBudget() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (ZcUtil.isYsdw() || ZcUtil.isCgdb()) {
       ZcPProBal bean = (ZcPProBal) this.listCursor.getCurrentObject();
       if (bean.getBiList() == null || bean.getBiList().size() == 0)
@@ -1404,7 +1404,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * @return true 检查没有通过; false 检查通过
    */
   private boolean checkFaCard() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (isYsdw()) {
       AsOption linkFaOpt = baseDataServiceDelegate.getAsOption("OPT_ZC_IS_LINK_FA", requestMeta);
       if (linkFaOpt == null || linkFaOpt.getOptVal().equalsIgnoreCase("N")) {
@@ -1450,7 +1450,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private BigDecimal _getAllBalSum() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcPProBal zcPProBal = (ZcPProBal) this.listCursor.getCurrentObject();
     if (zcPProBal.getBiList() == null) {
       return new BigDecimal(0);
@@ -1470,7 +1470,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private String checkShouRu() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if ("Y".equalsIgnoreCase(AsOptionMeta.getOptVal("OPT_ZC_SHOURU "))) {//是否进行受控指标检查
       //获取不受收入控制的资金性质
       String zjxzStr = AsOptionMeta.getOptVal("OPT_ZC_NO_SHOURU_ZJXZ");
@@ -1523,7 +1523,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private String checkOutLay() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     boolean check = "Y".equalsIgnoreCase(AsOptionMeta.getOptVal("OPT_ZC_CHECK_OUT_LAY_IS_LEAF"));
 
     if (check) {
@@ -1555,7 +1555,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
   }
 
   private String checkMoneyForGys(ZcPProBal zcPProBal) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String info = "";
     double zcBalSum = 0.0;
     if (zcPProBal.getZcBalSum() != null)
@@ -1719,7 +1719,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
   }
 
   private boolean isCar() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if (zcPProMake != null && "Y".equalsIgnoreCase(zcPProMake.getIsCar())) {
       return true;
     }
@@ -2253,7 +2253,7 @@ public class ZcPProBalEditPanel extends AbstractMainSubEditPanel {
    * //用于代编代报里，置换requestmeta里的信息
    */
   private void resetRequestMeta() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcPProBal ht = (ZcPProBal) listCursor.getCurrentObject();
     if (ht.getCoCode() != null && ht.getZcBalId() != null && !ht.getZcBalId().equals("自动编号")) {

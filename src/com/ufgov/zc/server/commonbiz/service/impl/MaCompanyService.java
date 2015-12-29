@@ -13,57 +13,57 @@ public class MaCompanyService implements IMaCompanyService {
   private IMaCompanyDAO macompanyDao;
 
   public int countByExample(MaCompanyExample example, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.countByExample(example);
   }
 
   public int deleteByExample(MaCompanyExample example, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.deleteByExample(example);
   }
 
   public int deleteByPrimaryKey(MaCompanyKey key, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.deleteByPrimaryKey(key);
   }
 
   public void insert(MaCompany record, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.macompanyDao.insert(record);
   }
 
   public void insertSelective(MaCompany record, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.macompanyDao.insertSelective(record);
   }
 
   public List selectByExample(MaCompanyExample example, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.selectByExample(example);
   }
 
   public MaCompany selectByPrimaryKey(MaCompanyKey key, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.selectByPrimaryKey(key);
   }
 
   public int updateByExampleSelective(MaCompany record, MaCompanyExample example, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.updateByExampleSelective(record, example);
   }
 
   public int updateByExample(MaCompany record, MaCompanyExample example, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.updateByExample(record, example);
   }
 
   public int updateByPrimaryKeySelective(MaCompany record, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.updateByPrimaryKeySelective(record);
   }
 
   public int updateByPrimaryKey(MaCompany record, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.macompanyDao.updateByPrimaryKey(record);
   }
 

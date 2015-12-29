@@ -41,7 +41,7 @@ public class ForeignEntityFieldCellEditorForF3 extends AbstractCellEditor implem
    */
   @Override
   public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.editorComponent.setValue(value);
     return this.editorComponent;
   }
@@ -51,12 +51,12 @@ public class ForeignEntityFieldCellEditorForF3 extends AbstractCellEditor implem
    */
   @Override
   public Object getCellEditorValue() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.editorComponent.getValue();
   }
 
   public void updateDto(ElementConditionDto dto) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     this.editorComponent.updateDto(dto);
   }
 

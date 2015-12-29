@@ -331,7 +331,7 @@ public class PayForZcUtil {
       try {
         call(paramMap);
       } catch (Exception e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
       }
     }
@@ -366,7 +366,7 @@ public class PayForZcUtil {
       try {
         call(paramMap);
       } catch (Exception e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
       }
     }
@@ -410,10 +410,10 @@ public class PayForZcUtil {
       System.out.println("支付参数==>" + map.toString());
       throw new ZcPayInterfaceException("调用支付接口时出错:" + e.getMessage());
     } catch (ServiceException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       throw new ZcPayInterfaceException("调用支付接口时出错:" + e.getMessage(),e);
     } catch (RemoteException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       throw new ZcPayInterfaceException("调用支付接口时出错:" + e.getMessage(),e);
     }
     return result;
@@ -422,7 +422,7 @@ public class PayForZcUtil {
 
 
   public  Map PayByQb(ZcQb qb, RequestMeta requestMeta) throws ZcPayInterfaceException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List biList = qb.getBiList();
     if (biList == null || biList.size() == 0) {

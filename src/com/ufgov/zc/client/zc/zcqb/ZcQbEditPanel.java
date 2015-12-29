@@ -229,7 +229,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   private MoneyFieldEditor realQbSum=null;
 
   public ZcQbEditPanel(ZcQbDialog parent, ListCursor listCursor, String tabStatus, ZcQbListPanel listPanel) {
-    // TODO Auto-generated constructor stub
+    // TCJLODO Auto-generated constructor stub
     super(ZcQbEditPanel.class, BillElementMeta.getBillElementMetaWithoutNd(getCompoId()));
 
     this.workPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), LangTransMeta.translate(getCompoId()),
@@ -258,7 +258,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void refreshData() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcQb qb = (ZcQb) listCursor.getCurrentObject();
 
@@ -396,7 +396,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setDefaultValue(ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qb.setStatus(ZcSettingConstants.WF_STATUS_DRAFT);
     qb.setNd(this.requestMeta.getSvNd());
     qb.setInputDate(this.requestMeta.getSysDate());
@@ -429,7 +429,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
 
   //设置收账户信息
   private void setBankInfo(ZcQb qb) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     boolean isPayToCgzx = false;
     String isPayToCgzxStr=AsOptionMeta.getOptVal("OPT_ZC_PAY_TO_CGZX");
     if("Y".equalsIgnoreCase(isPayToCgzxStr)){
@@ -656,7 +656,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setTablePorperty() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     setItemTableEditor(itemTablePanel.getTable());
     addItemTableLisenter(itemTablePanel.getTable());
     //
@@ -666,7 +666,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setBiTableEditor(JPageableFixedTable table) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     table.setDefaultEditor(String.class, new TextCellEditor());
     if (budgetFlag) {
@@ -730,7 +730,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setItemTableEditor(JPageableFixedTable table) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     SwingUtil.setTableCellEditor(table, ZcElementConstants.FIELD_TRANS_QB_ITEM_VAL, new MoneyCellEditor());
     SwingUtil.setTableCellRenderer(table, ZcElementConstants.FIELD_TRANS_QB_ITEM_VAL, new NumberCellRenderer());
     
@@ -753,7 +753,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void addItemTableLisenter(final JPageableFixedTable table) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     final BeanTableModel model = (BeanTableModel) (table.getModel());
 
@@ -853,12 +853,12 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void setItemDefaultValue(ZcQbItem item) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
   }
 
   public static  String getCompoId() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return "ZC_EB_QB";
   }
 
@@ -867,7 +867,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
    */
   @Override
   public void initToolBar(JFuncToolBar toolBar) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     toolBar.setModuleCode("ZC");
 
@@ -1072,7 +1072,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
 
       @Override
       public String getDescription() {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         return "xls";
       }
 
@@ -1098,19 +1098,19 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   private void readDetailFromExcel(File file) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     try {
       String[][] data = ZcUtil.getExcelData(file, 3);
       createDetails(data);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       logger.error("读取明细出错", e);
       e.printStackTrace();
     }
   }
 
   private void createDetails(String[][] data) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcQb qb = (ZcQb) listCursor.getCurrentObject();
     List itemLst = new ArrayList();
     BigDecimal num = BigDecimal.ZERO;
@@ -1169,7 +1169,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
     }
   }
   private Date getDate(String dateStr) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");    
     try {
       Date date = formatDate.parse(dateStr);
@@ -1491,7 +1491,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private String checkShouRu() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if("Y".equalsIgnoreCase(AsOptionMeta.getOptVal("OPT_ZC_SHOURU "))){
       //获取不受收入控制的资金性质
       String zjxzStr=AsOptionMeta.getOptVal("OPT_ZC_NO_SHOURU_ZJXZ");
@@ -1542,7 +1542,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
    * @return
    */
   private String checkOutLay() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     boolean check = "Y".equalsIgnoreCase(AsOptionMeta.getOptVal("OPT_ZC_CHECK_OUT_LAY_IS_LEAF"));
 
     if (check) {
@@ -1720,7 +1720,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
  * @return
  */
   private boolean notSameCoBudget() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(ZcUtil.isYsdw() || ZcUtil.isCgdb()){
       ZcQb bean = (ZcQb) this.listCursor.getCurrentObject();
       if(bean.getBiList()==null || bean.getBiList().size()==0)return false;
@@ -2196,7 +2196,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
 
 
   protected void selectCompany(Company company) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcQb qb=(ZcQb)listCursor.getCurrentObject();
     qb.setCoCode(company.getCode());
     qb.setCoName(company.getName());
@@ -2207,7 +2207,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
    */
   @Override
   public JComponent createSubBillPanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     final JTabbedPane topTabPane = new JTabbedPane();
 
     JTabbedPane biTabPane = new JTabbedPane();
@@ -2435,7 +2435,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   protected void setBIDefaultValue(ZcQbBi qbBi) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qbBi.setZcProBiSeq(Guid.genID());
     qbBi.setFundCode("0");
     qbBi.setFundName("自筹资金");
@@ -2517,7 +2517,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
 
   public void doExit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     if (isDataChanged()) {
 
@@ -2619,7 +2619,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
   }
   private Map<String, String> oldOutLayCodeMap=new HashMap<String, String>();
   private String getOldOutLayCode(String zcBiNo) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(oldOutLayCodeMap.get(zcBiNo)!=null){
       return oldOutLayCodeMap.get(zcBiNo);
     }
@@ -2629,7 +2629,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
     return gp.getBsiId();
   }
   private void setExcelFileModel(ZcQb qx) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qx.setDetailModelFileName("汽车保险明细模板文件.xls");
     qx.setDetailModelFileId("汽车保险明细模板文件.xls");    
   }
@@ -2638,7 +2638,7 @@ public class ZcQbEditPanel extends AbstractMainSubEditPanel {
    * //用于代编代报里，置换requestmeta里的信息
    */
     private void resetRequestMeta() {
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
       
       ZcQb ht = (ZcQb) listCursor.getCurrentObject();
       if(ht.getCoCode()!=null && ht.getQbCode()!=null && !ht.getQbCode().equals("自动编号")){        

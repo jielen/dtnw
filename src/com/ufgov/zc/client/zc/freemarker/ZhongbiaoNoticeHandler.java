@@ -51,8 +51,8 @@ public class ZhongbiaoNoticeHandler implements ITemplateToDocumentHandler {
    */
   @Override
   public String createDocumnet(Hashtable userDatas) {
-    // TODO Auto-generated method stub
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     String docFilePath = "";
 
     AsFile asf = getTemplateFile(templateFileId, meta);
@@ -97,7 +97,7 @@ public class ZhongbiaoNoticeHandler implements ITemplateToDocumentHandler {
       template.process(dataMap, writer);
       writer.flush();
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } finally {
       try {
@@ -114,7 +114,7 @@ public class ZhongbiaoNoticeHandler implements ITemplateToDocumentHandler {
   }  
   
   private void getNoticeResult(Map<String, Object> dataMap, ZcEbNotice notice) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     dataMap.put("supplier", StringUtil.freeMarkFillWordChar(notice.getProviderName()==null?"":notice.getProviderName()));
     dataMap.put("coname", StringUtil.freeMarkFillWordChar(notice.getCoName()==null?"":notice.getCoName()));
@@ -132,7 +132,7 @@ public class ZhongbiaoNoticeHandler implements ITemplateToDocumentHandler {
   }
 
   private AsFile getTemplateFile(String temoplateFIleId, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     IBaseDataServiceDelegate baseService = (IBaseDataServiceDelegate) ServiceFactory
       .create(IBaseDataServiceDelegate.class, "baseDataServiceDelegate");
 

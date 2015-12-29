@@ -119,7 +119,7 @@ public class ZcEbProjServiceDelegate implements IZcEbProjServiceDelegate {
 
   public AsFile getXunJiaWordContent(ZcEbProj zcEbProj, RequestMeta requestMeta, String fileID, boolean isWaitFrelease) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return zcEbProjService.getXunJiaWordContent(zcEbProj, fileID, isWaitFrelease);
 
@@ -152,25 +152,25 @@ public class ZcEbProjServiceDelegate implements IZcEbProjServiceDelegate {
 
   
   public boolean checkStatus(ZcEbPack pack, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbProjService.checkStatus(pack);
   }
 
   
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbProjService.queryExportsDatas(dto, meta);
   }
 
    
   public String importTransDatasFN(ZcEbProj proj, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbProjService.importTransDatasFN(proj, meta);
   }
 
    
   public List getExportsZbFile(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbProjService.getExportsZbFile(dto, meta);
   }
 }

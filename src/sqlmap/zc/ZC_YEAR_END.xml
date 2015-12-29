@@ -17,7 +17,7 @@
 	</parameterMap>
 	
 	<parameterMap class="zcYearPlan" id="jiChuZiLiaoJieZhuanParam">
-		<parameter property="nd" jdbcType="varchar2" mode="IN" />
+		<parameter property="nd" jdbcType="CHAR" mode="IN" />
 	</parameterMap>
 
 	<resultMap id="proEndResult" class="zcYearPlan">

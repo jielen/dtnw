@@ -133,7 +133,7 @@ public class ZcPproMakeXmDataExchange extends ABaseData {
       try {
         getAttachFile(make, saveRootPath, meta);
       } catch (IOException e) {
-        // TODO Auto-generated catch block
+        // TCJLODO Auto-generated catch block
         e.printStackTrace();
         exceptionMsg=e.getMessage();
         successInfo="采购计划"+make.getZcMakeCode()+"导出附件失败:";
@@ -157,7 +157,7 @@ public class ZcPproMakeXmDataExchange extends ABaseData {
   }
 
   private void getAttachFile(ZcPProMake make, String saveRootPath, RequestMeta meta) throws IOException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 //    String parentDirectory = new File(saveRootPath).getParentFile().getParentFile().getAbsolutePath();
 
     String makeFileDirName = saveRootPath.substring(saveRootPath.lastIndexOf(File.separator))+File.separator+"attach_files";
@@ -200,7 +200,7 @@ public class ZcPproMakeXmDataExchange extends ABaseData {
     try {
       toSendFiles(readRootPath, meta);
     } catch (IOException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "上传附件失败...\n" +e.getMessage());
     }
@@ -237,7 +237,7 @@ public class ZcPproMakeXmDataExchange extends ABaseData {
    * 
    */
   private void sendToZhuren(ZcPProMake make, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     getZcPProMakeServiceDelegate().sendToZhuren(make, meta);
   }
 
@@ -246,7 +246,7 @@ public class ZcPproMakeXmDataExchange extends ABaseData {
    */
   @Override
   public Map<String, Map<String, AttachmentFile>> getAttachmentDataMap() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return attachmentDataMap;
   }
 

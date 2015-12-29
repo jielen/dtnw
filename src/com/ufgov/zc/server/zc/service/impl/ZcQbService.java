@@ -52,7 +52,7 @@ public class ZcQbService implements IZcQbService {
   private WFEngineAdapter wfEngineAdapter;
 
   public List getQbLst(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List list = qbDao.getQbLst(elementConditionDto);
 
     ZcSUtil.setBillDBDigest(list);
@@ -61,24 +61,24 @@ public class ZcQbService implements IZcQbService {
   }
 
   public void cancelFn(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   public ZcQb unAuditFN(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return null;
   }
 
   public ZcQb untreadFN(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.untread(qb.getComment(), qb, requestMeta);
 
     return qb;
   }
 
   public ZcQb auditFN(ZcQb qb, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qb=updateFN(qb, requestMeta);
     wfEngineAdapter.commit(qb.getComment(), qb, requestMeta);
 
@@ -86,7 +86,7 @@ public class ZcQbService implements IZcQbService {
   }
 
   public ZcQb updateFN(ZcQb qb, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return _updateFN(qb, requestMeta, false);
   }
   private ZcQb _updateFN(ZcQb qb, RequestMeta requestMeta,boolean isImportData) throws Exception {
@@ -238,17 +238,17 @@ public class ZcQbService implements IZcQbService {
     return qb;
   }
   public void commitFN(List beanList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   public void deleteListFN(List beanList, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   public void deleteFN(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qbDao.delete(qb);
     qbDao.deleteBiByQbCode(qb.getQbCode());
     qbDao.deleteItemByQbCode(qb.getQbCode());
@@ -258,7 +258,7 @@ public class ZcQbService implements IZcQbService {
   }
 
   private void insertDeleteInfoToDataExchage(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     //同步到另一个网端        
     ZcQb ht=selectByPrimaryKey(qbCode, null);
       DataExchangeRedo redo = new DataExchangeRedo();
@@ -277,7 +277,7 @@ public class ZcQbService implements IZcQbService {
   }
 
   public ZcQb selectByPrimaryKey(String qbCode, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcQb qb = this.qbDao.selectByPrimaryKey(qbCode);
     if(qb==null)return null;
     qb.setBiList(getBiLst(qbCode));
@@ -290,12 +290,12 @@ public class ZcQbService implements IZcQbService {
   }
 
   private List getItemLst(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return this.qbDao.getItemLst(qbCode);
   }
 
   private List getBiLst(String qbCode) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     List biLst = this.qbDao.getQbBiLst(qbCode);
     if(!isUseBudget()){
       return biLst;
@@ -337,19 +337,19 @@ public class ZcQbService implements IZcQbService {
   }
 
   public ZcQb callbackFN(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     wfEngineAdapter.callback(qb.getComment(), qb, requestMeta);
 
     return qb;
   }
 
   public void deleteByPrimaryKeyFN(String qbCode, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   public ZcQb newCommitFN(ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     wfEngineAdapter.newCommit(qb.getComment(), qb, requestMeta);
 
@@ -382,7 +382,7 @@ public class ZcQbService implements IZcQbService {
 
   
   public ZcQb sendPayFN(ZcQb qb, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     qb=updateFN(qb, requestMeta);
     
     Map map = null;
@@ -435,7 +435,7 @@ public class ZcQbService implements IZcQbService {
   }
 
   private void _savePayVouId(String vouIds, ZcQb qb, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     if(vouIds==null)return;
     baseDao.delete("ZC_PAY_GK_INFO.deleteByZcBillId", qb.getQbCode());
     StringTokenizer st=new StringTokenizer(vouIds, PayForZcUtil.RTN_DATA_SPLIT);
@@ -457,7 +457,7 @@ public class ZcQbService implements IZcQbService {
 
   
   public List queryExportsDatas(ElementConditionDto dto, RequestMeta meta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     List idLst = dto.getPmAdjustCodeList();
     if (idLst == null)
@@ -472,8 +472,8 @@ public class ZcQbService implements IZcQbService {
 
   
   public String importTransDatasFN(ZcQb bill, RequestMeta meta) throws DataExchangeException{
-    // TODO Auto-generated method stub
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcQb bal=selectByPrimaryKey(bill.getQbCode(), meta);
     if(bal!=null && ("exec".equalsIgnoreCase(bal.getStatus()) || "sendGk".equalsIgnoreCase(bal.getStatus()))){
@@ -483,7 +483,7 @@ public class ZcQbService implements IZcQbService {
     try {
       _updateFN(bill, meta,true);
     } catch (Exception e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
       rtn = bill.getQbCode() + "导入异常：\n" + e.getMessage();
     }
@@ -492,7 +492,7 @@ public class ZcQbService implements IZcQbService {
   }
  
   public String importDelDataFN(String id, RequestMeta meta) throws DataExchangeException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     ZcQb qb=selectByPrimaryKey(id, meta);
     if(qb==null)return "汽车保险单"+id+"同步删除成功";
     if(qb!=null && ("exec".equalsIgnoreCase(qb.getStatus()) || "sendGk".equalsIgnoreCase(qb.getStatus()))){

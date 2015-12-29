@@ -1682,7 +1682,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
 
     } catch (RuntimeException e) {
 
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
 
       e.printStackTrace();
 
@@ -2552,7 +2552,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
 
   protected String checkBeforePublish() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return null;
 
@@ -2944,7 +2944,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public boolean getIfLoadMold() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return this.ifLoadMold;
 
@@ -2953,7 +2953,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public boolean getIfRePalceBookMark() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return this.ifRePalceBookMark;
 
@@ -2962,7 +2962,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public ListCursor getListCursor() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return this.listCursor;
 
@@ -2971,7 +2971,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public JPanel getWindowObject() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return this;
 
@@ -2980,7 +2980,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public WordPane getWordPane() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return this.wordPane;
 
@@ -2989,7 +2989,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public void setIfLoadMold(boolean ifLoadMold) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     this.ifLoadMold = ifLoadMold;
 
@@ -3004,7 +3004,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public void setIfRePalceBookMark(boolean ifRePalceBookMark) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     this.ifRePalceBookMark = ifRePalceBookMark;
 
@@ -3013,7 +3013,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public String getWordMoldViewId() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbBulletin bulletin = (ZcEbBulletin) listCursor.getCurrentObject();
 
@@ -3024,7 +3024,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public void setMoldName(String wordName) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcEbBulletin bulletin = (ZcEbBulletin) listCursor.getCurrentObject();
 
@@ -3037,7 +3037,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public void setReplaceValue(String replaceValue) {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     this.replaceValue = replaceValue;
 
@@ -3061,7 +3061,7 @@ public abstract class AbstractZcEbBulletinEditPanel extends AbstractMainSubEditP
   @Override
   public String getPackCode() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return null;
 

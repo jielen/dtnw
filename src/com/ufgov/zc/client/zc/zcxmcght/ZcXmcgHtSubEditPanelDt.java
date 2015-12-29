@@ -550,7 +550,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   public boolean isCgzx() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcUtil.isCgzx();
   }
 
@@ -756,7 +756,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void buildHtItems(ZcXmcgHt zcXmcgHt) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     // get the project
     if(zcXmcgHt.getProjCode()==null)return;
     ZcEbProj proj=projService.getZcEbProjByProjCode(zcXmcgHt.getProjCode(), requestMeta);
@@ -808,7 +808,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void setBjDetail(ZcTBchtItem htItem, BigDecimal detailCode, List xjbjLst) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     for (int i=0;i<xjbjLst.size();i++) {
       HashMap map=(HashMap) xjbjLst.get(i);
       String xjCode=(String) map.get("XJ_CODE");      
@@ -825,7 +825,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private BigDecimal getBigDecimal(Object object) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     BigDecimal t=new BigDecimal(0);
     if(object==null) return null;
     try {
@@ -843,7 +843,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
         return null;
       }
     } catch (Exception e) {
-      // TODO: handle exception
+      // TCJLODO: handle exception
       logger.error(e.getMessage(),e);
       return null;
     }
@@ -1187,7 +1187,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void _createItemTablePanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     itemTablePanel.init();
 
     itemTablePanel.setPanelId(this.getClass().getName() + "_itemTablePanel");
@@ -1267,7 +1267,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void _createBiTalbePanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     _createMakeBiTablePanel();
     
@@ -1276,7 +1276,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void _createNewBiTablePanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     biTablePanel.init();
 
@@ -1384,7 +1384,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   private void _createMakeBiTablePanel() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     makeBiTablePanel.init();
 
@@ -2174,7 +2174,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
     } catch (RuntimeException e) {
 
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
 
       e.printStackTrace();
 
@@ -2257,7 +2257,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   protected boolean isCar() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     ZcXmcgHt bean = (ZcXmcgHt) this.listCursor.getCurrentObject();
     if(bean!=null && bean.getZcPProMake()!=null && "Y".equalsIgnoreCase(bean.getZcPProMake().getIsCar())){
@@ -4127,7 +4127,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
   public ZcXmcgHtSubListPanelDt getListPanel() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listPanel;
 
@@ -4135,7 +4135,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
   public RequestMeta getRequestMeta() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.requestMeta;
 
@@ -4143,7 +4143,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
   public ListCursor getListCursor() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.listCursor;
 
@@ -4151,7 +4151,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
   public ElementConditionDto getDtoForBidWinner() {
 
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     return self.dtoForBidWinner;
 
@@ -4596,7 +4596,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
   }
 
   public boolean isGys() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return ZcUtil.isGys();
   }
 
@@ -4614,7 +4614,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
 
     public void excute(List selectedDatas) {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       if (selectedDatas != null && selectedDatas.size() > 0) {
 
@@ -4700,7 +4700,7 @@ public class ZcXmcgHtSubEditPanelDt extends AbstractMainSubEditPanel {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 

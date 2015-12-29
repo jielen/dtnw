@@ -22,61 +22,61 @@ public class ZcEbEntrustCancelServiceDelegate implements IZcEbEntrustCancelServi
 
   
   public List selectZcEbEntrustCancel(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.selectZcEbEntrustCancel(elementConditionDto, requestMeta);
   }
 
   
   public ZcEbEntrustCancel selectByKey(String code, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.selectByKey(code);
   }
 
   
   public void deleteZcEbEntrustCancelFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbEntrustCancelService.deleteZcEbEntrustCancelFN(bean);
   }
 
   
   public void deleteZcEbEntrustCancelListFN(List list, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     zcEbEntrustCancelService.deleteZcEbEntrustCancelListFN(list);
   }
 
   
   public ZcEbEntrustCancel newCommitFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) throws Exception  {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.newCommitFN(bean, requestMeta);
   }
 
   
   public ZcEbEntrustCancel untreadFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.untreadFN(bean, requestMeta);
   }
 
   
   public ZcEbEntrustCancel unAuditFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.unAuditFN(bean, requestMeta);
   }
 
   
   public ZcEbEntrustCancel auditFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) throws Exception  {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.auditFN(bean, requestMeta);
   }
 
   
   public ZcEbEntrustCancel callbackFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.callbackFN(bean, requestMeta);
   }
 
   
   public ZcEbEntrustCancel saveZcEbEntrustCancelFN(ZcEbEntrustCancel bean, RequestMeta requestMeta) throws Exception {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     return zcEbEntrustCancelService.saveZcEbEntrustCancelFN(bean, requestMeta);
   }
 

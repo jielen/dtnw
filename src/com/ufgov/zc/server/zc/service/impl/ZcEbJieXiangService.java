@@ -47,7 +47,7 @@ public class ZcEbJieXiangService implements IZcEbJieXiangService {
 
    
   public List getList(ElementConditionDto elementConditionDto, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
     elementConditionDto.setNumLimitStr(NumLimUtil.getInstance().getNumLimCondByCoType(elementConditionDto.getWfcompoId(), NumLimConstants.FWATCH));
 
@@ -56,27 +56,27 @@ public class ZcEbJieXiangService implements IZcEbJieXiangService {
 
    
   public ZcEbJieXiang readJieXiang(Map para, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
      return (ZcEbJieXiang)baseDao.read("ZcEbAuditSheet.readJieXiang", para);
      
   }
 
    
   public void cancelCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.insert("ZcEbEntrustCancel.insertZcEbEntrustCancel", jiexiang.getEntrustCancel());
     baseDao.update("ZcEbAuditSheet.update", jiexiang);
   }
 
    
   public void unFinishCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.update("ZcEbAuditSheet.update", jiexiang);    
   }
 
    
   public void finishCaiGou(ZcEbJieXiang jiexiang, RequestMeta requestMeta) {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     baseDao.update("ZcEbAuditSheet.update", jiexiang);    
   }
 

@@ -439,17 +439,17 @@ public class ZcEbEntrustListPanel extends AbstractEditListBill implements Parent
   }
 
   protected void doDelete() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   protected void doEdit() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
 
   }
 
   protected void doAdd() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     new ZcEbEntrustEditDialog(self, new ArrayList(), this.topDataDisplay.getActiveTableDisplay().getTable().getRowCount(), topDataDisplay
       .getActiveTableDisplay().getStatus());
 

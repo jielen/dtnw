@@ -306,7 +306,7 @@ public class ZcXmcgHtSupEditPanel extends ZcXmcgHtEditPanel {
 
     public void excute(List selectedDatas) {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       if (selectedDatas != null && selectedDatas.size() > 0) {
 
@@ -392,7 +392,7 @@ public class ZcXmcgHtSupEditPanel extends ZcXmcgHtEditPanel {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 
@@ -432,7 +432,7 @@ public class ZcXmcgHtSupEditPanel extends ZcXmcgHtEditPanel {
  * @return
  */
   private boolean isLimitSubHtSum() {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
     
     String s=AsOptionMeta.getOptVal("OPT_ZC_SUB_HT_SUM_IS_LIMITED");
     return s==null?false:(s.equalsIgnoreCase("y")?true:false);

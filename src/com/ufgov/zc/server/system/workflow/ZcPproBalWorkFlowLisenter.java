@@ -26,7 +26,7 @@ public class ZcPproBalWorkFlowLisenter extends TaskAdapter {
   
    
   public void afterUntread(WorkflowContext context) throws WorkflowException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
   //资金支付申请审批过程中，需在内外网间同步资金支付申请信息和审批信息
     Long processId=context.getInstanceId();    
     IZcEbBaseServiceDao zcEbBaseServiceDao=(IZcEbBaseServiceDao)SpringContext.getBean("zcEbBaseServiceDao");          
@@ -48,7 +48,7 @@ public class ZcPproBalWorkFlowLisenter extends TaskAdapter {
   }
 
   public void afterExecution(WorkflowContext context) throws WorkflowException {
-    // TODO Auto-generated method stub
+    // TCJLODO Auto-generated method stub
   //资金支付申请审批过程中，需在内外网间同步资金支付申请信息和审批信息
     Long processId=context.getInstanceId();    
     IZcEbBaseServiceDao zcEbBaseServiceDao=(IZcEbBaseServiceDao)SpringContext.getBean("zcEbBaseServiceDao");          

@@ -1168,7 +1168,7 @@ public class ZcDdcgHtEditPanel extends AbstractMainSubEditPanel {
     @Override
     public boolean isMultipleSelect() {
 
-      // TODO Auto-generated method stub
+      // TCJLODO Auto-generated method stub
 
       return false;
 

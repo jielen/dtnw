@@ -260,7 +260,7 @@ public class TipWindow extends JDialog {
     //增加鼠标拖动事件
     title.addMouseMotionListener(new MouseMotionAdapter() {
       public void mouseDragged(MouseEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         Point newP = new Point(e.getXOnScreen(), e.getYOnScreen());
         int x = getX() + (newP.x - oldP.x);
         int y = getY() + (newP.y - oldP.y);

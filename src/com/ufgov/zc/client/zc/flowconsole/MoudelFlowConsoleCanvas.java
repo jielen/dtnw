@@ -153,13 +153,13 @@ public class MoudelFlowConsoleCanvas extends FlowConsoleCanvas {
     try {
       frame.getContentPane().add((Component) StringToModel.stringToInstance(param));
     } catch (ClassNotFoundException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } catch (IllegalAccessException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     } catch (InstantiationException e) {
-      // TODO Auto-generated catch block
+      // TCJLODO Auto-generated catch block
       e.printStackTrace();
     }
     frame.setVisible(true);
