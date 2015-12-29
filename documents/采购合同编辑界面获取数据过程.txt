@@ -1,0 +1,428 @@
+﻿
+采购合同读取数据过程(含补充合同):
+1、读取合同主数据:zcXmcgHtDao.selectByPrimaryKey(zcHtCode);
+select ZC_HT_CODE,
+       ZC_DIYU_DAIMA,
+       ZC_HT_NAME,
+       ZC_HT_TYPE,
+       ZC_REQ_CODE,
+       ZC_MAKE_CODE,
+       ZC_BID_CODE,
+       CO_CODE,
+       ND,
+       ZC_SGN_DATE,
+       ZC_SU_NAME,
+       ZC_JCKDL_MC,
+       ZC_HT_NUM,
+       ZC_CZ_LEVEL,
+       ZC_FUKUAN_TYPE,
+       ZC_FUKUAN_YUED,
+       ZC_CHECK_TYPE,
+       ZC_CON_TEXT,
+       ZC_CON_TEXT_BLOBID,
+       ZC_HT_STATUS,
+       AGENCY,
+       ORG_CODE,
+       ZC_SM_PJ1,
+       ZC_SM_PJ2,
+       ZC_SM_PJ3,
+       ZC_SM_PJ4,
+       EXECUTOR,
+       EXECUTE_DATE,
+       PROCESS_INST_ID,
+       ZC_PARHT_CODE,
+       ZC_SU_CODE,
+       ZC_SU_ACC_CODE,
+       ZC_SU_BANK_CODE,
+       ZC_SU_BANK_NAME,
+       ZC_SU_TEL,
+       ZC_SU_LINKMAN,
+       ZC_IS_ZXQY_ZB,
+       ZC_GNW,
+       ZC_SNW,
+       ZC_ARRIVE_ADDR,
+       ZC_ARRIVE_DATE,
+       ZC_HANGYE_CTG,
+       ZC_SK_REN,
+       ZC_ZB_NAME,
+       ZC_ZB_CODE,
+       ZC_BI_NZJZ_SUM,
+       ZC_ISREWRITE,
+       ZC_CG_LEIXING,
+       ZC_ZG_CS_NAME,
+       ZC_BGSP_BH,
+       ZC_DELIVERY_EVL,
+       ZC_PRICE_EVL,
+       ZC_QUANTITY_EVL,
+       ZC_SERVICE_EVL,
+       ZC_MEMO,
+       ZC_BID_CONTENT,
+       (select m.ZC_MAKE_NAME
+          from ZC_P_PRO_MAKE m
+         where m.zc_make_code = master.zc_make_code) as ZC_MAKE_NAME,
+       (select m.ZC_MONEY_BI_SUM
+          from ZC_P_PRO_MAKE m
+         where m.zc_make_code = master.zc_make_code) as ZC_MONEY_BI_SUM,
+       ZC_DELIVERY_DATE,
+       ZC_DELIVERY_ADDR,
+       ZC_DELIVERY_TYPE,
+       ZC_PRO_LIMIT_START_DATE,
+       ZC_PRO_LIMIT_END_DATE,
+       ZC_IMP_FILE,
+       ZC_IMP_FILE_BLOBID,
+       master.zc_zb_code as pack_name,
+       master.proj_code,
+       master.proj_name,
+       MASTER.zc_ht_type as pur_type,
+       master.IS_ZI_CHAN
+  from ZC_XMCG_HT MASTER
+ where MASTER.ZC_HT_CODE = 'HT-2014-00000214';
+
+2、读取分包信息，获取分包预算
+
+    map1.put("packCode", zcXmcgHt.getZcBidCode());
+    map1.put("projCode", zcXmcgHt.getProjCode());
+    ZcEbPack pack=(ZcEbPack) baseDao.read("ZcEbProj.getZcEbPackByPackCode", map1);
+    if(pack!=null){
+      zcXmcgHt.setPackJihuaSum(pack.getPackBudget());
+    }
+
+select master.PACK_CODE,
+       master.PROJ_CODE,
+       master.PUR_CONTENT,
+       master.PACK_NAME,
+       master.PACK_BUDGET,
+       master.ENTRUST_CODE,
+       master.IS_CHECK_QUALIFICATION,
+       master.PUR_TYPE,
+       master.ANALYSE_TYPE,
+       master.BID_LOCATION,
+       master.BID_DEPOSIT,
+       master.BID_DOC_PRICE,
+       master.IS_FAILED,
+       master.TECH_REQUIRE,
+       master.QUALIFICATION_REQUIRE,
+       master.PACK_DESC,
+       master.STATUS,
+       master.IS_SELE_SUPPLIER,
+       master.SELE_TYPE,
+       master.SELE_NUM,
+       master.IS_SHOW_BUDGET,
+       master.FAILED_REASON,
+       master.LAST_STATUS,
+       master.REQ_FILE_ID,
+       master.REQ_FILE_NAME,
+       master.FORMULA_FILE_ID,
+       master.FORMULA_FILE_NAME,
+       master.pack_max_price,
+       e.*,
+       (select co_name
+          from ma_company m
+         where m.co_code = master.co_code
+           and m.nd = master.nd) as co_name
+  from ZC_EB_PACK master, ZC_EB_ENTRUST e
+ where e.SN(+) = master.ENTRUST_CODE
+   and master.PACK_CODE = '1224'
+   and master.status != 'cancel'
+   and master.proj_Code = 'DTCG2014-0187'
+--[1224, DTCG2014-0187]
+
+3、获取合同资金信息：
+	3.1 如果是补充合同，获取资金方法：
+			List biLst=baseDao.query("ZC_XMCG_HT_BI.ibatorgenerated_selectBiByHtCode", zcXmcgHt.getZcHtCode());
+      biLst=biLst==null?new ArrayList():biLst;
+      zcXmcgHt.setBiList(biLst);
+      
+      sql:
+      
+      select ZC_HT_CODE,
+       ZC_BI_NO,
+       ZC_BI_BCSY_SUM,
+       ZC_MAKE_CODE,
+       ZC_BI_YJJS_SUM,
+       ZC_BI_HTBA_SUM,
+       ZC_BI_YJCH_SUM,
+       ZC_BI_NZJZ_SUM,
+       ZC_PRO_BI_SEQ,
+       zc_bi_sum,
+       zc_bi_do_sum,
+       zc_bi_yjba_sum,
+       bi_target_code,
+       b_acc_code,
+       b_acc_name,
+       co_code,
+       co_name,
+       dec_money,
+       fund_code,
+       fund_name,
+       inceptdoc_code,
+       inceptdoc_name,
+       manage_code,
+       manage_name,
+       nd,
+       org_code,
+       org_name,
+       origin_code,
+       origin_name,
+       outlay_code,
+       outlay_name,
+       payout_code,
+       payout_name,
+       paytype_code,
+       paytype_name,
+       project_code,
+       project_name,
+       project_type_code,
+       project_type_name,
+       senddoc_code,
+       senddoc_name,
+       senddoc_type_code,
+       senddoc_type_name,
+       zc_cg_type,
+       zc_plan_type,
+       zc_save_num,
+       zc_catalogue_code,
+       zc_catalogue_name,
+       zc_year,
+       zc_yep_sum,
+       zc_bi_apd_flag,
+       zc_fund_remark,
+       zc_use_bi_id,
+       zc_fund_file,
+       zc_fund_file_blobid,
+       GB_NAME,
+       BT_NAME
+  FROM ZC_XMCG_HT_BI MASTER
+ where ZC_HT_CODE = #ZC_HT_CODE :VARCHAR#
+ order by zc_pro_bi_seq
+ 	
+	3.2 如果不是补充合同，是正常合同，获取资金方法：
+		
+      Map map = new HashMap();
+      map.put("ZC_HT_CODE", zcHtCode);
+      List xmcgHtBiList = zcXmcgHtBiDao.selectByExample(map);
+      xmcgHtBiList=xmcgHtBiList==null?new ArrayList():xmcgHtBiList;
+      
+      sql：
+      SELECT MASTER.ZC_HT_CODE,
+       MASTER.ZC_BI_NO,
+       MASTER.ZC_BI_BCSY_SUM,
+       MASTER.ZC_MAKE_CODE,
+       (SELECT sum(ZC_P_PRO_BAL_BI.ZC_BI_BCJS_SUM)
+          FROM ZC_P_PRO_BAL_BI
+         where ZC_P_PRO_BAL_BI.Zc_Bi_No = MASTER.Zc_Bi_No
+           AND ZC_P_PRO_BAL_BI.Zc_Ht_Code = MASTER.ZC_HT_CODE) as ZC_BI_YJJS_SUM,
+       MASTER.ZC_BI_HTBA_SUM,
+       MASTER.ZC_BI_YJCH_SUM,
+       MASTER.ZC_BI_NZJZ_SUM,
+       MASTER.ZC_PRO_BI_SEQ,
+       (select nvl(zc_bi_jhua_sum, 0)
+          from zc_p_pro_mitem_bi
+         where ZC_PRO_BI_SEQ = MASTER.ZC_PRO_BI_SEQ) -
+       (select nvl(sum(ZC_BI_BCSY_SUM), 0)
+          from zc_xmcg_ht_bi ht
+         where ht.ZC_PRO_BI_SEQ = MASTER.ZC_PRO_BI_SEQ
+           and ht.ZC_HT_CODE != MASTER.ZC_HT_CODE) zc_Can_Use_Sum,
+       zc_bi_sum,
+       ZC_USE_BI_ID,
+       GB_NAME,
+       BT_NAME
+  FROM ZC_XMCG_HT_BI MASTER
+ where ZC_HT_CODE = 'HT-2014-00000214'
+--[HT-2014-00000214]
+
+	 对获取到的合同资金信息，还要获取每条资金对应的采购计划资金信息：
+	 
+      List tempList = new ArrayList();
+      for (int i = 0; i < xmcgHtBiList.size(); i++) {
+        ZcXmcgHtBi zcXmcgHtBi = (ZcXmcgHtBi) xmcgHtBiList.get(i);
+        ElementConditionDto dto = new ElementConditionDto();
+        dto.setZcText1(zcXmcgHtBi.getZcProBiSeq());
+        List proMitemBiList = zcPProMitemBiDao.getMitemBiWithHtBi(dto);
+        if (proMitemBiList.size() != 0) {
+          ZcPProMitemBi zcPProMitemBi = (ZcPProMitemBi) proMitemBiList.get(0);
+          zcPProMitemBi.setZcBiUsedSum(zcPProMitemBi.getZcBiJhuaSum());
+          zcXmcgHtBi.setZcPProMitemBi(zcPProMitemBi);
+        }
+        tempList.add(zcXmcgHtBi);
+      }
+      zcXmcgHt.setBiList(tempList);
+      
+    sql:
+    SELECT PRO.ZC_BI_JHUA_SUM,
+       (SELECT SUM(XMCG.ZC_BI_BCSY_SUM)
+          FROM ZC_XMCG_HT_BI XMCG
+         WHERE XMCG.ZC_PRO_BI_SEQ = PRO.ZC_PRO_BI_SEQ) AS ZC_BI_USED_SUM,
+       ZC_BI_NO,
+       ZC_MAKE_CODE,
+       ZC_BI_SUM,
+       ZC_BI_DO_SUM,
+       ZC_BI_YJBA_SUM,
+       BI_TARGET_CODE,
+       B_ACC_CODE,
+       B_ACC_NAME,
+       CO_CODE,
+       CO_NAME,
+       DEC_MONEY,
+       FUND_CODE,
+       FUND_NAME,
+       INCEPTDOC_CODE,
+       INCEPTDOC_NAME,
+       MANAGE_CODE,
+       MANAGE_NAME,
+       ND,
+       ORG_CODE,
+       ORG_NAME,
+       ORIGIN_CODE,
+       ORIGIN_NAME,
+       OUTLAY_CODE,
+       OUTLAY_NAME,
+       PAYOUT_CODE,
+       PAYOUT_NAME,
+       PAYTYPE_CODE,
+       PAYTYPE_NAME,
+       PROJECT_CODE,
+       PROJECT_NAME,
+       PROJECT_TYPE_CODE,
+       PROJECT_TYPE_NAME,
+       SENDDOC_CODE,
+       SENDDOC_NAME,
+       SENDDOC_TYPE_CODE,
+       SENDDOC_TYPE_NAME,
+       ZC_BI_HTBA_SUM,
+       ZC_CG_TYPE,
+       ZC_PLAN_TYPE,
+       ZC_SAVE_NUM,
+       ZC_CATALOGUE_CODE,
+       ZC_CATALOGUE_NAME,
+       ZC_YEAR,
+       ZC_YEP_SUM,
+       ZC_BI_APD_FLAG,
+       ZC_FUND_REMARK,
+       ZC_FUND_FILE,
+       ZC_FUND_FILE_BLOBID,
+       SUPPLEMENT_AMOUNT,
+       ZC_PRO_BI_SEQ,
+       ZC_USE_BI_ID,
+       bt_name,
+       gb_name
+  FROM ZC_P_PRO_MITEM_BI PRO
+ where 1 = 1
+   and PRO.ZC_PRO_BI_SEQ ='15101'
+--[15101]
+      
+4、处理合同资金信息
+	      List<ZcXmcgHtBi> tempList = new ArrayList<ZcXmcgHtBi>();
+
+      for (int i = 0; i < zcXmcgHt.getBiList().size(); i++) {
+
+        ZcXmcgHtBi bi = (ZcXmcgHtBi) zcXmcgHt.getBiList().get(i);
+
+        ZcPProMitemBi zcPProMitemBi = bi.getZcPProMitemBi();
+
+        bi.setZcUseBiId(zcPProMitemBi.getZcUseBiId());
+
+        bi.setZcProBiSeq(zcPProMitemBi.getZcProBiSeq());
+
+        if (zcPProMitemBi.getZcBiUsedSum() == null) {
+
+          zcPProMitemBi.setZcBiUsedSum(BigDecimal.ZERO);
+
+        }
+
+        if (bi.getZcBiBcsySum() == null) {
+
+          bi.setZcBiBcsySum(BigDecimal.ZERO);
+
+        }
+
+        tempList.add(bi);
+
+      }
+5、如果是补充合同的话：
+      List<ZcXmcgHtBi> tempList = new ArrayList<ZcXmcgHtBi>();
+      for (int i = 0; i < zcXmcgHt.getBiList().size(); i++) {
+        ZcXmcgHtBi bi = (ZcXmcgHtBi) zcXmcgHt.getBiList().get(i);
+        ZcPProMitemBi zcPProMitemBi = bi.getZcPProMitemBi();
+        bi.setZcUseBiId(zcPProMitemBi.getZcUseBiId());
+        bi.setZcProBiSeq(zcPProMitemBi.getZcProBiSeq());
+        if (zcPProMitemBi.getZcBiUsedSum() == null) {
+          zcPProMitemBi.setZcBiUsedSum(BigDecimal.ZERO);
+        }
+        if (bi.getZcBiBcsySum() == null) {
+          bi.setZcBiBcsySum(BigDecimal.ZERO);
+        }
+        tempList.add(bi);
+      }
+      
+      sql:
+      
+      select ZC_HT_CODE,
+       ZC_BI_NO,
+       ZC_BI_BCSY_SUM,
+       ZC_MAKE_CODE,
+       ZC_BI_YJJS_SUM,
+       ZC_BI_HTBA_SUM,
+       ZC_BI_YJCH_SUM,
+       ZC_BI_NZJZ_SUM,
+       ZC_PRO_BI_SEQ,
+       zc_bi_sum,
+       zc_bi_do_sum,
+       zc_bi_yjba_sum,
+       bi_target_code,
+       b_acc_code,
+       b_acc_name,
+       co_code,
+       co_name,
+       dec_money,
+       fund_code,
+       fund_name,
+       inceptdoc_code,
+       inceptdoc_name,
+       manage_code,
+       manage_name,
+       nd,
+       org_code,
+       org_name,
+       origin_code,
+       origin_name,
+       outlay_code,
+       outlay_name,
+       payout_code,
+       payout_name,
+       paytype_code,
+       paytype_name,
+       project_code,
+       project_name,
+       project_type_code,
+       project_type_name,
+       senddoc_code,
+       senddoc_name,
+       senddoc_type_code,
+       senddoc_type_name,
+       zc_cg_type,
+       zc_plan_type,
+       zc_save_num,
+       zc_catalogue_code,
+       zc_catalogue_name,
+       zc_year,
+       zc_yep_sum,
+       zc_bi_apd_flag,
+       zc_fund_remark,
+       zc_use_bi_id,
+       zc_fund_file,
+       zc_fund_file_blobid,
+       GB_NAME,
+       BT_NAME
+  FROM ZC_XMCG_HT_BI MASTER
+ where ZC_HT_CODE = #ZC_HT_CODE :VARCHAR#
+ order by zc_pro_bi_seq
+      
+6、资金信息处理结束：
+
+      if (tempList != null && tempList.size() > 0) {
+        zcXmcgHt.setBiList(tempList);
+      } else {
+        zcXmcgHt.setBiList(this.getBiList(zcXmcgHt));
+      }    
+

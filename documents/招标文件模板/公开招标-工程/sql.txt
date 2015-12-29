@@ -1,0 +1,2 @@
+
+    select * from as_file f where f.file_id='BFA7FF83FFFFFFFFB4DAC89D0000000F' for update;

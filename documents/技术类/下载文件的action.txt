@@ -1,0 +1,262 @@
+
+http://www.2cto.com/kf/201204/129117.html
+
+public class DownLoadAction {
+ 
+ /**
+   *
+   */
+  private static final long serialVersionUID = -4011064370081237608L;
+ 
+ private static final String CONTENT_TYPE = "text/html; charset=UTF-8";
+  //spring配置文件注入存放文件地址
+  private String fileAddr;
+ 
+ public String getFileAddr() {
+   return fileAddr;
+  }
+ 
+ public void setFileAddr(String fileAddr) {
+   this.fileAddr = fileAddr;
+  }
+ 
+ public String doDownLoad() throws Exception {
+  // getResponse().setContentType(CONTENT_TYPE);
+ 
+  // 解决中文乱码问题
+   // String filename = new
+    String title=getRequest().getParameter("title");
+     title= new String(title.getBytes("ISO8859-1"),"UTF-8");
+    // title=new String(getRequest().getParameter("title").getBytes("ISO-8859-1"));
+   //  title=new String(getRequest().getParameter("title").getBytes("ISO-8859-1"),"GBK");
+   String gch = getRequest().getParameter("gch");
+   String downname = gch+".pdf";
+   String filename = title+".pdf";
+ 
+  // 创建file对象
+   String fileUrl = fileAddr + downname;
+   File file = new File(fileUrl);
+  
+   //如果下载文件不存在则提示用户并且返回
+   if (!file.exists()) {
+    getResponse().getWriter().write("<script>alert('该文献暂时无法提供相关下载！！');window.history.back(-1);</script>");
+    return null;
+   }
+ 
+  // 读出文件到i/o流
+   FileReader fis = new FileReader(file);
+   BufferedReader buff = new BufferedReader(fis);
+ 
+  //判断文件长度是否大于1KB
+   if (file.length() > 1024) {
+ 
+   // 设置response的编码方式
+    getResponse().setContentType("application/x-msdownload");
+ 
+   // 写明要下载的文件的大小
+    getResponse().setContentLength((int) file.length());
+ 
+   // 设置附加文件名,并且解决中文乱码
+    getResponse().setHeader("Content-Disposition", "attachment;filename=" + new String(filename.getBytes(), "iso-8859-1"));
+ 
+   // 从response对象中得到输出流,准备下载
+    ServletOutputStream myout = getResponse().getOutputStream();
+ 
+   FileInputStream stream=new FileInputStream(file);
+    byte data[]=new byte[4096];
+    int size=0;
+    size=stream.read(data);
+   
+    // 开始循环写出数据
+    while (size!=-1) {
+     myout.write(data,0,size);
+     size=stream.read(data);
+    }
+    // 将写入到客户端的内存的数据,刷新到磁盘
+    myout.flush();
+    myout.close();
+    stream.close();
+    return null;
+   } else {
+    //从文件中读出相关信息
+    String downUrl = buff.readLine();
+ 
+   //如果信息以“succ”开头则截取后面url地址
+    if (downUrl.startsWith("succ")) {
+     downUrl = downUrl.replace("succ", "");
+    
+     //add:wxj start
+     // 创建URL
+     URL url = null;
+     URLConnection urlconn = null;
+     try {
+      url = new URL(downUrl);
+      urlconn = url.openConnection();
+     } catch (MalformedURLException e) {
+      e.printStackTrace();
+     } catch (IOException e) {
+      e.printStackTrace();
+     }
+     HttpURLConnection httpconn = (HttpURLConnection) urlconn;
+ 
+    // 不等于HTTP_OK说明连接不成功System.out.print("fail");
+     if ( httpconn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+      try {
+       System.out.println("getResponse()="+this.getResponse().getWriter());
+       this.getResponse().getWriter().write("<script>alert('该文献暂时无法提供相关下载！！');window.history.back(-1);</script>");
+      } catch (IOException e) {
+       e.printStackTrace();
+      }
+     }else{
+      getResponse().getWriter().write("<script>window.location.href=\'" + downUrl + "\'</script>");
+      // 新开一个线程去下载文件到服务器本地，下次再下载的时候可直接从服务器下载
+      DownLoadThread downThread = new DownLoadThread();
+      downThread.setDownUrl(downUrl);
+      downThread.setFileAddr(fileAddr + downname);
+      downThread.setResponse(getResponse());
+      new Thread(downThread).start();
+     
+     }
+    
+     //add:wxj end
+    } else {
+     getResponse().getWriter().write("<script>alert('该文献暂时无法提供相关下载！！');window.history.back(-1);</script>");
+    }
+    return null;
+   }
+  
+  }
+ }
+ 
+ 
+ 
+public class DownLoadThread implements Runnable {
+ 
+ /**
+   *
+   */
+  private static final long serialVersionUID = 9116090002778797074L;
+ 
+ //文件地址 www.2cto.com
+  private String downUrl;
+  //存放文件地址
+  private String fileAddr;
+ 
+ //httpServletResponse
+  private HttpServletResponse response;
+  public String getDownUrl() {
+   return downUrl;
+  }
+ 
+ public void setDownUrl(String downUrl) {
+   this.downUrl = downUrl;
+  }
+ 
+ public String getFileAddr() {
+   return fileAddr;
+  }
+ 
+ public void setFileAddr(String fileAddr) {
+   this.fileAddr = fileAddr;
+  }
+  
+ 
+ public HttpServletResponse getResponse() {
+   return response;
+  }
+ 
+ public void setResponse(HttpServletResponse response) {
+   this.response = response;
+  }
+ 
+ @Override
+  public void run() {
+   // 服务器返回的状态
+ 
+  int HttpResult = 0;
+ 
+  // 创建URL
+   URL url = null;
+   URLConnection urlconn = null;
+   try {
+    url = new URL(downUrl);
+    urlconn = url.openConnection();
+   } catch (MalformedURLException e) {
+    e.printStackTrace();
+   } catch (IOException e) {
+    e.printStackTrace();
+   }
+ 
+/*  HttpURLConnection httpconn = (HttpURLConnection) urlconn;
+ 
+  try {
+    HttpResult = httpconn.getResponseCode();
+   } catch (IOException e) {
+    e.printStackTrace();
+   }
+ 
+  //System.out.println(HttpResult);
+ 
+  // 不等于HTTP_OK说明连接不成功System.out.print("fail");
+           System.out.println("HttpResult="+HttpResult+",downUrl="+downUrl);
+   if (HttpResult != HttpURLConnection.HTTP_OK) {
+    try {
+     System.out.println("getResponse()="+this.getResponse().getWriter());
+     this.getResponse().getWriter().write("<script>alert('连接不成功,下载失败！！')</script>");
+    } catch (IOException e) {
+     e.printStackTrace();
+    }
+   } else {*/
+ 
+   // 取数据长度System.out.println(filesize);
+    // int filesize = urlconn.getContentLength();
+ 
+   BufferedInputStream re = null;
+    BufferedOutputStream ot = null;
+    try {
+     re = new BufferedInputStream(urlconn.getInputStream());
+     ot = new BufferedOutputStream(new FileOutputStream(fileAddr));
+ 
+    // 创建存放输入流的缓冲
+     byte[] buffer = new byte[1024];
+     int num = -1; // 读入的字节数
+ 
+    while ((num = re.read(buffer)) != -1) {
+      ot.write(buffer, 0, num);
+     }
+ 
+   } catch (IOException e) {
+     e.printStackTrace();
+    } finally {
+     try {
+      re.close();
+      ot.close();
+     } catch (IOException e) {
+      e.printStackTrace();
+     }
+ 
+   }
+ 
+  //}
+ 
+ }
+ 
+ public static void main(String[] args) {
+   new Thread(new DownLoadThread()).start();
+  }
+ 
+}
+-------------------------------------------
+用struts2写的文件下载迅雷显示的文件后缀名是action???!!!
+http://bbs.csdn.net/topics/340189710?page=1
+
+//设置文件名
+String downFileName = "测试报表.xls";
+  try {
+ downFileName =  java.net.URLEncoder.encode(downFileName, "UTF-8");
+ } catch (UnsupportedEncodingException e) {
+ e.printStackTrace();
+ } 
+ response.setHeader("Content-Disposition", "attachment;filename=" + downFileName);
+ 
+ 我这样 就没问题了·· 

@@ -1,0 +1,91 @@
+﻿13、
+**采购中心职位
+CGZX_KY_CG 科员
+CGZX_ZR  主任
+
+**采购中心角色
+职位         角色
+CGZX_KY_CG	CGZX_KY_CG
+CGZX_ZR	    CG_CGZXLD
+CGZX_ZR	    ROLE_PUBLISH_BULLETIN
+
+采购单位职位
+ysdwcg  采购经办 
+ysdwfz	采购负责
+	
+采购单位角色
+职位         角色
+ysdwcg	     YSDWCG
+ysdwfz	     CG_ZGSH
+
+业务处室职位
+YWCS_CZ	科长	
+YWCS_ZGY	专管员	
+
+业务处室角色
+职位      角色
+YWCS_CZ	  CZ	
+YWCS_ZGY	CSZGY	
+
+
+采购处职位
+CZ	科长	
+ZGY	专管员	
+
+采购处角色
+职位      角色
+CZ	      CG_CGCLD
+CZ	      zjkgl
+ZGY	      CSZGY
+
+供应商职位
+GYS_HUIYUAN	会员供应商
+GYS_NORMAL	供应商
+GYS_XIEYI	协议供应商  
+GYS_QICHE_WEIXIU	汽车维修供应商  
+GYS_QICHE_BAOXIAN	汽车保险供应商           
+
+供应商角色
+职位         角色
+GYS_XIEYI	   gys_normal	  普通供应商
+GYS_XIEYI	   gys_xieyi	  协议定点供应商
+
+GYS_NORMAL	 gys_normal	  普通供应商
+
+GYS_HUIYUAN	 gys_normal	  普通供应商
+GYS_HUIYUAN	 gys_huiyuan	会员供应商
+
+
+GYS_QICHE_WEIXIU	 gys_qiche_weixiu	汽车维修供应商
+GYS_QICHE_WEIXIU	 gys_normal	普通供应商
+
+GYS_QICHE_BAOXIAN	 gys_qiche_baoxian	汽车维修供应商
+GYS_QICHE_BAOXIAN	 gys_normal	普通供应商
+
+供应商 处室 102 单位 000
+
+
+专家职位
+EXPERT_EVAL	        评标专家
+EXPERT_EVAL_LEADER	评标专家组长
+EXPERT_LUNZHENG	    论证专家
+
+专家角色
+职位                 角色
+EXPERT_EVAL	        expert_eval	        专家评审
+EXPERT_EVAL_LEADER	expert_eval_leader	专家评审组长
+EXPERT_LUNZHENG	    expert_lunzheng	    专家论证
+
+专家 处室 101 单位 000
+
+用户组
+zhuanjia	    专家
+caigou	      采购中心
+admin	        系统管理组(系统)
+sa	          系统管理组
+yusuandanwei	预算单位
+supplier	     供应商
+caizhengju	   财政局
+
+测试供应商
+gys_1 gys_2 gys_3

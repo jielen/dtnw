@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="http://127.0.0.1:7001/WFDesigner" href="wfdesignerJNLP">
+  <information>
+    <title>Workflow Designer</title>
+    <vendor>Beijing UFIDA Government Affair Software Co.,Ltd.</vendor>
+    <description>Workflow Designer</description>
+    <offline-allowed />
+  </information>
+  <security>
+  <all-permissions/>
+  </security>
+  <resources>
+    <j2se version="1.4+" href="http://java.sun.com/products/autodl/j2se"/> 
+    <jar href="lib/jawe.jar" />
+    <jar href="lib/batik-awt-util.jar" />
+    <jar href="lib/batik-dom.jar" />
+    <jar href="lib/batik-svggen.jar" />
+    <jar href="lib/batik-util.jar" />
+    <jar href="lib/batik-xml.jar" />
+    <jar href="lib/jgraph.jar" />
+    <jar href="lib/jh.jar" />
+    <jar href="lib/log4j.jar" />
+    <jar href="lib/msbase.jar" />
+    <jar href="lib/mssqlserver.jar" />
+    <jar href="lib/msutil.jar" />
+    <jar href="lib/ojdbc14.jar" />
+    <jar href="lib/xercesImpl.jar" />
+    <jar href="lib/xml-apis.jar" />
+  </resources>
+  <application-desc main-class="org.enhydra.jawe.JaWE" />
+</jnlp>
