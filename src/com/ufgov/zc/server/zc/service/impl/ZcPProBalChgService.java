@@ -2,6 +2,7 @@ package com.ufgov.zc.server.zc.service.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -16,6 +17,7 @@ import com.ufgov.zc.common.system.exception.BusinessException;
 import com.ufgov.zc.common.system.model.AsWfDraft;
 import com.ufgov.zc.common.system.util.BeanUtil;
 import com.ufgov.zc.common.zc.exception.ZcBudgetInterfaceException;
+import com.ufgov.zc.common.zc.model.DataExchangeRedo;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
@@ -24,11 +26,13 @@ import com.ufgov.zc.common.zc.model.ZcXmcgHt;
 import com.ufgov.zc.common.zc.model.ZcXmcgHtBi;
 import com.ufgov.zc.common.zc.model.ZcXmcgHtBiChg;
 import com.ufgov.zc.server.budget.util.BudgetUtil;
+import com.ufgov.zc.server.system.SpringContext;
 import com.ufgov.zc.server.system.dao.IWorkflowDao;
 import com.ufgov.zc.server.system.util.NumLimUtil;
 import com.ufgov.zc.server.system.util.NumUtil;
 import com.ufgov.zc.server.system.workflow.WFEngineAdapter;
 import com.ufgov.zc.server.zc.ZcSUtil;
+import com.ufgov.zc.server.zc.dao.IDataExchangeDao;
 import com.ufgov.zc.server.zc.dao.ibatis.BaseDao;
 import com.ufgov.zc.server.zc.service.IZcPProBalChgService;
 import com.ufgov.zc.server.zc.service.IZcPProMakeService;
@@ -578,6 +582,41 @@ public class ZcPProBalChgService implements IZcPProBalChgService {
     } catch (ZcBudgetInterfaceException e) { 
       throw new BusinessException("调用指标系统接口异常\n"+e.getMessage(),e);
     }
-    return selectByPrimaryKey(cur.getBalChgId(), requestMeta);
+    //导出数据到外网
+    //导出采购计划
+    DataExchangeRedo redo = new DataExchangeRedo();
+    redo.setDataTypeID("ZC_P_PRO_MAKE");
+    // redo.setDataTypeName("电子竞价公告发布");
+    redo.setDataTypeName("采购计划");
+    ElementConditionDto dto = new ElementConditionDto();   
+    redo.setRecordID(cur.getZcMakeCode());
+    redo.setRecordName(cur.getZcMakeName());
+    redo.setMasterTableName("ZC_P_PRO_MAKE");
+    redo.setIsExported("0");
+    redo.setGenerateDate(new Date());
+    redo.setOperateType("调整配套资金"); 
+    IDataExchangeDao dataExchangeDao=(IDataExchangeDao)SpringContext.getBean("dataExchangeDao");
+    dataExchangeDao.deleteByRecordIDAndDataTypeID(redo);
+    dataExchangeDao.saveRedo(redo);
+    //导出采购合同 
+    if (cur.getXmcgHtList() != null && cur.getXmcgHtList().size() > 0) {
+    for (int i = 0; i < cur.getXmcgHtList().size(); i++) {
+      ZcXmcgHt ht = (ZcXmcgHt) cur.getXmcgHtList().get(i); 
+      redo = new DataExchangeRedo();
+      redo.setDataTypeID("ZC_XMCG_HT");
+      redo.setDataTypeName("采购合同");
+      dto = new ElementConditionDto();     
+      redo.setRecordID(ht.getZcHtCode());
+      redo.setRecordName(ht.getZcHtName());
+      redo.setMasterTableName("ZC_XMCG_HT");
+      redo.setIsExported(DataExchangeRedo.STATUS_WAITING_EXPORTED);
+      redo.setGenerateDate(new Date());
+      redo.setOperateType("调整配套资金"); 
+      dataExchangeDao.deleteByRecordIDAndDataTypeID(redo);
+      dataExchangeDao.saveRedo(redo);
+    }
   }
+    
+    return selectByPrimaryKey(cur.getBalChgId(), requestMeta);
+  } 
 }

@@ -157,7 +157,7 @@
 		E.ORG_CODE,
 	    E.IS_PUB,
 		( select org.ORG_NAME from as_org org where org.ORG_CODE
-		=master.superintendent_org and org.nd=master.nd ) VAL
+		=master.superintendent_org and org.nd=master.nd and org.co_code=master.agency) VAL
 		from
 		ZC_EB_DUTY_AUDIT_SHEET master,
 		ZC_EB_ENTRUST E
