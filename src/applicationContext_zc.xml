@@ -601,6 +601,8 @@
 		<property name="catalogueDao" ref="zcBCatalogueDao" />
 
 		<property name="budgetGpDao" ref="budgetGpDao" />
+		
+		<property name="asFileDao" ref="asFileDao" />
 
 	</bean>
 

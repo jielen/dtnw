@@ -41,6 +41,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
 import org.apache.commons.lang.ObjectUtils;
@@ -73,7 +74,9 @@ import com.ufgov.zc.client.component.table.celleditor.TextCellEditor;
 import com.ufgov.zc.client.component.table.celleditor.zc.ZcBCatalogueCellEditor;
 import com.ufgov.zc.client.component.table.cellrenderer.DateCellRenderer;
 import com.ufgov.zc.client.component.table.cellrenderer.NumberCellRenderer;
+import com.ufgov.zc.client.component.table.codecelleditor.AsValComboBoxCellEditor;
 import com.ufgov.zc.client.component.table.codecelleditor.FileCellEditor;
+import com.ufgov.zc.client.component.table.codecellrenderer.AsValCellRenderer;
 import com.ufgov.zc.client.component.ui.fieldeditor.AbstractFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.AsValFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.AutoNumFieldEditor;
@@ -96,6 +99,7 @@ import com.ufgov.zc.common.system.constants.WFConstants;
 import com.ufgov.zc.common.system.constants.ZcElementConstants;
 import com.ufgov.zc.common.system.constants.ZcPProBalConstants;
 import com.ufgov.zc.common.system.constants.ZcSettingConstants;
+import com.ufgov.zc.common.system.constants.ZcValSetConstants;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
 import com.ufgov.zc.common.system.util.ObjectUtil;
 import com.ufgov.zc.common.system.util.Utils;
@@ -109,6 +113,7 @@ import com.ufgov.zc.common.zc.model.ZcEbSupplier;
 import com.ufgov.zc.common.zc.model.ZcPProMake;
 import com.ufgov.zc.common.zc.model.ZcPProMitem;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
+import com.ufgov.zc.common.zc.model.ZcPProMitemService;
 
 public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
 
@@ -141,6 +146,8 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
   ElementConditionDto queryDto;
    
   JTablePanel peijianTablePanel = new JTablePanel();
+  
+  JTablePanel serviceTablePanel = new JTablePanel();
 
   private ElementConditionDto peiJianDto=new ElementConditionDto();
 
@@ -555,6 +562,12 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
 
   }
 
+
+  public void setTableServiceEditor(JTable table) {
+    table.setDefaultEditor(String.class, new TextCellEditor());
+    SwingUtil.setTableCellEditor(table, ZcPProMitemService.COL_IS_AGREE, new AsValComboBoxCellEditor("VS_Y/N"));
+    SwingUtil.setTableCellRenderer(table, ZcPProMitemService.COL_IS_AGREE, new AsValCellRenderer("VS_Y/N"));
+  }
   @Override
   public void setTableItemEditor(JTable table) {
 
@@ -1155,6 +1168,8 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     peijianTablePanel.setTableModel(conveter.convertXyPeiJianItem(zcPProMake.getPeiJianList(), conveter.peiJianInfo, wfCanEditFieldMap));
 
     biTablePanel.setTableModel(ZcPProMakeToTableModelConverter.convertSubBiTableData(zcPProMake.getBiList(), wfCanEditFieldMap));
+    
+    serviceTablePanel.setTableModel(conveter.convertXyServiceItem(zcPProMake.getServiceList(), conveter.serviceInfo, wfCanEditFieldMap));
 
     //刷新竞价信息和成交信息
 
@@ -1162,6 +1177,7 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
 
     ZcUtil.translateColName(itemTablePanel.getTable(), conveter.newXyItemInfo);
     ZcUtil.translateColName(peijianTablePanel.getTable(), conveter.peiJianInfo);
+    ZcUtil.translateColName(serviceTablePanel.getTable(), conveter.serviceInfo);
 
     setTableItemEditor(itemTablePanel.getTable()); // 设置从表列类型
     addItemTableLisenter(itemTablePanel.getTable()); // 设置从表监听 
@@ -1175,6 +1191,8 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     setTableBiEditor(biTablePanel.getTable());
     // 设置从表监听 
     addBiTableLisenter(biTablePanel.getTable());
+    
+    setTableServiceEditor(serviceTablePanel.getTable());
      
     setOldObject();
     // 根据工作流模版设置功能按钮是否可用
@@ -1183,7 +1201,12 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     updateFieldEditorsEditable();
     this.fitTable();
 
- 
+    //不是供应商，且不是最后的成交场状态时
+    if(!ZcUtil.isGys() && !ZcPProMake.ZC_STATUS_JIN_JIA_SUCSESS.equals(zcPProMake.getZcMakeStatus())){
+      JTable table=serviceTablePanel.getTable();
+      TableColumn tc = table.getColumn(ZcPProMitemService.COL_IS_AGREE);
+      table.getColumnModel().removeColumn(tc);
+    }
 
     //退回状态时，明细都可以编辑 add shijia 2011-10-14
 
@@ -1219,7 +1242,7 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
 
     toolBar.add(deleteButton);
 
-    toolBar.add(chengJiaoButton);
+//    toolBar.add(chengJiaoButton);
 
 //    toolBar.add(jingJiaGongGaoButton);
 
@@ -1818,6 +1841,7 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     setWFSubTableEditable(biTablePanel, isEdit);
     setWFSubTableEditable(itemTablePanel, isEdit);
     setWFSubTableEditable(peijianTablePanel, isEdit);
+    setWFSubTableEditable(serviceTablePanel, isEdit);
   }
   @Override
   public JTablePanel[] getSubTables() {
@@ -2119,6 +2143,66 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
       public void actionPerformed(ActionEvent e) {        
         stopTableEditing();
         deleteSub(peijianTablePanel);
+      }
+    });
+
+    serviceTablePanel.init();
+
+    serviceTablePanel.setPanelId(this.getClass().getName() + "_serviceTablePanel");
+
+    serviceTablePanel.getSearchBar().setVisible(false);
+
+    serviceTablePanel.setTablePreferencesKey(this.getClass().getName() + "_serviceTable");
+
+    serviceTablePanel.getTable().setShowCheckedColumn(true);
+
+    serviceTablePanel.getTable().getTableRowHeader().setPreferredSize(new Dimension(60, 0));
+
+    itemTabPane.addTab("服务条款", serviceTablePanel);  
+    
+    JFuncToolBar serviceToolBar = new JFuncToolBar();
+
+    FuncButton addSrBtn = new SubaddButton(false);
+
+    JButton insertSrBtn = new SubinsertButton(false);
+
+    JButton delSrBtn = new SubdelButton(false);
+
+    serviceToolBar.add(addSrBtn);
+
+    serviceToolBar.add(insertSrBtn);
+
+    serviceToolBar.add(delSrBtn);
+
+    serviceTablePanel.add(serviceToolBar, BorderLayout.SOUTH);
+
+    addSrBtn.addActionListener(new ActionListener() {
+
+      public void actionPerformed(ActionEvent e) {        
+        stopTableEditing();
+        ZcPProMitemService zcPProMitem = new ZcPProMitemService();
+        zcPProMitem.setServiceCode(Guid.genID());
+        zcPProMitem.setIsAgree("Y"); 
+        addSub(serviceTablePanel, zcPProMitem);
+      }
+    });
+
+    insertSrBtn.addActionListener(new ActionListener() {
+
+      public void actionPerformed(ActionEvent e) {        
+        stopTableEditing();
+        ZcPProMitemService zcPProMitem = new ZcPProMitemService();
+        zcPProMitem.setServiceCode(Guid.genID());
+        zcPProMitem.setIsAgree("Y"); 
+        insertSub(serviceTablePanel, zcPProMitem);
+      }
+    });
+
+    delSrBtn.addActionListener(new ActionListener() {
+
+      public void actionPerformed(ActionEvent e) {        
+        stopTableEditing();
+        deleteSub(serviceTablePanel);
       }
     });
     biTabPane.setMinimumSize(new Dimension(240, 150));

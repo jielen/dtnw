@@ -41,6 +41,7 @@ import com.ufgov.zc.common.console.publish.IConsoleServiceDelegate;
 import com.ufgov.zc.common.system.RequestMeta;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
 import com.ufgov.zc.common.system.model.User;
+import com.ufgov.zc.common.util.EmpMeta;
 import com.ufgov.zc.common.zc.publish.IZcEbBaseServiceDelegate;
 
 public class WorkEnv {
@@ -60,6 +61,10 @@ public class WorkEnv {
   private String webIp = "";
 
   private String serviceRoot = "";
+
+  private String root = "";
+
+  private String orgName;
 
   private String publish = "/publish";
 
@@ -88,8 +93,32 @@ public class WorkEnv {
   private String empName;
 
   private HashMap urlMap;
-  
-  private String app="";//web程序发布后的context名称
+
+  private String roleId;
+
+  public String getRoot() {
+    return root;
+  }
+
+  public void setRoot(String root) {
+    this.root = root;
+  }
+
+  public String getOrgName() {
+    return orgName;
+  }
+
+  public void setOrgName(String orgName) {
+    this.orgName = orgName;
+  }
+
+  public String getRoleId() {
+    return roleId;
+  }
+
+  public void setRoleId(String roleId) {
+    this.roleId = roleId;
+  }
 
   private Map attributes = new HashMap();
 
@@ -98,6 +127,8 @@ public class WorkEnv {
   private WorkEnv self = this;
 
   private List<AsRole> roles = new ArrayList<AsRole>();
+
+  private List empLst = new ArrayList();
 
   public RequestMeta getRequestMeta() {
 
@@ -128,7 +159,7 @@ public class WorkEnv {
     requestMeta.setSvCoTypeCode(this.getCurrCoTypeCode());
 
     requestMeta.setUrlMap(urlMap);
-    
+
     requestMeta.setRoles(roles);
 
     return requestMeta;
@@ -166,10 +197,10 @@ public class WorkEnv {
 
   public void setWebRoot(String webRoot) {
     this.webRoot = webRoot;
-    if(webRoot.endsWith("/")){
-      String tmp=webRoot.substring(0,webRoot.length()-1);
+    if (webRoot.endsWith("/")) {
+      String tmp = webRoot.substring(0, webRoot.length() - 1);
       this.setServiceRoot(tmp + publish);
-    }else{
+    } else {
       this.setServiceRoot(webRoot + publish);
     }
   }
@@ -405,23 +436,38 @@ public class WorkEnv {
     workEvn.currUser.setUserId("sa");
     workEvn.currUser.setUserName("aa");
     workEvn.currCompany = new Company();
-    workEvn.currCompany.setCoTypeCode("02");
-    workEvn.currCompany.setCode("140001");
+    workEvn.currCompany.setCoTypeCode("01");
+    workEvn.currCompany.setCode("000");
     // this.currCompany.setName("100name");
-    workEvn.orgCode = "cwk";
-    workEvn.poCode = "CGZX_KY_CG";
+    workEvn.orgCode = "002";
+    workEvn.poCode = "ysdwcg";
     workEvn.orgPoCode = "003007";
-    workEvn.token = "ss";
-    workEvn.setTransDate("2015-03-22");
+    workEvn.token = "" + System.currentTimeMillis();
+
+    workEvn.setTransDate("2016-10-22");
     workEvn.setEmpCode("EM-00000286");
     workEvn.setEmpName("冯希杰");
     workEvn.setSysDate(new java.util.Date());
     AsRole role = new AsRole();
-    role.setRoleId("CGZX_KY_CG");
+    role.setRoleId("ysdwjb");
     workEvn.getRoles().add(role);
     workEvn.setWebRoot("http://127.0.0.1:7001/GB/");
     workEvn.setWebIp("http://127.0.0.1:7001");
-    workEvn.setApp("/GB");
+    workEvn.setEmpLst(initEmpLst());
+
+    EmpMeta.setEmpLst(workEvn.getEmpLst());
+  }
+
+  private static List initEmpLst() {
+    // TCJLODO Auto-generated method stub
+
+    IZcEbBaseServiceDelegate baseDataServiceDelegate = (IZcEbBaseServiceDelegate) ServiceFactory.create(IZcEbBaseServiceDelegate.class, "zcEbBaseServiceDelegate");
+
+    RequestMeta requestMeta = new RequestMeta();
+    requestMeta.setToken("ss");
+    requestMeta.setSvUserID("sss");
+    List emps = baseDataServiceDelegate.queryDataForList("AsEmp.getAsEmp", null, requestMeta);
+    return emps;
   }
 
   public static String getUserName(String userId) {
@@ -429,8 +475,7 @@ public class WorkEnv {
     requestMeta.setToken("ss");
     requestMeta.setSvUserID("sss");
 
-    IZcEbBaseServiceDelegate baseDataServiceDelegate = (IZcEbBaseServiceDelegate) ServiceFactory.create(IZcEbBaseServiceDelegate.class,
-      "zcEbBaseServiceDelegate");
+    IZcEbBaseServiceDelegate baseDataServiceDelegate = (IZcEbBaseServiceDelegate) ServiceFactory.create(IZcEbBaseServiceDelegate.class, "zcEbBaseServiceDelegate");
     Map parameter2 = new HashMap();
     parameter2.put("userId", userId);
     List userlist = baseDataServiceDelegate.queryDataForList("User.getUserByIdByMap", parameter2, requestMeta);
@@ -445,9 +490,7 @@ public class WorkEnv {
   }
 
   public static void loginWin() {
-    if ("sss1".equals(workEvn.getToken())) {
-      return;
-    }
+    if ("sss1".equals(workEvn.getToken())) { return; }
     final JDialog dialog = new JDialog();
     dialog.setTitle("UFGOV-WorkEnv bate2.1 ");
     JPanel panel = new JPanel();
@@ -482,13 +525,12 @@ public class WorkEnv {
       frameSize.width = screenSize.width;
     }
     dialog.setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - insets.bottom - frameSize.height) / 2);
-    button.registerKeyboardAction(button.getActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true)),
-      KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), JComponent.WHEN_FOCUSED);
+    button.registerKeyboardAction(button.getActionForKeyStroke(KeyStroke.getKeyStroke(KeyEvent.VK_SPACE, 0, true)), KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0, true), JComponent.WHEN_FOCUSED);
 
     field.addItemListener(new ItemListener() {
       @Override
       public void itemStateChanged(ItemEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         if (e.getStateChange() == ItemEvent.SELECTED) {
           JComboBox jcb = (JComboBox) e.getSource();
           String userId = (String) (jcb.getSelectedItem());
@@ -508,7 +550,7 @@ public class WorkEnv {
 
       @Override
       public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
         String userId = (String) (field.getEditor().getItem());
         String userName = getUserName(userId);
         userNameLabel.setText(userName == null ? "" : userName);
@@ -516,7 +558,7 @@ public class WorkEnv {
 
       @Override
       public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
+        // TCJLODO Auto-generated method stub
 
       }
     });
@@ -534,8 +576,7 @@ public class WorkEnv {
           dialog.dispose();
           return;
         }
-        IZcEbBaseServiceDelegate baseDataServiceDelegate = (IZcEbBaseServiceDelegate) ServiceFactory.create(IZcEbBaseServiceDelegate.class,
-          "zcEbBaseServiceDelegate");
+        IZcEbBaseServiceDelegate baseDataServiceDelegate = (IZcEbBaseServiceDelegate) ServiceFactory.create(IZcEbBaseServiceDelegate.class, "zcEbBaseServiceDelegate");
         Map parameter2 = new HashMap();
         parameter2.put("userId", userId);
         List userlist = baseDataServiceDelegate.queryDataForList("User.getUserByIdByMap", parameter2, requestMeta);
@@ -556,7 +597,7 @@ public class WorkEnv {
 
         Map parameter = new HashMap();
         parameter.put("EMP_CODE", asEmp.getEmpCode());
-        parameter.put("ND", "2015");
+        parameter.put("ND", "2016");
         List list = baseDataServiceDelegate.queryDataForList("User.getAsEmpPosiByEmpCode", parameter, requestMeta);
 
         if (list == null || list.size() == 0) {
@@ -570,34 +611,40 @@ public class WorkEnv {
           paramete3.put("CO_CODE", po.getCoCode());
           paramete3.put("ORG_CODE", po.getOrgCode());
           paramete3.put("POSI_CODE", po.getPosiCode());
-          paramete3.put("ND", "2015");
+          paramete3.put("ND", "2016");
 
           List orglist = baseDataServiceDelegate.queryDataForList("WfCommonDraft.getOrgPosiId", paramete3, requestMeta);
           if (orglist == null || orglist.size() == 0) {
             JOptionPane.showMessageDialog(dialog, "【" + paramete3 + "】as_org_position 没有对应数据！", " 提示", JOptionPane.INFORMATION_MESSAGE);
             return;
           }
+          Map paraMap=new HashMap();
+          paraMap.put("nd", "2016");
+          paraMap.put("coCode", po.getCoCode());
+          Company cp=(Company) baseDataServiceDelegate.queryObject("Company.getCompanyByCoCode", paraMap, requestMeta);
           String org_posi_id = (String) orglist.get(0);
 
           workEvn.getCurrUser().setUserId(po.getEmpCode());
           workEvn.currUser.setUserName(user.getUserName());
-          workEvn.currCompany = new Company();
-          workEvn.currCompany.setCoTypeCode("02");
-          workEvn.currCompany.setCode(po.getCoCode());
+//          workEvn.currCompany = new Company();
+//          workEvn.currCompany.setCoTypeCode("01");
+//          workEvn.currCompany.setCode(po.getCoCode());
+          workEvn.currCompany=cp==null?new Company():cp;
           workEvn.orgCode = po.getOrgCode();
           workEvn.poCode = po.getPosiCode();
           workEvn.orgPoCode = org_posi_id;
-          workEvn.setToken("sss1");
-          workEvn.setTransDate("2015-02-21");
+          workEvn.setToken("" + System.currentTimeMillis());
+          workEvn.setTransDate("2016-06-01");
           workEvn.setEmpCode(po.getEmpCode());
           workEvn.setEmpName(user.getUserName());
           workEvn.setWebRoot("http://127.0.0.1:7001/GB/");
           workEvn.setWebIp("http://127.0.0.1:7001");
-          IConsoleServiceDelegate consoleServiceDelegate = (IConsoleServiceDelegate) ServiceFactory.create(IConsoleServiceDelegate.class,
-            "consoleServiceDelegate");
+          IConsoleServiceDelegate consoleServiceDelegate = (IConsoleServiceDelegate) ServiceFactory.create(IConsoleServiceDelegate.class, "consoleServiceDelegate");
           List<AsRole> roles = consoleServiceDelegate.getAsRoleByPosi(po.getPosiCode(), requestMeta);
-         
+
           workEvn.setRoles(roles);
+          workEvn.setEmpLst(initEmpLst());
+          EmpMeta.setEmpLst(workEvn.getEmpLst());
 
           dialog.dispose();
         }
@@ -619,13 +666,12 @@ public class WorkEnv {
     if (this.roles != null) {
       for (int i = 0; i < roles.size(); i++) {
         AsRole role = (AsRole) roles.get(i);
-        if (role.getRoleId() != null && role.getRoleId().equals(roleCode)) {
-          return true;
-        }
+        if (role.getRoleId() != null && role.getRoleId().equals(roleCode)) { return true; }
       }
     }
     return false;
   }
+
   // public String getRoleCode() {
   // return roleCode;
   // }
@@ -634,12 +680,12 @@ public class WorkEnv {
   // this.roleCode = roleCode;
   // }
 
-  public String getApp() {
-    return app;
+  public List getEmpLst() {
+    return empLst;
   }
 
-  public void setApp(String app) {
-    this.app = app;
+  public void setEmpLst(List empLst) {
+    this.empLst = empLst;
   }
 
 }

@@ -28,6 +28,8 @@ public class ZcDingDianFM {
     fieldMap.put("SU_BANK_SHOUKUANREN","suBankShoukuanren");
     fieldMap.put("SU_LINK_MAN","suLinkMan");
     fieldMap.put("SU_LINK_TEL","suLinkTel");
+    fieldMap.put("HT_SAOMIAO_FILE","htSaomiaoFile");
+    fieldMap.put("HT_SAOMIAO_FILE_BLOBID","htSaomiaoFileId");
   }
 
 }

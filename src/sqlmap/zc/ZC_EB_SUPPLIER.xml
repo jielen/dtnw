@@ -533,7 +533,11 @@
 		<isNotNull prepend="and" property="zcText4">
 			s.zc_su_code not in ($zcText4$)
 		</isNotNull>
-		 order by s.ZC_SU_CODE
+		<isNotNull prepend="and" property="zcText0"><!-- 选择定点供应商 -->
+			s.zc_su_code not like 'temp%'
+			AND EXISTS(SELECT 1 FROM ZC_B_SUPPLIER_TYPE T WHERE T.ZC_SU_CODE=S.ZC_SU_CODE AND T.TYPE_CODE='gys_dingdian')
+		</isNotNull>
+		 order by s.ZC_SU_NAME
 	</select>
 	
   <select id="getSupplierListForHandler" resultMap="ZcEbSupplierHandlerResult">

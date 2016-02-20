@@ -85,11 +85,13 @@ public class ZcDingDianToTableModelConverter {
 
     itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_CONTENT, "itemContent", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_CONTENT)));
     itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_DETAIL, "itemDetail", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_DETAIL))); 
-    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_TYPE, "itemType", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_TYPE))); 
+    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_MER_PRICE, "merPrice", LangTransMeta.translate(ZcDingdianItem.COL_MER_PRICE))); 
+    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_MER_NUM, "merNum", LangTransMeta.translate(ZcDingdianItem.COL_MER_NUM))); 
+//    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_TYPE, "itemType", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_TYPE))); 
     itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_TOTAL_SUM, "itemTotalSum", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_TOTAL_SUM)));
-    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_VAL, "itemVal", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_VAL)));
-    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_BI, "itemBi", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_BI)));
-    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_OTHER, "itemOther", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_OTHER)));
+//    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_VAL, "itemVal", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_VAL)));
+//    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_BI, "itemBi", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_BI)));
+//    itemInfo.add(new ColumnBeanPropertyPair(ZcDingdianItem.COL_ITEM_OTHER, "itemOther", LangTransMeta.translate(ZcDingdianItem.COL_ITEM_OTHER)));
   }
   public static TableModel convertToTableModel(List ddLst) {
     // TCJLODO Auto-generated method stub
@@ -260,14 +262,20 @@ public class ZcDingDianToTableModelConverter {
       public boolean isCellEditable(int row, int column) {
 
         String columnId = this.getColumnIdentifier(column);
-        if(isYsdw){
+        /*if(isYsdw){
           if (ZcDingdianItem.COL_ITEM_CONTENT.equals(columnId)
               ||ZcDingdianItem.COL_ITEM_DETAIL.equals(columnId)
               ||ZcDingdianItem.COL_ITEM_TYPE.equals(columnId)
               ||ZcDingdianItem.COL_ITEM_TOTAL_SUM.equals(columnId)) {
             return false;
           }
-        }
+        }*/ 
+          if (ZcDingdianItem.COL_MER_PRICE.equals(columnId)
+//            ||ZcDingdianItem.COL_ITEM_TOTAL_SUM.equals(columnId)
+            ) {
+            return false;
+          }
+         
         if (ZcElementConstants.FIELD_TRANS_QB_ITEM_VAL.equals(columnId)) {
           return false;
         }

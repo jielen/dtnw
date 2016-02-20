@@ -28,11 +28,13 @@
     <result column="SU_LINK_MAN" property="suLinkMan" jdbcType="VARCHAR" />
     <result column="SU_LINK_TEL" property="suLinkTel" jdbcType="VARCHAR" />
     <result column="DD_TYPE" property="ddType" jdbcType="VARCHAR" />
+    <result column="HT_SAOMIAO_FILE" property="htSaomiaoFile" jdbcType="VARCHAR" />
+    <result column="HT_SAOMIAO_FILE_BLOBID" property="htSaomiaoFileId" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" > 
     DD_CODE, CO_CODE, EXCUTOR, EXCUTOR_NAME, INPUT_DATE, SUPPLIER, SUPPLIER_NAME, CO_NAME, 
     SU_BANK_ACCOUNT, SU_BANK, SU_BANK_SHOUKUANREN, ND, DD_SUM, REMARK, STATUS, DD_NAME, 
-    PROCESS_INST_ID, BI_SUM, SU_LINK_MAN, SU_LINK_TEL, DD_TYPE
+    PROCESS_INST_ID, BI_SUM, SU_LINK_MAN, SU_LINK_TEL, DD_TYPE,HT_SAOMIAO_FILE,HT_SAOMIAO_FILE_BLOBID
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="java.lang.String" > 
     select 
@@ -105,7 +107,8 @@
       SU_BANK, SU_BANK_SHOUKUANREN, ND, 
       DD_SUM, REMARK, STATUS, 
       DD_NAME, PROCESS_INST_ID, BI_SUM, 
-      SU_LINK_MAN, SU_LINK_TEL, DD_TYPE
+      SU_LINK_MAN, SU_LINK_TEL, DD_TYPE,
+      HT_SAOMIAO_FILE,HT_SAOMIAO_FILE_BLOBID
       )
     values (#ddCode:VARCHAR#, #coCode:VARCHAR#, #excutor:VARCHAR#, 
       #excutorName:VARCHAR#, #inputDate:DATE#, #supplier:VARCHAR#, 
@@ -113,7 +116,8 @@
       #suBank:VARCHAR#, #suBankShoukuanren:VARCHAR#, #nd#, 
       #ddSum:DECIMAL#, #remark:VARCHAR#, #status:VARCHAR#, 
       #ddName:VARCHAR#, #processInstId:DECIMAL#, #biSum:DECIMAL#, 
-      #suLinkMan:VARCHAR#, #suLinkTel:VARCHAR#, #ddType:VARCHAR#
+      #suLinkMan:VARCHAR#, #suLinkTel:VARCHAR#, #ddType:VARCHAR#,
+      #htSaomiaoFile#,#htSaomiaoFileId#
       )
   </insert>
   <update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcDingdian" > 
@@ -137,7 +141,9 @@
       BI_SUM = #biSum:DECIMAL#,
       SU_LINK_MAN = #suLinkMan:VARCHAR#,
       SU_LINK_TEL = #suLinkTel:VARCHAR#,
-      DD_TYPE = #ddType:VARCHAR#
+      DD_TYPE = #ddType:VARCHAR#,
+      HT_SAOMIAO_FILE=#htSaomiaoFile#,
+      HT_SAOMIAO_FILE_BLOBID=#htSaomiaoFileId#
     where DD_CODE = #ddCode:VARCHAR#
   </update>
 </sqlMap>

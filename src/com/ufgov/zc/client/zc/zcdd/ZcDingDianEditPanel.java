@@ -8,14 +8,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +20,6 @@ import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,7 +29,6 @@ import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 
@@ -80,29 +74,26 @@ import com.ufgov.zc.client.component.button.TraceButton;
 import com.ufgov.zc.client.component.button.UnauditButton;
 import com.ufgov.zc.client.component.button.UntreadButton;
 import com.ufgov.zc.client.component.table.BeanTableModel;
-import com.ufgov.zc.client.component.table.celleditor.DateCellEditor;
 import com.ufgov.zc.client.component.table.celleditor.MoneyCellEditor;
 import com.ufgov.zc.client.component.table.celleditor.TextCellEditor;
-import com.ufgov.zc.client.component.table.cellrenderer.DateCellRenderer;
 import com.ufgov.zc.client.component.table.cellrenderer.NumberCellRenderer;
-import com.ufgov.zc.client.component.table.codecelleditor.AsValComboBoxCellEditor;
 import com.ufgov.zc.client.component.table.codecelleditor.FileCellEditor;
-import com.ufgov.zc.client.component.table.codecellrenderer.AsValCellRenderer;
 import com.ufgov.zc.client.component.ui.fieldeditor.AbstractFieldEditor;
 import com.ufgov.zc.client.component.zc.AbstractMainSubEditPanel;
 import com.ufgov.zc.client.component.zc.fieldeditor.AsValFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.AutoNumFieldEditor;
-import com.ufgov.zc.client.component.zc.fieldeditor.CompanyFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.DateFieldEditor;
+import com.ufgov.zc.client.component.zc.fieldeditor.FileFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.ForeignEntityFieldCellEditor;
+import com.ufgov.zc.client.component.zc.fieldeditor.ForeignEntityFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.MoneyFieldEditor;
-import com.ufgov.zc.client.component.zc.fieldeditor.SelectFileFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.TextAreaFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.TextFieldEditor;
 import com.ufgov.zc.client.util.SwingUtil;
 import com.ufgov.zc.client.zc.ButtonStatus;
 import com.ufgov.zc.client.zc.ZcUtil;
 import com.ufgov.zc.client.zc.zcppromake.ZcBudgetHandler;
+import com.ufgov.zc.client.zc.zcppromake.ZcPProMakeXYEditPanel.ZcEbMerHandler;
 import com.ufgov.zc.common.budget.model.VwBudgetGp;
 import com.ufgov.zc.common.commonbiz.model.Company;
 import com.ufgov.zc.common.commonbiz.model.EAcc;
@@ -116,7 +107,7 @@ import com.ufgov.zc.common.system.util.DigestUtil;
 import com.ufgov.zc.common.system.util.ObjectUtil;
 import com.ufgov.zc.common.system.util.Utils;
 import com.ufgov.zc.common.zc.foreignentity.IForeignEntityHandler;
-import com.ufgov.zc.common.zc.foreignentity.IForeignEntityTreeHandler;
+import com.ufgov.zc.common.zc.model.ZcBMerchandise;
 import com.ufgov.zc.common.zc.model.ZcBaseBill;
 import com.ufgov.zc.common.zc.model.ZcDingdian;
 import com.ufgov.zc.common.zc.model.ZcDingdianBi;
@@ -211,6 +202,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
   
   private ElementConditionDto eaccDto = new ElementConditionDto();
 
+  public ElementConditionDto merDto= new ElementConditionDto();
   //
 
   private IZcEbSupplierServiceDelegate zcEbSupplierServiceDelegate = (IZcEbSupplierServiceDelegate) ServiceFactory.create(
@@ -369,12 +361,11 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     } else {
       for (AbstractFieldEditor editor : fieldEditors) {
         if (pageStatus.equals(ZcSettingConstants.PAGE_STATUS_EDIT) || pageStatus.equals(ZcSettingConstants.PAGE_STATUS_NEW)) {
-          if ("zheRangLv".equals(editor.getFieldName()) || "ddName".equals(editor.getFieldName()) || "remark".equals(editor.getFieldName())
-            || "suLinkMan".equals(editor.getFieldName()) || "suLinkTel".equals(editor.getFieldName()) || "wxDate".equals(editor.getFieldName())
-            || "coLinkMan".equals(editor.getFieldName()) || "coCode".equals(editor.getFieldName())) {
-            editor.setEnabled(true);
-          } else {
+          if ("status".equals(editor.getFieldName()) || "ddCode".equals(editor.getFieldName()) || "coName".equals(editor.getFieldName())
+            || "inputDate".equals(editor.getFieldName()) || "ddSum".equals(editor.getFieldName())) {
             editor.setEnabled(false);
+          } else {
+            editor.setEnabled(true);
           }
           isEdit = true;
         } else {
@@ -384,8 +375,10 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
       }
     }
 
-    setWFSubTableEditable(biTablePanel, isEdit);
-
+    if(ZcUtil.isGys()){
+      isEdit=false;//供应商不修改资金和采购明细表
+    }
+    setWFSubTableEditable(biTablePanel, isEdit);    
     setWFSubTableEditable(itemTablePanel, isEdit);
 
   }
@@ -398,12 +391,15 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     dd.setExcutor(requestMeta.getSvUserID());
     dd.setExcutorName(requestMeta.getSvUserName());
 
-    dd.setSupplier(requestMeta.getSvUserID());
-    dd.setSupplierName(requestMeta.getSvUserName());
+//    dd.setSupplier(requestMeta.getSvUserID());
+//    dd.setSupplierName(requestMeta.getSvUserName());
+    
+    dd.setCoCode(requestMeta.getSvCoCode());
+    dd.setCoName(requestMeta.getSvCoName());
      
 
     //设置收账户信息
-    setBankInfo(dd); 
+//    setBankInfo(dd); 
 
     dd.setBiList(new ArrayList());
 
@@ -626,7 +622,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     setTablePorperty();
 
-    if (ZcUtil.isGys()) {
+    /*if (ZcUtil.isGys()) {
 
       JPageableFixedTable ta = itemTablePanel.getTable();
 
@@ -636,7 +632,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
       hideCol(ta, ZcDingdianItem.COL_ITEM_OTHER);
 
-    }
+    }*/
 
     setSumLabelText();
   }
@@ -735,7 +731,20 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     SwingUtil.setTableCellRenderer(table, ZcDingdianItem.COL_ITEM_OTHER, new NumberCellRenderer());
 
     SwingUtil.setTableCellEditor(table, ZcDingdianItem.COL_ITEM_TOTAL_SUM, new MoneyCellEditor());
-    SwingUtil.setTableCellRenderer(table, ZcDingdianItem.COL_ITEM_TOTAL_SUM, new NumberCellRenderer()); 
+    SwingUtil.setTableCellRenderer(table, ZcDingdianItem.COL_ITEM_TOTAL_SUM, new NumberCellRenderer());     
+
+    SwingUtil.setTableCellEditor(table, ZcDingdianItem.COL_MER_PRICE, new MoneyCellEditor());
+    SwingUtil.setTableCellRenderer(table, ZcDingdianItem.COL_MER_PRICE, new NumberCellRenderer());
+    
+    SwingUtil.setTableCellEditor(table, ZcDingdianItem.COL_MER_NUM, new MoneyCellEditor());
+    SwingUtil.setTableCellRenderer(table, ZcDingdianItem.COL_MER_NUM, new NumberCellRenderer()); 
+
+    String[] merColumNames = { "品牌","商品","型号","协议价格(元)","规格" };
+    ZcEbMerHandler merHandler = new ZcEbMerHandler(merColumNames);
+    Dimension dialogSize=new Dimension(1000, 500);
+//    merDto.setZcText1("zhujian");
+    ForeignEntityFieldCellEditor merEditor = new ForeignEntityFieldCellEditor("ZcBMerchandise.selectMerByDingDian", this.merDto, 20, merHandler,merColumNames, "商品", "zcMerName",dialogSize);
+    SwingUtil.setTableCellEditor(table, ZcDingdianItem.COL_ITEM_CONTENT, merEditor);
     
 //    SwingUtil.setTableCellEditor(table, ZcDingdianItem.FIELD_TRANS_QB_ITEM_TYPE, new AsValComboBoxCellEditor("ZC_VS_QB_ITEM_TYPE"));
 //    SwingUtil.setTableCellRenderer(table, ZcDingdianItem.FIELD_TRANS_QB_ITEM_TYPE, new AsValCellRenderer("ZC_VS_QB_ITEM_TYPE"));   
@@ -755,7 +764,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
         if (e.getType() == TableModelEvent.UPDATE) {
 
           if (e.getColumn() >= 0 && table.getSelectedRow() >= 0) {
-            ZcDingdian dd = (ZcDingdian) listCursor.getCurrentObject();
+            ZcDingdian bill = (ZcDingdian) listCursor.getCurrentObject();
             int k = table.getSelectedRow();
             if (ZcDingdianItem.COL_ITEM_BI.equals(model.getColumnIdentifier(e.getColumn()))
               || ZcDingdianItem.COL_ITEM_OTHER.equals(model.getColumnIdentifier(e.getColumn()))) {
@@ -782,10 +791,38 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
                   num = num.add(row.getItemTotalSum());
                 }
               }
-              dd.setDdSum(num);
+              bill.setDdSum(num);
               self.setEditingObject(listCursor.getCurrentObject());
-
-              //              }          
+            } else if (ZcDingdianItem.COL_ITEM_CONTENT.equals(model.getColumnIdentifier(e.getColumn()))
+              ||ZcDingdianItem.COL_MER_NUM.equals(model.getColumnIdentifier(e.getColumn()))) {
+              ZcDingdianItem item = (ZcDingdianItem) (model.getBean(table.convertRowIndexToModel(k))); 
+              BigDecimal caigNum = item.getMerNum() == null ? BigDecimal.ZERO : item.getMerNum();
+              BigDecimal merPrice = item.getMerPrice() == null ? new BigDecimal(0) : item.getMerPrice();
+              BigDecimal num = BigDecimal.ZERO;
+              if (caigNum != null && merPrice != null) {
+                item.setItemTotalSum(caigNum.multiply(merPrice));
+                model.fireTableRowsUpdated(k, k);
+              }
+              
+              for (int i = 0; i < table.getRowCount(); i++) {
+                ZcDingdianItem row = (ZcDingdianItem) (model.getBean(table.convertRowIndexToModel(i)));
+                if (row.getItemTotalSum() != null) {
+                  num = num.add(row.getItemTotalSum());
+                }
+              }
+              bill.setDdSum(num);
+              self.setEditingObject(listCursor.getCurrentObject());
+            }else if (ZcDingdianItem.COL_ITEM_TOTAL_SUM.equals(model.getColumnIdentifier(e.getColumn()))) { 
+              BigDecimal num = BigDecimal.ZERO; 
+              
+              for (int i = 0; i < table.getRowCount(); i++) {
+                ZcDingdianItem row = (ZcDingdianItem) (model.getBean(table.convertRowIndexToModel(i)));
+                if (row.getItemTotalSum() != null) {
+                  num = num.add(row.getItemTotalSum());
+                }
+              }
+              bill.setDdSum(num);
+              self.setEditingObject(listCursor.getCurrentObject());
             }
           }
         }
@@ -1243,13 +1280,13 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     if (itemValidateInfo.length() != 0) {
 
-      errorInfo.append("保险明细：\n").append(itemValidateInfo.toString()).append("\n");
+      errorInfo.append("采购明细：\n").append(itemValidateInfo.toString()).append("\n");
 
     }
     List itemList = dd.getItemList();
 
     if (itemList == null || itemList.size() == 0)
-      errorInfo.append("保险明细不可为空\n").append(itemValidateInfo.toString()).append("\n");
+      errorInfo.append("采购明细不可为空\n").append(itemValidateInfo.toString()).append("\n");
     
 
     if (errorInfo.length() != 0) {
@@ -1260,13 +1297,23 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     }
     if(ZcUtil.isGys()){
-      for (Object o : dd.getItemList()) {
+     /* for (Object o : dd.getItemList()) {
 
         ZcDingdianItem bi = (ZcDingdianItem) o;
         if(bi.getItemType()==null){
           JOptionPane.showMessageDialog(this, "请填写险种", "提示", JOptionPane.WARNING_MESSAGE);
           return false;          
         }
+      }*/
+      if(dd.getSuBank()==null|| dd.getSuBank().trim().length()==0
+        ||dd.getSuBankAccount()==null || dd.getSuBankAccount().trim().length()==0
+        ||dd.getSuBankShoukuanren()==null||dd.getSuBankShoukuanren().trim().length()==0){
+        JOptionPane.showMessageDialog(this, "请填写正确的银行信息，用于收款", "提示", JOptionPane.WARNING_MESSAGE);
+        return false;   
+      }
+      if(dd.getHtSaomiaoFile()==null|| dd.getHtSaomiaoFile().trim().length()==0){
+        JOptionPane.showMessageDialog(this, "请上传合同扫描件", "提示", JOptionPane.WARNING_MESSAGE);
+        return false;   
       }
     }
 
@@ -1283,7 +1330,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
       }
       if (sum.compareTo(dd.getDdSum()) != 0) {
-        errorInfo.append("资金构成：\n预算金额合计应等于保险单折让后的金额！\n");
+        errorInfo.append("资金构成：\n预算金额合计应等于采购单折让后的金额！\n");
       }
       String outLayIsLeaf = checkOutLay();
       if (outLayIsLeaf != null && outLayIsLeaf.trim().length() > 0) {
@@ -1299,11 +1346,9 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
         return false;
 
       }
-    }
-    if (ZcUtil.isYsdw() && !calcBeforeSave()) {
-
-      return false;
-
+      if (!calcBeforeSave()) {
+        return false;
+      }
     }
 
     return true;
@@ -1666,53 +1711,46 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
   }
 
   protected String Calc(ZcDingdian dd) {
-
     StringBuffer sb = new StringBuffer();
-
     List<ZcDingdianBi> biList = dd.getBiList();
-
     BigDecimal shiJiTotal = BigDecimal.ZERO;//实际合计
 
     BigDecimal czxZijin = BigDecimal.ZERO;//使用-财政性资金
 
     BigDecimal zcZijin = BigDecimal.ZERO;//使用-自筹资金
-
-    for (Iterator iterator = biList.iterator(); iterator.hasNext();) {
-
-      ZcDingdianBi ddBi = (ZcDingdianBi) iterator.next();
-
-      BigDecimal shiyongSum = ddBi.getZcBiJhuaSum();//本次使用金额
-
-      shiyongSum = shiyongSum == null ? BigDecimal.ZERO : shiyongSum;
-
-      if (ZcDingdianBi.TYPE_CZYS.equals(ddBi.getZcZjType())) {//财政预算
-        if (shiyongSum.compareTo(ddBi.getZcBiDoSum()) > 0) {
-
-          sb.append("资金构成中【本次采购使用金额】不能超过【可用金额】！\n");
-
-          return sb.toString();
-        }
-        czxZijin = czxZijin.add(shiyongSum);
-      } else {
-        zcZijin = zcZijin.add(shiyongSum);
-      }
-      shiJiTotal = shiJiTotal.add(shiyongSum);
-    }
-
-    if (shiJiTotal.doubleValue() <= 0) {
-
-      sb.append("资金构成中【本次采购使用金额】必须填写！\n");
-
-      return sb.toString();
-
-    }
-
     if (ZcUtil.isYsdw()) {
+      for (Iterator iterator = biList.iterator(); iterator.hasNext();) {  
+        ZcDingdianBi ddBi = (ZcDingdianBi) iterator.next();  
+        BigDecimal shiyongSum = ddBi.getZcBiJhuaSum();//本次使用金额  
+        shiyongSum = shiyongSum == null ? BigDecimal.ZERO : shiyongSum;  
+        if (ZcDingdianBi.TYPE_CZYS.equals(ddBi.getZcZjType())) {//财政预算
+          if (shiyongSum.compareTo(ddBi.getZcBiDoSum()) > 0) {  
+            sb.append("资金构成中【本次采购使用金额】不能超过【可用金额】！\n");  
+            return sb.toString();
+          }
+          czxZijin = czxZijin.add(shiyongSum);
+        } else {
+          zcZijin = zcZijin.add(shiyongSum);
+        }
+        shiJiTotal = shiJiTotal.add(shiyongSum);
+      }
+  
+      if (shiJiTotal.doubleValue() <= 0) {  
+        sb.append("资金构成中【本次采购使用金额】必须填写！\n");  
+        return sb.toString();  
+      }
+      if(shiJiTotal.compareTo(dd.getDdSum())!=0){
+        sb.append("资金构成中【本次采购使用金额】之和必须和采购金额相等！\n");
+        return sb.toString();
+      }
+   
       List<ZcDingdianItem> itemLst = dd.getItemList();
 
       BigDecimal itemCzxzjSum = BigDecimal.ZERO;//财政性资金
 
       BigDecimal itemZczjSum = BigDecimal.ZERO;//自筹资金
+      
+      BigDecimal totalSum=BigDecimal.ZERO;
 
       for (Iterator iterator = itemLst.iterator(); iterator.hasNext();) {
 
@@ -1720,22 +1758,22 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
         BigDecimal _itemSum = item.getItemVal() == null ? BigDecimal.ZERO : item.getItemVal();
         BigDecimal _czxzjSum = item.getItemBi() == null ? BigDecimal.ZERO : item.getItemBi();
         BigDecimal _zczjSum = item.getItemOther() == null ? BigDecimal.ZERO : item.getItemOther();
-
         itemCzxzjSum = itemCzxzjSum.add(_czxzjSum);
         itemZczjSum = itemZczjSum.add(_zczjSum);
+        totalSum=totalSum.add(item.getItemTotalSum() == null ? BigDecimal.ZERO : item.getItemTotalSum());
       }
 
-      if (czxZijin.compareTo(itemCzxzjSum) != 0) {
-
-        sb.append("资金构成中【预算指标】之和必须等于保险明细中【资金划分的预算指标】之和！\n");
-
+     /* if (czxZijin.compareTo(itemCzxzjSum) != 0) {
+        sb.append("资金构成中【预算指标】之和必须等于采购明细中【资金划分的预算指标】之和！\n");
         return sb.toString();
       }
 
       if (zcZijin.compareTo(itemZczjSum) != 0) {
-
-        sb.append("资金构成中【自筹资金】之和必须等于保险明细中【资金划分中自筹资金】之和！\n");
-
+        sb.append("资金构成中【自筹资金】之和必须等于采购明细中【资金划分中自筹资金】之和！\n");
+        return sb.toString();
+      }*/
+      if (totalSum.compareTo(dd.getDdSum()) != 0) {
+        sb.append("采购明细的金额合计必须和采购金额相等！\n");
         return sb.toString();
       }
     }
@@ -1947,7 +1985,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     TextFieldEditor ddName = new TextFieldEditor(LangTransMeta.translate(ZcDingdian.COL_DD_NAME), "ddName");
 
-    IForeignEntityTreeHandler companyHandler = new IForeignEntityTreeHandler() {
+   /* IForeignEntityTreeHandler companyHandler = new IForeignEntityTreeHandler() {
       @Override
       public void excute(List selectedDatas) {
         if (selectedDatas != null && selectedDatas.size() > 0) {
@@ -1967,7 +2005,10 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
       }
     };
 
-    CompanyFieldEditor coName = new CompanyFieldEditor(LangTransMeta.translate(ZcDingdian.COL_CO_CODE), "coCode", companyHandler);
+    CompanyFieldEditor coName = new CompanyFieldEditor(LangTransMeta.translate(ZcDingdian.COL_CO_CODE), "coCode", companyHandler);*/
+    
+
+    TextFieldEditor coName = new TextFieldEditor(LangTransMeta.translate(ZcDingdian.COL_CO_NAME), "coName");
 
     TextFieldEditor suName = new TextFieldEditor(LangTransMeta.translate(ZcDingdian.COL_SUPPLIER_NAME), "supplierName");
 
@@ -1992,7 +2033,17 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     DateFieldEditor inputDate = new DateFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_INPUT_DATE), "inputDate");
     
-//    SelectFileFieldEditor excelModelFile=new SelectFileFieldEditor("保险明细模板下载","detailModelFileName","detailModelFileId",false,false,false,true);
+//    SelectFileFieldEditor excelModelFile=new SelectFileFieldEditor("采购明细模板下载","detailModelFileName","detailModelFileId",false,false,false,true);    
+
+    FileFieldEditor zcImpFile = new FileFieldEditor("合同扫描件", "htSaomiaoFile", "htSaomiaoFileId");
+    
+    String[] colums=new String[]{"名称","联系人","联系电话"};
+    SupplierHandler sh=new SupplierHandler(colums);
+    ElementConditionDto dto=new ElementConditionDto();
+    dto.setZcText0("dingdian");
+    ForeignEntityFieldEditor supplierFd=new ForeignEntityFieldEditor("ZcEbSupplier.getEnableSupplierList",dto, 20, sh, colums, "供应商","supplierName");
+   
+//    ("ZC_P_PRO_MAKE.getZcPProMakeNoHtList", elementCondtiontDto, 20, makeHandler, columNames, "采购计划编号", "zcMakeCode");
 
     editorList.add(ddCode);
     editorList.add(ddName);
@@ -2002,7 +2053,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     editorList.add(coName);
     editorList.add(inputDate);
 
-    editorList.add(suName);
+    editorList.add(supplierFd);
     editorList.add(zcSuLinkman);
     editorList.add(zcSuLinktel);
 
@@ -2010,6 +2061,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     editorList.add(zcSuAccCode);
     editorList.add(shoukuanren);
 
+    editorList.add(zcImpFile);
     editorList.add(remark);
 //    editorList.add(excelModelFile);
 
@@ -2017,6 +2069,30 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
   }
 
+
+  protected void clearSupplier() {
+    ZcDingdian dd=(ZcDingdian)listCursor.getCurrentObject();
+    dd.setSupplier(null);
+    dd.setSupplierName(null);
+    dd.setSuLinkMan(null);
+    dd.setSuLinkTel(null);
+    dd.setSuBank(null);
+    dd.setSuBankAccount(null);
+    dd.setSuBankShoukuanren(null);
+    setEditingObject(dd);
+  }
+
+  protected void selectSupplier(ZcEbSupplier supplier) {
+    ZcDingdian dd=(ZcDingdian)listCursor.getCurrentObject();
+    dd.setSupplier(supplier.getCode());
+    dd.setSupplierName(supplier.getName());
+    dd.setSuLinkMan(supplier.getLinkMan());
+    dd.setSuLinkTel(supplier.getLinkManMobile());
+    dd.setSuBank(supplier.getBankName());
+    dd.setSuBankAccount(supplier.getAccCode());
+    dd.setSuBankShoukuanren(supplier.getName());  
+    setEditingObject(dd);
+  }
 
   protected void selectCompany(Company company) {
     // TCJLODO Auto-generated method stub
@@ -2146,7 +2222,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     itemTablePanel.getTable().getTableRowHeader().setPreferredSize(new Dimension(60, 0));
 
-    itemTabPane.addTab("保险明细", itemTablePanel);
+    itemTabPane.addTab("采购明细", itemTablePanel);
 
     JGroupableTableHeader itemTableHeader = itemTablePanel.getTable().getTableHeader();
 
@@ -2246,7 +2322,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
 
     splitPane.setBackground(self.getBackground());
 
-    topTabPane.addTab("保险单明细", splitPane);
+//    topTabPane.addTab("采购单明细", splitPane);
 
     //    topTabPane.addTab("付款明细", detailTablePanel);
 
@@ -2254,7 +2330,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     if (ZcUtil.isGys()) {
       return itemTabPane;
     }
-    return topTabPane;
+    return splitPane;
   }
 
   protected void setBIDefaultValue(ZcDingdianBi ddBi) {
@@ -2479,4 +2555,134 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
         }
       }
     }
+    /*
+
+     * 商品选择外部部件处理类
+
+     */
+
+    protected class ZcEbMerHandler implements IForeignEntityHandler {
+
+      public String columNames[];
+
+      public ZcEbMerHandler(String columNames[]) {
+
+        this.columNames = columNames;
+
+      }
+
+      public void excute(List selectedDatas) {
+        JTable table = itemTablePanel.getTable();
+        BeanTableModel model = (BeanTableModel) table.getModel();
+        int k = table.getSelectedRow();
+        if (k < 0)
+          return;
+
+        int k2 = table.convertRowIndexToModel(k);
+        ZcDingdianItem item = (ZcDingdianItem) (model.getBean(k2));
+        DecimalFormat df = new DecimalFormat("0.00");
+        if (selectedDatas.size() > 0) {
+          ZcBMerchandise mer = (ZcBMerchandise) selectedDatas.get(0);
+          item.setMerCode(mer.getZcMerCode());
+          item.setItemContent(mer.getZcMerName()); 
+          item.setItemDetail(mer.getZcMerSpec() == null ? mer.getZcMerCollocate() : mer.getZcMerSpec());
+          item.setMerPrice(mer.getZcMerMPrice().setScale(2, BigDecimal.ROUND_HALF_UP)); 
+          item.setMerNum(new BigDecimal(0));
+          item.setItemTotalSum(new BigDecimal(0));
+          } 
+         
+        model.fireTableDataChanged();
+
+      }
+
+      @Override
+      public TableModel createTableModel(List showDatas) {
+        Object data[][] = new Object[showDatas.size()][columNames.length];
+        for (int i = 0; i < showDatas.size(); i++) {
+          ZcBMerchandise rowData = (ZcBMerchandise) showDatas.get(i);
+          int col = 0;
+          data[i][col++] = rowData.getZcBraName();
+          data[i][col++] = rowData.getZcMerName();
+          data[i][col++] = rowData.getZcMerSpec();
+          data[i][col++] = rowData.getZcMerMPrice();
+          data[i][col++] = rowData.getZcMerCollocate();
+        }
+        MyTableModel model = new MyTableModel(data, columNames) {
+          public boolean isCellEditable(int row, int colum) {
+            return false;
+          }
+        };
+        return model;
+      }
+
+      @Override
+      public boolean isMultipleSelect() {
+        return false;
+      }
+
+      public void afterClear() {
+        JTable table = itemTablePanel.getTable();
+        BeanTableModel model = (BeanTableModel) table.getModel();
+        int k = table.getSelectedRow();
+        if (k < 0)
+          return;
+        int k2 = table.convertRowIndexToModel(k);
+        ZcDingdianItem item = (ZcDingdianItem) (model.getBean(k2)); 
+        item.setMerCode(null);
+        item.setItemContent(null); 
+        item.setItemDetail(null);
+        item.setMerPrice(new BigDecimal(0)); 
+        item.setMerNum(new BigDecimal(0));
+        item.setItemTotalSum(new BigDecimal(0));
+        model.fireTableDataChanged();
+      }
+      public boolean beforeSelect(ElementConditionDto dto) { 
+        return true;
+      }
+    }
+    protected class SupplierHandler implements IForeignEntityHandler {
+
+      public String columNames[];
+
+      public SupplierHandler(String columNames[]) {
+
+        this.columNames = columNames;
+
+      }
+      @Override
+      public void excute(List selectedDatas) {
+        if (selectedDatas != null && selectedDatas.size() > 0) {
+          ZcEbSupplier supplier = (ZcEbSupplier) selectedDatas.get(0);
+          selectSupplier(supplier);
+        }
+      }
+
+      @Override
+      public boolean isMultipleSelect() {
+        return false;
+      }
+ 
+      public void afterClear() {
+        clearSupplier();
+      }
+
+      @Override
+      public TableModel createTableModel(List showDatas) {
+        Object data[][] = new Object[showDatas.size()][columNames.length];
+        for (int i = 0; i < showDatas.size(); i++) {
+          ZcEbSupplier rowData = (ZcEbSupplier) showDatas.get(i);
+          int col = 0;
+          data[i][col++] = rowData.getName();
+          data[i][col++] = rowData.getLinkMan();
+          data[i][col++] = rowData.getLinkManMobile();
+        }
+        MyTableModel model = new MyTableModel(data, columNames) {
+          public boolean isCellEditable(int row, int colum) {
+            return false;
+          }
+        };
+        return model;
+      }
+    }
+    
 }

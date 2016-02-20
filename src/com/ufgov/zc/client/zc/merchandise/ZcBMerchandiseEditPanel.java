@@ -270,7 +270,9 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
     ElementConditionDto merDto=new ElementConditionDto();
     merDto.setZcText1("zhujian");
     ForeignEntityFieldEditor mainMer = new ForeignEntityFieldEditor("ZcBMerchandise.selectMerByCatalogue", merDto, 10, merHandler, catLogueColumNames,"主商品编号", "zcSupMerCode");
-    TextFieldEditor mainName = new TextFieldEditor("主商品名称", "zcSupBraCode");//用属性zcSupBraCode来存储主商品名称了
+    TextFieldEditor mainName = new TextFieldEditor("主商品名称", "zcSupBraCode");//用属性zcSupBraCode来存储主商品名称了   
+
+    AsValFieldEditor zcDdcg = new AsValFieldEditor("是否定点采购", "zcCgLeixing","ZC_VS_YN");
 
     editorList.add(zcMerCode);
     editorList.add(zcMerName);
@@ -293,6 +295,7 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
     editorList.add(zcBraName);
     
     editorList.add(zcMerMPrice);
+    editorList.add(zcDdcg);
     editorList.add(new NewLineFieldEditor());
     
     editorList.add(zcIsJnjs);    

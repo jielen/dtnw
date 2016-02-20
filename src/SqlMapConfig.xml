@@ -152,6 +152,7 @@
     <sqlMap resource="sqlmap/zc/ZC_P_PRO_MAKE.xml" />
     <sqlMap resource="sqlmap/zc/ZC_P_PRO_MITEM_BI.xml" />
     <sqlMap resource="sqlmap/zc/ZC_P_PRO_MITEM.xml" />
+     <sqlMap resource="sqlmap/zc/ZcPProMitemServiceMapper.xml"/>
     <sqlMap resource="sqlmap/zc/ZC_T_BCHT_ITEM.xml" />
     <sqlMap resource="sqlmap/zc/ZC_XMCG_HT_BI.xml" />
     <sqlMap resource="sqlmap/zc/ZC_XMCG_HT.xml" />

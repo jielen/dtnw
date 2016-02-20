@@ -14,6 +14,9 @@
     <result column="ITEM_OTHER" property="itemOther" jdbcType="DECIMAL" />
     <result column="ITEM_TYPE" property="itemType" jdbcType="VARCHAR" />
     <result column="ITEM_DETAIL" property="itemDetail" jdbcType="VARCHAR" />
+    <result column="MER_CODE" property="merCode" jdbcType="VARCHAR" />
+    <result column="MER_PRICE" property="merPrice" jdbcType="DECIMAL" />
+    <result column="MER_NUM" property="merNum" jdbcType="DECIMAL" />
   </resultMap>
 	<select id="getItemLstByDdCode" resultMap="BaseResultMap" 	parameterClass="String">
 		select * from ZC_DINGDIAN_ITEM
@@ -29,10 +32,10 @@
     insert into ZC_DINGDIAN_ITEM (DD_CODE, DD_ITEM_CODE, ITEM_CONTENT, 
       REMARK, ITEM_TOTAL_SUM, ITEM_VAL, 
       ITEM_BI, ITEM_OTHER, ITEM_TYPE, 
-      ITEM_DETAIL)
+      ITEM_DETAIL,MER_CODE,MER_PRICE,MER_NUM)
     values (#ddCode:VARCHAR#, #ddItemCode:VARCHAR#, #itemContent:VARCHAR#, 
       #remark:VARCHAR#, #itemTotalSum:DECIMAL#, #itemVal:DECIMAL#, 
       #itemBi:DECIMAL#, #itemOther:DECIMAL#, #itemType:VARCHAR#, 
-      #itemDetail:VARCHAR#)
+      #itemDetail:VARCHAR#,#merCode#,#merPrice:DECIMAL#,#merNum:DECIMAL#)
   </insert> 
 </sqlMap>

@@ -39,7 +39,7 @@ public class ZcDingDianWorkFlowLisenterWithCallBack extends ZcDingDianWorkFlowLi
     //因为ZC_DATA_EXCHANGE_REDO是一条业务数据多次插入，所以不能以已经导入状态查询，只能以等待导出状态查询，如果没有存在等待导出状态的数据，说明已经导出了.
     dto.setStatus(DataExchangeRedo.STATUS_WAITING_EXPORTED);    
     if(zcEbBaseServiceDao.queryObject("DataExchange.getDataExchangeRedo", dto)==null){
-//      throw new WorkflowException("定点采购:"+qx.getDdName()+"("+qx.getDdCode()+"),已经导出进行审批，不能收回.");
+      throw new WorkflowException("定点采购:"+qx.getDdName()+"("+qx.getDdCode()+"),已经导出进行审批，不能收回.");
     }
   }
 

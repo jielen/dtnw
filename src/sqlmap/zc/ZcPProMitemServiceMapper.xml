@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ZcPProMitemServiceMapper" >
+
+	<typeAlias alias="elementCondition" type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+		
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcPProMitemService" > 
+    <result column="ZC_MAKE_CODE" property="zcMakeCode" jdbcType="VARCHAR" />
+    <result column="SERVICE_CODE" property="serviceCode" jdbcType="VARCHAR" />
+    <result column="SERVICE_CONTENT" property="serviceContent" jdbcType="VARCHAR" />
+    <result column="SU_CODE" property="suCode" jdbcType="VARCHAR" />
+    <result column="IS_AGREE" property="isAgree" jdbcType="VARCHAR" />
+  </resultMap>
+  
+	<select id="getServiceLst" resultMap="BaseResultMap" parameterClass="elementCondition">
+		select * from ZC_P_PRO_MITEM_SERVICE where ZC_MAKE_CODE=#zcText0#
+			<isNotNull prepend="and" property="zcText1">
+				SU_CODE=#zcText1#
+			</isNotNull>
+	</select>
+	
+	<delete id="delete" parameterClass="elementCondition">
+		delete from
+		ZC_P_PRO_MITEM_SERVICE
+		where
+		ZC_MAKE_CODE =#zcText0#
+		<isNotNull prepend="and" property="zcText1">
+			SU_CODE=#zcText1#
+		</isNotNull>
+	</delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcPProMitemService" > 
+    insert into ZC_P_PRO_MITEM_SERVICE (ZC_MAKE_CODE, SERVICE_CODE, SERVICE_CONTENT, 
+      SU_CODE, IS_AGREE)
+    values (#zcMakeCode:VARCHAR#, #serviceCode:VARCHAR#, #serviceContent:VARCHAR#, 
+      #suCode:VARCHAR#, #isAgree:VARCHAR#)
+  </insert> 
+  
+</sqlMap>

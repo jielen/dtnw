@@ -14,12 +14,12 @@
 			<value>oracle.jdbc.driver.OracleDriver</value>
 		</property>
 		<property name="url">
-		  <value>jdbc:oracle:thin:@127.0.0.1:1521:orcl</value>
-		<!--		<value>jdbc:oracle:thin:@localhost:1521:orcl</value> -->
+		<value>jdbc:oracle:thin:@127.0.0.1:1521:orcl</value>
+				<!--  <value>jdbc:oracle:thin:@localhost:1521:orcl</value> -->
 		</property>     
 		<property name="username">
 			<!--<value>zceb0507</value> -->
-			 <value>dtrun2</value>
+			 <value>yangzhong</value>
 		</property>
 		<property name="password">
 			<value>1</value>

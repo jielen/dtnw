@@ -460,7 +460,7 @@
 			</isEqual>
 			<isEqual property="status" compareValue="complete"><!-- 竞价结束 -->
                 <![CDATA[ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate]]> 
-			</isEqual>
+			</isEqual>			<isEqual property="status" compareValue="waitingOpen"><!-- 竞价结束 等待开标,已过竞价截止时间+3天的，属于等待开标，系统自动开标-->                <![CDATA[                	ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE+3<sysdate                	and ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='jingjiaing'                                ]]> 			</isEqual>
 			<isEqual property="status" compareValue="mybiding"><!-- 我的竞价 -->
 				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01'
 				<isNotNull prepend="AND" property="executor">

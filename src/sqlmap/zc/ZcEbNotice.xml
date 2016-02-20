@@ -82,7 +82,13 @@
 		ZC_EB_NOTICE.WIN_BID_SUM,
 		P.CO_CODE,M.CO_NAME
 		from
-		ZC_EB_NOTICE ZC_EB_NOTICE,ZC_EB_PACK P,MA_COMPANY M
+		ZC_EB_NOTICE ZC_EB_NOTICE,
+		(SELECT DISTINCT CO_CODE,ND,pack_code FROM (
+		    SELECT P.ND,P.CO_CODE,p.pack_code FROM ZC_EB_PACK P
+		    UNION
+		    SELECT MK.ND,MK.CO_CODE,mk.zc_make_code FROM ZC_P_PRO_MAKE MK
+    		WHERE MK.ZC_FUKUAN_TYPE='G01')) P,
+		MA_COMPANY M
 		where ZC_EB_NOTICE.PACK_CODE=P.PACK_CODE
 		and ZC_EB_NOTICE.ND=M.ND
 		and P.CO_CODE=M.CO_CODE
@@ -236,7 +242,13 @@
 	</delete>
 	<select id="getZcEbNoticeById" parameterClass="string"
 		resultMap="ZcEbNoticeResultWithCoCode">
-		select P.CO_CODE,M.CO_NAME,n.* from ZC_EB_NOTICE n,ZC_EB_PACK P,MA_COMPANY M
+		select P.CO_CODE,M.CO_NAME,n.* from ZC_EB_NOTICE n,
+		(SELECT DISTINCT CO_CODE,ND,pack_code FROM (
+		    SELECT P.ND,P.CO_CODE,p.pack_code FROM ZC_EB_PACK P
+		    UNION
+		    SELECT MK.ND,MK.CO_CODE,mk.zc_make_code FROM ZC_P_PRO_MAKE MK
+    		WHERE MK.ZC_FUKUAN_TYPE='G01')) P,
+		MA_COMPANY M
 		WHERE N.PACK_CODE=P.PACK_CODE
 		AND N.ND=M.ND
 		AND P.CO_CODE=M.CO_CODE

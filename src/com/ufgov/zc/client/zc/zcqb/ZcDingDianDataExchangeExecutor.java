@@ -1,5 +1,6 @@
 package com.ufgov.zc.client.zc.zcqb;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +19,7 @@ import com.ufgov.zc.common.zc.model.DataExchangeLog;
 import com.ufgov.zc.common.zc.model.DataExchangeRedo;
 import com.ufgov.zc.common.zc.model.ZcBaseBill;
 import com.ufgov.zc.common.zc.model.ZcDingdian;
+import com.ufgov.zc.common.zc.model.ZcXmcgHt;
 import com.ufgov.zc.common.zc.publish.IZcDingDianServiceDelegate;
 import com.ufgov.zc.common.zc.publish.IZcQbServiceDelegate;
 
@@ -59,7 +61,7 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
       exportWFinfos(dataMap,processInstIdLst,meta);
       
       //获取定点采购附件      
-      getQbFiles(meta, saveRootPath, qbLst);      
+      getAttachFiles(meta, saveRootPath, qbLst);      
       
       this.getDataList().add(dataMap);
       rtn+=qbLst.size();      
@@ -76,8 +78,33 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
    * @param saveRootPath
    * @param htLst
    */
-  private void getQbFiles(RequestMeta meta, String saveRootPath, List htLst) {
+  private void getAttachFiles(RequestMeta meta, String saveRootPath, List htLst) {
 
+    // 准备附件列表
+       if (this.attachmentDataMap == null) {
+         this.attachmentDataMap = new HashMap<String, Map<String, AttachmentFile>>();
+       } else {
+         this.attachmentDataMap.clear();
+       }
+       String makeFileDirName = saveRootPath.substring(saveRootPath.lastIndexOf(File.separator)) + File.separator + "attach_files";
+
+       String makeFilePath = saveRootPath + File.separator + "attach_files";
+
+       makeDirs(makeFilePath);
+
+       String path = makeFilePath + File.separator;
+       
+       for (int i = 0; i < htLst.size(); i++) {
+         ZcDingdian f = (ZcDingdian) htLst.get(i);
+         try {
+           downFile(makeFileDirName, f.getHtSaomiaoFileId(), f.getHtSaomiaoFile(), null, path, meta); 
+         } catch (IOException e) {
+           // TCJLODO Auto-generated catch block
+           e.printStackTrace();
+           DataExchangeListPanel.setProgressText(this.getDataTypeName() + "获取采购合同附件出错...\n" + e.getMessage());
+         }
+
+       }
   }
 
   private List getQbDatas(ElementConditionDto dto, RequestMeta meta) {
