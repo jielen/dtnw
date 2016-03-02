@@ -147,10 +147,12 @@ public class ZcDingDianService implements IZcDingDianService {
   
   public ZcDingdian updateFN(ZcDingdian bill, RequestMeta requestMeta) throws Exception {
 
+//    System.out.println("before service="+bill.getCoCode()+bill.getCoName());
     return _updateFN(bill, requestMeta, false);
   }
 
   private ZcDingdian _updateFN(ZcDingdian bill, RequestMeta requestMeta,boolean isImportData) throws Exception {
+//    System.out.println("before service 2="+bill.getCoCode()+bill.getCoName());
     String code = "";
     String temp_code = "";
     
@@ -170,7 +172,8 @@ public class ZcDingDianService implements IZcDingDianService {
       temp_code = NumUtil.getInstance().getNo("ZC_DINGDIAN", "DD_CODE", bill);
       code = temp_code;
       bill.setDdCode(code);
-      map = new BudgetUtil().getSaveBudgetByZcDingDian(ddBiDao, baseDao, ZcSUtil.isUseBi(), bill, biList);      
+      map = new BudgetUtil().getSaveBudgetByZcDingDian(ddBiDao, baseDao, ZcSUtil.isUseBi(), bill, biList);    
+//      System.out.println("before service 3="+bill.getCoCode()+bill.getCoName());  
       BigDecimal biSum=new BigDecimal(0);
       for (int i = 0; i < biList.size(); i++) {
         ZcDingdianBi bi = (ZcDingdianBi) biList.get(i);
@@ -185,10 +188,13 @@ public class ZcDingDianService implements IZcDingDianService {
         ZcDingdianItem item = (ZcDingdianItem) bill.getItemList().get(i);
         item.setDdCode(code);
       }
- 
+
+//      System.out.println("before service 4="+bill.getCoCode()+bill.getCoName());
       ddDao.insert(bill); 
+//      System.out.println("before service 5="+bill.getCoCode()+bill.getCoName());
       ddBiDao.insertList(biList);
       ddItemDao.insertList(bill.getItemList()); 
+//      System.out.println("before service 6="+bill.getCoCode()+bill.getCoName());
     } else {
 
       code = bill.getDdCode(); 
@@ -204,6 +210,7 @@ public class ZcDingDianService implements IZcDingDianService {
       bill.setBiSum(biSum); 
       //使用删除、插入，是考虑导入数据时，code已经有了，直接update没有用，所以采用删、插的模式
         ddDao.deleteByPrimaryKey(bill.getDdCode());
+//        System.out.println("update before="+bill.getCoCode()+bill.getCoName());
         ddDao.insert(bill); 
 
 //      System.out.println("666="+bill.getCoCode()+bill.getCoName());
@@ -238,6 +245,7 @@ public class ZcDingDianService implements IZcDingDianService {
     if (!isImportData) {//
       new BudgetUtil().callService(map,requestMeta.getSvNd());
     }
+//    System.out.println("return before="+bill.getCoCode()+bill.getCoName());
     return bill;
   }
   /* (non-Javadoc)

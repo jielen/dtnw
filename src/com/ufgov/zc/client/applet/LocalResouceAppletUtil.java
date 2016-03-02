@@ -113,9 +113,12 @@ public class LocalResouceAppletUtil {
       meta.setSvUserID((String) getValue(method, f, "userId"));
       User user = baseDataServiceDelegate.getUserById((String) getValue(method, f, "userId"), meta);
       workEnv.setCurrUser(user);
+//      System.out.println("LocalResouceAppletUtil.initWorkEnv: nd="+workEnv.getTransNd()+" cocode="+(String) getValue(method, f, "coCode"));
       Company company = baseDataServiceDelegate.getCompanyByCoCode(workEnv.getTransNd(), (String) getValue(method, f, "coCode"), meta);
+//      System.out.println("LocalResouceAppletUtil.initWorkEnv: company="+company);
+
       workEnv.setCurrCompany(company);
-      meta.setSvCoCode(workEnv.getCurrCoCode());
+      meta.setSvCoCode((String) getValue(method, f, "coCode"));
       meta.setSvCoName(workEnv.getCurrCompany() == null ? null : workEnv.getCurrCompany().getName());
       java.util.Date sysDate = baseDataServiceDelegate.getSysDate(meta);
       workEnv.setSysDate(sysDate);

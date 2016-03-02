@@ -39,6 +39,7 @@ public class ZcDingDianServiceDelegate implements IZcDingDianServiceDelegate {
 
   
   public ZcDingdian updateFN(ZcDingdian bill, RequestMeta requestMeta) throws Exception {
+//    System.out.println("before delegate="+bill.getCoCode()+bill.getCoName());
     return dingDianService.updateFN(bill, requestMeta);
   }
 

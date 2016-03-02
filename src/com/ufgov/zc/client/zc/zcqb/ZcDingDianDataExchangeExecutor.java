@@ -19,9 +19,7 @@ import com.ufgov.zc.common.zc.model.DataExchangeLog;
 import com.ufgov.zc.common.zc.model.DataExchangeRedo;
 import com.ufgov.zc.common.zc.model.ZcBaseBill;
 import com.ufgov.zc.common.zc.model.ZcDingdian;
-import com.ufgov.zc.common.zc.model.ZcXmcgHt;
 import com.ufgov.zc.common.zc.publish.IZcDingDianServiceDelegate;
-import com.ufgov.zc.common.zc.publish.IZcQbServiceDelegate;
 
 public class ZcDingDianDataExchangeExecutor  extends ABaseData {
 
@@ -126,7 +124,7 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
       }
       DataExchangeListPanel.setProgressText(this.getDataTypeName() + "查询到"+i+"条记录需要导出...");
       dto.setPmAdjustCodeList(idLst);
-      IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcQbServiceDelegate.class,"zcDingDianServiceDelegate");
+      IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcDingDianServiceDelegate.class,"zcDingDianServiceDelegate");
       billLst = qbService.queryExportsDatas(dto, meta);
     }
     createExportLog(idLst,billLst,meta);
@@ -237,12 +235,12 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
     List<DataExchangeLog> importDataList = new ArrayList<DataExchangeLog>();
     
     if(delDataLst!=null && delDataLst.size()>0){
-      IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcQbServiceDelegate.class,"zcDingDianServiceDelegate");
+      IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcDingDianServiceDelegate.class,"zcDingDianServiceDelegate");
       
       for (int i = 0; i < delDataLst.size(); i++) {
 
         log = new DataExchangeLog();
-        DataExchangeListPanel.setProgressText(getDataTypeName() + "正在将删除的汽车维修信息发送到服务器..." + (i + 1) + "/" + delDataLst.size());
+        DataExchangeListPanel.setProgressText(getDataTypeName() + "正在将删除的定点信息发送到服务器..." + (i + 1) + "/" + delDataLst.size());
 
         String  id = (String) delDataLst.get(i);
         ZcDingdian qx=new ZcDingdian();
@@ -252,7 +250,7 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
         } catch (DataExchangeException e) {
           // TCJLODO: handle exception
           info=e.getMessage();
-          this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删除汽车维修数据失败", "", info, IMPORT, qx);
+          this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删定点数据失败", "", info, IMPORT, qx);
           qx=qbService.selectByPrimaryKey(id, meta);
           cantDelinstanceIdLst.add(""+qx.getProcessInstId());
           continue;
@@ -261,7 +259,7 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
         DataExchangeListPanel.setProgressText(this.getDataTypeName() + info);
 
 
-        this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删除汽车维修数据成功", "", info, IMPORT, qx);
+        this.makeDataExchangeLog(log, meta.getSvUserID(), "同步删除定点数据成功", "", info, IMPORT, qx);
 
         importDataList.add(log);
       }      
@@ -279,7 +277,7 @@ public class ZcDingDianDataExchangeExecutor  extends ABaseData {
     String info;
     DataExchangeLog log;
     List<DataExchangeLog> importDataList = new ArrayList<DataExchangeLog>();
-    IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcQbServiceDelegate.class,"zcDingDianServiceDelegate");
+    IZcDingDianServiceDelegate qbService=(IZcDingDianServiceDelegate) ServiceFactory.create(IZcDingDianServiceDelegate.class,"zcDingDianServiceDelegate");
     
     if(htDataLst!=null && htDataLst.size()>0){
       for (int i = 0; i < htDataLst.size(); i++) {

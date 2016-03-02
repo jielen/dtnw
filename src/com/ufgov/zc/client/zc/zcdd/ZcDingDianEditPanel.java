@@ -396,7 +396,9 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     
     dd.setCoCode(requestMeta.getSvCoCode());
     dd.setCoName(requestMeta.getSvCoName());
-     
+
+//    System.out.println("zcdingdianeditpanel.setdefaultfvalue cocode="+requestMeta.getSvCoCode());
+//    System.out.println("zcdingdianeditpanel.setdefaultfvalue coName="+requestMeta.getSvCoName());
 
     //设置收账户信息
 //    setBankInfo(dd); 
@@ -1202,11 +1204,11 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
       requestMeta.setFuncId(saveButton.getFuncId());
 
       ZcDingdian inData = (ZcDingdian)this.listCursor.getCurrentObject();
-      System.out.println("before="+inData.getCoCode()+inData.getCoName());
+//      System.out.println("before="+inData.getCoCode()+inData.getCoName());
 
       ZcDingdian dd = zcDingDianServiceDelegate.updateFN(inData, this.requestMeta);
 
-      System.out.println("after="+dd.getCoCode()+dd.getCoName());
+//      System.out.println("after="+dd.getCoCode()+dd.getCoName());
       
       listCursor.setCurrentObject(dd);
 
@@ -2087,7 +2089,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
     dd.setSupplier(supplier.getCode());
     dd.setSupplierName(supplier.getName());
     dd.setSuLinkMan(supplier.getLinkMan());
-    dd.setSuLinkTel(supplier.getLinkManMobile());
+    dd.setSuLinkTel( supplier.getLinkManPhone()==null?supplier.getLinkManMobile():supplier.getLinkManPhone());
     dd.setSuBank(supplier.getBankName());
     dd.setSuBankAccount(supplier.getAccCode());
     dd.setSuBankShoukuanren(supplier.getName());  
@@ -2586,7 +2588,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
           item.setMerCode(mer.getZcMerCode());
           item.setItemContent(mer.getZcMerName()); 
           item.setItemDetail(mer.getZcMerSpec() == null ? mer.getZcMerCollocate() : mer.getZcMerSpec());
-          item.setMerPrice(mer.getZcMerMPrice().setScale(2, BigDecimal.ROUND_HALF_UP)); 
+          item.setMerPrice(mer.getZcMerMPrice()==null?new BigDecimal(0):mer.getZcMerMPrice().setScale(2, BigDecimal.ROUND_HALF_UP)); 
           item.setMerNum(new BigDecimal(0));
           item.setItemTotalSum(new BigDecimal(0));
           } 
@@ -2674,7 +2676,7 @@ public class ZcDingDianEditPanel  extends AbstractMainSubEditPanel {
           int col = 0;
           data[i][col++] = rowData.getName();
           data[i][col++] = rowData.getLinkMan();
-          data[i][col++] = rowData.getLinkManMobile();
+          data[i][col++] = rowData.getLinkManPhone()==null?rowData.getLinkManMobile():rowData.getLinkManPhone();
         }
         MyTableModel model = new MyTableModel(data, columNames) {
           public boolean isCellEditable(int row, int colum) {

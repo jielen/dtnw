@@ -13,6 +13,8 @@ import com.ufgov.zc.client.component.zc.AbstractMainSubEditPanel;
 import com.ufgov.zc.common.budget.model.VwBudgetGp;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
 import com.ufgov.zc.common.zc.foreignentity.IForeignEntityHandler;
+import com.ufgov.zc.common.zc.model.ZcDingdian;
+import com.ufgov.zc.common.zc.model.ZcDingdianBi;
 import com.ufgov.zc.common.zc.model.ZcPProMake;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
 import com.ufgov.zc.common.zc.model.ZcQb;
@@ -48,15 +50,15 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
   }
 
   public boolean beforeSelect(ElementConditionDto dto) {
-    List bi = null;
-    Object o = listCursor.getCurrentObject();
+    List biLst = null;
+    Object bill = listCursor.getCurrentObject();
     dto.setOrgCode(null);
 
-    if (o instanceof ZcPProMake) {
-      bi = ((ZcPProMake) o).getBiList();
-      if (bi != null) {
-        for (int i = 0; i < bi.size(); i++) {
-          ZcPProMitemBi mb = (ZcPProMitemBi) bi.get(i);
+    if (bill instanceof ZcPProMake) {
+      biLst = ((ZcPProMake) bill).getBiList();
+      if (biLst != null) {
+        for (int i = 0; i < biLst.size(); i++) {
+          ZcPProMitemBi mb = (ZcPProMitemBi) biLst.get(i);
           if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
             dto.setOrgCode(mb.getOrgCode());
             return true;
@@ -64,11 +66,11 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
         }
       }
 
-    }else if (o instanceof ZcSupplementPProMake) {//追加资金
-      bi = ((ZcSupplementPProMake) o).getSuppleMentBiList();
-      if (bi != null) {
-        for (int i = 0; i < bi.size(); i++) {
-          ZcPProMitemBi mb = (ZcPProMitemBi) bi.get(i);
+    }else if (bill instanceof ZcSupplementPProMake) {//追加资金
+      biLst = ((ZcSupplementPProMake) bill).getSuppleMentBiList();
+      if (biLst != null) {
+        for (int i = 0; i < biLst.size(); i++) {
+          ZcPProMitemBi mb = (ZcPProMitemBi) biLst.get(i);
           if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
             dto.setOrgCode(mb.getOrgCode());
             return true;
@@ -76,22 +78,33 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
         }
       }
 
-    } else if (o instanceof ZcXmcgHt) {
-      bi = ((ZcXmcgHt) o).getBiList();
-      if (bi != null) {
-        for (int i = 0; i < bi.size(); i++) {
-          ZcXmcgHtBi mb = (ZcXmcgHtBi) bi.get(i);
+    } else if (bill instanceof ZcXmcgHt) {
+      biLst = ((ZcXmcgHt) bill).getBiList();
+      if (biLst != null) {
+        for (int i = 0; i < biLst.size(); i++) {
+          ZcXmcgHtBi mb = (ZcXmcgHtBi) biLst.get(i);
           if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
             dto.setOrgCode(mb.getOrgCode());
             return true;
           }
         }
       }
-    } else if (o instanceof ZcQx) {
-      bi = ((ZcQx) o).getBiList();
-      if (bi != null) {
-        for (int i = 0; i < bi.size(); i++) {
-          ZcQxBi mb = (ZcQxBi) bi.get(i);
+    } else if (bill instanceof ZcQx) {
+      biLst = ((ZcQx) bill).getBiList();
+      if (biLst != null) {
+        for (int i = 0; i < biLst.size(); i++) {
+          ZcQxBi mb = (ZcQxBi) biLst.get(i);
+          if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
+            dto.setOrgCode(mb.getOrgCode());
+            return true;
+          }
+        }
+      }
+    } else if (bill instanceof ZcDingdian) {
+      biLst = ((ZcDingdian) bill).getBiList();
+      if (biLst != null) {
+        for (int i = 0; i < biLst.size(); i++) {
+          ZcDingdianBi mb = (ZcDingdianBi) biLst.get(i);
           if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
             dto.setOrgCode(mb.getOrgCode());
             return true;
@@ -650,6 +663,95 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
         }
 
         editPanel.setEditingObject(qb);
+      } else if (obj instanceof ZcDingdian) {
+
+        ZcDingdian dingdian = (ZcDingdian) obj;
+        ZcDingdianBi bi = (ZcDingdianBi) dingdian.getBiList().get(k2);
+
+        VwBudgetGp gp = (VwBudgetGp) selectedDatas.get(0);
+        String sumId = "";
+        if (bi.getZcBiNo() != null) {
+          sumId = bi.getZcBiNo();
+        }
+
+        bi.setZcBiNo(gp.getSumId() + "");
+        bi.setZcBiDoSum(gp.getCanuseMoney());
+        bi.setZcBiSum(gp.getBudgetMoney());
+        // 预算单位
+        if (gp.getEnCode() != null) {
+          bi.setCoCode(gp.getEnCode());
+          bi.setCoName(gp.getEnName());
+        }
+        // 资金性质
+        if (gp.getMkCode() != null) {
+          bi.setFundCode(gp.getMkId());
+          bi.setFundName(gp.getMkName());
+        }
+        // 功能分类
+        if (gp.getBsCode() != null) {
+          bi.setbAccCode(gp.getBsCode());
+          bi.setbAccName(gp.getBsCode()+gp.getBsName());
+        }
+        // 经济分类
+        if (gp.getBisCode() != null) {
+          bi.setOutlayCode(gp.getBsiId());
+          bi.setOutlayName(gp.getBsiCode()+gp.getBsiName());
+        }
+        // 项目类别
+        if (gp.getBiCode() != null) {
+          bi.setProjectTypeCode(gp.getBiCode());
+          bi.setProjectTypeName(gp.getBiName());
+        }
+        // 付款方式
+        if (gp.getPkCode() != null) {
+          bi.setPaytypeCode(gp.getPkCode());
+          bi.setPaytypeName(gp.getPkName());
+        }
+        // 指标来源
+        if (gp.getBlCode() != null) {
+          bi.setOriginCode(gp.getBlCode());
+          bi.setOriginName(gp.getBlName());
+        }
+        // 业务处室
+        if (gp.getMbId() != null) {
+          bi.setOrgCode(gp.getMbId());
+          bi.setOrgName(gp.getMbName());
+        }
+        // 年度
+        bi.setNd(gp.getSetYear());
+        // 文号
+        if (gp.getFileCode() != null) {
+          bi.setSenddocCode(gp.getFileCode());
+          bi.setSenddocName(gp.getFileName());
+        }
+
+        // 指标流向
+        if (gp.getBtCode() != null) {
+          bi.setBiTargetCode(gp.getBtCode());
+        }
+        // 预算项目
+        if (gp.getBisCode() != null) {
+          bi.setProjectCode(gp.getBisCode());
+          bi.setProjectName(gp.getBisName());
+        }
+        //是否监督使用
+        bi.setBtName(gp.getBtName());
+        //是否政府采购
+        bi.setGbName(gp.getGbName());
+        
+        bi.setZcZjType(ZcQxBi.TYPE_CZYS);
+
+        if (getDto.getZcText3() != null && !"".equals(getDto.getZcText3())) {
+          getDto.setZcText3(getDto.getZcText3().replaceAll(",'" + sumId + "'", "").replaceAll("'" + sumId + "',", "")
+            .replaceAll("'" + sumId + "'", ""));
+        }
+        if (getDto.getZcText3() == null || "".equals(getDto.getZcText3())) {
+          getDto.setZcText3("'" + gp.getSumId() + "'");
+        } else {
+          getDto.setZcText3(getDto.getZcText3() + ",'" + gp.getSumId() + "'");
+        }
+
+        editPanel.setEditingObject(dingdian);
       }
     }
 
