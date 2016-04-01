@@ -173,8 +173,8 @@
   where cata.ZC_DIYU_DAIMA=ctg.zc_diyu_daima(+)
     and cata.zc_catalogue_code_par(+)=zc.zc_catalogue_code
     and zc.ZC_YEAR=cata.zc_year
- 
- 
+    and cata.zc_year=#nd#
+ <!-- 
  union all
  
   select cata.ZC_CATALOGUE_CODE,
@@ -203,7 +203,9 @@
        cata.ZC_JJ_PRICE_QUOTA
   from ZC_B_CATALOGUE cata,zc_diyu_ctg ctg
   where cata.ZC_DIYU_DAIMA=ctg.zc_diyu_daima(+)
-    and cata.zc_catalogue_code_par is null) catalogue
+    and cata.zc_catalogue_code_par is null
+     -->
+    ) catalogue
    
  order by catalogue.ZC_YEAR desc, catalogue.ZC_CATALOGUE_CODE
  
@@ -260,4 +262,14 @@
 			</isNotNull>
   		</select>
 		
+		<select id="getXyCatalogue" parameterClass="elementCondition" resultMap="ZcBCatalogueResult">
+		      select b.*
+		    from zc_b_catalogue b,
+		         (select distinct m.zc_catalogue_code, m.zc_year
+		            from zc_b_merchandise m
+		           where m.zc_mer_status = 'exec') mb
+		   where b.zc_year = mb.zc_year
+		     and b.zc_catalogue_code = mb.zc_catalogue_code
+		   order by b.zc_catalogue_code, b.zc_year
+  		</select>
 </sqlMap>

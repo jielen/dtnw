@@ -2111,4 +2111,23 @@
 		scope="singleton">
 		<property name="sqlMapClient" ref="sqlMapClient" />
 	</bean>
+	
+	<bean id="dingDianService" class="com.ufgov.zc.server.zc.service.impl.ZcDingDianService"
+		scope="singleton">
+		<property name="baseDao" ref="zcBaseDao"></property>
+		<property name="workflowDao" ref="workflowDao"></property>
+		<property name="ddDao" ref="ddDao"></property>
+		<property name="ddBiDao" ref="ddBiDao"></property>
+		<property name="ddItemDao" ref="ddItemDao"></property>
+		<property name="wfEngineAdapter" ref="wfEngineAdapter" />
+	</bean>	
+	<bean id="ddDao" class="com.ufgov.zc.server.zc.dao.ibatis.ZcDingdianMapperImp"		scope="singleton">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>	
+	<bean id="ddBiDao" class="com.ufgov.zc.server.zc.dao.ibatis.ZcDingdianBiMapperImp"		scope="singleton">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>	
+	<bean id="ddItemDao" class="com.ufgov.zc.server.zc.dao.ibatis.ZcDingdianItemMapperImp"		scope="singleton">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
 </beans>

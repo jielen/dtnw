@@ -253,15 +253,13 @@
 		ZC_ZCGZ_STD,
 		ZC_IS_ASSERT
 		from ZC_B_CATALOGUE
-		WHERE (ZC_YEAR =
-		#zcText0:VARCHAR#)
+		WHERE (ZC_YEAR =#zcText0#)
 		AND
 		ZC_CATALOGUE_CODE IN(
 		SELECT distinct
 		ZE.ZC_CATALOGUE_CODE FROM
 		ZC_B_MERCHANDISE ZE WHERE
-		ZE.ZC_YEAR=#zcText0:VARCHAR#
-		)
+		ZE.ZC_YEAR=#zcText0#		)
 		order by
 		ZC_CATALOGUE_CODE
 	</select>
@@ -500,6 +498,39 @@
 				pj.attn=#zcText0#
 				)
 			</isNotNull>
+			union all
+			select m.co_code CO_CODE,
+		       m.zc_make_linkman lxr,
+		       s.ZC_SU_CODE,
+		       m.zc_make_code ZC_ZB_CODE,
+		       m.zc_make_name ZC_ZB_NAME,
+		       s.ZC_SU_NAME,
+		       m.zc_make_code ZC_MAKE_CODE,
+		       m.zc_make_name ZC_MAKE_NAME,
+		       m.zc_money_bi_sum ZC_MONEY_BI_SUM,
+		       m.zc_make_code ZC_BID_CODE,
+		       m.zc_make_name ZC_BID_CONTENT,
+		       m.nd ND,
+		       m.zc_money_bi_sum as pack_budget,
+		       0 as ZC_HT_NUM,
+		       '' ZC_PIFU_CGFS,
+		       'G01' ZC_CG_LEIXING,
+		       m.zc_make_code as proj_code,
+		       m.zc_make_name as proj_name
+		  from zc_p_pro_make m,
+		       (select distinct mi.zc_su_code,mi.zc_make_code
+		          from zc_p_pro_mitem mi
+		         where mi.zc_is_su_jin_jia = 'Y'
+		           and mi.zc_is_cheng_jiao = '2') su,
+		       zc_b_supplier s 
+		       where m.zc_make_code=su.zc_make_code
+		       and su.zc_su_code=s.zc_su_code
+       		and m.zc_make_status='jingjiaycj'
+       		and m.zc_make_code not in (select h.zc_make_code from zc_xmcg_ht h)
+			and m.nd=#nd#
+			<isNotNull prepend="and" property="userId">				 
+				s.zc_su_code=#userId#  
+			</isNotNull> 
 	</select>
 
 

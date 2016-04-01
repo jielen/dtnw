@@ -267,7 +267,7 @@ public class ZcEbCatalogueEditPanel extends AbstractMainSubEditPanel {
     AsValFieldEditor zcCgLeixing = new AsValFieldEditor("采购分类", "zcCatalogueType", "ZC_VS_CG_TYPE");
     editorList.add(zcCgLeixing);
 
-    AsValFieldEditor zcIsVital = new AsValFieldEditor("是否重要品目", "zcIsVital", "ZC_VS_VITAL");
+    AsValFieldEditor zcIsVital = new AsValFieldEditor("是否重要品目", "zcIsVital", "VS_Y/N");
     editorList.add(zcIsVital);
 
     AsValFieldEditor zcCatalogueType = new AsValFieldEditor("品目类型", "zcPinmuCtlg", "ZC_VS_PIN_TYPE");
@@ -300,12 +300,11 @@ public class ZcEbCatalogueEditPanel extends AbstractMainSubEditPanel {
     // "zcIsAssert", "ZC_VS_ASSERT");
     // editorList.add(zcIsAssert);
 
-    AsValFieldEditor zcIsUsed = new AsValFieldEditor("是否使用 ", "zcIsUsed", "ZC_VS_IS_USED");
+    AsValFieldEditor zcIsUsed = new AsValFieldEditor("是否使用 ", "zcIsUsed", "VS_Y/N");
     editorList.add(zcIsUsed);
 
-    // AsValFieldEditor zcIsdianZitouBiao = new AsValFieldEditor("是否纳入电子竞价",
-    // "zcIsdianZitouBiao", "ZC_VS_TB");
-    // editorList.add(zcIsdianZitouBiao);
+     AsValFieldEditor zcIsdianZitouBiao = new AsValFieldEditor("是否协议供货","zcIsdianZitouBiao", "VS_Y/N");
+     editorList.add(zcIsdianZitouBiao);
     //
     // MoneyFieldEditor jjPpNum = new MoneyFieldEditor("竞价品牌数量最低要求 ",
     // "zcJjPpNum");

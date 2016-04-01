@@ -1,0 +1,1282 @@
+﻿1、<html>采购资金可以使用：<strong>财政资金</strong>和<strong>自筹资金</strong>。<br>1.<strong>财政资金</strong>指财政预算指标，使用财政资金时，需要在列<font color=red><strong>预算指标</strong></font>中选择单位预算指标.<br>2.<strong>自筹资金</strong>指采购单位自行准备的资金，不需要通过财政国库支付，直接在<font color=red><strong>本次采购使用金额(元)</strong></font>填写金额即可.</html>
+
+88992009
+2、
+主管科室审核
+采购科审核
+采购中心审核
+是否汽车采购
+3、
+编号：159001
+名称：镇江市丹徒区政府采购中心 
+地址：丹徒区新区爱民路156号财政大楼2楼209室 
+邮编 212100 
+电话 0511－88992070
+网址 www.dtzfcg.gov.cn
+
+113001 镇江市丹徒区人口和计划生育委员会 11300101
+
+4、
+ZC_P_PRO_MITEM_BI.FUND_CODE  资金性质,值集：ZC_VS_FUND_NAME,
+11	财政拨款
+12	政府性基金
+14	事业收入
+15	基建资金
+16	国有资本经营
+9	其他资金
+
+5、
+C_P_PRO_MITEM_BI.ORIGIN_CODE 指标来源,值集：ZC_VS_ORIGIN_NAME ,
+01	年初预算
+02	中央专项
+03	上年结转
+05	超收安排
+09	中央补助
+12	执行中追加数
+99	其他
+
+6、
+C_P_PRO_MITEM_BI.PAYTYPE_CODE 支付方式, 值集：ZC_VS_PAYTYPE_NAME
+112	政府采购支出
+113	基建拨款支出
+119	其他
+91	实拨
+A	自行支付
+
+7、
+zcPProMitemBiDao.getMaxVouId(vouId);好像是获取最大的id号，但吉林脚本是：
+
+	<select id="getMaxVouId" parameterClass="string" resultClass="string">
+	select max(ZC_USE_BI_ID) from (select ZC_USE_BI_ID from ZC_P_PRO_MITEM_BI where ZC_USE_BI_ID like #value#||'____'
+	union select ZC_USE_BI_ID from zc_xmcg_ht_bi where ZC_USE_BI_ID like #value#||'____'
+	union select VOU_ID from gl_journal where VOU_ID like #value# || '____') t
+	</select>
+	多了gl_journal表，暂时屏蔽掉，后续联调指标借口时再处理
+
+8、
+	创建临时视图VW_GP_BUDGET，用于ZC_INTERFACE_DATA_FOR_F3.xml中涉及的sql语句
+	create or replace view VW_GP_BUDGET as 
+'' SUM_ID,
+0  ZC_BI_DO_SUM,
+'' MK_CODE,
+'' MK_NAME,
+'' BL_CODE,
+'' BL_NAME,
+'' PK_CODE,
+'' PK_NAME,
+'' FILE_CODE,
+'' FILE_NAME
+
+9、
+吉林代码演示环境
+903002 鄂秀丽
+yangp  杨平  采购中心任务受理人
+dongs  董松 yycg
+mayl   马彦林 办公室主任
+wangcm 王春明 中心主任
+liusq 刘述群 开标经办人 
+--http://219.149.217.227:7001/portal
+	dongs
+	yycg
+	
+http://219.149.217.227:7001/portal/userLogin.jsp
+	
+10、
+**TRIGGER_ZC_P_PRO_MAKE里采购任务受理默认为 仲康成 zhongkc，作为后续生成的批办单的发起人
+
+11、
+**com\ufgov\zc\client\zc\ztb\url.properties里面的路径指明了招标系统服务器地址，目前用的吉林的地址，注意更换
+
+12、
+http://122.139.65.195:7001/UR/IEsetup.html
+
+13、
+**采购中心职位
+CGZX_KY_CG 科员
+CGZX_ZR  主任
+
+**采购中心角色
+职位         角色
+CGZX_KY_CG	CGZX_KY_CG
+CGZX_ZR	    CG_CGZXLD
+CGZX_ZR	    ROLE_PUBLISH_BULLETIN
+
+采购单位职位
+ysdwcg  采购经办 
+ysdwfz	采购负责
+	
+采购单位角色
+职位         角色
+ysdwcg	     YSDWCG
+ysdwfz	     YSDWFZ
+
+业务处室职位
+YWCS_CZ	科长	
+YWCS_ZGY	专管员	
+
+业务处室角色
+职位      角色
+YWCS_CZ	  CZ	
+YWCS_ZGY	CSZGY	
+
+资产科 职位
+CARD_ZGY 资产科专管员
+
+资产科 角色
+职位			角色
+CARD_ZGY CARD_ZGY
+
+采购处职位
+CZ	科长	
+ZGY	专管员	
+
+采购处角色
+职位      角色
+CZ	      CG_CGCLD
+CZ	      zjkgl
+ZGY	      CSZGY
+
+供应商职位
+GYS_HUIYUAN	会员供应商
+GYS_NORMAL	供应商
+GYS_XIEYI	协议供应商  
+GYS_QICHE_WEIXIU	汽车维修供应商  
+GYS_QICHE_BAOXIAN	汽车保险供应商           
+
+供应商角色
+职位         角色
+GYS_XIEYI	   gys_normal	  普通供应商
+GYS_XIEYI	   gys_xieyi	  协议定点供应商
+
+GYS_NORMAL	 gys_normal	  普通供应商
+
+GYS_HUIYUAN	 gys_normal	  普通供应商
+GYS_HUIYUAN	 gys_huiyuan	会员供应商
+
+
+GYS_QICHE_WEIXIU	 gys_qiche_weixiu	汽车维修供应商
+GYS_QICHE_WEIXIU	 gys_normal	普通供应商
+
+GYS_QICHE_BAOXIAN	 gys_qiche_baoxian	汽车保险供应商
+GYS_QICHE_BAOXIAN	 gys_normal	普通供应商
+
+供应商 处室 102 单位 000
+
+
+专家职位
+EXPERT_EVAL	        评标专家
+EXPERT_EVAL_LEADER	评标专家组长
+EXPERT_LUNZHENG	    论证专家
+
+专家角色
+职位                 角色
+EXPERT_EVAL	        expert_eval	        专家评审
+EXPERT_EVAL_LEADER	expert_eval_leader	专家评审组长
+EXPERT_LUNZHENG	    expert_lunzheng	    专家论证
+
+专家 处室 101 单位 000
+
+用户组
+zhuanjia	    专家
+caigou	      采购中心
+admin	        系统管理组(系统)
+sa	          系统管理组
+yusuandanwei	预算单位
+supplier	     供应商
+caizhengju	   财政局
+
+测试供应商
+gys_1 gys_2 gys_3
+
+汽车维修费用需要监理审核
+	在财政局下建立监理组(103),并在其下建立监理职位、角色、用户。
+	职位：P_QXJL
+	角色：R_QXJL
+	用户: qxjl
+
+结算中心给所负责的预算单位代编代报采购：
+角色
+代编编制角色：R_ZC_DAIBIAN_CG
+代编审批角色：R_ZC_DAIBIAN_FZ
+职位：
+代编编制职位：P_ZC_DAIBIAN_CG
+代编审批职位：P_ZC_DAIBIAN_FZ
+
+finereport 报表帮助服务账号
+simon
+
+14、
+**采购计划的工作流里有直接指定了执行者的，后期需要改成sql查询的形式
+
+15、
+工作流
+AS_WF_ACTIVITY_COMPO  指明节点上挂的部件
+AS_WF_ACTIVITY_FIELD  指明具体审批节点上可编辑的字段 其中 read_write 为2 是可写
+AS_WF_FUNC_ACTIVITY   指明审批人可用的按钮
+
+16、
+***序列 ZC_SEQ_DATA_EXCHANGE_REDO，ZC_SEQ_DATA_EXCHANGE_LOG  用于数据导入导出时产生主键，生产环境中的内外网要重置，并且扩大id的级差，防止冲突
+
+17、
+增加一个单位和对应用户需要涉及的表：
+--ma_company
+select *  from ma_company c where c.co_code in ('109001') for update;
+   --as_org                  
+select * from as_org o where o.co_code in ('109001') for update;
+--as_org_position
+select * from as_org_position og where og.co_code in ('109001') for update;
+
+select * from as_position p ;
+
+select * from as_posi_role;
+
+select * from as_emp e where e.emp_code in ('10900101') for update;
+   --as_emp_position                  
+select * from as_emp_position ep where ep.co_code in ('109001') for update;
+
+select * from as_user u where u.user_id in ('10900101') for update;
+                     
+select * from as_user_group ug where ug.user_id in ('10900101') for update;
+
+其中年终结转涉及的表：ma_company，as_org，as_org_position，as_emp_position
+
+18、
+**终审采购计划后，自动插入采购任务和待审的批办单
+在TRIGGER_ZC_P_PRO_MAKE触发器中，将采购任务受理人默认设置为zhongkc，如果生产环境换人，这个地方要进行调整
+
+----------2013-07-23----------
+19、
+**内外网的ZC_SEQ_XUNJIA_BAOJIA、ZC_SEQ_XUNJIA_BAOJIA_DE值差距扩大到百万级
+
+20、
+**供应商进行询价报价时，提交报价时进行报价检查，如果只有一个包，自动将分包里的是否报价设置为是，多个分包的话，检查是否有一个分包选择为报价，并提示用户
+
+21、
+ZC_OPTON_XUNJIA_BAOJIA_HELP_MSG
+<html><strong>参与报价</strong>：先选择询价项目，然后选择分包中的一个分包，在<font color=red><strong>是否报价</strong></font>列的下拉框中选择为<font color=red><strong>报价</strong></font>，并填充下面询价单表格的报价信息，然后点击<strong>提交</strong>按钮，进行报价。
+如果参与多个分包的报价，<strong>每个分包</strong>都要这么选择和填充，填充完后，统一提交。
+<br><strong>撤销报价</strong>：先点击<strong>修改</strong>按钮，然后选择想撤销报价的分包，在是<font color=red><strong>是否报价</strong></font>列的下拉框中选择为<font color=red><strong>撤回报价</strong></font>，点击<strong>提交</strong>按钮，撤销报价。
+<br><strong>注意</strong>:
+<br>&nbsp &nbsp 1、一个询价单如果有<strong>多个分包</strong>，默认可以选择参与一个或多个分包的报价，招标公告上单独说明的除外；
+<br>&nbsp &nbsp 2、过了<strong>投标截止时间</strong>，不能提交和撤销报价</html>
+
+----------2013-07-24----------
+22、
+com.ufgov.zc.server.zc.service.impl.ZcEbRfqService.createHt(ZcXmcgHt ht, RequestMeta requestMeta)
+这个方法里实现了启动一个工作流，由草稿状态，提交到下一岗
+
+23、
+**录入支付申请时，供应商手工录入银行账号和开户行，保存时，与供应商注册时填写的进行验证，如果不一致，不能保存，提示供应商，如果注册时的银行账号错误，要供应商到采购中心来修改
+
+**录入车辆支付的申请时，有采购单位录入供应商的银行账号等信息，并且供应商不在供应商基础表里
+
+**单位指标的经济分类只到类，支付申请的指标经济分类要到项，因此在发起支付申请时，要由单位指定项级
+
+
+----------2013-07-25----------
+
+24、
+自动编号涉及的表：
+select * from AS_NO_RULE    where COMPO_ID = 'ZC_EB_PROJ' ;
+      
+SELECT * FROM AS_NUM_TOOL T WHERE T.NUM_TOOL_ID='ZC_EB_PROJ_GEN';
+
+SELECT * FROM AS_NUM_TOOL_NO N WHERE N.NUM_TOOL_ID='ZC_EB_PROJ_GEN';
+
+select * from as_no_rule_seg r where r.compo_id='ZC_EB_PROJ';
+
+编号存放在AS_NUM_TOOL_NO中NUM_NO中，年底基础初始化时，可置为0，那么新单将从1开始
+编号中如果需要加上年度，则as_no_rule_seg中的SEQ_FIELD存放ND
+
+25、
+招标文件里自带的配置信息：在视图V_ZC_ZTB_PROJECT里
+外网服务器地址：as_option_id =OPT_ZC_EB_OUT_WEB_SERVER_IP_ADDRESS
+投标文件版本信息:as_option_id =OPT_ZC_EB_ZTB_FILE_ASKFOR_SOFTINFO
+外网投标文件上传路径:OPT_ZC_EB_OUT_WEB_SERVER_TB_PATH  (注意，数据库里为空，估计是通过加速上传，不直接使用上传通道)
+是否加密要求：as_option_id =OPT_ZC_EB_ENCODE_DEMAND (注意，值为：ISMUSTCODED:N;ISMASTERMUSTCODED:N;ISPROVIDERMUSTCODED:N; 估计是加密使用，但目前未使用加密)
+
+26、
+用投标软件编制器打开招标文件是，右边显示几个也签，说明招投标流程，其图形存在于com\ufgov\zc\client\zc\ztb\img，tbworkflow.png和zbworkflow.png，在制作招标文件时会压入招标文件里，如果要替换，可用修改这两个图片
+
+
+
+----------2013-07-25----------
+27、
+zcebproj.xml文件说明
+
+getZcEbPackReqListByProjCode 根据项目编号获取分包需求明细
+
+----------2013-07-27----------
+28、
+根据项目和分包获取评标方法
+
+com.ufgov.zc.client.zc.project.integration_dt.ZcEbProjectEditFrame_dt.doCreateNewTab()
+
+getZcEbFormulaByPackCode  获取评标主表
+SELECT * FROM ZC_EB_FORMULA    WHERE    1=1    AND   PROJ_CODE = #projCode:VARCHAR# AND PACK_CODE =#packCode:VARCHAR#
+
+getZcEbFormulaItemList 获取评分项，SC是技术性评分，CP是复合性评分 本查询方法使用了查询树的方法，说明文章见http://myiteyeverywell-163-com.iteye.com/blog/1471752
+SELECT F1.ITEM_CODE,       F1.NAME,       F1.INDX,       F1.WEIGHT,       F1.IS_REQUIRED_FIELD,       F1.IS_ADD_SCORE,
+       F1.CREATOR,       F1.MAX_ADD_SCORE,       F1.MAX_MINUS_SCORE,       F1.CREATE_TIME,       F1.FORMULA,       F1.ITEM_TYPE,
+       F1.PARENT_ITEM_CODE,       F2.NAME AS PARENT_ITEM_NAME,       F1.FORMULA_CODE,       F1.DESCRIPTION,       F1.STANDARD_SCORE,
+       F1.BASE_SCORE,       F1.COMPLIANCE_VALUE,       F1.LEAST_SCORE,       F1.IS_PRICE_TARGET,       F1.REMARK,
+       F1.FORMULA_EXPRESSION,       F1.SCORE_SUM_WAY,       F1.RESPONSE_CODE
+  FROM ZC_EB_FORMULA_ITEM F1, ZC_EB_FORMULA_ITEM F2
+ WHERE F1.PARENT_ITEM_CODE = F2.ITEM_CODE(+)
+   AND F1.FORMULA_CODE = #formulaCode:VARCHAR# --'ZBJ_2013_07_000009'
+ START WITH F1.parent_item_code =#itemCode:VARCHAR# -- 'SC' 或 'CP'
+CONNECT BY PRIOR F1.item_code = F1.parent_item_code
+
+
+29、com.ufgov.zc.client.zc.formula.FormulaSetMainPanel 指标集设置主面板。左边包含指标集一级虚拟节点树，右边为详细设置面板。
+
+
+
+----------2013-07-28----------
+30、
+**评表方法设置
+1）在各个标段生成复合性评标word文件
+2）评标方法的编辑界面，保存按钮的状态设定，草稿和对应的人才可以设定;
+3)评标方法的编辑界面，分包选择隐藏，评标方法类型可选；
+4）评标参数设置默认值，基准价：是；投标报价：否。
+
+
+31、
+**给制定评标计划的人指定一个专门的角色，这样在审批招标文件时，可用根据角色判定，当前人是否可以编辑评标计划
+
+
+32、**立项分包界面没有看见单位信息
+
+33、**发布公告时，将项目、分包、计划等信息同步到外网，便于供应商进行报名，但这里有个问题，如果依赖于公告，那么在公共过程中，发生了变化，需要重新同步项目、分包、计划等信息，怎么处理？最好有个单独的同步项目信息的功能点。
+
+
+34、**制作招标文件时，将ztb文件重命名一份，存储到服务器上，默认的文件id时ztb文件id+"_rar"，方便供应商下载后解压，用于线下投标、评标的模式
+35、**招标文件支持线上和线下的模式，要在制作招标文件时加一个选项，是线上，还是线下
+
+
+----------2013-07-30----------
+36.
+标书编织器工具启动类
+com.ufgov.zc.client.zc.ztb.TBFrame
+标书上传工具启动类
+com.ufgov.zc.client.zc.ztb.TTBFrame
+
+37.询价招标公告模版标签
+主表数据：
+projCode
+projName
+bulletinDate
+
+分包循环数据：
+packName
+coName
+
+分包需求内容循环数据
+reqs row
+
+row_index+1
+row.name
+row.desc
+row.num
+
+
+模版人家中重复的标记符号
+repeatstart
+repeatend
+
+----------2013-07-31----------
+37.word文件加密的密码
+zfcgzx123
+
+38.
+插入询价招标公告.xml
+insert into as_file (FILE_ID, FILE_CONTENT, FILE_NAME, FILE_DESC, FILE_CREATOR, CONTENT_TYPE, FILE_UPLOADTIME, SUFFIX_NAME, FULL_NAME, FILE_PATH)
+values ('bulletin_zhaobiao_xunjia', '<BLOB>', '询价招标公告.xml', 'application/msword', '', '', null, '', '', '');
+
+
+39
+项目、分包、需求之间的关系
+项目-分包：projcode
+分包-任务单： pack.entrust_code=entrust.sn
+分包-分包明细关联表(ZC_EB_PACK_REQ)： pack.pack_code=packreq.pack_code 
+分包明细关联表-分包明细(ZC_EB_PACK_REQ_DETAIL) DETAIL_CODE=DETAIL_CODE
+
+创建分包时，选择任务单（采购计划）
+ZcEbEntrust.getZcEbEntrustWithPiBan2
+条件：
+    packDto.setExecutor(requestMeta.getSvUserID());
+    packDto.setCoCode(requestMeta.getSvCoCode());
+    
+SELECT E.SN,
+       E.ZC_MAKE_CODE,
+       E.ZC_MAKE_NAME,
+       E.CO_CODE,
+       m.co_name,
+       E.ND,
+       d.SUPERINTENDENT_NAME ZC_MAKE_LINKMAN,
+       E.ZC_MAKE_TEL,
+       E.STATUS,
+       E.ZC_INPUT_CODE,
+       E.ZC_INPUT_DATE,
+       vm.PROJ_SUM - nvl(vp.usedBudget, 0) as ZC_MAKE_SUM,
+       E.ZC_MONEY_BI_SUM ZC_MONEY_BI_SUM,
+       E.REMARK,
+       E.PROCESS_INST_ID,
+       E.AGENCY,
+       e.zc_pifu_cgfs,
+       E.AGENCY_NAME,
+       E.ZC_DIYU_DAIMA,
+       E.ZC_WEITO_DATE,
+       E.ZC_IS_NOTARY,
+       E.ZC_IS_IMP,
+       E.ZC_IMP_FILE,
+       E.ZC_IMP_FILE_BLOBID,
+       E.UNTREAD_REASON,
+       E.EXECUTE_DATE,
+       E.LEADER_ID,
+       E.LEADER_TEL,
+       E.ORG_CODE
+  from ZC_EB_ENTRUST E, ZC_EB_DUTY_AUDIT_SHEET D,ma_company m, v_zc_p_pro_make vm
+  left join (select vp.zc_make_code, sum(vp.pack_budget) as usedBudget
+               from v_zc_normal_pack vp
+              group by vp.zc_make_code) vp
+    on (vm.PROJ_CODE = vp.ZC_MAKE_CODE)
+ where e.sn = d.sn
+   and e.zc_make_code = vm.PROJ_CODE
+   and not exists
+ (select vv.zc_make_code, vv.usedBudget
+          from (select vp.zc_make_code, sum(vp.pack_budget) as usedBudget
+                  from v_zc_normal_pack vp
+                 group by vp.zc_make_code) vv
+         where vm.PROJ_CODE = vv.zc_make_code
+           and vm.PROJ_SUM = vv.usedBudget)
+   and d.status = 'exec'
+   and e.nd=m.nd
+   and e.co_code=m.co_code
+		<isNotNull prepend="and" property="executor">
+
+			d.Superintendent=#executor#
+
+		</isNotNull>
+
+		<isNotNull prepend="and" property="coCode">
+
+			e.AGENCY=#coCode#
+
+		</isNotNull>
+
+		<include refid="BusiNumLim.BusiNumLimStr" />
+
+构建语句：
+
+pack：构建的分包；entrust：选择的任务单对象
+
+      pack.setEntrustCode(entrust.getSn());
+      pack.getEntrust().setZcMakeCode(entrust.getZcMakeCode());
+      pack.getEntrust().setZcMakeName(entrust.getZcMakeName());
+      pack.setPurType(entrust.getZcPifuCgfs());
+      pack.setPurContent(entrust.getZcMakeName());
+      //这里设置的是当前分包允许分配金额；
+      pack.setPackBudget(getSurPlusSum(entrust));
+      pack.setPackDesc(entrust.getZcMakeName());
+      pack.getEntrust().setCoCode(entrust.getCoCode());
+      pack.getEntrust().setCoName(entrust.getCoName());
+      pack.getEntrust().setNd(entrust.getNd());
+      pack.getEntrust().setZcMoneyBiSum(entrust.getZcMoneyBiSum());
+      pack.getEntrust().setZcMakeLinkman(entrust.getZcMakeLinkman());
+      pack.getEntrust().setZcMakeTel(entrust.getZcMakeTel());
+      pack.getEntrust().setZcIsImp(entrust.getZcIsImp());
+      pack.getEntrust().setZcMakeSum(entrust.getZcMakeSum());
+      
+      	
+	
+创建分包后，给分包选择需求明细
+ZcEbRequirement.getZcEbRequirementDetailBySnWithFN
+条件：dto.setZcText0(pack.getEntrustCode()); 根据分包的任务单号选择需求明细，和需求主表没有建立关联
+select * from ZC_EB_REQUIREMENT_DETAIL where SN=#zcText0#
+		<isNotNull prepend="and" property="zcText1">
+			TYPE = #zcText1:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="and" property="zcText2">
+			REQ_CODE = #zcText2:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="and" property="zcText3">
+			DETAIL_CODE not in ($zcText3$)
+		</isNotNull>
+		order by REQ_CODE,DETAIL_CODE
+
+构建语句：
+新增一个分包明细：
+
+初始化值：
+          ZcEbPack pack = (ZcEbPack) tableModel.getBean(packTable.convertRowIndexToModel(packTable.getSelectedRows()[0]));
+          packReq.setPackCode(pack.getPackCode());
+          packReq.getRequirementDetail().setSn(pack.getEntrustCode());
+          packReq.setPackReqCode(Long.parseLong(ZcUtil.getSequenceNextVal(ZcSettingConstants.SEQUENCE_PACK_REQ)));          
+    			packReq.setProjCode((ZcEbProj) this.listCursor.getCurrentObject().getProjCode());
+
+参照后赋值：    			
+packReq：构建的分包明细；requirementDetail，参照选择过来的需求明细
+
+          ZcEbRequirementDetail requirementDetail = (ZcEbRequirementDetail) selectedDatas.get(0);
+          requirementDetail.setDetailCode(System.currentTimeMillis());
+          packReq.setDetailCode(requirementDetail.getDetailCode());//构建zc_eb_req与zc_eb_req_detail的关联关系
+          packReq.getRequirementDetail().setSn(requirementDetail.getSn());
+          packReq.getRequirementDetail().setDetailCode(requirementDetail.getDetailCode());
+          packReq.getRequirementDetail().setName(requirementDetail.getName());
+          packReq.getRequirementDetail().setZcCatalogueCode(requirementDetail.getZcCatalogueCode());
+          packReq.getRequirementDetail().setZcCatalogueName(requirementDetail.getZcCatalogueName());
+          packReq.getRequirementDetail().setArrDate(requirementDetail.getArrDate());
+          packReq.getRequirementDetail().setBaseReq(requirementDetail.getBaseReq());
+          packReq.getRequirementDetail().setItemAttach(requirementDetail.getItemAttach());
+          packReq.getRequirementDetail().setItemAttachBlobid(requirementDetail.getItemAttachBlobid());
+          packReq.getRequirementDetail().setNum(requirementDetail.getNum());
+          packReq.getRequirementDetail().setMerPrice(requirementDetail.getMerPrice());
+          packReq.getRequirementDetail().setItemSum(requirementDetail.getItemSum());
+          packReq.getRequirementDetail().setPayCond(requirementDetail.getPayCond());
+          packReq.getRequirementDetail().setServicePromises(requirementDetail.getServicePromises());
+          packReq.getRequirementDetail().setType(requirementDetail.getType());
+          packReq.getRequirementDetail().setDescription(requirementDetail.getDescription());
+
+保存数据：
+	1、保存标段和分包明细对应关系表
+	
+	
+          for (int j = 0; j < packReqList.size(); j++) {
+
+            ZcEbPackReq packReq = (ZcEbPackReq) packReqList.get(j);
+
+            packReq.setProjCode(proj.getProjCode());
+
+            packReq.setPackCode(pack.getPackCode());
+
+            executor.delete("ZcEbProj.deleteZcEbPackReqByPackReqCode", String.valueOf(packReq.getPackReqCode()));
+
+            executor.insert("ZcEbProj.insertZcEbPackReq", packReq);
+            
+			ZcEbProj.insertZcEbPackReq
+			
+	<insert id="insertZcEbPackReq" parameterClass="ZcEbPackReq">
+
+		insert into
+
+		ZC_EB_PACK_REQ (PACK_REQ_CODE, PACK_CODE, DETAIL_CODE,
+
+		PROJ_CODE)
+
+		values (#packReqCode:DECIMAL#, #packCode:VARCHAR#,
+
+		#detailCode:DECIMAL#,
+
+		#projCode:VARCHAR#)
+
+	</insert>
+	2、保存具体明细
+	
+            ZcEbRequirementDetail requdetail = packReq.getRequirementDetail();
+
+            if (requdetail != null && requdetail.getDetailCode() != null) {
+
+              executor.delete("ZcEbProj.deleteZcEbReqDetailByKey", String.valueOf(requdetail.getDetailCode()));
+
+              executor.insert("ZcEbProj.insertZcEbReqDetail", requdetail);
+
+            }
+            
+		ZcEbProj.insertZcEbReqDetail
+		<insert id="insertZcEbReqDetail" parameterClass="com.ufgov.zc.common.zc.model.ZcEbRequirementDetail">
+
+		insert into
+		ZC_EB_PACK_REQ_DETAIL (DETAIL_CODE, REQ_CODE, SND, SN,
+
+		ZC_YEAR,
+
+		ZC_CATALOGUE_CODE, ZC_CATALOGUE_NAME, NAME, ARR_DATE, BASE_REQ,
+		ITEM_ATTACH,
+
+		ITEM_ATTACH_BLOBID, NUM, ITEM_SUM, MER_PRICE, PAY_COND,
+
+		SERVICE_PROMISES, TYPE, DESCRIPTION)
+
+		values (#detailCode:DECIMAL#,
+
+		#reqCode:VARCHAR#, #snd:VARCHAR#, #sn:VARCHAR#, #zcYear:VARCHAR#,
+
+		#zcCatalogueCode:VARCHAR#, #zcCatalogueName:VARCHAR#, #name:VARCHAR#,
+
+		#arrDate:TIMESTAMP#,
+
+		#baseReq:VARCHAR#, #itemAttach:VARCHAR#,
+		#itemAttachBlobid:VARCHAR#, #num:DECIMAL#,
+
+		#itemSum:DECIMAL#,
+		#merPrice:DECIMAL#, #payCond:VARCHAR#,
+
+		#servicePromises:VARCHAR#,
+
+		#type:VARCHAR#, #description:VARCHAR#)
+
+	</insert>
+
+
+
+40.招标公告发布前的状态值
+OPT_ZC_BULLETIN_ZHAOBIAO_BEFORE_PUBLISH_STATUS 
+当招标公告处于这个值，并且当前审批人的角色含有ROLE_PUBLISH_BULLETIN时，审批的同时，发布公告
+当前丹徒设置的值为3
+
+
+----------2013-08-02----------
+
+41.**供应商的询价报价界面调整，在列表界面双击打开正在招标的询价单，类似其他招标的供应商报名界面处理
+
+
+42.
+询价中标公告参数
+非重复参数
+
+projname
+allconame
+projcode
+opendate
+
+单位重复行变量
+coname
+colinkman
+colinkphone
+中标重复数据对象名称
+dwmsg
+
+
+中标重复行变量
+packcode
+supplier
+sum
+
+中标重复数据对象名称
+pack
+
+----------2013-08-06----------
+
+43.***导出中标通知书时，需要将开标结果(含询价、普通招标)、entrust等相关的表导出到外网，否则供应商无法填制合同；
+填制合同时，涉及以下表：
+selectpage.selectProjectForZxCaiGouHt
+
+zc_eb_proj pj,
+    zc_eb_duty_audit_sheet sh,
+    zc_eb_entrust e,
+    zc_eb_pack p,
+    zc_eb_eval_report v,
+    zc_eb_rfq_pack r,
+    ZC_EB_NOTICE n,
+    zc_xmcg_ht ht,
+    (select * from as_val where valset_id='ZC_VS_PITEM_OPIWAY') av
+
+
+44.
+
+http://hi.baidu.com/whufengchen/item/d56f1ff7bdc55be71b111fb4
+
+
+
+----------2013-08-08----------
+
+----------2013-08-09----------
+45.
+1.采购计划中引用指标时：
+	1.1 选择条件getDto在整个计划编辑过程中的变化：：
+		1.1.1 refreshData()
+			a)采购计划已经存在了：
+				getDto.setZcText3(biNoStrs);//打开已有采购计划界面时，将当前计划的指标的id用'','',''的形式拼接（biNoStrs），放入指标参照条件里，参照时，不显示这些编号的指标；
+				getDto.setZcMakeCode(zcPProMake.getZcMakeCode());//将已有采购计划的编号放入查询指标条件中;
+			b)无论新建还是打开已经存在的采购计划，赋值下面条件
+			  getDto.setNd(requestMeta.getSvNd());
+			  getDto.setZcText2("1");
+			  getDto.setCoCode(zcPProMake.getCoCode() != null ? zcPProMake.getCoCode() : requestMeta.getSvCoCode());
+	  
+	  1.1.2 在handler的beforeSelect(ElementConditionDto dto)中，设置getDto的指标处室  
+	          ZcPProMitemBi mb = (ZcPProMitemBi) bi.get(i);
+	          if (mb.getOrgCode() != null && mb.getOrgCode().length() > 0) {
+	            dto.setOrgCode(mb.getOrgCode());
+	            return true;
+	          }
+  
+	  1.1.3 在资金表的删除按钮中，执行以下操作：在getDto.getZcText3中当前删除指标编号
+			  ZcPProMitemBi bi = (ZcPProMitemBi) ((ZcPProMake) listCursor.getCurrentObject()).getBiList().get(selRows[i]);
+			  if (bi.getZcBiNo() != null && !"".equals(bi.getZcBiNo())) {
+			            getDto.setZcText3(getDto.getZcText3().replaceAll(",'" + bi.getZcBiNo() + "'", "").replaceAll("'" + bi.getZcBiNo() + "',", "")
+			              .replaceAll("'" + bi.getZcBiNo() + "'", ""));
+			  }
+	
+		1.1.4 在handler的afterClear()中，清空当前选中的资金表对应的指标数据，同时在getDto.getZcText3中当前删除指标编号
+		
+		    if (bi.getZcBiNo() != null && !"".equals(bi.getZcBiNo())) {
+		      getDto.setZcText3(getDto.getZcText3().replaceAll(",'" + bi.getZcBiNo() + "'", "").replaceAll("'" + bi.getZcBiNo() + "',", "")
+		        .replaceAll("'" + bi.getZcBiNo() + "'", ""));
+		    }    
+    
+		    bi.setZcBiNo("");
+		    bi.setZcBiDoSum(null);
+		    bi.setZcBiSum(null);
+		    // 预算单位
+		    bi.setCoCode("");
+		    bi.setCoName("");
+		    // 资金性质
+		    bi.setFundCode("A");
+		    bi.setFundName("");
+		    // 功能分类
+		    bi.setbAccCode("");
+		    bi.setbAccName("");
+		    // 项目类别
+		    bi.setProjectTypeCode("");
+		    bi.setProjectTypeName("");
+		    // 付款方式
+		    bi.setPaytypeCode("A");
+		    bi.setPaytypeName("");
+		    // 指标来源
+		    bi.setOriginCode("4");
+		    bi.setOriginName("");
+		    // 年度
+		    bi.setNd("");
+		    // 文号
+		    bi.setSenddocCode("");
+		    bi.setSenddocName("");
+		    // 业务处室
+		    bi.setOrgCode("");
+		    bi.setOrgName("");
+		 
+		1.1.5 在handler的excute方法中，将当前计划的资金表中编辑行的指标编号，从getDto的zcText3的字符串中删除它，方便下次选择，同时，建立一个新的ZcPProMitemBi，
+				
+	      ZcPProMitemBi bi = (ZcPProMitemBi) make.getBiList().get(k2);
+	      if (bi.getZcBiNo() != null) {
+	        sumId = bi.getZcBiNo();
+	      }      
+	      if (getDto.getZcText3() != null && !"".equals(getDto.getZcText3())) {
+	        getDto
+	          .setZcText3(getDto.getZcText3().replaceAll(",'" + sumId + "'", "").replaceAll("'" + sumId + "',", "").replaceAll("'" + sumId + "'", ""));
+	      }
+	      if (getDto.getZcText3() == null || "".equals(getDto.getZcText3())) {
+	        getDto.setZcText3("'" + gp.getSumId() + "'");
+	      } else {
+	        getDto.setZcText3(getDto.getZcText3() + ",'" + gp.getSumId() + "'");
+	      }
+	      
+      // 预算单位
+      if (gp.getEnCode() != null) {
+        bi.setCoCode(gp.getEnCode());
+        bi.setCoName(gp.getEnName());
+      }
+      // 资金性质
+      if (gp.getMkCode() != null) {
+        bi.setFundCode(gp.getMkCode());
+        bi.setFundName(gp.getMkName());
+      }
+      // 功能分类
+      if (gp.getBsCode() != null) {
+        bi.setbAccCode(gp.getBsCode());
+        bi.setbAccName(gp.getBsName());
+      }
+      // 项目类别
+      if (gp.getBiCode() != null) {
+        bi.setProjectTypeCode(gp.getBiCode());
+        bi.setProjectTypeName(gp.getBiName());
+      }
+      // 付款方式
+      if (gp.getPkCode() != null) {
+        bi.setPaytypeCode(gp.getPkCode());
+        bi.setPaytypeName(gp.getPkName());
+      }
+      // 指标来源
+      if (gp.getBlCode() != null) {
+        bi.setOriginCode(gp.getBlCode());
+        bi.setOriginName(gp.getBlName());
+      }
+      // 业务处室
+      if (gp.getMbId() != null) {
+        bi.setOrgCode(gp.getMbId());
+        bi.setOrgName(gp.getMbName());
+      }
+      // 年度
+      bi.setNd(gp.getSetYear() + "");
+      // 文号
+      if (gp.getFileCode() != null) {
+        bi.setSenddocCode(gp.getFileCode());
+        bi.setSenddocName(gp.getFileName());
+      }
+
+      // 指标流向
+      if (gp.getBtCode() != null) {
+        bi.setBiTargetCode(gp.getBtCode());
+      }
+      // 预算项目
+      if (gp.getBisCode() != null) {
+        bi.setProjectCode(gp.getBisCode());
+      }
+	      
+2.保存采购计划时，做以下操作
+
+	2.1构建指标调用的webservice接口需要的参数
+		map = BudgetUtil.getSaveBudget(zcPProMitemBiDao, baseDao, flag, code, biList);
+		2.1.1将当前计划存在后台的资金数据查出来，用于和当前前台传过来的计划带的资金数据进行比较，方便更新指标占用情况，这种情况适用于已经存在的采购计划进行再编辑后的保存
+			ZcPProMitemBiExample bi = new ZcPProMitemBiExample();
+			bi.createCriteria().andZcMakeCodeEqualTo(code);
+			List biListOld = zcPProMitemBiDao.selectByExample(bi);
+		2.1.2将前台传过来指标编号和后台存在的指标编号，去数据库重新查询一下，去一下重，形成一个指标编号列表，涵盖当前采购计划涉及的前台指标数据和后台指标数（后台的只有编辑情况下存在）
+
+	    StringBuffer ids = new StringBuffer("''");
+	    for (int i = 0; i < biList.size(); i++) {
+	      ZcPProMitemBi mbi = (ZcPProMitemBi) biList.get(i);
+	      if (mbi.getZcBiNo() != null && mbi.getZcBiNo().trim().length() > 0) {
+	        ids.append(",'").append(mbi.getZcBiNo()).append("'");
+	      }
+	    }
+	    for (int i = 0; i < biListOld.size(); i++) {
+	      ZcPProMitemBi mbi = (ZcPProMitemBi) biListOld.get(i);
+	      if (mbi.getZcBiNo() != null && mbi.getZcBiNo().trim().length() > 0) {
+	        ids.append(",'").append(mbi.getZcBiNo()).append("'");
+	      }
+	    }
+    	List allBiNoLst = baseDao.query("VwBudgetGp.getExistsBudget", ids.toString());
+    	
+    2.1.3将当前资金数据的每条ZcPProMitemBi设置ZcUseBiId，这个值通过转换zc_make_code，并从数据库检索存在最大编号，然后+1,赋给ZcUseBiId
+    		以下代码在map = BudgetUtil.getSaveBudget(zcPProMitemBiDao, baseDao, flag, code, biList);里（2.1.3----2.1.6）
+    
+	    long vou_id = 0;
+	    String vouId = code.replaceAll("\\D", "");
+	    vouId = zcPProMitemBiDao.getMaxVouId(vouId);//（ZC_P_PRO_MITEM_BI.getMaxVouId:select max(ZC_USE_BI_ID) from (select ZC_USE_BI_ID from ZC_P_PRO_MITEM_BI where ZC_USE_BI_ID like #value#||'____'
+	union select ZC_USE_BI_ID from zc_xmcg_ht_bi where ZC_USE_BI_ID like #value#||'____') t ）
+	    if (vouId != null && !"".equals(vouId)) {
+	      vou_id = Long.parseLong(vouId);
+	    } else {
+	      vou_id = Long.parseLong(code.replaceAll("\\D", "") + "0000");
+	    }
+	    
+	  2.1.4循环当前的资金数据和老的资金数据，构建insert、update、updateOld、delete的数据列表集合	  
+		    List saves = new ArrayList();
+		    List upds = new ArrayList();
+		    List updolds = new ArrayList();
+		    List dels = new ArrayList();
+		    
+	        for (int i = 0; i < biList.size(); i++) {
+		      ZcPProMitemBi biItem = (ZcPProMitemBi) biList.get(i);
+		      if (biItem.getZcBiNo() == null || "".equals(biItem.getZcBiNo().trim())) {//自筹资金
+		        if (biItem.getZcUseBiId() == null || "".equals(biItem.getZcUseBiId().trim())) {
+		          biItem.setZcUseBiId(++vou_id + "");对自筹资金记录（ZcUseBiId为空的）赋值，
+		        }
+		        continue;
+		      }
+		      
+		    //判断当前操作时已有采购计划保存后的编辑更新操作，true:更新操作；false：新增操作
+		      isUpd = false;
+		      
+		      for (int j = biListOld.size() - 1; j >= 0; j--) {
+		        ZcPProMitemBi oldBiItem = (ZcPProMitemBi) biListOld.get(j);
+		        if (biItem.getZcBiNo().equals(oldBiItem.getZcBiNo())) {
+		          // biList.get(i).setZcBiJhuaSum(biList.get(i).getZcBiJhuaSum().subtract(bis.get(j).getZcBiJhuaSum()));
+		          if (biItem.getZcBiJhuaSum().compareTo(oldBiItem.getZcBiJhuaSum()) != 0 && allBiNoLst.contains(biItem.getZcBiNo())) {//同一指标编号，存在金额不一致，需要更新了
+		            upds.add(BudgetUtil.biToMap(biItem));
+		            updolds.add(BudgetUtil.biToMap(oldBiItem));
+		          }
+		          isUpd = true;
+		          biListOld.remove(j);
+		          break;
+		        }
+		      }
+		      if (!isUpd) {
+		        biItem.setZcUseBiId(++vou_id + "");//新增情况下，对预算指标记录赋值，
+		        saves.add(BudgetUtil.biToMap(biItem));
+		      }
+		    }
+		    //这里指的是后台查出的当前计划编号的指标资金数据,前台传过来的数据里已经不含了,因此需要删除,恢复指标占用金额，
+		    for (int i = 0; i < biListOld.size(); i++) {
+		      ZcPProMitemBi oldMbi = (ZcPProMitemBi) biListOld.get(i);
+		      if (!(oldMbi.getZcBiNo() == null || "".equals(oldMbi.getZcBiNo().trim())) && allBiNoLst.contains(oldMbi.getZcBiNo())) {
+		        dels.add(BudgetUtil.biToMap(oldMbi));
+		      }
+		    }
+		    
+		 2.1.5 构建map
+		 BudgetUtil.biToMap(biItem)
+		 
+	    Map dto = new HashMap();
+	    if (dto != null) {
+	      dto.put(VOU_MONEY, bi.getZcBiJhuaSum());//涉及的指标金额
+	      dto.put(VOU_ID, bi.getZcUseBiId());//vou_id，相当于唯一主键
+	      dto.put(FROM_CTRL_ID, bi.getZcBiNo());//预算指标编号
+	    }
+	    
+	   2.1.6 将insert、update、updateOld、delete列表里数据转换为接口所需的字符串，并放入map中
+	    Map result = new HashMap();
+	    if (dels.size() > 0) {
+	      result.put(DEL_BUDGET, createData(dels));//delete
+	    }
+	    if (upds.size() > 0) {
+	      result.put(UPD_BUDGET, createData(upds));//update
+	    }
+	    if (saves.size() > 0) {
+	      result.put(SAVE_BUDGET, createData(saves));//update_old
+	    }
+	    if (updolds.size() > 0) {
+	      result.put(UPD_BUDGET_OLD, createData(updolds));//save
+	    }
+	    if (result.size() > 0 && !result.isEmpty()) {
+	      result.put(CREATE_USER, CREATE_USER_VEL);//create_user  政府采购
+	    }
+			
+			createData方法：
+			字符串格式：用#分割记录内元素，用&分割记录
+			指标编号#指标金额#vou_id&指标编号#指标金额#vou_id&指标编号#指标金额#vou_id
+	
+	    StringBuffer sb = new StringBuffer();
+	    for (int i = 0; i < list.size(); i++) {
+	      if (sb.length() > 0) {
+	        sb.append(RECORD_ISP);
+	      }
+	      Map map = (Map) list.get(i);
+	      sb.append(map.get(FROM_CTRL_ID)).append(ITEM_ISP);
+	      sb.append(map.get(VOU_MONEY)).append(ITEM_ISP);
+	      sb.append(map.get(VOU_ID));
+	    }
+	    return sb.toString();
+	    
+	    
+	 2.1.7 调用指标借口,这里的serverAdd应该含端口号
+	 		WSDL_URL:/gfmis/services/BudgetZcService
+	  BudgetUtil.callService(map, serverAdd);
+	  
+	  try {
+      Service service = new Service();
+      Call call = (Call) service.createCall();
+      call.setTargetEndpointAddress(serverAdd + WSDL_URL);
+      call.setOperationName(INTERFASE);
+
+      Map result = (Map) call.invoke(new Object[] { map });
+      if (FALSE.equalsIgnoreCase(result.get(RESULT).toString())) {
+        throw new Exception(result.get(MESSAGE).toString());
+      }
+
+    } catch (Exception e) {
+      System.out.println("指标传参==>" + map.toString());
+      throw new Exception("调用指标接口时出错:" + e.getMessage());
+    }
+
+
+46.**合同的主键编号、支付申请的主键编号，内外网都会新增，因此需要将两边的值扩大数量级，防止代码重复，冲突.
+
+
+----------2013-08-12----------
+
+47.
+指标属性说明
+ protected void makeToHtBi(ZcXmcgHt ht) {
+    List<ZcXmcgHtBi> htbi = ht.getBiList();
+    for (int i = 0; i < htbi.size(); i++) {
+      ZcXmcgHtBi bi = htbi.get(i);
+
+      bi.setZcBiNo(bi.getZcPProMitemBi().getZcBiNo());
+      bi.setZcBiDoSum(bi.getZcPProMitemBi().getZcBiDoSum());
+      bi.setZcUseBiId(bi.getZcPProMitemBi().getZcUseBiId());
+      //      bi.setZcBiSum(bi.getZcPProMitemBi().getZcBiSum());
+      // 预算单位
+      bi.setCoCode(bi.getZcPProMitemBi().getCoCode());
+      bi.setCoName(bi.getZcPProMitemBi().getCoName());
+      // 资金性质
+      bi.setFundCode(bi.getZcPProMitemBi().getFundCode());
+      bi.setFundName(bi.getZcPProMitemBi().getFundName());
+      // 功能分类
+      bi.setbAccCode(bi.getZcPProMitemBi().getbAccCode());
+      bi.setbAccName(bi.getZcPProMitemBi().getbAccName());
+      // 项目类别
+      bi.setProjectTypeCode(bi.getZcPProMitemBi().getProjectTypeCode());
+      bi.setProjectTypeName(bi.getZcPProMitemBi().getProjectTypeName());
+      // 付款方式
+      bi.setPaytypeCode(bi.getZcPProMitemBi().getPaytypeCode());
+      bi.setPaytypeName(bi.getZcPProMitemBi().getPaytypeName());
+      // 指标来源
+      bi.setOriginCode(bi.getZcPProMitemBi().getOriginCode());
+      bi.setOriginName(bi.getZcPProMitemBi().getOriginName());
+      // 年度
+      bi.setNd(bi.getZcPProMitemBi().getNd());
+      // 文号
+      bi.setSenddocCode(bi.getZcPProMitemBi().getSenddocCode());
+      bi.setSenddocName(bi.getZcPProMitemBi().getSenddocName());
+      // 业务处室
+      bi.setOrgCode(bi.getZcPProMitemBi().getOrgCode());
+      bi.setOrgName(bi.getZcPProMitemBi().getOrgName());
+      bi.setOutlayCode(bi.getZcPProMitemBi().getOutlayCode());
+      bi.setOutlayName(bi.getZcPProMitemBi().getOutlayName());
+    }
+  }
+
+采购计划参照指标时：com.ufgov.zc.client.zc.zcppromake.excute
+			ZcPProMitemBi bi = (ZcPProMitemBi) make.getBiList().get(k2);
+ 			bi.setZcBiNo(gp.getSumId() + "");
+      bi.setZcBiDoSum(gp.getCanuseMoney());//指标可用金额
+      bi.setZcBiSum(gp.getBudgetMoney());//指标总金额
+      // 预算单位
+      if (gp.getEnCode() != null) {
+        bi.setCoCode(gp.getEnCode());
+        bi.setCoName(gp.getEnName());
+      }
+      // 资金性质
+      if (gp.getMkCode() != null) {
+        bi.setFundCode(gp.getMkCode());
+        bi.setFundName(gp.getMkName());
+      }
+      // 功能分类
+      if (gp.getBsCode() != null) {
+        bi.setbAccCode(gp.getBsCode());
+        bi.setbAccName(gp.getBsName());
+      }
+      // 项目类别
+      if (gp.getBiCode() != null) {
+        bi.setProjectTypeCode(gp.getBiCode());
+        bi.setProjectTypeName(gp.getBiName());
+      }
+      // 付款方式
+      if (gp.getPkCode() != null) {
+        bi.setPaytypeCode(gp.getPkCode());
+        bi.setPaytypeName(gp.getPkName());
+      }
+      // 指标来源
+      if (gp.getBlCode() != null) {
+        bi.setOriginCode(gp.getBlCode());
+        bi.setOriginName(gp.getBlName());
+      }
+      // 业务处室
+      if (gp.getMbId() != null) {
+        bi.setOrgCode(gp.getMbId());
+        bi.setOrgName(gp.getMbName());
+      }
+      // 年度
+      bi.setNd(gp.getSetYear() + "");
+      // 文号
+      if (gp.getFileCode() != null) {
+        bi.setSenddocCode(gp.getFileCode());
+        bi.setSenddocName(gp.getFileName());
+      }
+
+      // 指标流向
+      if (gp.getBtCode() != null) {
+        bi.setBiTargetCode(gp.getBtCode());
+      }
+      // 预算项目
+      if (gp.getBisCode() != null) {
+        bi.setProjectCode(gp.getBisCode());
+      }
+
+48.车辆维修费，在前期，先付款到采购中心账户，以后直接付款到供应商账户
+用这个值进行判断:
+OPT_ZC_PAY_TO_CGZX
+收款人信息:
+开户行：OPT_ZC_PAY_TO_CGZX_ACCBANK
+账号：OPT_ZC_PAY_TO_CGZX_ACCACOUNT
+收款人：
+
+----------2013-08-13----------
+----------2013-08-14----------
+49.
+报表访问路径：
+不分页报表
+/WebReport/ReportServer?reportlet=A01001.cpt&op=view
+可输入报表
+/WebReport/ReportServer?reportlet=A01001.cpt&op=write
+
+
+50.
+select p.emp_code as EXECUTOR from zc_xmcg_ht ht,as_emp_position p
+where ht.process_inst_id=?
+and ht.co_code=p.co_code
+and ht.nd=p.nd
+and p.posi_code='ysdwcg'
+
+select distinct l.user_id
+from zc_p_pro_make m,as_user_num_lim l
+where instr(l.gran_range,''||m.co_code||'')>0
+and m.process_inst_id=?
+
+----------2013-08-15----------
+
+----------2013-08-18----------
+select * from vw_budget_gb where sum_id ='105780'
+
+select * from  gl_balance where sum_id ='105780'
+
+select * from gl_balance  where fromctrlid='105780'
+
+51.
+选择指标时需要显示的属性:
+指标编号
+指标文号
+资金性质
+指标来源
+项目名称
+功能分类
+经济分类
+是否监督使用
+是否政府采购
+指标总金额
+可用金额
+本次使用金额
+补充说明
+52
+gfmis要素查询关系：
+
+--找出单位指标的科目性质 单位指标是631
+select * from gfmis.gl_sum_type;
+--找出所有单位指标
+select * from gfmis.gl_balance b where b.account_id='{71F7A94B-CE9D-4079-824E-42560832831E}';
+--找coa_id
+select * from gfmis.gl_ccids c where c.ccid='1379691527701';
+--找出所有要素
+select * from gfmis.gl_coa_detail l where l.coa_id='115';
+--匹配查出要素名称 
+select e.ele_code,e.ele_name from gfmis.gl_coa_detail d, gfmis.sys_element e where e.ele_code = d.ele_code(+) and d.coa_id='115';
+
+select * from gfmis.sys_element t where t.ele_code='GPPLAN';
+
+
+----------2013-09-11----------
+
+53.
+**采购合同登记时，带入的合同明细项，询价时，需要采用参照供应商的报价信息
+
+----------2013-09-16----------
+
+54.待处理业务
+
+招标文件制作，选择采购明细时，选过的不能再选择，防止重复
+单一来源采购计划审批时，财监科上传单一来源采购批复文件
+批办单直接送给徐斌待审状态，改成两岗，主任审核和经办人受理
+
+供应商加银行账号信息
+
+网站交易大厅显示数据
+
+供应商注册审批加上流程
+
+供应商变更审批流程
+
+供应商分普通供应商、会员供应商（只做询价,必须缴纳保证金)、车辆维修供应商、汽车保险供应商
+
+公告上链接招标文件
+
+网站的协议供货改为车辆品牌
+
+汽修汽保 导入excel的明细
+
+汽修汽保 资金构成信息在采购中心、监理审批时不显示
+
+资金构成里增加 是否政府采购（gb_name） 是否监督使用（bt_name）
+
+数字权限
+
+首页待办事项通知
+
+已办去掉
+
+采购交换消审，徐斌退回
+
+----------2013-10-25----------
+
+
+1.计划资金列表增加：1）是否监督使用(bt_name)；2）是否政府采购(gb_name)。
+
+2.列表界面按钮：新增、审核、流程跟踪、导出
+
+3.编辑界面增加按钮：上一个、下一个、打印
+
+4、所有的审批岗没有草稿页签
+
+5、列表界面增加批量审核按钮，批办单不增加该功能
+
+6、同一分包，不能参照选出同一个采购计划同一条明细
+
+丹徒政府采购云盘
+dtzfcg2013
+88992009
+
+--20131206
+1、采购质疑流程
+
+
+-----------20140317-------------
+1、给一个用户组配一个菜单，并挂上部件的sql
+--1.1 配一个菜单
+insert into ap_group_page
+  (page_id,
+   page_title,
+   is_always_new,
+   group_id,
+   page_url,
+   column_count,
+   column_ratio,
+   parent_id,
+   menu_orient,
+   page_title_img,
+   is_display)
+values
+  ('1395020187091', '资产登记', 'N', 'yusuandanwei', NULL, '3', NULL, 'yusuandanwei', '2', NULL, 'Y');
+  
+insert into ap_menu(menu_id, menu_name, parent_id, ord_index)  	       values('1395020187091', '资产登记', NULL, '0');
+
+--1.2 菜单显示排序
+update ap_group_page set page_order = '25' where page_id = '1395020187091' and group_id = 'yusuandanwei';
+
+--1.3 菜单挂部件
+   insert into ap_menu_compo
+      (menu_id,
+       compo_name,
+       compo_id,
+       ord_index,
+       is_goto_edit,
+       is_always_new,
+       url,
+       is_in_menu)
+    values
+      ('1395020187091', '资产登记', 'ZC_FA_CARD', null, 'N', 'N', '/GB/jsp/ZC/CommonPage.jsp?className=com.ufgov.zc.client.zc.fa.card.ZcFaCardListPanel', 'Y');
+      
+
+
+--2
+ 目前portal发布到weblogic10下面时，会报错，先将portal\WEB-INF\lib\wstx-asl-3.2.0.jar移除到portal包外面，进行发布，发布成功后，再将portal\WEB-INF\lib\wstx-asl-3.2.0.jar放入原来位置即可
+
+
+-- 待办
+1、招标文件编号：DTCG-(2014)公字第2号 DTCG-(2014)询字第25号
+2、查找各个单据编号，年结应该可以从1开始，单据编号要待年度，年底结转时，将单据编号设置为1
+3、汽修要增加监理审核，目前没有建这个角色和用户
+4、汽修、汽保要在不同网段导入导出（ok)
+5、询价公告带超级链接，可以下载附件，增加key登陆的超级链接.
+6、采购中心结转功能、采购单位结项和结转没有实现，中心结项后，数据要同步到内网，方便采购单位结项数据，释放指标。
+7、清理每个部件没有用的按钮
+8、在外网没有vw_budget_GB时，采购计划、汽修、汽保等界面会报错，设置好同样的空视图后，没有问题，查一下这个问题
+9、公开招标直接录入审批报告
+10、供应商注册时，同名的供应商录入时，做校验，进行提示
+11、供应商修改信息时，增加工作流审批，具体解决思路见业务excel供应商注册
+12、支付送国库，发生国库退回(ok)
+13、核算中心代编代报（政法科下属单位）采购计划、采购合同等
+
+
+---创建一个单位、内部机构、职位、角色、人员过程
+1、创建一个角色，并设定角色的所属用户组；
+2、创建一个单位；
+3、创建一个职位；
+4、在单位底下建立内部机构，并选择刚才创建的职位到内部机构里；
+5、这时职位会显示到内部机构下一层，在其下建立人员；
+6、如果要指定职位间上下级关系，则在建立内部机构，选择职位后，再选择一个职位作为其上级职位，这样建立了组织上下级关系；
+
+注意：丹徒地区的预算单位码没有上级，都是6位或9位码，因此在建立单位时，因没有上级单位会创建不成功，这时可以到后台数据库（ma_company）里创建，注意其parent_co_code必须为空，才会显示在组织结构树上
+
+
+--1
+涉及工作流的几个按钮
+fcallback
+fmanualcommit
+fnewcommit
+fshowinstancetrace
+funtread
+funaudit
+
+
+

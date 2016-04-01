@@ -138,6 +138,7 @@ import com.ufgov.zc.common.zc.model.ZcPProBal;
 import com.ufgov.zc.common.zc.model.ZcPProBalBi;
 import com.ufgov.zc.common.zc.model.ZcPProMake;
 import com.ufgov.zc.common.zc.model.ZcPProMitem;
+import com.ufgov.zc.common.zc.model.ZcPProMitemBaoJia;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBi;
 import com.ufgov.zc.common.zc.model.ZcTBchtItem;
 import com.ufgov.zc.common.zc.model.ZcXmcgHt;
@@ -453,9 +454,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     //丹徒地区预算单位只能选择车辆采购计划，录入合同，其他合同由供应商录入
     elementCondtiontDto.setZcText4("onlyCar");
 
-    ForeignEntityFieldEditor zcMakeCode = new ForeignEntityFieldEditor("ZC_P_PRO_MAKE.getZcPProMakeNoHtList", elementCondtiontDto, 20, makeHandler,
-
-    columNames, "采购计划编号", "zcMakeCode");
+    ForeignEntityFieldEditor zcMakeCode = new ForeignEntityFieldEditor("ZC_P_PRO_MAKE.getZcPProMakeNoHtList", elementCondtiontDto, 20, makeHandler, columNames, "采购计划编号", "zcMakeCode");
 
     ElementConditionDto gysProjDto = new ElementConditionDto();
 
@@ -469,7 +468,7 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     }
     ForeignEntityFieldEditor packCode = new ForeignEntityFieldEditor(getProjectSqlId(), gysProjDto, 20, projHandler,
 
-    columNames, "分包编号", "zcZbCode");
+    columNames, "中标项目", "zcZbCode");
 
     packCode.setEditable(false);
 
@@ -794,39 +793,32 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     //    zcXmcgHt.setNd(zcPProMake.getNd());
     zcXmcgHt.setZcFukuanType(zcPProMake.getZcFukuanType());
     List<ZcTBchtItem> itemHtList = new ArrayList<ZcTBchtItem>();
-
-
     List<ZcHtPrePayBillItem> payBiList = new ArrayList<ZcHtPrePayBillItem>();
-
+    if(ZcPProMake.CAIGOU_TYPE_XIEYI.equals(zcXmcgHt.getZcFukuanType())){
+      buildXieYiItems(zcXmcgHt);
+    }else{
     //带出商品内容
-    if(ZcUtil.isYsdw()){
-      List<ZcPProMitem> itemMakeList = ZcPProMakeServiceDelegate.getZcPProMitem(zcMakeCode, requestMeta);
-      if (itemMakeList != null) {
-        buildZcTBchtItems(itemMakeList, itemHtList);
-        for (Iterator iterator = itemHtList.iterator(); iterator.hasNext();) {
-          ZcTBchtItem zcTBchtItem = (ZcTBchtItem) iterator.next();
-          zcTBchtItem.setZcItemSum(BigDecimal.ZERO);
+      if(ZcUtil.isYsdw()){
+        List<ZcPProMitem> itemMakeList = ZcPProMakeServiceDelegate.getZcPProMitem(zcMakeCode, requestMeta);
+        if (itemMakeList != null) {
+          buildZcTBchtItems(itemMakeList, itemHtList);
+          for (Iterator iterator = itemHtList.iterator(); iterator.hasNext();) {
+            ZcTBchtItem zcTBchtItem = (ZcTBchtItem) iterator.next();
+            zcTBchtItem.setZcItemSum(BigDecimal.ZERO);
+          }
+          zcXmcgHt.setItemList(itemHtList);
         }
-        zcXmcgHt.setItemList(itemHtList);
+      }else if(ZcUtil.isGys() || ZcUtil.isCgzx()){
+        buildHtItems(zcXmcgHt);
       }
-    }else if(ZcUtil.isGys() || ZcUtil.isCgzx()){
-      buildHtItems(zcXmcgHt);
     }
-
     if (zcXmcgHt.getZcSuCode() != null) {
-
       ZcEbSupplier supp = zcEbSupplierServiceDelegate.getSupplierById(zcXmcgHt.getZcSuCode(), requestMeta);
-
       zcXmcgHt.setZcSuLinkman(supp.getLinkMan());
-
       zcXmcgHt.setZcSuTel(supp.getPhone());
-
       zcXmcgHt.setZcGnw(supp.getGnw());
-
       zcXmcgHt.setZcSnw(supp.getSnw());
-
       zcXmcgHt.setZcIsZxqyZb(supp.getIsZxqy());
-
     }
   //start of change --20141223 chenjl
 //原来是直接获取资金信息，后来因有结转项目到来年，再签订合同的情况，因此这里隐藏，换成下面预算单位才获取指标情况
@@ -852,6 +844,46 @@ public class ZcXmcgHtEditPanel extends AbstractZcXmcgHtEditPanel {
     
     updateFieldEditorsEditable();
 
+  }
+
+  private void buildXieYiItems(ZcXmcgHt zcXmcgHt) {
+    BigDecimal htSum=new BigDecimal(0);
+    
+    for( int i=0;i<zcXmcgHt.getZcPProMake().getBaoJiaList().size();i++){
+      ZcPProMitemBaoJia bj=(ZcPProMitemBaoJia)zcXmcgHt.getZcPProMake().getBaoJiaList().get(i);
+      if(bj.isChengJiao()){
+        for (int k=0;k<bj.getBaoJiaDetailList().size();k++) {
+          ZcPProMitem item=(ZcPProMitem)bj.getBaoJiaDetailList().get(k);
+          ZcTBchtItem htItem = new ZcTBchtItem();
+          htItem.setZcSpName(item.getZcMerName());//商品名称
+          htItem.setZcCatalogueCode(item.getZcCatalogueCode());//品目代码
+          htItem.setZcCatalogueName(item.getZcCatalogueName());//品目名称
+          htItem.setZcItemSum(item.getZcItemSum() == null ? BigDecimal.ZERO : item.getZcItemSum());  
+ 
+          htItem.setZcCaigShl(item.getZcCaigNum());
+          //品牌
+          htItem.setZcBraName(item.getZcBraName());
+          htItem.setZcMerSpec(item.getZcBaseGgyq());
+          htItem.setZcCaigPrice(item.getZcMerPrice());
+          htItem.setZcCaigMoney(item.getZcItemSum());  
+          
+          htItem.setZcCaigJldw(item.getZcCaigUnit());
+          
+          htSum=htSum.add(item.getZcItemSum());
+          
+          //节能、节水、绿色环保默认设置为否
+          htItem.setZcMerIsLshb("N");
+          htItem.setZcMerIsZzcx("N");
+          htItem.setZcIsJnjs("N");
+          
+          zcXmcgHt.getItemList().add(htItem);          
+          zcXmcgHt.setZcSuCode(item.getZcSuCode());
+          zcXmcgHt.setZcSuName(item.getZcSuName());
+        }
+        zcXmcgHt.setZcHtNum(htSum);
+        break;
+      }
+    }
   }
 
   private void buildHtItems(ZcXmcgHt zcXmcgHt) {

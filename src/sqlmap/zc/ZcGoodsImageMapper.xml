@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsImageMapper" >
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsImage" > 
+    <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="IMAGE_ID" property="imageId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" > 
+    GOODS_CODE, IMAGE_ID
+  </sql>
+  <select id="selectByGoodsCode" resultMap="BaseResultMap" parameterClass="java.lang.String" > 
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_GOODS_IMAGE
+    where GOODS_CODE = #goodsCode:VARCHAR#
+  </select>
+  <delete id="deleteByGoodsCode" parameterClass="java.lang.String" > 
+    delete from ZC_GOODS_IMAGE
+    where GOODS_CODE = #goodsCode:VARCHAR#
+  </delete>
+  <delete id="deleteByImageId" parameterClass="java.lang.String" > 
+    delete from ZC_GOODS_IMAGE
+    where IMAGE_ID = #imageId:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsImage" > 
+    insert into ZC_GOODS_IMAGE (GOODS_CODE, IMAGE_ID)
+    values (#goodsCode:VARCHAR#, #imageId:VARCHAR#)
+  </insert>
+</sqlMap>

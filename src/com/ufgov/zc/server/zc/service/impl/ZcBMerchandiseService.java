@@ -1,6 +1,7 @@
 package com.ufgov.zc.server.zc.service.impl;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ufgov.zc.common.system.RequestMeta;
@@ -38,7 +39,7 @@ public class ZcBMerchandiseService implements IZcBMerchandiseService {
 
     List list = baseDao.query("ZcBMerchandise.getMerchandiseList", dto);
 
-    for (int i = 0; i < list.size(); i++) {
+ /*   for (int i = 0; i < list.size(); i++) {
 
       ZcBMerchandise bill = (ZcBMerchandise) list.get(i);
 
@@ -46,7 +47,7 @@ public class ZcBMerchandiseService implements IZcBMerchandiseService {
 
       bill.setItemList(itemList);
 
-    }
+    }*/
 
     ZcSUtil.setBillDBDigest(list);
 
@@ -81,9 +82,9 @@ public class ZcBMerchandiseService implements IZcBMerchandiseService {
 
     List diseList = bean.getItemList();
 
-    if (diseList == null || diseList.size() == 0)
-
-      throw new RuntimeException("商品价格明细不能为空");
+    if (diseList == null || diseList.size() == 0){
+      diseList=new ArrayList();
+    }     
 
     String code = "";
 

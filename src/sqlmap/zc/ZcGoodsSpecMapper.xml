@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsSpecMapper" >
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsSpec" >
+    <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="SPEC_CODE" property="specCode" jdbcType="VARCHAR" />
+    <result column="SPEC" property="spec" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GOODS_CODE, SPEC_CODE, SPEC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_GOODS_SPEC
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecKey" >
+    delete from ZC_GOODS_SPEC
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpec" >
+    insert into ZC_GOODS_SPEC (GOODS_CODE, SPEC_CODE, SPEC
+      )
+    values (#goodsCode:VARCHAR#, #specCode:VARCHAR#, #spec:VARCHAR#)
+  </insert>
+  <update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpec" >
+    update ZC_GOODS_SPEC
+    set SPEC = #spec:VARCHAR#
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </update>
+</sqlMap>

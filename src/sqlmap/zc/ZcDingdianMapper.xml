@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap  
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ZcDingdianMapper" >
+	<typeAlias alias="elementCondition"
+		type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcDingdian" > 
+    <result column="DD_CODE" property="ddCode" jdbcType="VARCHAR" />
+    <result column="CO_CODE" property="coCode" jdbcType="VARCHAR" />
+    <result column="EXCUTOR" property="excutor" jdbcType="VARCHAR" />
+    <result column="EXCUTOR_NAME" property="excutorName" jdbcType="VARCHAR" />
+    <result column="INPUT_DATE" property="inputDate" jdbcType="DATE" />
+    <result column="SUPPLIER" property="supplier" jdbcType="VARCHAR" />
+    <result column="SUPPLIER_NAME" property="supplierName" jdbcType="VARCHAR" />
+    <result column="CO_NAME" property="coName" jdbcType="VARCHAR" />
+    <result column="SU_BANK_ACCOUNT" property="suBankAccount" jdbcType="VARCHAR" />
+    <result column="SU_BANK" property="suBank" jdbcType="VARCHAR" />
+    <result column="SU_BANK_SHOUKUANREN" property="suBankShoukuanren" jdbcType="VARCHAR" />
+    <result column="ND" property="nd" />
+    <result column="DD_SUM" property="ddSum" jdbcType="DECIMAL" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="DD_NAME" property="ddName" jdbcType="VARCHAR" />
+    <result column="PROCESS_INST_ID" property="processInstId" jdbcType="DECIMAL" />
+    <result column="BI_SUM" property="biSum" jdbcType="DECIMAL" />
+    <result column="SU_LINK_MAN" property="suLinkMan" jdbcType="VARCHAR" />
+    <result column="SU_LINK_TEL" property="suLinkTel" jdbcType="VARCHAR" />
+    <result column="DD_TYPE" property="ddType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" > 
+    DD_CODE, CO_CODE, EXCUTOR, EXCUTOR_NAME, INPUT_DATE, SUPPLIER, SUPPLIER_NAME, CO_NAME, 
+    SU_BANK_ACCOUNT, SU_BANK, SU_BANK_SHOUKUANREN, ND, DD_SUM, REMARK, STATUS, DD_NAME, 
+    PROCESS_INST_ID, BI_SUM, SU_LINK_MAN, SU_LINK_TEL, DD_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="java.lang.String" > 
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_DINGDIAN
+    where DD_CODE = #ddCode:VARCHAR#
+  </select>
+	<select id="selectByProcessinstid" resultMap="BaseResultMap" parameterClass="String">
+		select 
+    	<include refid="Base_Column_List" />
+    	from ZC_DINGDIAN
+		where ZC_DINGDIAN.PROCESS_INST_ID=#value#
+	</select>
+	<select id="getMainLst" resultMap="BaseResultMap" parameterClass="elementCondition">
+		select 
+	    <include refid="Base_Column_List" />
+	    from ZC_DINGDIAN
+			where 1=1
+		<isNotEqual prepend="and" compareValue="0" property="nd">
+			ZC_DINGDIAN.ND = #nd#
+		</isNotEqual>
+		<include refid="BusiNumLim.BusiNumLimStr" />
+		<isNotNull prepend="AND" property="status">
+			<isEqual property="status" compareValue="todo">
+				exists (select
+				instance_id from V_WF_CURRENT_TASK_ZC_TODO where executor
+				=#executor# and instance_id = ZC_DINGDIAN.process_inst_id)
+			</isEqual>
+			<isEqual property="status" compareValue="untread">
+				exists (select
+				instance_id from V_WF_CURRENT_TASK_ZC_UNTREAD where
+				executor
+				=#executor# and instance_id = ZC_DINGDIAN.process_inst_id)
+			</isEqual>
+			<isEqual property="status" compareValue="done">
+				exists (select
+				instance_id from V_WF_ACTION_HISTORY_GK53 where executor =
+				#executor# and instance_id = ZC_DINGDIAN.process_inst_id)
+				and
+				ZC_DINGDIAN.STATUS!= 'cancel' and
+				ZC_DINGDIAN.STATUS != 'exec'
+			</isEqual>
+			<isEqual property="status" compareValue="draft">
+				( exists (select
+				WF_DRAFT_NAME from as_wf_draft where
+				user_id=#executor# and
+				compo_id=#wfcompoId# and
+				WF_DRAFT_ID=ZC_DINGDIAN.process_inst_id)
+				or
+				ZC_DINGDIAN.process_inst_id = -1 )
+				and ZC_DINGDIAN.STATUS ='0'
+			</isEqual>
+			<isEqual property="status" compareValue="exec">
+				(ZC_DINGDIAN.STATUS	='exec')
+			</isEqual>
+			<isEqual property="status" compareValue="gkBack">
+				(ZC_DINGDIAN.STATUS	='gkBack')
+			</isEqual>
+		</isNotNull>
+		ORDER BY ZC_DINGDIAN.INPUT_DATE DESC
+	</select>
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.String" > 
+    delete from ZC_DINGDIAN
+    where DD_CODE = #ddCode:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcDingdian" > 
+    insert into ZC_DINGDIAN (DD_CODE, CO_CODE, EXCUTOR, 
+      EXCUTOR_NAME, INPUT_DATE, SUPPLIER, 
+      SUPPLIER_NAME, CO_NAME, SU_BANK_ACCOUNT, 
+      SU_BANK, SU_BANK_SHOUKUANREN, ND, 
+      DD_SUM, REMARK, STATUS, 
+      DD_NAME, PROCESS_INST_ID, BI_SUM, 
+      SU_LINK_MAN, SU_LINK_TEL, DD_TYPE
+      )
+    values (#ddCode:VARCHAR#, #coCode:VARCHAR#, #excutor:VARCHAR#, 
+      #excutorName:VARCHAR#, #inputDate:DATE#, #supplier:VARCHAR#, 
+      #supplierName:VARCHAR#, #coName:VARCHAR#, #suBankAccount:VARCHAR#, 
+      #suBank:VARCHAR#, #suBankShoukuanren:VARCHAR#, #nd#, 
+      #ddSum:DECIMAL#, #remark:VARCHAR#, #status:VARCHAR#, 
+      #ddName:VARCHAR#, #processInstId:DECIMAL#, #biSum:DECIMAL#, 
+      #suLinkMan:VARCHAR#, #suLinkTel:VARCHAR#, #ddType:VARCHAR#
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcDingdian" > 
+    update ZC_DINGDIAN
+    set CO_CODE = #coCode:VARCHAR#,
+      EXCUTOR = #excutor:VARCHAR#,
+      EXCUTOR_NAME = #excutorName:VARCHAR#,
+      INPUT_DATE = #inputDate:DATE#,
+      SUPPLIER = #supplier:VARCHAR#,
+      SUPPLIER_NAME = #supplierName:VARCHAR#,
+      CO_NAME = #coName:VARCHAR#,
+      SU_BANK_ACCOUNT = #suBankAccount:VARCHAR#,
+      SU_BANK = #suBank:VARCHAR#,
+      SU_BANK_SHOUKUANREN = #suBankShoukuanren:VARCHAR#,
+      ND = #nd#,
+      DD_SUM = #ddSum:DECIMAL#,
+      REMARK = #remark:VARCHAR#,
+      STATUS = #status:VARCHAR#,
+      DD_NAME = #ddName:VARCHAR#,
+      PROCESS_INST_ID = #processInstId:DECIMAL#,
+      BI_SUM = #biSum:DECIMAL#,
+      SU_LINK_MAN = #suLinkMan:VARCHAR#,
+      SU_LINK_TEL = #suLinkTel:VARCHAR#,
+      DD_TYPE = #ddType:VARCHAR#
+    where DD_CODE = #ddCode:VARCHAR#
+  </update>
+</sqlMap>

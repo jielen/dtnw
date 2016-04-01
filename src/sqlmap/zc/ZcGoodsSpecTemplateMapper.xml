@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsSpecTemplateMapper" >
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsSpecTemplate" > 
+    <result column="SPEC_CODE" property="specCode" jdbcType="VARCHAR" />
+    <result column="SPEC_NAME" property="specName" jdbcType="VARCHAR" />
+    <result column="SPEC_PARENT_CODE" property="specParentCode" jdbcType="VARCHAR" />
+    <result column="SPEC_SHOW_INDEX" property="specShowIndex" jdbcType="Integer" />
+    <result column="SPEC_IS_SIMPLE_SHOW" property="specIsSimpleShow" jdbcType="CHAR" />
+    <result column="SPEC_SIMPLE_SHOW_INDEX" property="specSimpleShowIndex" jdbcType="Integer" />
+    <result column="IS_LONG_TXT" property="isLongTxt" jdbcType="CHAR" />
+    <result column="IS_ENABLE" property="isEnable" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" > 
+    SPEC_CODE, SPEC_NAME, SPEC_PARENT_CODE, SPEC_SHOW_INDEX, SPEC_IS_SIMPLE_SHOW, SPEC_SIMPLE_SHOW_INDEX, 
+    IS_LONG_TXT, IS_ENABLE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="java.lang.String" > 
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_GOODS_SPEC_TEMPLATE
+    where SPEC_CODE = #specCode:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.String" > 
+    delete from ZC_GOODS_SPEC_TEMPLATE
+    where SPEC_CODE = #specCode:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecTemplate" > 
+    insert into ZC_GOODS_SPEC_TEMPLATE (SPEC_CODE, SPEC_NAME, SPEC_PARENT_CODE, 
+      SPEC_SHOW_INDEX, SPEC_IS_SIMPLE_SHOW, SPEC_SIMPLE_SHOW_INDEX, 
+      IS_LONG_TXT, IS_ENABLE)
+    values (#specCode:VARCHAR#, #specName:VARCHAR#, #specParentCode:VARCHAR#, 
+      #specShowIndex:DECIMAL#, #specIsSimpleShow:CHAR#, #specSimpleShowIndex:DECIMAL#, 
+      #isLongTxt:CHAR#, #isEnable:CHAR#)
+  </insert>
+  <update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecTemplate" > 
+    update ZC_GOODS_SPEC_TEMPLATE
+    set SPEC_NAME = #specName:VARCHAR#,
+      SPEC_PARENT_CODE = #specParentCode:VARCHAR#,
+      SPEC_SHOW_INDEX = #specShowIndex:DECIMAL#,
+      SPEC_IS_SIMPLE_SHOW = #specIsSimpleShow:CHAR#,
+      SPEC_SIMPLE_SHOW_INDEX = #specSimpleShowIndex:DECIMAL#,
+      IS_LONG_TXT = #isLongTxt:CHAR#,
+      IS_ENABLE = #isEnable:CHAR#
+    where SPEC_CODE = #specCode:VARCHAR#
+  </update>
+</sqlMap>

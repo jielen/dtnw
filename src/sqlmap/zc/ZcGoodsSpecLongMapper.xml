@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsSpecLongMapper" >
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsSpecLong" >
+    <result column="GOODS_CODE" property="goodsCode" jdbcType="VARCHAR" />
+    <result column="SPEC_CODE" property="specCode" jdbcType="VARCHAR" />    
+    <result column="SPEC_LONG" property="specLong" jdbcType="CLOB" typeHandler="org.springframework.orm.ibatis.support.ClobStringTypeHandler" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GOODS_CODE, SPEC_CODE
+  </sql>
+  <sql id="Blob_Column_List" >
+    SPEC_LONG
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecLong" > 
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ZC_GOODS_SPEC_LONG
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecLong" > 
+    delete from ZC_GOODS_SPEC_LONG
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecLong" > 
+    insert into ZC_GOODS_SPEC_LONG (GOODS_CODE, SPEC_CODE, SPEC_LONG      )
+    values (#goodsCode:VARCHAR#, #specCode:VARCHAR#, #specLong,handler=org.springframework.orm.ibatis.support.ClobStringTypeHandler#      )
+  </insert>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsSpecLong" > 
+    update ZC_GOODS_SPEC_LONG
+    set SPEC_LONG = #specLong,handler=org.springframework.orm.ibatis.support.ClobStringTypeHandler#
+    where GOODS_CODE = #goodsCode:VARCHAR#
+      and SPEC_CODE = #specCode:VARCHAR#
+  </update>
+</sqlMap>

@@ -30,7 +30,7 @@
 	</select>
 	<select id="getMitemNextSeqVal" resultClass="String">
 		select ZC_SEQ_PRO_MITEM.NEXTVAL AS ID from DUAL
-	</select>
+	</select>	<select id="getBaojiaItemNextSeqVal" resultClass="String">		select ZC_SEQ_BAOJIA_MITEM.NEXTVAL AS ID from DUAL	</select>	
 	<select id="getJingJiaBaoJiaDetailNextSeqVal" resultClass="String">
 		select ZC_SEQ_JINGJIA_BAOJIA_DE.NEXTVAL AS ID from DUAL
 	</select>		<select id="getXunJiaOpenBidRfqNextSeqVal" resultClass="String">		select ZC_SEQ_JINGJIA_BAOJIA_RFQ.NEXTVAL AS ID from DUAL	</select>

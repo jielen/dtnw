@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsCataToBrandMapper" >
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsCataToBrand" > 
+    <result column="BRAND_CODE" property="brandCode" jdbcType="VARCHAR" />
+    <result column="GOODS_CATALOG_CODE" property="goodsCatalogCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectMainDataLst" resultMap="BaseResultMap" parameterClass="elementCondition" > 
+    select 
+     *
+    from ZC_GOODS_CATA_TO_BRAND    
+	<dynamic prepend="WHERE">  
+	  <isNotEmpty prepend="AND" property="zcText1"> 
+	    		BRAND_CODE = #zcText1#
+	  </isNotEmpty>  
+	  <isNotEmpty prepend="AND" property="zcText2"> 
+	    		GOODS_CATALOG_CODE = #zcText2#
+	  </isNotEmpty>
+	</dynamic>  
+  </select>
+  <delete id="deleteByBrandCode" parameterClass="java.lang.String" >
+    delete from ZC_GOODS_CATA_TO_BRAND
+    where BRAND_CODE = #value#
+  </delete>
+  <delete id="deleteByCataCode" parameterClass="java.lang.String" >
+    delete from ZC_GOODS_CATA_TO_BRAND
+    where GOODS_CATALOG_CODE = #value#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsCataToBrand" > 
+    insert into ZC_GOODS_CATA_TO_BRAND (BRAND_CODE, GOODS_CATALOG_CODE)
+    values (#brandCode:VARCHAR#, #goodsCatalogCode:VARCHAR#)
+  </insert>
+</sqlMap>

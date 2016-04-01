@@ -191,49 +191,35 @@ public class ZcBdPinpEditPanel extends AbstractMainSubEditPanel {
 
     editorList.add(zcBraName);
 
-    String suColumNames[] = { "供应商代码", "供应商名称" };
+/*    String suColumNames[] = { "供应商代码", "供应商名称" };
 
     SuSelectedHandler suHandler = new SuSelectedHandler(suColumNames);
 
-    ForeignEntityFieldEditor suId = new ForeignEntityFieldEditor("ZcEbSupplier.getZcEbSupplierList", elementDto, 10,
-      suHandler, suColumNames,
-
-      "供应商代码", "zcSuCode");
+    ForeignEntityFieldEditor suId = new ForeignEntityFieldEditor("ZcEbSupplier.getZcEbSupplierList", elementDto, 10, suHandler, suColumNames, "供应商代码", "zcSuCode");
 
     editorList.add(suId);
 
-    TextFieldEditor zcSuName = new TextFieldEditor(LangTransMeta
+    TextFieldEditor zcSuName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SU_NAME), "zcSuName");
 
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SU_NAME), "zcSuName");
-
-    editorList.add(zcSuName);
+    editorList.add(zcSuName);*/
 
     String pcColumNames[] = { "商品批次代码", "商品批次名称", "年度" };
 
     PcSelectedHandler pcHandler = new PcSelectedHandler(pcColumNames);
 
-    ForeignEntityFieldEditor pcId = new ForeignEntityFieldEditor("ZcBdSppc.selectEnableSppc", elementDto, 10,
-      pcHandler, pcColumNames,
-
-      "商品批次代码", "zcSppcID");
+    ForeignEntityFieldEditor pcId = new ForeignEntityFieldEditor("ZcBdSppc.selectEnableSppc", elementDto, 10,pcHandler, pcColumNames,"商品批次代码", "zcSppcID");
 
     editorList.add(pcId);
 
-    TextFieldEditor zcSppcNa = new TextFieldEditor(LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_NA), "zcSppcNa");
+    TextFieldEditor zcSppcNa = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_NA), "zcSppcNa");
 
     editorList.add(zcSppcNa);
 
-    TextFieldEditor zcYear = new TextFieldEditor(LangTransMeta
+    TextFieldEditor zcYear = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_ND), "zcYear");
 
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_ND), "zcYear");
+//    editorList.add(zcYear);
 
-    editorList.add(zcYear);
-
-    AsValFieldEditor zcSppcStatus = new AsValFieldEditor(LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_ZBPP_STATUS), "zcZbPpStatus", "ZC_VS_PINP_STATUS");
+    AsValFieldEditor zcSppcStatus = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_ZBPP_STATUS), "zcZbPpStatus", "ZC_VS_PINP_STATUS");
 
     editorList.add(zcSppcStatus);
 
@@ -440,6 +426,7 @@ public class ZcBdPinpEditPanel extends AbstractMainSubEditPanel {
       afterBill = new ZcBBrand();
 
       afterBill.setZcZbPpStatus("0");
+      afterBill.setZcYear(""+requestMeta.getSvNd());
 
       // afterBill.setZcYear(String.valueOf(requestMeta.getSvNd()));
 

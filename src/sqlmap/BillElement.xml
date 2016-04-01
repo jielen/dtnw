@@ -66,17 +66,9 @@
 
 		       me.is_include,me.is_inherit,me.is_edit,dec_flag, me.is_random_edit,me.level_ctrl,
 
-		       me.is_null,me.extend_element_type , elc.opt_val,me.DISPLAY_ORDER_INDEX, me.PARENT_LEVEL_CTRL
+		       me.is_null,me.extend_element_type , '' as opt_val,me.DISPLAY_ORDER_INDEX, me.PARENT_LEVEL_CTRL
 
-		From  ZC_SYS_BILL_ELEMENT me Left Join (
-
-		   Select Distinct t.element_code ,t.level_id ,ao.opt_val From
-
-		   ZC_ELEMENT_CONFIG t Inner Join as_option ao
-
-		   On t.level_id=ao.opt_id And ao.Is_Syst_Opt='Y' And ao.co_code='*'
-
-          )  elc On me.element_code= elc.element_code
+		From  ZC_SYS_BILL_ELEMENT me  
 
 		where me.nd=#nd:INTEGER# and me.bill_type_code=#billTypeCode:VARCHAR#
 

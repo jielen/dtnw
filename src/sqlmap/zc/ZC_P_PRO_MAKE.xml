@@ -329,14 +329,12 @@
 		from
 		ZC_P_PRO_MAKE ZC_P_PRO_MAKE,
 		(SELECT
-		h.instance_id,MAX(to_date(h.execute_time,'yyyy-mm-dd hh24:mi:ss')) AS
-		d
+		h.instance_id,MAX(to_date(h.execute_time,'yyyy-mm-dd hh24:mi:ss')) AS d
 		FROM wf_action h
 		GROUP BY h.instance_id) wh
 		where
 		ZC_P_PRO_MAKE.process_inst_id=wh.instance_id(+) and
-		ZC_P_PRO_MAKE.ND =
-		#nd:INTEGER#
+		ZC_P_PRO_MAKE.ND =#nd:INTEGER#
 		<include refid="BusiNumLim.BusiNumLimStr" />
 		<isNotNull prepend="AND" property="status">
 			<isEqual property="status" compareValue="todo">
@@ -363,42 +361,8 @@
 				ZC_P_PRO_MAKE.ZC_MAKE_STATUS!='jingjiaing'
 				and
 				ZC_P_PRO_MAKE.ZC_MAKE_STATUS!='jingjiaycj'
-			</isEqual>
-			<isEqual property="status" compareValue="exec">
-				ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec'
-			</isEqual>
-
-			<isEqual property="status" compareValue="notconfirm">
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE = 'G01' and
-				ZC_P_PRO_MAKE.ZC_MAKE_STATUS = 'exec' and
-				ZC_P_PRO_MAKE.zc_make_code
-				in
-				(select zc_make_code
-				from zc_p_pro_mitem item
-				where
-				item.zc_is_cheng_jiao
-				is null
-				and item.zc_su_code = #zcText0#
-				)
-			</isEqual>
-			<isEqual property="status" compareValue="confirm">
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE = 'G01' and
-				ZC_P_PRO_MAKE.zc_make_code
-				in
-				(select
-				zc_make_code
-				from zc_p_pro_mitem item
-				where
-				item.zc_is_cheng_jiao =
-				'2'
-				and item.zc_su_code = #zcText0#
-				)
-			</isEqual>
-			<isEqual property="status" compareValue="allconfirm">
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE = 'G01' and
-				ZC_P_PRO_MAKE.ZC_MAKE_STATUS =
-				'confirm'
-			</isEqual>
+			</isEqual> 
+   
 			<isEqual property="status" compareValue="draft">
 				( exists (select
 				WF_DRAFT_NAME from v_wf_draft where
@@ -409,29 +373,17 @@
 				ZC_P_PRO_MAKE.process_inst_id = -1 )
 				and
 				ZC_P_PRO_MAKE.ZC_MAKE_STATUS !='cancel'
-			</isEqual>
-			<isEqual property="status" compareValue="xieyi">
-				(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec')
-				and
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE in
-				('G01')
-			</isEqual>
+			</isEqual> 
 			<isEqual property="status" compareValue="cancel">
 				(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='cancel')
 			</isEqual>
 			<isEqual property="status" compareValue="jingjiaing">
-				<!-- 正在竞价 :省厅状态是exec -->
-				<!--del shijia 20111020<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec' 
-					and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE>=sysdate)]]> -->
-				<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE>=sysdate)]]>
+				<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='jingjiaing' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE>=sysdate)]]>
 			</isEqual>
-			<isEqual property="status" compareValue="jingjiawcj">
-				<!-- 竞价结束未成交：省厅状态是exec -->
-				<!--del shijia 20111020 <![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec' 
-					and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate)]]> -->
-				<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='exec' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate)]]>
+			<isEqual property="status" compareValue="jingjia_wait_confirm"> 
+				<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='jingjiaing' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate)]]>
 			</isEqual>
-			<isEqual property="status" compareValue="jingjiaycj"><!-- 竞价结束已成交 -->
+			<isEqual property="status" compareValue="jingjiaycj"><!-- 竞价结束已成交 -->
 				<![CDATA[(ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='jingjiaycj' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate)]]>
 			</isEqual>
 			<isEqual property="status" compareValue="all"> 1=1
@@ -451,8 +403,7 @@
 		<!--order by ZC_P_PRO_MAKE.Zc_Input_Date desc -->
 		ORDER BY WH.D DESC
 	</select>
-	<select id="ibatorgenerated_selectByExampleXieYi"
-		parameterClass="elementCondition" resultMap="ibatorgenerated_BaseResultMap">
+	<select id="ibatorgenerated_selectByExampleXieYi"	parameterClass="elementCondition" resultMap="ibatorgenerated_BaseResultMap">
 		select ZC_MAKE_CODE, ZC_MAKE_NAME, CO_CODE, ND,
 		ZC_MAKE_LINKMAN,
 		ZC_MAKE_TEL,
@@ -504,51 +455,20 @@
 			ZC_P_PRO_MAKE.CO_CODE=#coCode:VARCHAR#
 		</isNotNull>
 		<isNotNull prepend="AND" property="status">
-			<isEqual property="status" compareValue="all"><!-- 查看全部 -->
-				( (ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE ='G03' <!-- 查看全部电子竞价 -->
-				<isNotNull prepend="AND" property="executor">			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 				  FROM ZC_P_PRO_MITEM ,         (select distinct zc_b_merchandise.zc_bra_code,                          zc_b_mer_discount.zc_su_code            from zc_b_merchandise, zc_b_mer_discount           where zc_b_merchandise.zc_mer_code = zc_b_mer_discount.zc_mer_code) bra_su     WHERE ZC_P_PRO_MITEM.zc_bra_code = bra_su.zc_bra_code     AND bra_su.ZC_SU_CODE =#executor:VARCHAR#)]]>
-				</isNotNull>
-				) or ( ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE ='G01' <!-- 查看全部自己的直接订货 -->				<isNotNull prepend="AND" property="executor">			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE                                                   FROM ZC_P_PRO_MITEM                                                   WHERE  ZC_P_PRO_MITEM.ZC_SU_CODE=#executor:VARCHAR#)]]>				</isNotNull>				)				)
+			<isEqual property="status" compareValue="jingjiaing"><!-- 正在竞价 -->
+                <![CDATA[ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE>=sysdate 					and ZC_P_PRO_MAKE.ZC_MAKE_STATUS ='jingjiaing'				]]> 
 			</isEqual>
-			<isEqual property="status" compareValue="biding"><!-- 正在竞价 -->
-                <![CDATA[ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G03'
-                  and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE>=sysdate ]]>
-				<isNotNull prepend="AND" property="executor">
-			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 
-				  FROM ZC_P_PRO_MITEM ,         (select distinct zc_b_merchandise.zc_bra_code,                          zc_b_mer_discount.zc_su_code            from zc_b_merchandise, zc_b_mer_discount           where zc_b_merchandise.zc_mer_code = zc_b_mer_discount.zc_mer_code) bra_su     WHERE ZC_P_PRO_MITEM.zc_bra_code = bra_su.zc_bra_code     AND bra_su.ZC_SU_CODE =#executor:VARCHAR#)]]>
-				</isNotNull>
-			</isEqual>
-			<isEqual property="status" compareValue="complete"><!-- 竞价结束 -->
-                <![CDATA[ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G03'
-                and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate]]>
-				<isNotNull prepend="AND" property="executor">
-			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 
-				  FROM ZC_P_PRO_MITEM,          (select distinct zc_b_merchandise.zc_bra_code,                          zc_b_mer_discount.zc_su_code            from zc_b_merchandise, zc_b_mer_discount           where zc_b_merchandise.zc_mer_code = zc_b_mer_discount.zc_mer_code) bra_su     WHERE ZC_P_PRO_MITEM.zc_bra_code = bra_su.zc_bra_code     AND bra_su.ZC_SU_CODE =#executor:VARCHAR#)]]>
-				</isNotNull>
+			<isEqual property="status" compareValue="complete"><!-- 竞价结束 -->
+                <![CDATA[ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01' and ZC_P_PRO_MAKE.ZC_XIEYI_END_DATE<sysdate]]> 
 			</isEqual>
 			<isEqual property="status" compareValue="mybiding"><!-- 我的竞价 -->
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G03'
-				<isNotNull prepend="AND" property="executor">
-			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 
-                                                  FROM ZC_P_PRO_MITEM 
+				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01'
+				<isNotNull prepend="AND" property="executor">
+			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 
+                                                  FROM ZC_P_PRO_MITEM 
                                                   WHERE  ZC_P_PRO_MITEM.ZC_SU_CODE=#executor:VARCHAR#)]]>
 				</isNotNull>
-			</isEqual>
-			<isEqual property="status" compareValue="direct"><!-- 直接订货 -->
-				ZC_P_PRO_MAKE.ZC_FUKUAN_TYPE='G01' and
-				ZC_P_PRO_MAKE.ZC_MAKE_CODE IN
-				(SELECT
-				ZC_P_PRO_MITEM.ZC_MAKE_CODE
-				FROM ZC_P_PRO_MITEM
-				WHERE
-				ZC_P_PRO_MITEM.ZC_SU_CODE IS NOT NULL)
-				<isNotNull prepend="AND" property="executor">
-			   <![CDATA[ZC_P_PRO_MAKE.ZC_MAKE_CODE IN  (SELECT ZC_P_PRO_MITEM.ZC_MAKE_CODE 
-                                                  FROM ZC_P_PRO_MITEM 
-                                                  WHERE  ZC_P_PRO_MITEM.ZC_SU_CODE=#executor:VARCHAR#)]]>
-				</isNotNull>
-			</isEqual>
-			and ZC_P_PRO_MAKE.ZC_MAKE_STATUS='exec'
+			</isEqual> 
 		</isNotNull>
 		order by ZC_P_PRO_MAKE.ZC_INPUT_DATE desc
 	</select>
@@ -2190,5 +2110,5 @@
 		) aa
 		where
 		make.zc_make_code = aa.zc_make_code
-	</select>	<select id="selectProjectForJSXM" parameterClass="elementCondition"		resultMap="ibatorgenerated_BaseResultMap">		select ZC_MAKE_CODE,		ZC_TEMP_MAKE_CODE,		ZC_MAKE_NAME,		CO_CODE,		ND,		ZC_MAKE_LINKMAN,		ZC_MAKE_TEL,		ZC_MAKE_STATUS,		ZC_INPUT_CODE,		ZC_INPUT_DATE,		ZC_PRO_REMARK,		ZC_MONEY_BI_SUM,		ZC_MONEY_ZC_SUM,		ZC_MAKE_APPR_SNO,		ZC_MAKE_APPR,		ZC_MAKE_APPR_BLOBID,		ZC_REMARK,		PROCESS_INST_ID,		ZC_MAKE_FROM,		AGENCY,		ZC_IS_AGENCY,		ZC_MAKE_ZHAOBIAO,		ZC_MAKE_ZHAOBIAO_BLOBID,		ZC_MAKE_ZHAOGG,		ZC_MAKE_ZHAOGG_BLOBID,		ZC_MAKE_ZHONGBIAO,		ZC_MAKE_ZHONGBIAO_BLOBID,		ZC_MAKE_ZHONGGG,		ZC_MAKE_ZHONGGG_BLOBID,		ZC_IS_TO_CGZX,		ZC_MAKE_FLAG,		ORG_CODE,		ZC_PITEM_OPIWAY,		ZC_PIFU_CGFS,		ZC_PITEM_MODE,		ZC_CD_AWDAREA,		ZC_IS_ZXQY_ZB,		ZC_HANGYE_CTG,		ORG_NAME,		ZC_MONEY_BI_YZX,		ZC_MONEY_KY_BGS,		ZC_MONEY_BG_ZXS,		ZC_FGKZBFS_SMWJ_BLOBID,		ZC_FGKZBFS_SMWJ,		AGENCY_NAME,		ZC_DIYU_DAIMA,		ZC_MONEY_HT_YBA,		ZC_FUKUAN_TYPE,		ZC_WEITO_DATE,		ZC_YEP_FLAG,		ZC_YEP_SUM,		ZC_BI_NZJZ_SUM,		ZC_PROJ_ORIGN,		ZC_DIYU_DAIMA_ZJ,		ZC_IS_NOTARY,		ZC_IS_IMP,		ZC_IS_REMARK,		ZC_IMP_FILE,		ZC_IMP_FILE_BLOBID,		ZC_PRINT_STATUS,		ZC_MAKE_SEQUENCE,		ZC_IS_BUDGET,		ZC_XIEYI_END_DATE,		ZC_NO_SHIP_REASON,		ZC_ATTR1,		ZC_ATTR2,		ZC_ATTR3,		ZC_ATTR4,		ZC_ATTR5,		nvl((select m.zc_item_sum		from zc_p_pro_mitem m		where m.zc_make_code =		ZC_P_PRO_MAKE.zc_make_code		and m.zc_is_cheng_jiao = '2'),		0)		zc_item_sum,pro_id,'' pro_name,ZC_MAKE_PF_SEQUENCE		,is_des_sup,is_pub,is_car		from zc_p_pro_make		where		ZC_MAKE_STATUS ='exec'		<isNotNull prepend="and" property="coCode">			zc_p_pro_make.co_code =			#coCode:VARCHAR#		</isNotNull>		<isNotNull prepend="and" property="zcText0">			zc_fukuan_type =			#zcText0:VARCHAR#		</isNotNull>		and not exists (select b.zc_bal_id from zc_p_pro_bal b where		b.zc_make_code=zc_p_pro_make.zc_make_code and b.is_last_pay='Y'		<isNotNull prepend="and" property="zcMakeCode">			b.zc_make_code !=			#zcMakeCode:VARCHAR#		</isNotNull>		)		AND exists (select h.zc_make_code		from ZC_XMCG_HT h		where h.nd =		#nd:VARCHAR#		and h.zc_ht_status = 'exec'		and		h.zc_make_code=ZC_P_PRO_MAKE.zc_make_code		<isNotNull prepend="and" property="coCode">			h.co_code =			#coCode:VARCHAR#		</isNotNull>		)	</select>	<select id="getZcPProMakeNoHtList" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="elementCondition">		select make.*, '' pro_name from Zc_p_Pro_Make make		where make.co_code = #coCode:VARCHAR# and nd = #nd:VARCHAR#		and		not exists (select * from zc_xmcg_ht ht where ht.zc_make_code =		make.zc_make_code)		<!-- 丹徒地区预算单位只能选择车辆采购计划，录入合同，其他合同由供应商录入 -->		<isNotNull prepend="and" property="zcText4">			<isEqual property="zcText4" compareValue="onlyCar">				make.is_car in ('Y','y')			</isEqual>		</isNotNull>	</select>	<select id="getSpecialBrands" resultClass="String">		select * from		v_zc_Special_Brand	</select>	<select id="getZcPProMitmemerIfExistsHongqi" resultClass="java.lang.Integer"		parameterClass="java.lang.String">		select count(zc_p_pro_make.zc_make_code)		from		v_zc_p_pro_make_xy_hongqi zc_p_pro_make		where		zc_p_pro_make.zc_make_code=#zcMakeCode#	</select>	<select id="getZcPProXySum" resultClass="java.math.BigDecimal"		parameterClass="elementCondition">		SELECT		sum(T.XY_SUM)		FROM v_zc_p_xy_sum T		WHERE T.CO_CODE=#coCode#		AND T.ND=#nd#		<isNotNull prepend="AND" property="zcMakeCode">		T.ZC_MAKE_CODE! =#zcMakeCode:VARCHAR#		</isNotNull>	</select>	<select id="getZcPProMakeByProcessId" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="java.lang.String">		SELECT		t.*,		'' as pro_name 		FROM Zc_p_Pro_Make T		WHERE T.PROCESS_INST_ID=#value#			</select>	<select id="queryExportsDatas" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="elementCondition">		SELECT		t.*,		'' as pro_name 		FROM Zc_p_Pro_Make T		<isNotEmpty property="pmAdjustCodeList" prepend="where">            t.ZC_MAKE_CODE in            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">                #pmAdjustCodeList[]#            </iterate>        </isNotEmpty>		</select>
+	</select>	<select id="selectProjectForJSXM" parameterClass="elementCondition"		resultMap="ibatorgenerated_BaseResultMap">		select ZC_MAKE_CODE,		ZC_TEMP_MAKE_CODE,		ZC_MAKE_NAME,		CO_CODE,		ND,		ZC_MAKE_LINKMAN,		ZC_MAKE_TEL,		ZC_MAKE_STATUS,		ZC_INPUT_CODE,		ZC_INPUT_DATE,		ZC_PRO_REMARK,		ZC_MONEY_BI_SUM,		ZC_MONEY_ZC_SUM,		ZC_MAKE_APPR_SNO,		ZC_MAKE_APPR,		ZC_MAKE_APPR_BLOBID,		ZC_REMARK,		PROCESS_INST_ID,		ZC_MAKE_FROM,		AGENCY,		ZC_IS_AGENCY,		ZC_MAKE_ZHAOBIAO,		ZC_MAKE_ZHAOBIAO_BLOBID,		ZC_MAKE_ZHAOGG,		ZC_MAKE_ZHAOGG_BLOBID,		ZC_MAKE_ZHONGBIAO,		ZC_MAKE_ZHONGBIAO_BLOBID,		ZC_MAKE_ZHONGGG,		ZC_MAKE_ZHONGGG_BLOBID,		ZC_IS_TO_CGZX,		ZC_MAKE_FLAG,		ORG_CODE,		ZC_PITEM_OPIWAY,		ZC_PIFU_CGFS,		ZC_PITEM_MODE,		ZC_CD_AWDAREA,		ZC_IS_ZXQY_ZB,		ZC_HANGYE_CTG,		ORG_NAME,		ZC_MONEY_BI_YZX,		ZC_MONEY_KY_BGS,		ZC_MONEY_BG_ZXS,		ZC_FGKZBFS_SMWJ_BLOBID,		ZC_FGKZBFS_SMWJ,		AGENCY_NAME,		ZC_DIYU_DAIMA,		ZC_MONEY_HT_YBA,		ZC_FUKUAN_TYPE,		ZC_WEITO_DATE,		ZC_YEP_FLAG,		ZC_YEP_SUM,		ZC_BI_NZJZ_SUM,		ZC_PROJ_ORIGN,		ZC_DIYU_DAIMA_ZJ,		ZC_IS_NOTARY,		ZC_IS_IMP,		ZC_IS_REMARK,		ZC_IMP_FILE,		ZC_IMP_FILE_BLOBID,		ZC_PRINT_STATUS,		ZC_MAKE_SEQUENCE,		ZC_IS_BUDGET,		ZC_XIEYI_END_DATE,		ZC_NO_SHIP_REASON,		ZC_ATTR1,		ZC_ATTR2,		ZC_ATTR3,		ZC_ATTR4,		ZC_ATTR5,		nvl((select m.zc_item_sum		from zc_p_pro_mitem m		where m.zc_make_code =		ZC_P_PRO_MAKE.zc_make_code		and m.zc_is_cheng_jiao = '2'),		0)		zc_item_sum,pro_id,'' pro_name,ZC_MAKE_PF_SEQUENCE		,is_des_sup,is_pub,is_car		from zc_p_pro_make		where		ZC_MAKE_STATUS ='exec'		<isNotNull prepend="and" property="coCode">			zc_p_pro_make.co_code =			#coCode:VARCHAR#		</isNotNull>		<isNotNull prepend="and" property="zcText0">			zc_fukuan_type =			#zcText0:VARCHAR#		</isNotNull>		and not exists (select b.zc_bal_id from zc_p_pro_bal b where		b.zc_make_code=zc_p_pro_make.zc_make_code and b.is_last_pay='Y'		<isNotNull prepend="and" property="zcMakeCode">			b.zc_make_code !=			#zcMakeCode:VARCHAR#		</isNotNull>		)		AND exists (select h.zc_make_code		from ZC_XMCG_HT h		where h.nd =		#nd:VARCHAR#		and h.zc_ht_status = 'exec'		and		h.zc_make_code=ZC_P_PRO_MAKE.zc_make_code		<isNotNull prepend="and" property="coCode">			h.co_code =			#coCode:VARCHAR#		</isNotNull>		)	</select>	<select id="getZcPProMakeNoHtList" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="elementCondition">		select make.*, '' pro_name from Zc_p_Pro_Make make		where make.co_code = #coCode:VARCHAR# and nd = #nd:VARCHAR#		and make.zc_fukuan_type!='G01'<!-- 协议采购的合同自动生成 -->		and		not exists (select * from zc_xmcg_ht ht where ht.zc_make_code =		make.zc_make_code)		<!-- 丹徒地区预算单位只能选择车辆采购计划，录入合同，其他合同由供应商录入 -->		<isNotNull prepend="and" property="zcText4">			<isEqual property="zcText4" compareValue="onlyCar">				make.is_car in ('Y','y')			</isEqual>		</isNotNull>	</select>	<select id="getSpecialBrands" resultClass="String">		select * from		v_zc_Special_Brand	</select>	<select id="getZcPProMitmemerIfExistsHongqi" resultClass="java.lang.Integer"		parameterClass="java.lang.String">		select count(zc_p_pro_make.zc_make_code)		from		v_zc_p_pro_make_xy_hongqi zc_p_pro_make		where		zc_p_pro_make.zc_make_code=#zcMakeCode#	</select>	<select id="getZcPProXySum" resultClass="java.math.BigDecimal"		parameterClass="elementCondition">		SELECT		sum(T.XY_SUM)		FROM v_zc_p_xy_sum T		WHERE T.CO_CODE=#coCode#		AND T.ND=#nd#		<isNotNull prepend="AND" property="zcMakeCode">		T.ZC_MAKE_CODE! =#zcMakeCode:VARCHAR#		</isNotNull>	</select>	<select id="getZcPProMakeByProcessId" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="java.lang.String">		SELECT		t.*,		'' as pro_name 		FROM Zc_p_Pro_Make T		WHERE T.PROCESS_INST_ID=#value#			</select>	<select id="queryExportsDatas" resultMap="ibatorgenerated_BaseResultMap"		parameterClass="elementCondition">		SELECT		t.*,		'' as pro_name 		FROM Zc_p_Pro_Make T		<isNotEmpty property="pmAdjustCodeList" prepend="where">            t.ZC_MAKE_CODE in            <iterate property="pmAdjustCodeList"  conjunction="," open="(" close=")">                #pmAdjustCodeList[]#            </iterate>        </isNotEmpty>		</select>
 </sqlMap>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap  
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="ZcDingdianItemMapper" >
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcDingdianItem" > 
+    <result column="DD_CODE" property="ddCode" jdbcType="VARCHAR" />
+    <result column="DD_ITEM_CODE" property="ddItemCode" jdbcType="VARCHAR" />
+    <result column="ITEM_CONTENT" property="itemContent" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="ITEM_TOTAL_SUM" property="itemTotalSum" jdbcType="DECIMAL" />
+    <result column="ITEM_VAL" property="itemVal" jdbcType="DECIMAL" />
+    <result column="ITEM_BI" property="itemBi" jdbcType="DECIMAL" />
+    <result column="ITEM_OTHER" property="itemOther" jdbcType="DECIMAL" />
+    <result column="ITEM_TYPE" property="itemType" jdbcType="VARCHAR" />
+    <result column="ITEM_DETAIL" property="itemDetail" jdbcType="VARCHAR" />
+  </resultMap>
+	<select id="getItemLstByDdCode" resultMap="BaseResultMap" 	parameterClass="String">
+		select * from ZC_DINGDIAN_ITEM
+		where DD_CODE=#value#
+	</select>
+	<delete id="deleteItemByDdCode" parameterClass="string">
+		delete from
+		ZC_DINGDIAN_ITEM
+		where
+		DD_CODE = #value#
+	</delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcDingdianItem" > 
+    insert into ZC_DINGDIAN_ITEM (DD_CODE, DD_ITEM_CODE, ITEM_CONTENT, 
+      REMARK, ITEM_TOTAL_SUM, ITEM_VAL, 
+      ITEM_BI, ITEM_OTHER, ITEM_TYPE, 
+      ITEM_DETAIL)
+    values (#ddCode:VARCHAR#, #ddItemCode:VARCHAR#, #itemContent:VARCHAR#, 
+      #remark:VARCHAR#, #itemTotalSum:DECIMAL#, #itemVal:DECIMAL#, 
+      #itemBi:DECIMAL#, #itemOther:DECIMAL#, #itemType:VARCHAR#, 
+      #itemDetail:VARCHAR#)
+  </insert> 
+</sqlMap>

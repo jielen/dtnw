@@ -299,4 +299,20 @@
      <sqlMap resource="sqlmap/zc/ZC_PAY_GK_INFO.xml"/>
      <sqlMap resource="sqlmap/zc/ZcEbDaiBian.xml"/>
      
+     <sqlMap resource="sqlmap/zc/ZcBrandMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsCataToBrandMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsCataToCataMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsCatalogMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsImageMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsSpecMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsSpecLongMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsSpecTemplateMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcGoodsToSupplierMapper.xml"/>
+     
+     <sqlMap resource="sqlmap/zc/ZcDingdianBiMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcDingdianItemMapper.xml"/>
+     <sqlMap resource="sqlmap/zc/ZcDingdianMapper.xml"/>
+     
+     
 </sqlMapConfig>

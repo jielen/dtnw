@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcGoodsCataToCataMapper" >
+	<typeAlias alias="elementCondition"	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcGoodsCataToCata" >
+    <result column="ZC_YEAR" property="zcYear" jdbcType="CHAR" />
+    <result column="ZC_CATALOGUE_CODE" property="zcCatalogueCode" jdbcType="VARCHAR" />
+    <result column="GOODS_CATALOG_CODE" property="goodsCatalogCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <select id="selectMainDataLst" resultMap="BaseResultMap" parameterClass="elementCondition" > 
+    select 
+     *
+    from ZC_GOODS_CATA_TO_CATA    
+	<dynamic prepend="WHERE">  
+	  <isNotEmpty prepend="AND" property="zcText1"> 
+	    		GOODS_CATALOG_CODE = #zcText1#
+	  </isNotEmpty>  
+	  <isNotEmpty prepend="AND" property="zcText2"> 
+	    		ZC_CATALOGUE_CODE = #zcText2#
+	  </isNotEmpty>  
+	  <isNotEmpty prepend="AND" property="nd"> 
+	    		ZC_YEAR = #nd#
+	  </isNotEmpty>
+	</dynamic>  
+  </select>
+  <delete id="deleteByGoodsCataCode" parameterClass="java.lang.String" >
+    delete from ZC_GOODS_CATA_TO_CATA
+    where GOODS_CATALOG_CODE = #value#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcGoodsCataToCata" >
+    insert into ZC_GOODS_CATA_TO_CATA (ZC_YEAR, ZC_CATALOGUE_CODE, GOODS_CATALOG_CODE
+      )
+    values (#zcYear:CHAR#, #zcCatalogueCode:VARCHAR#, #goodsCatalogCode:VARCHAR#
+      )
+  </insert>
+</sqlMap>

@@ -415,4 +415,26 @@
 		scope="singleton">
 		<property name="zcEmExpertAbilityService" ref="zcEmExpertAbilityService"></property>
 	</bean>
+	
+	<bean id="zcBdPinpServiceDelegate"
+		class="com.ufgov.zc.server.zc.publish.impl.ZcBdPinpServiceDelegate"
+		scope="singleton">
+		<property name="zcBdPinpService" ref="zcBdPinpService"></property>
+	</bean>
+	<bean id="zcBMerchandiseServiceDelegate"
+		class="com.ufgov.zc.server.zc.publish.impl.ZcBMerchandiseServiceDelegate"
+		scope="singleton">
+		<property name="zcBMerchandiseService" ref="zcBMerchandiseService"></property>
+	</bean>
+	<bean id="zcBdSppcServiceDelegate"
+		class="com.ufgov.zc.server.zc.publish.impl.ZcBdSppcServiceDelegate"
+		scope="singleton">
+		<property name="zcBdSppcService" ref="zcBdSppcService"></property>
+	</bean>
+	
+	<bean id="zcDingDianServiceDelegate"
+		class="com.ufgov.zc.server.zc.publish.impl.ZcDingDianServiceDelegate"
+		scope="singleton">
+		<property name="dingDianService" ref="dingDianService" />
+	</bean>
 </beans>

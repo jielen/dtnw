@@ -16,6 +16,8 @@ import com.ufgov.zc.common.system.RequestMeta;
 import com.ufgov.zc.common.system.constants.ZcSettingConstants;
 import com.ufgov.zc.common.system.model.AsOption;
 import com.ufgov.zc.common.zc.exception.ZcPayInterfaceException;
+import com.ufgov.zc.common.zc.model.ZcDingdian;
+import com.ufgov.zc.common.zc.model.ZcDingdianBi;
 import com.ufgov.zc.common.zc.model.ZcPProBal;
 import com.ufgov.zc.common.zc.model.ZcPProBalBi;
 import com.ufgov.zc.common.zc.model.ZcPProReturnBi;
@@ -533,5 +535,80 @@ public class PayForZcUtil {
       }
     }*/
 
+  }public  Map PayByDingDian(ZcDingdian qb, RequestMeta requestMeta) throws ZcPayInterfaceException { 
+    List biList = qb.getBiList();
+    if (biList == null || biList.size() == 0) {
+      return null;
+    }
+
+    // data_type=save
+    // user_id=用户id
+    // role_id=角色id
+    // isVoucher=true/false（true为生成支付申请，false为生成支付凭证）
+    // pk_id=支付方式id
+    // Map<String, Object> paramMap = new HashMap<String, Object>();
+
+    Map paymap = new HashMap();
+//    paymap.put("budget_sum_id", "105786");
+    paymap.put("user_id", AsOptionUtil.getInstance().getOptionVal(OPT_ZC_PAY_USER_ID));
+    paymap.put("role_id", AsOptionUtil.getInstance().getOptionVal(OPT_ZC_PAY_ROLE_ID));
+    String isZfpz=AsOptionUtil.getInstance().getOptionVal(OPT_ZC_PAY_IS_ZhiFuPingZhen);
+    if("Y".equalsIgnoreCase(isZfpz)){
+      paymap.put("isVoucher", "false");
+    }else{
+      paymap.put("isVoucher", "true");
+    }
+    paymap.put("set_year", ""+requestMeta.getSvNd());
+    paymap.put("rg_code", AsOptionUtil.getInstance().getOptionVal(OPT_ZC_PAY_RG_CODE));
+    paymap.put("pk_code", AsOptionUtil.getInstance().getOptionVal(OPT_ZC_PAY_ZhiFuFangShi));//支付方式id
+    paymap.put("data_type", "save");
+    
+    StringBuffer str = new StringBuffer();
+
+    for (int i = 0; i < biList.size(); i++) {
+      ZcDingdianBi bbi = (ZcDingdianBi) biList.get(i);
+
+      if (bbi.getZcAmBillNo() != null && bbi.getZcAmBillNo().length() > 0) {
+        continue;
+      }
+      
+      if (bbi.getZcBiNo() == null || "".equals(bbi.getZcBiNo()) || bbi.getZcBiNo().startsWith(ZcSettingConstants.No_BI)//自筹资金
+        || bbi.getZcBiJhuaSum() == null || bbi.getZcBiJhuaSum().doubleValue() == 0) {
+        continue;
+      }
+      
+      /**
+       * data=具体数据， 例如：data=pay_money=1#payee_account_name=政府采购测试单位账户1#
+       * payee_account_no=1234567890 #payee_account_bank=政府采购银行#bsi_id=123
+       * &pay_money=2#payee_account_name=政府采购测试单位账户2#payee_account_no=
+       * 1234567891#payee_account_bank=政府采购银行2#bsi_id=123
+       * data中&连接多条支付数据，#连接同一条支付数据中不同要素，=连接要素名称与要素值。
+       */
+      if (str.length() > 0) {
+        str.append("&");
+      }
+      str.append("budget_id=").append(bbi.getZcBiNo() == null ? "" : bbi.getZcBiNo().trim());// 指标编号
+      str.append("#pay_money=").append(bbi.getZcBiJhuaSum());// 本次结算金额
+      str.append("#payee_account_name=").append(qb.getSuBankShoukuanren().trim());// 供应商银行账户名称
+      str.append("#payee_account_no=").append(qb.getSuBankAccount().trim());// 供应商银行账户账号
+      str.append("#payee_account_bank=").append(qb.getSuBank().trim());// 供应商银行名称
+      str.append("#bsi_id=").append(bbi.getOutlayCode());// 经济科目，指标只到类，支付要到末级
+    }
+
+    if (str.length() == 0) {
+      return null;
+    }
+    paymap.put("data", str.toString());
+    Map resultMap = null;
+    resultMap = call(paymap);
+
+    if (resultMap == null) {
+      throw new ZcPayInterfaceException("支付接口返回结果为空");
+    }
+
+    if (!RTN_RESULT_TRUE.equals(resultMap.get(RTN_RESULT))) {
+      throw new ZcPayInterfaceException(resultMap.get(RTN_MESSAGE).toString());
+    }
+    return resultMap; 
   }
 }

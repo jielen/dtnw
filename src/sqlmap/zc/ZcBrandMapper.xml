@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap 
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.ufgov.zc.server.zc.dao.ZcBrandMapper" >
+	<typeAlias alias="elementCondition" 	type="com.ufgov.zc.common.system.dto.ElementConditionDto" />
+  <resultMap id="BaseResultMap" class="com.ufgov.zc.common.zc.model.ZcBrand" > 
+    <result column="BRAND_CODE" property="brandCode" jdbcType="VARCHAR" />
+    <result column="BRAND_NAME" property="brandName" jdbcType="VARCHAR" />
+    <result column="LINK_MAN" property="linkMan" jdbcType="VARCHAR" />
+    <result column="LINK_TEL" property="linkTel" jdbcType="VARCHAR" />
+    <result column="LINK_MOBILE" property="linkMobile" jdbcType="VARCHAR" />
+    <result column="LINK_FAX" property="linkFax" jdbcType="VARCHAR" />
+    <result column="LINK_ADDRESS" property="linkAddress" jdbcType="VARCHAR" />
+    <result column="IS_ENABLE" property="isEnable" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" > 
+    BRAND_CODE, BRAND_NAME, LINK_MAN, LINK_TEL, LINK_MOBILE, LINK_FAX, LINK_ADDRESS, 
+    IS_ENABLE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="java.lang.String" > 
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_BRAND
+    where BRAND_CODE = #brandCode:VARCHAR#
+  </select>
+  <select id="selectMainDataLst" resultMap="BaseResultMap" parameterClass="elementCondition" > 
+    select 
+    <include refid="Base_Column_List" />
+    from ZC_BRAND    
+	<dynamic prepend="WHERE">  
+	  <isNotEmpty prepend="AND" property="status"> 
+			<isEqual property="status" compareValue="enable">
+	    		IS_ENABLE = 'Y'
+	    	</isEqual>  
+			<isEqual property="status" compareValue="disable">
+	    		IS_ENABLE = 'N'
+	    	</isEqual>  
+			<isEqual property="status" compareValue="all">
+	    		1=1 
+	    	</isEqual>    
+	  </isNotEmpty>
+	</dynamic>  
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="java.lang.String" > 
+    delete from ZC_BRAND
+    where BRAND_CODE = #brandCode:VARCHAR#
+  </delete>
+  <insert id="insert" parameterClass="com.ufgov.zc.common.zc.model.ZcBrand" > 
+    insert into ZC_BRAND (BRAND_CODE, BRAND_NAME, LINK_MAN, 
+      LINK_TEL, LINK_MOBILE, LINK_FAX, 
+      LINK_ADDRESS, IS_ENABLE)
+    values (#brandCode:VARCHAR#, #brandName:VARCHAR#, #linkMan:VARCHAR#, 
+      #linkTel:VARCHAR#, #linkMobile:VARCHAR#, #linkFax:VARCHAR#, 
+      #linkAddress:VARCHAR#, #isEnable:CHAR#)
+  </insert>
+  <update id="updateByPrimaryKey" parameterClass="com.ufgov.zc.common.zc.model.ZcBrand" > 
+    update ZC_BRAND
+    set BRAND_NAME = #brandName:VARCHAR#,
+      LINK_MAN = #linkMan:VARCHAR#,
+      LINK_TEL = #linkTel:VARCHAR#,
+      LINK_MOBILE = #linkMobile:VARCHAR#,
+      LINK_FAX = #linkFax:VARCHAR#,
+      LINK_ADDRESS = #linkAddress:VARCHAR#,
+      IS_ENABLE = #isEnable:CHAR#
+    where BRAND_CODE = #brandCode:VARCHAR#
+  </update>
+</sqlMap>

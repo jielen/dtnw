@@ -63,6 +63,7 @@ import com.ufgov.zc.client.component.zc.fieldeditor.FileFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.ForeignEntityFieldCellEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.ForeignEntityFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.MoneyFieldEditor;
+import com.ufgov.zc.client.component.zc.fieldeditor.NewLineFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.TextAreaFieldEditor;
 import com.ufgov.zc.client.component.zc.fieldeditor.TextFieldEditor;
 import com.ufgov.zc.client.util.SwingUtil;
@@ -220,150 +221,100 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
   protected List<AbstractFieldEditor> createMainFieldEditors(List<AbstractFieldEditor> editorList) {
 
     //商品代码、商品名称、状态
-    AutoNumFieldEditor zcMerCode = new AutoNumFieldEditor(LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_CODE), "zcMerCode", false);
-
-    editorList.add(zcMerCode);
-
+    AutoNumFieldEditor zcMerCode = new AutoNumFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_CODE), "zcMerCode", false);
     TextFieldEditor zcMerName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_NAME), "zcMerName");
-
-    editorList.add(zcMerName);
-
     AsValFieldEditor zcMerchandiseStatus = new AsValFieldEditor("状态", "zcMerStatus", "ZC_VS_MER_STATUS");
-
-    editorList.add(zcMerchandiseStatus);
-
     //地域代码、地域名称，商品图片
     String dyColumNames[] = { "地域代码", "地域名称" };
-
     DySelectedHandler dyHandler = new DySelectedHandler(dyColumNames);
-
     ForeignEntityFieldEditor dyId = new ForeignEntityFieldEditor("ZC_B_DIYUCTG.selectZcDiYuCtgForeignList", elementDto, 10, dyHandler, dyColumNames,
-
     LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_DIYU_DAIMA), "zcDiyuDaima");
-
-    //editorList.add(dyId);  
-
     TextFieldEditor zcDiyuName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_DIYU_NAME), "zcDiyuName");
-
-    //editorList.add(zcDiyuName);
-
     FileFieldEditor zcMerPic = new FileFieldEditor("商品图片", "zcMerPic", "zcMerPicBlobid");
-
-    editorList.add(zcMerPic);
-
     //商品批次代码、商品批次名称、年度
     String pcColumNames[] = { "商品批次代码", "商品批次名称", "年度" };
-
     PcSelectedHandler pcHandler = new PcSelectedHandler(pcColumNames);
-
-    pcId = new ForeignEntityFieldEditor("ZcBdSppc.selectEnableSppc", elementDto, 10, pcHandler, pcColumNames,
-
-    "商品批次代码", "zcProjId");
-
-    editorList.add(pcId);
-
+    pcId = new ForeignEntityFieldEditor("ZcBdSppc.selectEnableSppc", elementDto, 10, pcHandler, pcColumNames,  "商品批次代码", "zcProjId");
     TextFieldEditor zcProjName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_NA), "zcProjName");
-
-    editorList.add(zcProjName);
-
     TextFieldEditor zcYear = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_SPPC_ND), "zcYear");
-
-    editorList.add(zcYear);
-
     //品目代码、品目名称、媒体价格
     String catLogueColumNames[] = { "品目代码", "品目名称" };
-
     CatalogueSelectedHandler catHandler = new CatalogueSelectedHandler(catLogueColumNames);
-
     ForeignEntityFieldEditor catId = new ForeignEntityFieldEditor("ZcBCatalogue.getZcBCatalogue", elementDto, 10, catHandler, catLogueColumNames,
-
-    LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_CATALOGUE_CODE), "zcCatalogueCode");
-
-    editorList.add(catId);
-
-    TextFieldEditor zcCatName = new TextFieldEditor(LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_CATALOGUE_NAME), "zcCatalogueName");
-
-    editorList.add(zcCatName);
-
+    LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_CATALOGUE_CODE), "zcCatalogueCode");
+    TextFieldEditor zcCatName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_CATALOGUE_NAME), "zcCatalogueName");
     MoneyFieldEditor zcMerTax = new MoneyFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_TAX), "zcMerTax");
-
-    editorList.add(zcMerTax);
-
     //品牌代码、品牌名称、市场价格
     String brandColumNames[] = { "品牌代码", "品牌名称" };
-
     BrandSelectedHandler brandHandler = new BrandSelectedHandler(brandColumNames);
-
-    brandId = new ForeignEntityFieldEditor("ZcBrand.getPinpList", elementDto, 10, brandHandler, brandColumNames,
-
-    "品牌代码", "zcBraCode");
-
-    brandId.setEnabled(false);
-
-    editorList.add(brandId);
-
-    TextFieldEditor zcBraName = new TextFieldEditor(LangTransMeta
-
-    .translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_BRA_NAME), "zcBraName");
-
-    editorList.add(zcBraName);
-
+    brandId = new ForeignEntityFieldEditor("ZcBrand.getPinpList", elementDto, 10, brandHandler, brandColumNames, "品牌代码", "zcBraCode");
+    TextFieldEditor zcBraName = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_BRA_NAME), "zcBraName");
     MoneyFieldEditor zcMerMPrice = new MoneyFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_M_PRICE), "zcMerMPrice");
-
-    editorList.add(zcMerMPrice);
-
     //是否节能节水、是否绿色环保、计量单位
     AsValFieldEditor zcIsJnjs = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_IS_JNJS), "zcIsJnjs", "ZC_VS_YN");
-
-    editorList.add(zcIsJnjs);
-
-    AsValFieldEditor zcMerIsLshb = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_IS_LSHB), "zcMerIsLshb",
-      "ZC_VS_YN");
-
-    editorList.add(zcMerIsLshb);
-
+    AsValFieldEditor zcMerIsLshb = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_IS_LSHB), "zcMerIsLshb","ZC_VS_YN");
     TextFieldEditor zcMerUnit = new TextFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_UNIT), "zcMerUnit");
-
-    editorList.add(zcMerUnit);
-
     //是否自主创新产品、是否市局共享产品
-    AsValFieldEditor zcMerIsZzcx = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_IS_ZZCX), "zcMerIsZzcx",
-      "ZC_VS_YN");
-
-    editorList.add(zcMerIsZzcx);
-
-    AsValFieldEditor zcIsShared = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_IS_SHARED), "zcIsShared",
-      "ZC_VS_YN");
-
-    editorList.add(zcIsShared);
+    AsValFieldEditor zcMerIsZzcx = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_IS_ZZCX), "zcMerIsZzcx","ZC_VS_YN");
+    AsValFieldEditor zcIsShared = new AsValFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_IS_SHARED), "zcIsShared","ZC_VS_YN");
+    AsValFieldEditor zcMerIsAttach = new AsValFieldEditor("是否配件", "zcMerIsAttach","ZC_VS_YN");
     //规格型号
-    TextAreaFieldEditor zcMerSpec = new TextAreaFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_SPEC), "zcMerSpec", 100, 1,
-      5);
-
-    editorList.add(zcMerSpec);
+    TextAreaFieldEditor zcMerSpec = new TextAreaFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_MER_SPEC), "zcMerSpec", 100, 1, 5); 
+    //详细配置
+    TextAreaFieldEditor zcMerCollocate = new TextAreaFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_COLLOCATE), "zcMerCollocate", 999, 8, 5);
     //备注
     TextAreaFieldEditor zcRemark = new TextAreaFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_REMARK), "zcRemark", 999, 2, 5);
+    
+    String[] merColumNames = { "品牌","商品","型号","协议价格(元)","规格" };
+    MerSelectedHandler merHandler = new MerSelectedHandler(merColumNames);
+    ElementConditionDto merDto=new ElementConditionDto();
+    merDto.setZcText1("zhujian");
+    ForeignEntityFieldEditor mainMer = new ForeignEntityFieldEditor("ZcBMerchandise.selectMerByCatalogue", merDto, 10, merHandler, catLogueColumNames,"主商品编号", "zcSupMerCode");
+    TextFieldEditor mainName = new TextFieldEditor("主商品名称", "zcSupBraCode");//用属性zcSupBraCode来存储主商品名称了
 
-    editorList.add(zcRemark);
-    //详细配置
-    TextAreaFieldEditor zcMerCollocate = new TextAreaFieldEditor(LangTransMeta.translate(ZcElementConstants.FIELD_TRANS_ZC_FIELD_ZC_MER_COLLOCATE),
-      "zcMerCollocate", 999, 2, 5);
+    editorList.add(zcMerCode);
+    editorList.add(zcMerName);
+    editorList.add(zcMerchandiseStatus);
+    
+    //editorList.add(dyId);  
+    //editorList.add(zcDiyuName);
+//    editorList.add(zcMerPic);
+    
+    editorList.add(zcMerUnit);
+    editorList.add(pcId);
+    editorList.add(zcProjName);
+    
+    editorList.add(zcYear);
+    editorList.add(catId);
+    editorList.add(zcCatName);
+    
+    editorList.add(zcMerTax);
+    editorList.add(brandId);
+    editorList.add(zcBraName);
+    
+    editorList.add(zcMerMPrice);
+    editorList.add(new NewLineFieldEditor());
+    
+    editorList.add(zcIsJnjs);    
+    editorList.add(zcMerIsLshb);    
+    editorList.add(zcMerIsZzcx);
 
+    editorList.add(mainMer);
+    editorList.add(mainName);
+    editorList.add(zcMerIsAttach);
+//    editorList.add(zcIsShared);
+    
+    editorList.add(zcMerSpec);
     editorList.add(zcMerCollocate);
+    editorList.add(zcRemark);
 
     return editorList;
   }
 
   @Override
   public JComponent createSubBillPanel() {
-    return createItemPanel();
-
+//    return createItemPanel();
+    return null;
   }
 
   private JTabbedPane createItemPanel() {
@@ -585,11 +536,11 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
 
     }
 
-    if (bill.getItemList() == null || bill.getItemList().size() == 0) {
+   /* if (bill.getItemList() == null || bill.getItemList().size() == 0) {
 
       errStr.append("商品明细：\n不允许为空!\n");
 
-    }
+    }*/
 
     int i = 1;
     for (Object o : bill.getItemList()) {
@@ -875,7 +826,8 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
       for (AbstractFieldEditor fd : this.fieldEditors) {
 
         if ("zcProjName".equals(fd.getFieldName()) || "zcBraName".equals(fd.getFieldName()) || "zcCatalogueName".equals(fd.getFieldName())
-          || "zcYear".equals(fd.getFieldName()) || "zcDiyuName".equals(fd.getFieldName())) {
+          || "zcYear".equals(fd.getFieldName()) || "zcDiyuName".equals(fd.getFieldName())|| "zcSupBraCode".equals(fd.getFieldName())
+          || "zcMerStatus".equals(fd.getFieldName())|| "zcMerIsAttach".equals(fd.getFieldName())) {
 
           fd.setEnabled(false);
 
@@ -1445,7 +1397,6 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
 
     }
   }
-
   /**
    * 地域外部部件
    * @author Administrator
@@ -1513,6 +1464,63 @@ public class ZcBMerchandiseEditPanel extends AbstractMainSubEditPanel {
 
       return false;
 
+    }
+
+  }
+  /**
+   * 主商品选择部件
+   * @author Administrator
+   *
+   */
+  private class MerSelectedHandler implements IForeignEntityHandler {
+    private final String columNames[];
+    public MerSelectedHandler(String columNames[]) {
+      this.columNames = columNames;
+    }
+
+    public void excute(List selectedDatas) {
+      ZcBMerchandise bill = (ZcBMerchandise) listCursor.getCurrentObject();
+      for (Object object : selectedDatas) {
+        ZcBMerchandise dyBean = (ZcBMerchandise) object;
+        bill.setZcSupMerCode(dyBean.getZcMerCode());
+        bill.setZcMerIsAttach("Y");
+        bill.setZcSupBraCode(dyBean.getZcMerName());
+      }
+      setEditingObject(bill);
+    }
+
+    public TableModel createTableModel(List showDatas) {
+      Object data[][] = new Object[showDatas.size()][columNames.length];
+      for (int i = 0; i < showDatas.size(); i++) {
+        ZcBMerchandise rowData = (ZcBMerchandise) showDatas.get(i);
+        int col = 0;
+        data[i][col++] = rowData.getZcBraName();
+        data[i][col++] = rowData.getZcMerName();
+        data[i][col++] = rowData.getZcMerSpec();
+        data[i][col++] = rowData.getZcMerMPrice();
+        data[i][col++] = rowData.getZcMerCollocate();
+      }
+      MyTableModel model = new MyTableModel(data, columNames) {
+        public boolean isCellEditable(int row, int colum) {
+          return false;
+        }
+      };
+      return model;
+    }
+
+    public boolean isMultipleSelect() {
+
+      return false;
+
+    }
+    public void afterClear(){
+
+      ZcBMerchandise bill = (ZcBMerchandise) listCursor.getCurrentObject();  
+        bill.setZcSupMerCode(null);
+        bill.setZcMerIsAttach(null); 
+        bill.setZcSupBraCode(null);
+
+      setEditingObject(bill);
     }
 
   }

@@ -29,6 +29,10 @@ public class ZcPayGkInfo extends ZcBaseBill {
    * 汽车保险支付
    */
   public static final String ZC_BILL_TYPE_QB="ZC_BILL_TYPE_QB";
+  /**
+   * 定点采购支付
+   */
+  public static final String ZC_BILL_TYPE_DINGDIAN="ZC_BILL_TYPE_DINGDIAN";
   
   /**
    * 采购送国库生成支付申请(ZFSQ)

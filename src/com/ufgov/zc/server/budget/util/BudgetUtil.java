@@ -23,6 +23,8 @@ import com.ufgov.zc.common.system.constants.ZcSettingConstants;
 import com.ufgov.zc.common.system.dto.ElementConditionDto;
 import com.ufgov.zc.common.system.model.AsOption;
 import com.ufgov.zc.common.zc.exception.ZcBudgetInterfaceException;
+import com.ufgov.zc.common.zc.model.ZcDingdian;
+import com.ufgov.zc.common.zc.model.ZcDingdianBi;
 import com.ufgov.zc.common.zc.model.ZcPProBalBi;
 import com.ufgov.zc.common.zc.model.ZcPProBalChg;
 import com.ufgov.zc.common.zc.model.ZcPProMitemBiChg;
@@ -42,6 +44,7 @@ import com.ufgov.zc.server.zc.dao.IZcPProMitemBiDao;
 import com.ufgov.zc.server.zc.dao.IZcQbDao;
 import com.ufgov.zc.server.zc.dao.IZcQxDao;
 import com.ufgov.zc.server.zc.dao.IZcXmcgHtBiDao;
+import com.ufgov.zc.server.zc.dao.ZcDingdianBiMapper;
 import com.ufgov.zc.server.zc.dao.ibatis.BaseDao;
 
 public class BudgetUtil {
@@ -1118,7 +1121,26 @@ public class BudgetUtil {
 
     return dto;
   }
+  /**
+   * 
+   * @param money
+   * @param bi
+   * @return
+   * @throws Exception
+   */
+  private Map biToMap(ZcDingdianBi bi) {
+    if (bi == null) {
+      return null;
+    }
+    Map dto = new HashMap();
+    if (dto != null) {
+      dto.put(VOU_MONEY, bi.getZcBiJhuaSum());
+      dto.put(VOU_ID, bi.getZcUseBiId());
+      dto.put(FROM_CTRL_ID, bi.getZcBiNo());
+    }
 
+    return dto;
+  }
   /**
    * 转换成webservice需要的string
    * 
@@ -1275,6 +1297,94 @@ public class BudgetUtil {
     return result;
   }
 
+  public Map getSaveBudgetByZcDingDian(ZcDingdianBiMapper qbDao, IBaseDao baseDao, boolean useBi, ZcDingdian qb, List biList) {
+    // TCJLODO Auto-generated method stub
+    if (!useBi) {
+      return null;
+    }
+    List saves = new ArrayList();
+    List dels = new ArrayList();
+    List updates = new ArrayList();
+
+    //将当前计划存在后台的资金数据查出来，用于和当前前台传过来的计划带的资金数据进行比较，方便更新指标占用情况，这种情况适用于已经存在的采购计划进行再编辑后的保存
+    List biListOld = qbDao.getBiLst(qb.getDdCode());
+
+    if (biListOld == null) {
+      biListOld = new ArrayList();
+    }
+    if (biList == null) {
+      biList = new ArrayList();
+    }
+
+    StringBuffer ids = new StringBuffer("''");
+    for (int i = 0; i < biList.size(); i++) {
+      ZcDingdianBi mbi = (ZcDingdianBi) biList.get(i);
+      if (mbi.getZcBiNo() != null && mbi.getZcBiNo().trim().length() > 0) {
+        ids.append(",'").append(mbi.getZcBiNo()).append("'");
+      }
+    }
+    for (int i = 0; i < biListOld.size(); i++) {
+      ZcDingdianBi mbi = (ZcDingdianBi) biListOld.get(i);
+      if (mbi.getZcBiNo() != null && mbi.getZcBiNo().trim().length() > 0) {
+        ids.append(",'").append(mbi.getZcBiNo()).append("'");
+      }
+    }
+    //将前台传过来指标编号和后台存在的指标编号，去数据库重新查询一下，去一下重，形成一个指标编号列表，涵盖当前采购计划涉及的前台指标数据和后台指标数（后台的只有编辑情况下存在）
+    List allBiNoLst = baseDao.query("VwBudgetGp.getExistsBudget", ids.toString());
+
+    boolean isUpd = false;//判断当前操作时已有采购计划保存后的编辑更新操作，true:更新操作；false：新增操作
+
+    for (int i = 0; i < biList.size(); i++) {
+      ZcDingdianBi biItem = (ZcDingdianBi) biList.get(i);
+      if (biItem.getZcBiNo() == null || "".equals(biItem.getZcBiNo().trim())) {//自筹资金
+        if (biItem.getZcUseBiId() == null || "".equals(biItem.getZcUseBiId().trim())) {
+          biItem.setZcUseBiId(getVoucherId());
+        }
+        continue;
+      }
+
+      //biItem.getZcBiNo()不为空时,资金为玉树指标，执行下面的操作
+
+      //判断当前操作时已有采购计划保存后的编辑更新操作，true:更新操作；false：新增操作
+      isUpd = false;
+
+      for (int j = biListOld.size() - 1; j >= 0; j--) {
+        ZcDingdianBi oldBiItem = (ZcDingdianBi) biListOld.get(j);
+        if (biItem.getZcBiNo().equals(oldBiItem.getZcBiNo())) {
+          // biList.get(i).setZcBiJhuaSum(biList.get(i).getZcBiJhuaSum().subtract(bis.get(j).getZcBiJhuaSum()));
+          if (biItem.getZcBiJhuaSum().compareTo(oldBiItem.getZcBiJhuaSum()) != 0 && allBiNoLst.contains(biItem.getZcBiNo())) {//同一指标编号，存在金额不一致，需要更新了
+            updates.add(biToMap(biItem));
+          }
+          isUpd = true;
+          biListOld.remove(j);
+          break;
+        }
+      }
+      if (!isUpd) {
+        biItem.setZcUseBiId(getVoucherId());
+        saves.add(biToMap(biItem));
+      }
+    }
+    //这里指的是后台查出的当前计划编号的指标资金数据,前台传过来的数据里已经不含了,因此需要删除,恢复指标占用金额，
+    for (int i = 0; i < biListOld.size(); i++) {
+      ZcDingdianBi oldMbi = (ZcDingdianBi) biListOld.get(i);
+      if (!(oldMbi.getZcBiNo() == null || "".equals(oldMbi.getZcBiNo().trim())) && allBiNoLst.contains(oldMbi.getZcBiNo())) {
+        dels.add(biToMap(oldMbi));
+      }
+    }
+
+    Map result = new HashMap();
+    if (dels.size() > 0) {
+      result.put(DEL_BUDGET, createData(dels));
+    }
+    if (updates.size() > 0) {
+      result.put(UPD_BUDGET, createData(updates));
+    }
+    if (saves.size() > 0) {
+      result.put(SAVE_BUDGET, createData(saves));
+    }
+    return result;
+  }
   public Map getQbShiFangBudget(IBaseDao baseDao, boolean flag, ZcQb qb) {
     // TCJLODO Auto-generated method stub
     if (!flag) {
@@ -1313,6 +1423,43 @@ public class BudgetUtil {
     return result;
   }
 
+  public Map getDingDianShiFangBudget(IBaseDao baseDao, boolean flag, ZcDingdian qb) {
+    // TCJLODO Auto-generated method stub
+    if (!flag) {
+      return null;
+    }
+
+    // List<ZcPProBalBi> rets = null;
+    // Map<String, BigDecimal> del = new HashMap<String, BigDecimal>();
+    // List<Map<String, Object>> upds = new ArrayList<Map<String,
+    // Object>>();
+    // List<Map<String, Object>> updolds = new ArrayList<Map<String,
+    // Object>>();
+    List rets = null;
+    Map del = new HashMap();
+    List dels = new ArrayList();
+
+    for (int i = 0; i < qb.getBiList().size(); i++) {
+      ZcDingdianBi bi = (ZcDingdianBi) qb.getBiList().get(i);
+      if (bi.getZcBiNo() == null || bi.getZcBiNo().startsWith(ZcSettingConstants.No_BI)) {
+        continue;
+      }
+      // 解冻支付金额
+      dels.add(biToMap(bi));
+
+    }
+
+    Map result = new HashMap();
+
+    if (dels.size() > 0) {
+      result.put(BudgetUtil.DEL_BUDGET, createData(dels));//用于指标释放
+      result.put(BudgetUtil.UPD_BUDGET_OLD, createData(dels));//用于指标释放成功，调用支付接口出错时，将释放的指标重新占用回去
+    }
+    //    if (result.size() > 0 && !result.isEmpty()) {
+    //      result.put(CREATE_USER, CREATE_USER_VEL);
+    //    }
+    return result;
+  }
   public void callService(Map map, int year) throws ZcBudgetInterfaceException {
     // TCJLODO Auto-generated method stub
     if(!ZcSUtil.isUseBi()){
