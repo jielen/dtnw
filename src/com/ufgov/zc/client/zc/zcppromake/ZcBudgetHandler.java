@@ -788,11 +788,14 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setCoCode("");
       bi.setCoName("");
       // 资金性质
-      bi.setFundCode("A");
-      bi.setFundName("");
+      bi.setFundCode("0");
+      bi.setFundName("自筹资金");
       // 功能分类
       bi.setbAccCode("");
       bi.setbAccName("");
+      //经济分类
+      bi.setOutlayCode("");
+      bi.setOutlayName("");
       // 项目类别
       bi.setProjectTypeCode("");
       bi.setProjectTypeName("");
@@ -800,8 +803,11 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setPaytypeCode("A");
       bi.setPaytypeName("");
       // 指标来源
-      bi.setOriginCode("4");
-      bi.setOriginName("");
+      bi.setOriginCode("99");
+      bi.setOriginName("自筹资金"); 
+      //预算项目
+      bi.setProjectCode("");
+      bi.setProjectName("");
       //是否监督使用
       bi.setBtName("");
       //是否政府采购
@@ -831,11 +837,14 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setCoCode("");
       bi.setCoName("");
       // 资金性质
-      bi.setFundCode("A");
-      bi.setFundName("");
+      bi.setFundCode("0");
+      bi.setFundName("自筹资金");
       // 功能分类
       bi.setbAccCode("");
       bi.setbAccName("");
+      //经济分类
+      bi.setOutlayCode("");
+      bi.setOutlayName("");
       // 项目类别
       bi.setProjectTypeCode("");
       bi.setProjectTypeName("");
@@ -843,8 +852,11 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setPaytypeCode("A");
       bi.setPaytypeName("");
       // 指标来源
-      bi.setOriginCode("4");
-      bi.setOriginName("");
+      bi.setOriginCode("99");
+      bi.setOriginName("自筹资金");
+      //预算项目
+      bi.setProjectCode("");
+      bi.setProjectName("");
       //是否监督使用
       bi.setBtName("");
       //是否政府采购
@@ -878,6 +890,9 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       // 功能分类
       bi.setbAccCode("");
       bi.setbAccName("");
+      //经济分类
+      bi.setOutlayCode("");
+      bi.setOutlayName("");
       // 项目类别
       bi.setProjectTypeCode("");
       bi.setProjectTypeName("");
@@ -885,8 +900,11 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setPaytypeCode("A");
       bi.setPaytypeName("");
       // 指标来源
-      bi.setOriginCode("4");
-      bi.setOriginName("");
+      bi.setOriginCode("99");
+      bi.setOriginName("自筹资金");
+      //预算项目
+      bi.setProjectCode("");
+      bi.setProjectName("");
       // 年度
       bi.setNd(0);
       // 文号
@@ -919,6 +937,9 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       // 功能分类
       bi.setbAccCode("");
       bi.setbAccName("");
+      //经济分类
+      bi.setOutlayCode("");
+      bi.setOutlayName("");
       // 项目类别
       bi.setProjectTypeCode("");
       bi.setProjectTypeName("");
@@ -926,8 +947,11 @@ public class ZcBudgetHandler implements IForeignEntityHandler {
       bi.setPaytypeCode("A");
       bi.setPaytypeName("");
       // 指标来源
-      bi.setOriginCode("4");
-      bi.setOriginName("");
+      bi.setOriginCode("99");
+      bi.setOriginName("自筹资金");
+      //预算项目
+      bi.setProjectCode("");
+      bi.setProjectName("");
       // 年度
       bi.setNd(0);
       // 文号

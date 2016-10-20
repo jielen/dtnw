@@ -37,4 +37,12 @@
       #suCode:VARCHAR#, #isAgree:VARCHAR#)
   </insert> 
   
+  	<update id="updateServicePrimaryKeyByTempCode" parameterClass="com.ufgov.zc.common.zc.model.ZcPProMake"> 
+		update ZC_P_PRO_MITEM
+
+		set ZC_MAKE_CODE = #zcMakeCode:VARCHAR#
+
+		where ZC_MAKE_CODE = #zcTempMakeCode:VARCHAR#
+
+	</update>
 </sqlMap>

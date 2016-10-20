@@ -567,6 +567,8 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     table.setDefaultEditor(String.class, new TextCellEditor());
     SwingUtil.setTableCellEditor(table, ZcPProMitemService.COL_IS_AGREE, new AsValComboBoxCellEditor("VS_Y/N"));
     SwingUtil.setTableCellRenderer(table, ZcPProMitemService.COL_IS_AGREE, new AsValCellRenderer("VS_Y/N"));
+
+    serviceTablePanel.getTable().getColumn(ZcPProMitemService.COL_SERVICE_CONTENT).setMinWidth(1000);
   }
   @Override
   public void setTableItemEditor(JTable table) {
@@ -2364,6 +2366,8 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     if (listPanel.checkBeforeSave(make, self)) {
       return false;
     }
+    //去除子表的空行 
+    clearEmpty();
     try {
 //      requestMeta.setFuncId(saveButton.getFuncId());
       ZcPProMake inData = (ZcPProMake) ObjectUtil.deepCopy(this.listCursor.getCurrentObject());
@@ -2386,6 +2390,32 @@ public class ZcPProMakeXYEditPanel extends ZcPProMakeEditPanel {
     }
     return true;
   }
+  private void clearEmpty() {
+    ZcPProMake make = (ZcPProMake) this.listCursor.getCurrentObject();
+    List l=new ArrayList();
+    if(make.getPeiJianList()!=null){
+      for(int i=0;i<make.getPeiJianList().size();i++){
+        ZcPProMitem item=(ZcPProMitem)make.getPeiJianList().get(i);
+        if(item.getZcMerName()!=null){
+          l.add(item);
+        }
+      }
+      make.getPeiJianList().clear();
+      make.getPeiJianList().addAll(l);
+    }
+    l=new ArrayList();
+    if(make.getServiceList()!=null){
+      for(int i=0;i<make.getServiceList().size();i++){
+        ZcPProMitemService s=(ZcPProMitemService)make.getServiceList().get(i);
+        if(s.getServiceContent()!=null && s.getServiceContent().trim().length()>0){
+          l.add(s);
+        }
+      }
+      make.getServiceList().clear();
+      make.getServiceList().addAll(l);
+    }
+  }
+
   protected void doDelete() {
     int num = JOptionPane.showConfirmDialog(this, "是否删除当前单据", "删除确认", 0);
     if (num == JOptionPane.YES_OPTION) {

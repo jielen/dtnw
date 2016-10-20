@@ -341,7 +341,7 @@ public class ZcEbBulletinZhaoBiaoEditPanel extends AbstractMainSubEditPanel {
 
           //下面一句是为了打开word后刷新窗口
           parent.setSize(parent.getSize().width - 1, parent.getSize().height - 1);
-
+          logger.debug("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=下面一句是为了打开word后刷新窗口");
         }
 
       }

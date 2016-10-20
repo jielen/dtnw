@@ -8,7 +8,7 @@ public class ZcPProMitemService extends ZcBaseBill {
   
   public static final String COL_IS_AGREE="ZC_P_PRO_MITEM_SERVICE_IS_AGREE"; // 是否同意
   public static final String COL_SERVICE_CODE="ZC_P_PRO_MITEM_SERVICE_SERVICE_CODE"; // 明细号
-  public static final String COL_SERVICE_CONTENT="ZC_P_PRO_MITEM_SERVICE_SERVICE_CONTENT"; // 明细内容
+  public static final String COL_SERVICE_CONTENT="ZC_P_PRO_MITEM_SERVICE_CONTENT"; // 明细内容
   public static final String COL_SU_CODE="ZC_P_PRO_MITEM_SERVICE_SU_CODE"; // 供应商编号
   public static final String COL_ZC_MAKE_CODE="ZC_P_PRO_MITEM_SERVICE_ZC_MAKE_CODE"; // 计划编号
 

@@ -527,7 +527,7 @@
 		WHERE S.ZC_SU_CODE = #code#
 	</update>
 	
-  <select id="getEnableSupplierList" resultMap="ZcMerSupplierBaseResult" parameterClass="elementCondition">
+  <select id="getEnableSupplierList" resultMap="ZcEbSupplierResult" parameterClass="elementCondition">
 		select * from ZC_B_SUPPLIER s where s.ZC_SU_STATUS ='2' 
 		
 		<isNotNull prepend="and" property="zcText4">
